@@ -25,8 +25,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Input User</h5>
-                    <form action="{{route('user.update',$editUser->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('user.update-role',$editUser->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PATCH')
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -50,37 +51,26 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Provinsi</label>
-                                    <input type="email" name="email" value="{{$editUser->province_id}}" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
+                                    <label for="exampleInputEmail1">Role</label>
+                                    <select class="js-states form-control" name="role_id[]" tabindex="-1" style="display: none; width: 100%" multiple="multiple">
+                                        @foreach ($role as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Kota/Kabutan</label>
-                                    <input type="email" name="email" value="{{$editUser->city_id}}" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Kecamatan</label>
-                                    <input type="email" name="email" value="{{$editUser->subdistrict_id}}" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Kodepos</label>
-                                    <input type="text" value="{{$editUser->postcode}}" name="postcode" class="form-control">
+                                    <label for="exampleInputEmail1">Permission</label>
+                                    <select class="js-states form-control" name="permission_id[]" tabindex="-1" style="display: none; width: 100%" multiple="multiple">
+                                        @foreach ($permission as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Alamat</label>
-                                    <textarea name="address" class="form-control" id="address" cols="30" rows="10">{{$editUser->address}}</textarea>
-                                </div>
-                            </div>
-                        </div>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
@@ -91,4 +81,7 @@
 
 
 @endsection
+@push('after-scripts')
+<script src="{{url('themes/assets/js/pages/select2.js')}}"></script>
+@endpush
 

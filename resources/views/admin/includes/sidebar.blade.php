@@ -1,6 +1,6 @@
 <div class="page-sidebar">
     <div class="logo-box">
-        <a href="#" class="logo-text">Konveksi Lancar</a><a href="#" id="sidebar-close">
+        <a href="#" class="logo-text">Konveksi</a><a href="#" id="sidebar-close">
 
             <i class="material-icons">close</i></a> <a href="#" id="sidebar-state">
             <i class="material-icons">adjust</i><i class="material-icons compact-sidebar-icon">panorama_fish_eye</i>
@@ -27,15 +27,24 @@
                 <a href="{{route('banner.index')}}"><i class="material-icons">collections</i>Banner</a>
             </li>
             <li class="{{set_active(['user.index','user.create','user.edit'])}}">
-                <a href="{{route('user.index')}}"><i class="material-icons">group</i>User</a>
+                <a href=""><i class="material-icons">group</i>User<i class="material-icons has-sub-menu">add</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('user.index')}}" class="{{set_active_sub('purchase.create')}}">List</a>
+                    </li>
+                    <li>
+                        <a href="{{route('role.index')}}" class="{{set_active_sub('purchase.create')}}">Role</a>
+                    </li>
+                    <li>
+                        <a href="{{route('permission.index')}}" class="{{set_active_sub('purchase.create')}}">Permission</a>
+                    </li>
+                </ul>
+                {{-- <a href="{{route('user.index')}}"><i class="material-icons">group</i>User</a> --}}
             </li>
 
             <li class="sidebar-title">
                 Transaksi
             </li>
-            {{-- <li>
-                <a href="#"><i class="material-icons">receipt_long</i>Purchase</a>
-            </li> --}}
             <li class="{{set_active(['purchase.create','purchase.index','purchase.edit','purchase.show','retur.index','retur.create'])}}">
                 <a href=""><i class="material-icons">receipt_long</i>Purchase<i class="material-icons has-sub-menu">add</i></a>
                 <ul class="sub-menu">
@@ -65,12 +74,19 @@
             <li class="sidebar-title">
                 Settings
             </li>
-
-            <li>
-                <a href="{{route('setting-company')}}"><i class="material-icons">account_circle</i>Website</a>
-            </li>
-            <li>
-                <a href="#"><i class="material-icons">account_circle</i>Profile</a>
+            <li class="{{set_active(['setting-company'])}}">
+                <a href=""><i class="material-icons">web</i>Website<i class="material-icons has-sub-menu">add</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('setting-company')}}" class="{{set_active_sub('setting-company')}}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="{{route('client-company.index')}}" class="{{set_active_sub('setting-company')}}">Client</a>
+                    </li>
+                    <li>
+                        <a href="{{route('setting-company')}}" class="{{set_active_sub('setting-company')}}">Portofolio</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">logout</i>Log Out</a>
@@ -78,9 +94,6 @@
                     @csrf
                 </form>
             </li>
-            {{-- <li>
-                <a href="#"><i class="material-icons">access_time</i>Change Log</a>
-            </li> --}}
         </ul>
     </div>
 </div>

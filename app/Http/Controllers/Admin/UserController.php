@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Service\UserService;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -52,7 +55,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.pages.user.edit');
+        $editUser = $this->userService->getById($id);
+        return view('admin.pages.user.edit',compact('editUser'));
     }
 
     /**
@@ -60,7 +64,8 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->userService->update($request, $id);
+        return redirect()->route('user.index');
     }
 
     /**
@@ -68,6 +73,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->userService->delete($id);
+        return redirect()->back()->with('success','Data berhasil dihapus');
     }
 }

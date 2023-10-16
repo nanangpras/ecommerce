@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Service\RajaOngkirService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,12 +16,19 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+    protected $rajaOngkirService;
+
+    public function __construct(RajaOngkirService $rajaOngkirService)
+    {
+        $this->rajaOngkirService = $rajaOngkirService;
+    }
     /**
      * Display the registration view.
      */
     public function create(): View
     {
-        return view('auth.register');
+        $provinsi = $this->rajaOngkirService->getProvince();
+        return view('auth.register-new',compact('provinsi'));
     }
 
     /**
@@ -30,6 +38,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // dd($request->all());
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
@@ -39,6 +48,13 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'province_id' => $request->province_id,
+            'city_id' => $request->city_id,
+            'subdistrict_id' => $request->kecamatan_id,
+            'postcode' => $request->postcode,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'role' => 'admin',
             'password' => Hash::make($request->password),
         ]);
 
