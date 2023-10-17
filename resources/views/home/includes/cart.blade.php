@@ -5,19 +5,30 @@
             <button class="ltn__utilize-close">×</button>
         </div>
         <div class="mini-cart-product-area ltn__scrollbar">
-            @forelse ($cart as $item)
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="{{$item['image']}}" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+            @if ($cart)
+                @forelse ($cart as $item)
+                    <div class="mini-cart-item clearfix">
+                        <div class="mini-cart-img">
+                            <a href="#"><img src="{{$item['image']}}" alt="Image"></a>
+                            <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                        </div>
+                        <div class="mini-cart-info">
+                            <h6><a href="#">{{$item['title']}}</a></h6>
+                            <span class="mini-cart-quantity">{{$item['qty']}} x {{$item['price']}} </span>
+                        </div>
                     </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">{{$item['title']}}</a></h6>
-                        <span class="mini-cart-quantity">{{$item['qty']}} x {{$item['price']}} </span>
+                @empty
+                    <div class="mini-cart-item clearfix">
+                        <div class="mini-cart-img">
+                            <a href="#"><img src="{{url('themes-frontend/img/product/2.png')}}" alt="Image"></a>
+                            <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                        </div>
+                        <div class="mini-cart-info">
+                            <h6><a href="#">Tidak ada keranjang</a></h6>
+                        </div>
                     </div>
-                </div>
-            @empty
-
+                @endforelse
+            @else
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
                         <a href="#"><img src="{{url('themes-frontend/img/product/2.png')}}" alt="Image"></a>
@@ -27,7 +38,8 @@
                         <h6><a href="#">Tidak ada keranjang</a></h6>
                     </div>
                 </div>
-            @endforelse
+            @endif
+
         </div>
         <div class="mini-cart-footer">
             <div class="mini-cart-sub-total">

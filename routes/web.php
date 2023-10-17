@@ -7,12 +7,14 @@ use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\ShopController as AdminShopController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\CheckoutController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\ShopController;
+use App\Http\Controllers\Member\MemberDashboradController;
 use App\Http\Controllers\ProfileController;
 use Faker\Provider\ar_EG\Company;
 use Illuminate\Support\Facades\Route;
@@ -39,30 +41,42 @@ Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout.ind
 Route::get('/city/{id}',[HomeController::class, 'getCity'])->name('city');
 Route::get('/subdistrict/{id}',[HomeController::class, 'getSubdistrict'])->name('subdistrict');
 
+Route::get('register/user',[HomeController::class, 'register'])->name('register.user');
+Route::get('login/user',[HomeController::class, 'loginUser'])->name('login.user');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
+Route::group(['middleware' => 'roleCheck:user','auth'], function(){
+    Route::get('/member/dashboard', [MemberDashboradController::class,'index'])->name('member.dashboard');
 });
 
-Route::resource('category', CategoryController::class);
-Route::resource('product', ProductController::class);
-Route::resource('banner', BannerController::class);
-Route::resource('user', UserController::class);
-Route::get('/update-role/{id}', [UserRoleController::class, 'updatePermissionId'])->name('user.edit.role');
-Route::patch('/update-role', [UserRoleController::class, 'updatePermission'])->name('user.update-role');
+Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
 
-Route::get('/setting-company',[CompanyProfileController::class,'index'])->name('setting-company');
-Route::post('/setting-company/add',[CompanyProfileController::class,'store'])->name('setting-company.store');
-Route::resource('client-company',ClientCompanyController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('banner', BannerController::class);
+    Route::resource('user', UserController::class);
+    Route::get('/update-role/{id}', [UserRoleController::class, 'updatePermissionId'])->name('user.edit.role');
+    Route::patch('/update-role/user/{id}', [UserRoleController::class, 'updatePermission'])->name('user.update-role');
+    Route::get('/setting-company',[CompanyProfileController::class,'index'])->name('setting-company');
+    Route::post('/setting-company/add',[CompanyProfileController::class,'store'])->name('setting-company.store');
+    Route::resource('client-company',ClientCompanyController::class);
+    Route::get('permission', [PermissionController::class,'index'])->name('permission.index');
+    Route::post('/permission/add',[PermissionController::class,'add'])->name('permission.store');
+    Route::get('role',[RoleController::class,'index'])->name('role.index');
+    Route::post('/role/add',[RoleController::class,'add'])->name('role.store');
+});
 
-Route::get('permission', [PermissionController::class,'index'])->name('permission.index');
-Route::post('/permission/add',[PermissionController::class,'add'])->name('permission.store');
 
-Route::get('role',[RoleController::class,'index'])->name('role.index');
-Route::post('/role/add',[RoleController::class,'add'])->name('role.store');
+
+
+Route::get('/stockis/shop',[AdminShopController::class,'index'])->name('stockis.shop');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

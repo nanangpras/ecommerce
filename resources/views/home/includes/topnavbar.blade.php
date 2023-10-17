@@ -66,7 +66,7 @@
                 <div class="col">
                     <div class="site-logo-wrap">
                         <div class="site-logo">
-                            <a href="index.html"><img src="{{$company->logo ?? ''}}" alt="Logo"></a>
+                            <a href="index.html"><img src="#" alt="Logo"></a>
                         </div>
                         <div class="get-support clearfix d-none">
                             <div class="get-support-icon">
@@ -121,10 +121,9 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
-                                    <li><a href="login.html">Sign in</a></li>
-                                    <li><a href="register.html">Register</a></li>
+                                    <li><a href="{{route('login.user')}}">Sign in</a></li>
+                                    <li><a href="{{route('register.user')}}">Register</a></li>
                                     <li><a href="account.html">My Account</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
                                 </ul>
                             </li>
                         </ul>

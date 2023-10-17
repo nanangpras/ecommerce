@@ -51,4 +51,25 @@ class HomeController extends Controller
     {
         return $this->rajaOngkirService->getSubdistrict($id);
     }
+
+    public function register()
+    {
+        $cart = $this->getCarts();
+        $subtotal = collect($cart)->sum(function ($q) {
+            return $q['qty'] * $q['price'];
+        });
+        $company = $this->companyProfile->getAll();
+        $provinsi = $this->rajaOngkirService->getProvince();
+        return view('home.pages.register',compact('provinsi','cart','subtotal','company'));
+    }
+
+    public function loginUser()
+    {
+        $cart = $this->getCarts();
+        $subtotal = collect($cart)->sum(function ($q) {
+            return $q['qty'] * $q['price'];
+        });
+        $company = $this->companyProfile->getAll();
+        return view('home.pages.login',compact('company','subtotal','cart'));
+    }
 }

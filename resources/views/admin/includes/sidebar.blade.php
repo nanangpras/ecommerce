@@ -6,6 +6,104 @@
             <i class="material-icons">adjust</i><i class="material-icons compact-sidebar-icon">panorama_fish_eye</i>
         </a>
     </div>
+    @if (Auth::user()->role == 'admin')
+        <div class="page-sidebar-inner slimscroll">
+            <ul class="accordion-menu">
+                <li class="sidebar-title">
+                    Apps
+                </li>
+                <li class="{{set_active('home')}}">
+                    <a href="#"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
+                </li>
+                <li class="sidebar-title">
+                    Master Data
+                </li>
+                <li class="{{set_active('category.index')}}">
+                    <a href="{{route('category.index')}}"><i class="material-icons">category</i>Kategori</a>
+                </li>
+                <li class="{{ set_active(['product.index','product.create','product.edit']) }}">
+                    <a href="{{route('product.index')}}" ><i class="material-icons">inventory</i>Produk</a>
+                </li>
+                <li class="{{set_active(['banner.index','banner.create','banner.edit'])}}">
+                    <a href="{{route('banner.index')}}"><i class="material-icons">collections</i>Banner</a>
+                </li>
+                <li class="{{set_active(['user.index','user.create','user.edit'])}}">
+                    <a href=""><i class="material-icons">group</i>User<i class="material-icons has-sub-menu">add</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{route('user.index')}}" class="{{set_active_sub('purchase.create')}}">List</a>
+                        </li>
+                        <li>
+                            <a href="{{route('role.index')}}" class="{{set_active_sub('purchase.create')}}">Role</a>
+                        </li>
+                        <li>
+                            <a href="{{route('permission.index')}}" class="{{set_active_sub('purchase.create')}}">Permission</a>
+                        </li>
+                    </ul>
+                    {{-- <a href="{{route('user.index')}}"><i class="material-icons">group</i>User</a> --}}
+                </li>
+
+                <li class="sidebar-title">
+                    Transaksi
+                </li>
+                <li class="{{set_active(['purchase.create','purchase.index','purchase.edit','purchase.show','retur.index','retur.create'])}}">
+                    <a href=""><i class="material-icons">receipt_long</i>Purchase<i class="material-icons has-sub-menu">add</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#" class="{{set_active_sub('purchase.create')}}">List Transaksi</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{set_active(['sale-store.index','sale-store.create'])}}">
+                    <a href="#" ><i class="material-icons">paid</i>Penjualan</a>
+                </li>
+                <li>
+                    <a href=""><i class="material-icons">summarize</i>Laporan<i class="material-icons has-sub-menu">add</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">Hutang</a>
+                        </li>
+                        <li>
+                            <a href="#">Piutang</a>
+                        </li>
+                        <li>
+                            <a href="#">Stok</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-title">
+                    Shop
+                </li>
+                <li class="{{ set_active(['product.index','product.create','product.edit']) }}">
+                    <a href="{{route('stockis.shop')}}" ><i class="material-icons">inventory</i>Produk</a>
+                </li>
+                <li class="sidebar-title">
+                    Settings
+                </li>
+                <li class="{{set_active(['setting-company'])}}">
+                    <a href=""><i class="material-icons">web</i>Website<i class="material-icons has-sub-menu">add</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{route('setting-company')}}" class="{{set_active_sub('setting-company')}}">Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{route('client-company.index')}}" class="{{set_active_sub('setting-company')}}">Client</a>
+                        </li>
+                        <li>
+                            <a href="{{route('setting-company')}}" class="{{set_active_sub('setting-company')}}">Portofolio</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">logout</i>Log Out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+    @elseif(Auth::user()->role =='user')
     <div class="page-sidebar-inner slimscroll">
         <ul class="accordion-menu">
             <li class="sidebar-title">
@@ -14,47 +112,13 @@
             <li class="{{set_active('home')}}">
                 <a href="#"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
             </li>
-            <li class="sidebar-title">
-                Master Data
-            </li>
-            <li class="{{set_active('category.index')}}">
-                <a href="{{route('category.index')}}"><i class="material-icons">category</i>Kategori</a>
-            </li>
-            <li class="{{ set_active(['product.index','product.create','product.edit']) }}">
-                <a href="{{route('product.index')}}" ><i class="material-icons">inventory</i>Produk</a>
-            </li>
-            <li class="{{set_active(['banner.index','banner.create','banner.edit'])}}">
-                <a href="{{route('banner.index')}}"><i class="material-icons">collections</i>Banner</a>
-            </li>
-            <li class="{{set_active(['user.index','user.create','user.edit'])}}">
-                <a href=""><i class="material-icons">group</i>User<i class="material-icons has-sub-menu">add</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="{{route('user.index')}}" class="{{set_active_sub('purchase.create')}}">List</a>
-                    </li>
-                    <li>
-                        <a href="{{route('role.index')}}" class="{{set_active_sub('purchase.create')}}">Role</a>
-                    </li>
-                    <li>
-                        <a href="{{route('permission.index')}}" class="{{set_active_sub('purchase.create')}}">Permission</a>
-                    </li>
-                </ul>
-                {{-- <a href="{{route('user.index')}}"><i class="material-icons">group</i>User</a> --}}
-            </li>
+
 
             <li class="sidebar-title">
                 Transaksi
             </li>
-            <li class="{{set_active(['purchase.create','purchase.index','purchase.edit','purchase.show','retur.index','retur.create'])}}">
-                <a href=""><i class="material-icons">receipt_long</i>Purchase<i class="material-icons has-sub-menu">add</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="#" class="{{set_active_sub('purchase.create')}}">List Transaksi</a>
-                    </li>
-                </ul>
-            </li>
             <li class="{{set_active(['sale-store.index','sale-store.create'])}}">
-                <a href="#" ><i class="material-icons">paid</i>Penjualan</a>
+                <a href="#" ><i class="material-icons">paid</i>Transaksi Saya</a>
             </li>
             <li>
                 <a href=""><i class="material-icons">summarize</i>Laporan<i class="material-icons has-sub-menu">add</i></a>
@@ -74,19 +138,8 @@
             <li class="sidebar-title">
                 Settings
             </li>
-            <li class="{{set_active(['setting-company'])}}">
-                <a href=""><i class="material-icons">web</i>Website<i class="material-icons has-sub-menu">add</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="{{route('setting-company')}}" class="{{set_active_sub('setting-company')}}">Profile</a>
-                    </li>
-                    <li>
-                        <a href="{{route('client-company.index')}}" class="{{set_active_sub('setting-company')}}">Client</a>
-                    </li>
-                    <li>
-                        <a href="{{route('setting-company')}}" class="{{set_active_sub('setting-company')}}">Portofolio</a>
-                    </li>
-                </ul>
+            <li class="{{set_active(['sale-store.index','sale-store.create'])}}">
+                <a href="#" ><i class="material-icons">paid</i>Profile</a>
             </li>
             <li>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">logout</i>Log Out</a>
@@ -96,4 +149,6 @@
             </li>
         </ul>
     </div>
+    @endif
+
 </div>

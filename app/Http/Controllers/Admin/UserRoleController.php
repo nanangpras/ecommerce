@@ -20,14 +20,19 @@ class UserRoleController extends Controller
 
     public function updatePermission(Request $request, $id)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'bail|required|min:2',
             'email' => 'required|email|unique:users,email,' . $id,
             'roles' => 'required|min:1'
         ]);
 
+        $roles = $request->get('role_id', []);
+        $permissions = $request->get('permission_id', []);
+
         $user = User::find($id);
-        $this->syncPermissions($request, $user);
+        $user->syncRoles($roles);
+        $user->syncPermissions($permissions);
         // $user->syncPermissions($request['permission_id']);
         // $user->syncRole($request['role_id']);
         $user->save();

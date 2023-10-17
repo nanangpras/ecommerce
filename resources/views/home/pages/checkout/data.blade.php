@@ -113,26 +113,24 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <h6>Provinsi</h6>
-                                        <div class="input-item">
+                                        <div class="input-item provinsi_id">
 
-                                            <select class="nice-select" name="provinsi_id" id="provinsi_id">
+                                            <select name="province_id" id="province_id" class="nice-select">
                                                 @foreach ($provinsi as $row)
                                                     <option value="{{ $row['province_id'] }}" name="{{ $row['province'] }}">{{ $row['province'] }}</option>
                                                 @endforeach
-                                                </select>
-                                                @error('province_id')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-
                                             </select>
+                                            @error('province_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <h6>Kota/Kabupaten</h6>
-                                        <div class="input-item">
-                                            <select class="nice-select" name="city_id" id="city_id">
+                                        <div class="input-item city_id">
+                                            <select class="nice-select" name="city_ids" id="city_ids">
                                                 <option>Select Kota</option>
                                             </select>
                                         </div>
@@ -234,7 +232,7 @@
 @push('after-scripts')
     <script>
         $(document).ready(function () {
-            $('select[name="provinsi_id"]').on('change',function () {
+            $('#province_id').on('change',function () {
                 let provinceid = $(this).val();
                 if (provinceid) {
                     jQuery.ajax({
@@ -244,18 +242,18 @@
                         success:function(data){
                             console.log(data);
                             alert('ok');
-                            $('select[name="city_id"]').empty();
+                            $('#city_ids').empty();
                             $.each(data,function (key,value) {
-                                $('select[name="city_id"]').append('<option value="'+ value.city_id +'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
+                                $('#city_ids').append('<option value="'+ value.city_id +'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
                             })
                         }
                     })
                 }else{
-                    $('select[name="city_id"]').empty();
+                    $('#city_ids').empty();
                 }
             });
 
-            $('select[name="city_id"]').on('change',function () {
+            $('#city_ids').on('change',function () {
                 let kecamatanid = $(this).val();
                 if (kecamatanid) {
                     jQuery.ajax({

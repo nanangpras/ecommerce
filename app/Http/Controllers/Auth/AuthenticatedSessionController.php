@@ -29,15 +29,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // if (Auth::user() && Auth::user()->role == 'admin') {
-        //     return redirect()->route('admin.dashboard');
-        // }elseif(Auth::user() && Auth::user()->role == 'user'){
-        //     // return redirect()->route('user.dashboard');
-        // }else{
-        //     // return redirect()->route('login')->with('status','You are not authorized to access this page');
-        //     return redirect()->intended(RouteServiceProvider::HOME);
-        // }
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if (Auth::user() && Auth::user()->role == 'admin') {
+            return redirect()->route('admin.dashboard');
+        }elseif(Auth::user() && Auth::user()->role == 'user'){
+            return redirect()->route('member.dashboard');
+        }else{
+            Auth::guard('web')->logout();
+            // return redirect()->route('login')->with('status','You are not authorized to access this page');
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+        // return redirect()->intended(RouteServiceProvider::HOME);
 
     }
 

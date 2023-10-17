@@ -46,21 +46,21 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'province_id' => $request->province_id,
-            'city_id' => $request->city_id,
-            'subdistrict_id' => $request->kecamatan_id,
-            'postcode' => $request->postcode,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'role' => 'admin',
-            'password' => Hash::make($request->password),
+            'name'          => $request->name,
+            'email'         => $request->email,
+            'province_id'   => $request->province_id,
+            'city_id'       => $request->city_id,
+            'subdistrict_id'=> $request->kecamatan_id,
+            'postcode'      => $request->postcode,
+            'address'       => $request->address,
+            'phone'         => $request->phone,
+            'role'          => 'user',
+            'password'      => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }
