@@ -35,7 +35,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 Route::get('/product/detail/{slug}',[ShopController::class,'productDetailSlug'])->name('product.detail');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
-Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
+
 Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout.index');
 // Rajaongkir
 Route::get('/city/{id}',[HomeController::class, 'getCity'])->name('city');
@@ -51,6 +51,11 @@ Route::get('/dashboard', function () {
 
 Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::get('/member/dashboard', [MemberDashboradController::class,'index'])->name('member.dashboard');
+    Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
+    Route::post('/checkout-process',[CheckoutController::class, 'process'])->name('checkout.process');
+    Route::get('/member/transaction/detail/{id}',[MemberDashboradController::class, 'detailTransaction'])->name('member.detail.transaction');
+    Route::get('/member/transaction/list/{id}',[MemberDashboradController::class, 'myTransaaction'])->name('member.mytransaction');
+    Route::post('/member/transaction/callback',[CheckoutController::class,'postCallback'])->name('post.callback');
 });
 
 Route::group(['middleware' => 'roleCheck:admin','auth'], function(){

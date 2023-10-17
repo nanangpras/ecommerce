@@ -118,7 +118,7 @@
                 Transaksi
             </li>
             <li class="{{set_active(['sale-store.index','sale-store.create'])}}">
-                <a href="#" ><i class="material-icons">paid</i>Transaksi Saya</a>
+                <a href="{{route('member.mytransaction',Auth::user()->id)}}" ><i class="material-icons">paid</i>Transaksi Saya</a>
             </li>
             <li>
                 <a href=""><i class="material-icons">summarize</i>Laporan<i class="material-icons has-sub-menu">add</i></a>

@@ -57,23 +57,28 @@
                                     </ul>
                                 </div>
                                 <div class="ltn__product-details-menu-2">
-                                    <ul>
-                                        <li>
-                                            <div class="cart-plus-minus">
-                                                <input type="text" id="qty" value="1" name="qtybutton" class="cart-plus-minus-box">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <form id="form-add-cart">
+                                    <form action="{{route('add.to.cart')}}" id="form-add-cart" method="POST">
+                                        <ul>
+                                            <li>
+                                                <div class="cart-plus-minus">
+                                                    <input type="text" id="qty" value="1" name="qty" class="cart-plus-minus-box">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                @csrf
                                                 <input type="hidden" id="idproduct" name="id" value="{{ $detail->id }}" class="form-control">
                                                 <input type="hidden" id="weight" name="weight" value="{{ $detail->weight }}" class="form-control">
-                                                <a href="#" id="add-to-cart" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                                <button class="theme-btn-1 btn btn-effect-1" type="submit">
                                                     <i class="fas fa-shopping-cart"></i>
                                                     <span>ADD TO CART YA</span>
-                                                </a>
-                                            </form>
-                                        </li>
-                                    </ul>
+                                                </button>
+                                                {{-- <a href="#" id="add-to-cart" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <span>ADD TO CART YA</span>
+                                                </a> --}}
+                                            </li>
+                                        </ul>
+                                    </form>
                                 </div>
                                 <div class="ltn__product-details-menu-3">
                                     <ul>

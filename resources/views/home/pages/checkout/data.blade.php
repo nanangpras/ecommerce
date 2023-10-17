@@ -155,75 +155,80 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="ltn__checkout-payment-method mt-50">
-                    <h4 class="title-2">Payment Method</h4>
-                    <div id="checkout_accordion_1">
-                        <!-- card -->
-                        <div class="card">
-                            <h5 class="collapsed ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-1" aria-expanded="false">
-                                Check payments
-                            </h5>
-                            <div id="faq-item-2-1" class="collapse" data-parent="#checkout_accordion_1">
-                                <div class="card-body">
-                                    <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+            <form action="{{route('checkout.process')}}" method="POST">
+                @csrf
+                <input type="text" value="{{Auth::user()->id}}" name="user_id">
+                <input type="text" value="{{$subtotal}}" name="transaction_total">
+                <div class="col-lg-6">
+                    <div class="ltn__checkout-payment-method mt-50">
+                        <h4 class="title-2">Payment Method</h4>
+                        <div id="checkout_accordion_1">
+                            <!-- card -->
+                            <div class="card">
+                                <h5 class="collapsed ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-1" aria-expanded="false">
+                                    Check payments
+                                </h5>
+                                <div id="faq-item-2-1" class="collapse" data-parent="#checkout_accordion_1">
+                                    <div class="card-body">
+                                        <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card -->
+                            <div class="card">
+                                <h5 class="ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-2" aria-expanded="true">
+                                    Cash on delivery
+                                </h5>
+                                <div id="faq-item-2-2" class="collapse show" data-parent="#checkout_accordion_1">
+                                    <div class="card-body">
+                                        <p>Pay with cash upon delivery.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card -->
+                            <div class="card">
+                                <h5 class="collapsed ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-3" aria-expanded="false" >
+                                    PayPal <img src="img/icons/payment-3.png" alt="#">
+                                </h5>
+                                <div id="faq-item-2-3" class="collapse" data-parent="#checkout_accordion_1">
+                                    <div class="card-body">
+                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- card -->
-                        <div class="card">
-                            <h5 class="ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-2" aria-expanded="true">
-                                Cash on delivery
-                            </h5>
-                            <div id="faq-item-2-2" class="collapse show" data-parent="#checkout_accordion_1">
-                                <div class="card-body">
-                                    <p>Pay with cash upon delivery.</p>
-                                </div>
-                            </div>
+                        <div class="ltn__payment-note mt-30 mb-30">
+                            <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
                         </div>
-                        <!-- card -->
-                        <div class="card">
-                            <h5 class="collapsed ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-3" aria-expanded="false" >
-                                PayPal <img src="img/icons/payment-3.png" alt="#">
-                            </h5>
-                            <div id="faq-item-2-3" class="collapse" data-parent="#checkout_accordion_1">
-                                <div class="card-body">
-                                    <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Place order</button>
                     </div>
-                    <div class="ltn__payment-note mt-30 mb-30">
-                        <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
-                    </div>
-                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Place order</button>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="shoping-cart-total mt-50">
-                    <h4 class="title-2">Cart Totals</h4>
-                    <table class="table">
-                        <tbody>
-                            @forelse ($cart as $item)
-                                <tr>
-                                    <td>{{$item['title']}} <strong>× {{$item['qty']}}</strong></td>
-                                    <td>{{$item['qty'] * $item['price']}}</td>
-                                </tr>
-                            @empty
+                <div class="col-lg-6">
+                    <div class="shoping-cart-total mt-50">
+                        <h4 class="title-2">Cart Totals</h4>
+                        <table class="table">
+                            <tbody>
+                                @forelse ($cart as $item)
+                                    <tr>
+                                        <td>{{$item['title']}} <strong>× {{$item['qty']}}</strong></td>
+                                        <td>{{$item['qty'] * $item['price']}}</td>
+                                    </tr>
+                                @empty
 
-                            @endforelse
-                            <tr>
-                                <td>Shipping and Handing</td>
-                                <td>$15.00</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Order Total</strong></td>
-                                <td><strong>{{$subtotal}}</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                @endforelse
+                                <tr>
+                                    <td>Shipping and Handing</td>
+                                    <td>$15.00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Order Total</strong></td>
+                                    <td><strong>{{$subtotal}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
