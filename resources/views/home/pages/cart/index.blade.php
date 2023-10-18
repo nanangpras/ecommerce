@@ -6,10 +6,13 @@
         <div class="row">
             <div class="ltn__coupon-code-form mb-50">
                 <p>Cek Domain</p>
-                <div class="cart-coupon">
-                    <input type="text" name="domain" id="domain" placeholder="Cek Domain">
-                    <button type="button" id="btn_coupon" class="btn theme-btn-1 btn-effect-2">Cek</button>
-                </div>
+                <form action="{{route('cek.domain')}}" method="POST">
+                    @csrf
+                    <div class="cart-coupon">
+                        <input type="text" name="domain" id="domain" placeholder="Cek Domain">
+                        <button type="submit" class="btn theme-btn-1 btn-effect-2">Cek</button>
+                    </div>
+                </form>
             </div>
             <div class="col-lg-12">
                 <div class="shoping-cart-inner">

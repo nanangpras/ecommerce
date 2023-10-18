@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Service\BannerService;
 use App\Service\CompanyProfileService;
 use App\Service\RajaOngkirService;
+use Illuminate\Http\Request;
+use Iodev\Whois\Factory;
 
 class HomeController extends Controller
 {
@@ -71,5 +73,23 @@ class HomeController extends Controller
         });
         $company = $this->companyProfile->getAll();
         return view('home.pages.login',compact('company','subtotal','cart'));
+    }
+
+    public function cekDomain(Request $request)
+    {
+        $whois = Factory::get()->createWhois();
+        $cekDomain = $request->domain;
+        // Checking availability
+        if ($whois->isDomainAvailable($cekDomain)) {
+            print "Bingo! Domain is available! :)";
+        }
+
+        // Supports Unicode (converts to punycode)
+        if ($whois->isDomainAvailable($cekDomain)) {
+            print "Bingo! Domain is available! :)";
+        }
+
+        $response = $whois->lookupDomain($cekDomain);
+        print $response->text;
     }
 }

@@ -47,6 +47,8 @@ Route::get('login/user',[HomeController::class, 'loginUser'])->name('login.user'
 
 Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
 
+Route::post('/cek/domain', [HomeController::class, 'cekDomain'])->name('cek.domain');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
