@@ -121,9 +121,15 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
-                                    <li><a href="{{route('login.user')}}">Sign in</a></li>
-                                    <li><a href="{{route('register.user')}}">Register</a></li>
-                                    <li><a href="account.html">My Account</a></li>
+                                    @guest
+                                        <li><a href="{{route('login.user')}}">Sign in</a></li>
+                                        <li><a href="{{route('register.user')}}">Register</a></li>
+                                    @endguest
+                                    @auth
+                                        <li><a href="{{route('member.dashboard')}}">{{Auth::user()->name}}</a></li>
+                                        <li><a href="{{route('member.dashboard')}}">My Account</a></li>
+                                        <li><a href="{{route('logout')}}">Logout</a></li>
+                                    @endauth
                                 </ul>
                             </li>
                         </ul>

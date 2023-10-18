@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ClientCompanyController;
 use App\Http\Controllers\Admin\CompanyProfileController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
@@ -44,6 +45,7 @@ Route::get('/subdistrict/{id}',[HomeController::class, 'getSubdistrict'])->name(
 Route::get('register/user',[HomeController::class, 'register'])->name('register.user');
 Route::get('login/user',[HomeController::class, 'loginUser'])->name('login.user');
 
+Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -51,11 +53,13 @@ Route::get('/dashboard', function () {
 
 Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::get('/member/dashboard', [MemberDashboradController::class,'index'])->name('member.dashboard');
-    Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
     Route::post('/checkout-process',[CheckoutController::class, 'process'])->name('checkout.process');
     Route::get('/member/transaction/detail/{id}',[MemberDashboradController::class, 'detailTransaction'])->name('member.detail.transaction');
     Route::get('/member/transaction/list/{id}',[MemberDashboradController::class, 'myTransaaction'])->name('member.mytransaction');
     Route::post('/member/transaction/callback',[CheckoutController::class,'postCallback'])->name('post.callback');
+
+    Route::post('/cart/update-cart',[CartController::class,'updateCart'])->name('update.cart');
+    Route::post('/cart/apply-coupon',[CartController::class,'applyCoupon'])->name('apply.coupon');
 });
 
 Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
@@ -67,6 +71,7 @@ Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
     Route::resource('product', ProductController::class);
     Route::resource('banner', BannerController::class);
     Route::resource('user', UserController::class);
+    Route::resource('coupon', CouponController::class);
     Route::get('/update-role/{id}', [UserRoleController::class, 'updatePermissionId'])->name('user.edit.role');
     Route::patch('/update-role/user/{id}', [UserRoleController::class, 'updatePermission'])->name('user.update-role');
     Route::get('/setting-company',[CompanyProfileController::class,'index'])->name('setting-company');

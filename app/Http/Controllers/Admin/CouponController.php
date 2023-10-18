@@ -3,27 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Service\CategoryService;
-use App\Service\ProductService;
+use App\Service\CouponService;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CouponController extends Controller
 {
-    protected $productService;
-    protected $categoryService;
+    protected $couponService;
 
-    public function __construct(ProductService $productService,CategoryService $categoryService)
+    public function __construct(CouponService $couponService)
     {
-        $this->productService = $productService;
-        $this->categoryService = $categoryService;
+        $this->couponService = $couponService;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $product = $this->productService->getAll();
-        return view('admin.pages.product.data',compact('product'));
+        $coupon = $this->couponService->getAll();
+        return view('admin.pages.coupon.index',compact('coupon'));
     }
 
     /**
@@ -31,8 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $category = $this->categoryService->getCategoryProduct();
-        return view('admin.pages.product.create',compact('category'));
+        return view('admin.pages.coupon.create');
     }
 
     /**
@@ -40,8 +36,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $this->productService->save($request);
-        return redirect()->route('product.index')->with('success','Data berhasil ditambahkan');
+        $this->couponService->save($request);
+        return redirect()->route('coupon.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -57,8 +53,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $product = $this->productService->getById($id);
-        return view('admin.pages.product.edit',compact('product'));
+        $editCoupon = $this->couponService->getById($id);
+        return view('admin.pages.coupon.edit',compact('editCoupon'));
     }
 
     /**
@@ -66,7 +62,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       
+        $this->couponService->update($id, $request);
+        return redirect()->route('coupon.index')->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -74,6 +71,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->couponService->delete($id);
+        return redirect()->route('coupon.index')->with('success','Data berhasil dihapus');
     }
 }

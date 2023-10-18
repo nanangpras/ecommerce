@@ -42,6 +42,9 @@
                     </ul>
                     {{-- <a href="{{route('user.index')}}"><i class="material-icons">group</i>User</a> --}}
                 </li>
+                <li class="{{set_active(['coupon.index','coupon.create','coupon.edit'])}}">
+                    <a href="{{route('coupon.index')}}"><i class="material-icons">collections</i>Kupon</a>
+                </li>
 
                 <li class="sidebar-title">
                     Transaksi
@@ -133,6 +136,12 @@
                         <a href="#">Stok</a>
                     </li>
                 </ul>
+            </li>
+            <li class="sidebar-title">
+                Shop
+            </li>
+            <li class="{{ set_active(['product.index','product.create','product.edit']) }}">
+                <a href="{{route('shop.index')}}" ><i class="material-icons">inventory</i>Shop</a>
             </li>
 
             <li class="sidebar-title">
