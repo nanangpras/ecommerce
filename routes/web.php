@@ -60,6 +60,7 @@ Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::get('/member/transaction/list/{id}',[MemberDashboradController::class, 'myTransaaction'])->name('member.mytransaction');
     Route::post('/member/transaction/callback',[CheckoutController::class,'postCallback'])->name('post.callback');
 
+    Route::post('/add-domain',[HomeController::class,'addDomainCookie'])->name('add.domain');
     Route::post('/cart/update-cart',[CartController::class,'updateCart'])->name('update.cart');
     Route::post('/cart/apply-coupon',[CartController::class,'applyCoupon'])->name('apply.coupon');
 });

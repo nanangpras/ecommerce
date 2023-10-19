@@ -52,7 +52,8 @@ class CartController extends Controller
                     'image' => $product->productImages->first()->image,
                     'coupon' => 0,
                     'coupon_rate' => 0,
-                    'type_coupon' => ''
+                    'type_coupon' => '',
+                    'domain'=>''
                 ];
             }
             $cookie = cookie('konveksi-carts',json_encode($cart),2880);

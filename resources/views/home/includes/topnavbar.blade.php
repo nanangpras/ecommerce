@@ -128,7 +128,13 @@
                                     @auth
                                         <li><a href="{{route('member.dashboard')}}">{{Auth::user()->name}}</a></li>
                                         <li><a href="{{route('member.dashboard')}}">My Account</a></li>
-                                        <li><a href="{{route('logout')}}">Logout</a></li>
+                                        <li>
+                                            <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log Out</a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                        {{-- <li><a href="{{route('logout')}}">Logout</a></li> --}}
                                     @endauth
                                 </ul>
                             </li>

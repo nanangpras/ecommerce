@@ -77,19 +77,48 @@ class HomeController extends Controller
 
     public function cekDomain(Request $request)
     {
+        $domain         = $request->domain;
+        $ekstensi       = $request->ekstensi;
+        $combinedInput  = $domain.$ekstensi;
+        // print $combinedInput;
         $whois = Factory::get()->createWhois();
-        $cekDomain = $request->domain;
-        // Checking availability
-        if ($whois->isDomainAvailable($cekDomain)) {
-            print "Bingo! Domain is available! :)";
+        // // Checking availability
+        if ($whois->isDomainAvailable($combinedInput)) {
+            $arr = [
+                'domain' => $combinedInput,
+                'tersedia' => 'ya',
+                'result' => 'Selamat domain '.$combinedInput.' masih tersedia'
+            ];
+            return json_encode($arr);
+        }else{
+            $arr = [
+                'domain' => $combinedInput,
+                'tersedia' => 'tidak',
+                'result' => 'Maaf domain '.$combinedInput.' tidak tersedia'
+            ];
+            return json_encode($arr);
         }
+    }
 
-        // Supports Unicode (converts to punycode)
-        if ($whois->isDomainAvailable($cekDomain)) {
-            print "Bingo! Domain is available! :)";
+    public function addDomainCookie(Request $request)
+    {
+        $carts = json_decode(request()->cookie('konveksi-carts'), true);
+        foreach ($carts as $key => $value) {
+            $carts[$key]['domain'] = $request->domain;
         }
+        $cookie = cookie('konveksi-carts', json_encode($carts), 2880);
+        cookie($cookie);
 
-        $response = $whois->lookupDomain($cekDomain);
-        print $response->text;
+        // return $carts;
+        // foreach ($request->domain as $key => $row) {
+        //     //DI CHECK, JIKA QTY DENGAN KEY YANG SAMA DENGAN PRODUCT_ID = 0
+        //     if ($request->qty[$key] == 0) {
+        //         //MAKA DATA TERSEBUT DIHAPUS DARI ARRAY
+        //         unset($carts[$row]);
+        //     } else {
+        //         //SELAIN ITU MAKA AKAN DIPERBAHARUI
+        //         $carts[$row]['domain'] = $request->qty[$key];
+        //     }
+        // }
     }
 }

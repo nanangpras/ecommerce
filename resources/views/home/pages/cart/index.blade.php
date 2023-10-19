@@ -6,13 +6,35 @@
         <div class="row">
             <div class="ltn__coupon-code-form mb-50">
                 <p>Cek Domain</p>
-                <form action="{{route('cek.domain')}}" method="POST">
-                    @csrf
-                    <div class="cart-coupon">
-                        <input type="text" name="domain" id="domain" placeholder="Cek Domain">
-                        <button type="submit" class="btn theme-btn-1 btn-effect-2">Cek</button>
+                {{-- <form action="{{route('cek.domain')}}" method="POST">
+                    @csrf --}}
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <input type="text" name="domain" id="domain" placeholder="Cek Domain">
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-item">
+                                <select name="ekstensi" id="ekstensi" class="nice-select">
+                                    <option value=".com">.com</option>
+                                    <option value=".id">.id</option>
+                                    <option value=".co.id">.co.id</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="submit" class="btn theme-btn-1 btn-effect-2" id="btn_cek_domain">Cek</button>
+                        </div>
                     </div>
-                </form>
+                    <div id="result_domain_cek">
+                        <div class="row">
+                            <div class="col">
+                                <h4 id="text_warning_domain"></h4>
+                                <input type="hidden" id="result_domain">
+                                <button type="button" class="btn theme-btn-1 btn-effect-2" id="btn_add_domain" style="display: none;">Tambahkan</button>
+                            </div>
+                        </div>
+                    </div>
+                {{-- </form> --}}
             </div>
             <div class="col-lg-12">
                 <div class="shoping-cart-inner">
@@ -127,6 +149,54 @@
                             }
 
                         });
+                    }
+                });
+            });
+
+
+            $("#btn_cek_domain").click(function (e) {
+                e.preventDefault();
+                let domain   = $("#domain").val();
+                let ekstensi = $("#ekstensi").val();
+                $.ajax({
+                    type: "POST",
+                    url: "{{route('cek.domain')}}",
+                    data: {
+                        _token: CSRF_TOKEN,
+                        domain,
+                        ekstensi
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        var data = JSON.parse(response);
+                        if(data.tersedia == 'ya')
+                        {
+                            $("#btn_add_domain").css('display', 'block');
+                            $("#result_domain").val(data.domain);
+                            $("#text_warning_domain").text(data.result);
+                        }
+                        if(data.tersedia == 'tidak')
+                        {
+                            $("#text_warning_domain").text(data.result);
+                        }
+
+                    }
+                });
+            });
+
+            $("#btn_add_domain").click(function (e) {
+                e.preventDefault();
+                let domain = $("#result_domain").val();
+                $.ajax({
+                    type: "POST",
+                    url: "{{route('add.domain')}}",
+                    data : {
+                        _token: CSRF_TOKEN,
+                        domain,
+                    },
+                    success: function (response) {
+                        window.location.reload();
+                        console.log(response);
                     }
                 });
             });
