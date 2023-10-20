@@ -60,7 +60,8 @@ class CartController extends Controller
             // return $cart;
 
             // return view('home.pages.cart.modal.add-to-cart',compact('cart'));
-            return redirect()->back()->with(['success' => 'Produk ditambahkan ke keranjang'])->cookie($cookie);
+            return redirect()->route('cart.index')->cookie($cookie);
+            // return redirect()->back()->with(['success' => 'Produk ditambahkan ke keranjang'])->cookie($cookie);
         } else {
             return redirect()->route('login.user');
         }
