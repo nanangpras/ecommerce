@@ -17,5 +17,7 @@
 
 <script src="{{url('themes/assets/plugins/DataTables/datatables.min.js')}}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <script src="{{url('themes/assets/js/pages/select2.js')}}"></script>
 <script src="{{url('themes/assets/plugins/select2/js/select2.full.min.js')}}"></script>

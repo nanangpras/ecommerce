@@ -26,6 +26,11 @@ class CategoryService
         return $this->categoryRepository->getCategoryProduct();
     }
 
+    public function getCategoryArticle()
+    {
+        return $this->categoryRepository->getCategoryArticle();
+    }
+
     public function getById($id)
     {
         return $this->categoryRepository->getById($id);

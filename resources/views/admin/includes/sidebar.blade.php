@@ -27,6 +27,9 @@
                 <li class="{{set_active(['banner.index','banner.create','banner.edit'])}}">
                     <a href="{{route('banner.index')}}"><i class="material-icons">collections</i>Banner</a>
                 </li>
+                <li class="{{set_active(['article.index','article.create','article.edit'])}}">
+                    <a href="{{route('article.index')}}"><i class="material-icons">feeds</i>Artikel</a>
+                </li>
                 <li class="{{set_active(['user.index','user.create','user.edit'])}}">
                     <a href=""><i class="material-icons">group</i>User<i class="material-icons has-sub-menu">add</i></a>
                     <ul class="sub-menu">

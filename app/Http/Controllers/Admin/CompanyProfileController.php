@@ -17,7 +17,8 @@ class CompanyProfileController extends Controller
 
     public function index()
     {
-        return view('admin.pages.company_profile.data');
+        $company = $this->comproService->getAll();
+        return view('admin.pages.company_profile.data',compact('company'));
     }
 
     public function store(Request $request)

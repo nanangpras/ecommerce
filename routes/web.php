@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ClientCompanyController;
@@ -33,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 
+Route::get('/about',[HomeController::class,'about'])->name('home.about');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 Route::get('/product/detail/{slug}',[ShopController::class,'productDetailSlug'])->name('product.detail');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
@@ -45,6 +47,7 @@ Route::get('/subdistrict/{id}',[HomeController::class, 'getSubdistrict'])->name(
 Route::get('register/user',[HomeController::class, 'register'])->name('register.user');
 Route::get('login/user',[HomeController::class, 'loginUser'])->name('login.user');
 
+Route::get('blog/detail/{slug}', [HomeController::class, 'detailBlog'])->name('blog.detail');
 Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
 
 Route::post('/cek/domain', [HomeController::class, 'cekDomain'])->name('cek.domain');
@@ -75,6 +78,7 @@ Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
     Route::resource('banner', BannerController::class);
     Route::resource('user', UserController::class);
     Route::resource('coupon', CouponController::class);
+    Route::resource('article',ArticleController::class);
     Route::get('/update-role/{id}', [UserRoleController::class, 'updatePermissionId'])->name('user.edit.role');
     Route::patch('/update-role/user/{id}', [UserRoleController::class, 'updatePermission'])->name('user.update-role');
     Route::get('/setting-company',[CompanyProfileController::class,'index'])->name('setting-company');

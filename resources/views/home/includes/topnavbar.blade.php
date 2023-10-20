@@ -6,7 +6,7 @@
                 <div class="col-md-7">
                     <div class="ltn__top-bar-menu">
                         <ul>
-                            <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i>{{$company->email ?? ''}}</a></li>
+                            <li><a href="mailto:{{$company->email ?? ''}}?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i>{{$company->email ?? ''}}</a></li>
                             <li><a href="locations.html"><i class="icon-placeholder"></i> {{$company->address ?? 'belum ada'}}</a></li>
                         </ul>
                     </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="get-support-info">
                                 <h6>Get Support</h6>
-                                <h4><a href="tel:+123456789">{{$company->phone ?? ''}}</a></h4>
+                                <h4><a href="tel:{{$company->phone ?? ''}}">{{$company->phone ?? ''}}</a></h4>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                             <div class="ltn__main-menu">
                                 <ul>
                                     <li><a href="{{route('home')}}">Home</a></li>
-                                    <li><a href="{{route('home')}}">About</a></li>
+                                    <li><a href="{{route('home.about')}}">About</a></li>
                                     <li class="menu-icon"><a href="{{route('home')}}">Service</a></li>
                                     <li><a href="{{route('home')}}">Portofolio</a></li>
 

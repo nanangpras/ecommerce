@@ -6,6 +6,7 @@
         <link href="{{url('themes/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{url('themes/assets/plugins/font-awesome/css/all.min.css')}}" rel="stylesheet">
 
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
         <!-- Theme Styles -->
         <link href="{{url('themes/assets/css/connect.min.css')}}" rel="stylesheet">

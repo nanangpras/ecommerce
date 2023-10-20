@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Service\ArticleService;
 use App\Service\BannerService;
+use App\Service\CategoryService;
 use App\Service\CompanyProfileService;
 use App\Service\RajaOngkirService;
 use Illuminate\Http\Request;
@@ -14,16 +16,22 @@ class HomeController extends Controller
     protected $bannerService;
     protected $rajaOngkirService;
     protected $companyProfile;
+    protected $articleService;
+    protected $categoryService;
 
     public function __construct(
         BannerService $bannerService,
         RajaOngkirService $rajaOngkirService,
-        CompanyProfileService $companyProfile
+        CompanyProfileService $companyProfile,
+        ArticleService $articleService,
+        CategoryService $categoryService
     )
     {
         $this->bannerService = $bannerService;
         $this->rajaOngkirService = $rajaOngkirService;
         $this->companyProfile = $companyProfile;
+        $this->articleService = $articleService;
+        $this->categoryService = $categoryService;
     }
 
     private function getCarts()
@@ -41,7 +49,8 @@ class HomeController extends Controller
         });
         $banner  = $this->bannerService->getAll();
         $company = $this->companyProfile->getAll();
-        return view('home.homefront', compact('banner', 'cart', 'subtotal','company'));
+        $article = $this->articleService->articlePublish();
+        return view('home.homefront', compact('banner', 'cart', 'subtotal','company','article'));
     }
 
     public function getCity($id)
@@ -73,6 +82,16 @@ class HomeController extends Controller
         });
         $company = $this->companyProfile->getAll();
         return view('home.pages.login',compact('company','subtotal','cart'));
+    }
+
+    public function about()
+    {
+        $cart = $this->getCarts();
+        $subtotal = collect($cart)->sum(function ($q) {
+            return $q['qty'] * $q['price'];
+        });
+        $company = $this->companyProfile->getAll();
+        return view('home.pages.about.index',compact('company','cart','subtotal'));
     }
 
     public function cekDomain(Request $request)
@@ -120,5 +139,17 @@ class HomeController extends Controller
         //         $carts[$row]['domain'] = $request->qty[$key];
         //     }
         // }
+    }
+
+    public function detailBlog($slug)
+    {
+        $cart = $this->getCarts();
+        $subtotal = collect($cart)->sum(function ($q) {
+            return $q['qty'] * $q['price'];
+        });
+        $detailBlog = $this->articleService->getBySlug($slug);
+        $category   = $this->categoryService->getCategoryArticle();
+        $related    = $this->articleService->relatedPost($detailBlog->category_id);
+        return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related'));
     }
 }

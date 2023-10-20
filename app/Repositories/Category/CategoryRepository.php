@@ -43,6 +43,11 @@ class CategoryRepository implements InterfaceCategory
         return $this->category->where('type','=','produk')->get();
     }
 
+    public function getCategoryArticle()
+    {
+        return $this->category->where('type','=','artikel')->get();
+    }
+
     public function getById($id)
     {
         return $this->category->where('id',$id)->first();
