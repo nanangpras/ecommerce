@@ -9,9 +9,9 @@
             </li>
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{url('kimsin-theme/assets/images/avatars/profile-image-1.png')}}" alt="profile image">
+                    <img src="{{url('themes/assets/images/avatars/profile-image-1.png')}}" alt="profile image">
                     {{-- <img src="https://kimsinbeauty.com/wp-content/uploads/elementor/thumbs/logo-kimsin-1-pei78q9msu0lmhqc36sn2zk3e8bwzey2rebawr67zq.png" alt="profile image"> --}}
-                    <span>Konveksi Lancar</span><i class="material-icons dropdown-icon">keyboard_arrow_down</i>
+                    <span>{{Auth::user()->name}}</span><i class="material-icons dropdown-icon">keyboard_arrow_down</i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
