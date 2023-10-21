@@ -52,7 +52,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->type}}</td>
-                                    <td>{{$item->image}}</td>
+                                    <td><img src="{{$item->image}}" width="100" height="100" alt=""></td>
                                     <td>
                                         <a href="{{route('category.edit',$item->id)}}" class="btn btn-secondary">Edit</a>
                                         <form action="{{ route('category.destroy',$item->id) }}" method="POST" style="display: inline-block;">
