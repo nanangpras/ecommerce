@@ -41,7 +41,8 @@ class CheckoutController extends Controller
                 return $q['qty'] * $q['weight'];
             });
             $provinsi = $this->rajaOngkirService->getProvince();
-            return view('home.pages.checkout.data',compact('cart', 'subtotal', 'weight_total','provinsi'));
+            $breadcrumb = 'Checkout';
+            return view('home.pages.checkout.data',compact('cart', 'subtotal', 'weight_total','provinsi','breadcrumb'));
         } else {
             return redirect()->back()->with('error','Login dahulu');
         }

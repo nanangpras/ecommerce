@@ -38,7 +38,8 @@ class ShopController extends Controller
         $subtotal = collect($cart)->sum(function($q){
             return $q['qty'] * $q['price'];
         });
-        return view('home.pages.shop.index',compact('product','category','company','cart','subtotal'));
+        $breadcrumb = 'Shop';
+        return view('home.pages.shop.index',compact('product','category','company','cart','subtotal','breadcrumb'));
     }
 
     public function productDetailSlug($slug)
@@ -50,7 +51,8 @@ class ShopController extends Controller
             return $q['qty'] * $q['price'];
         });
         $relateProduct = $this->productService->relatedProduct($category);
-        return view('home.pages.shop.product-details',compact('detail','cart','subtotal','relateProduct'));
+        $breadcrumb = 'Detail Product';
+        return view('home.pages.shop.product-details',compact('detail','cart','subtotal','relateProduct','breadcrumb'));
     }
 
     public function quickViewModal($slug)

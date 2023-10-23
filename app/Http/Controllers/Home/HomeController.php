@@ -72,7 +72,8 @@ class HomeController extends Controller
         });
         $company = $this->companyProfile->getAll();
         $provinsi = $this->rajaOngkirService->getProvince();
-        return view('home.pages.register',compact('provinsi','cart','subtotal','company'));
+        $breadcrumb = 'Register';
+        return view('home.pages.register',compact('provinsi','cart','subtotal','company','breadcrumb'));
     }
 
     public function loginUser()
@@ -82,7 +83,8 @@ class HomeController extends Controller
             return $q['qty'] * $q['price'];
         });
         $company = $this->companyProfile->getAll();
-        return view('home.pages.login',compact('company','subtotal','cart'));
+        $breadcrumb = 'Login';
+        return view('home.pages.login',compact('company','subtotal','cart','breadcrumb'));
     }
 
     public function about()
@@ -92,7 +94,8 @@ class HomeController extends Controller
             return $q['qty'] * $q['price'];
         });
         $company = $this->companyProfile->getAll();
-        return view('home.pages.about.index',compact('company','cart','subtotal'));
+        $breadcrumb = 'About';
+        return view('home.pages.about.index',compact('company','cart','subtotal','breadcrumb'));
     }
 
     public function cekDomain(Request $request)
@@ -151,6 +154,7 @@ class HomeController extends Controller
         $detailBlog = $this->articleService->getBySlug($slug);
         $category   = $this->categoryService->getCategoryArticle();
         $related    = $this->articleService->relatedPost($detailBlog->category_id);
-        return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related'));
+        $breadcrumb = 'Detail Blog';
+        return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related','breadcrumb'));
     }
 }

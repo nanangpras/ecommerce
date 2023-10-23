@@ -32,7 +32,8 @@ class CartController extends Controller
         $subtotal = collect($cart)->sum(function($q){
             return $q['qty'] * $q['price'];
         });
-        return view('home.pages.cart.index',compact('cart', 'subtotal'));
+        $breadcrumb = 'Cart';
+        return view('home.pages.cart.index',compact('cart', 'subtotal','breadcrumb'));
     }
 
     public function addToCart(Request $request)
