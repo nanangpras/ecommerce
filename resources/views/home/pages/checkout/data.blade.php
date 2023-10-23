@@ -154,6 +154,7 @@
                         </div>
                         <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                         <input type="hidden" id="trx_total" value="{{$subtotal}}" name="transaction_total">
+                        <input type="hidden" id="idcoupon" name="idcoupon">
                         <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Place order</button>
                     </div>
                     {{-- </form> --}}
@@ -187,15 +188,25 @@
                         $.each(response, function (key, value) {
                             const element       = $("#order_total");
                             const element_total = $("#trx_total");
+                            const idcoupon      = $("#idcoupon");
                             if (value.type == 'numeric') {
                                 $("#rate_coupon").text(value.rate);
                                 element.text(value.result_total);
                                 element_total.val(value.result_total);
+                                idcoupon.val(value.idcoupon);
                             }
                             if (value.type == 'percentage') {
                                 $("#rate_coupon").text(value.rate);
                                 element.text(value.result_total);
                                 element_total.val(value.result_total);
+                                idcoupon.val(value.idcoupon);
+                            }
+                            if (value.type == 'expired') {
+                                $("#rate_coupon").text(value.rate);
+                                element.text(value.result_total);
+                                element_total.val(value.result_total);
+                                idcoupon.val(value.idcoupon);
+                                alert( code_coupon + ': Sudah tidak berlaku');
                             }
 
                         });

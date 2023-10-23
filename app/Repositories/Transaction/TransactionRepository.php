@@ -47,6 +47,7 @@ class TransactionRepository implements InterfaceTransaction
         $transaction->courier = 'kurir';
         $transaction->payment_type = 'type';
         $transaction->payment_url = 'url';
+        $transaction->coupon_id = $request->idcoupon ?? null;
 
 
         $midtrans = new CreateSnapTokenService($transaction,Auth::user());

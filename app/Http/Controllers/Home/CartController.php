@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Service\CouponService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
@@ -69,24 +70,36 @@ class CartController extends Controller
 
     public function applyCoupon(Request $request)
     {
-        $code = $request->code;
-        $cart = $this->getCarts();
+        $code   = $request->code;
+        $cart   = $this->getCarts();
         $coupon = $this->getCoupon->getByCode($code);
         $subtotal = collect($cart)->sum(function($q) use ($coupon) {
             return ($q['qty'] * $q['price']);
         });
-        if ($coupon->type == 'numeric') {
-            $reesult_coupon = $subtotal - $coupon->discount_rate;
+        $today  = Carbon::now()->format('d-m-Y');
+        if ($coupon->end_date > $today) {
+                $arr[] = array(
+                    'result_total' => 0,
+                    'rate'  => 0,
+                    'type'  => 'expired',
+                    'idcoupon' => 0,
+                );
+        }else{
+            if ($coupon->type == 'numeric') {
+                $reesult_coupon = $subtotal - $coupon->discount_rate;
+            }
+            if ($coupon->type == 'percentage') {
+                $percent = $coupon->discount_rate / 100 * $subtotal;
+                $reesult_coupon = $subtotal - $percent;
+            }
+            $arr[] = array(
+                'result_total' => $reesult_coupon,
+                'rate'  => $coupon->discount_rate,
+                'type'  => $coupon->type,
+                'idcoupon' => $coupon->id,
+            );
         }
-        if ($coupon->type == 'percentage') {
-            $percent = $coupon->discount_rate / 100 * $subtotal;
-            $reesult_coupon = $subtotal - $percent;
-        }
-        $arr[] = array(
-            'result_total' => $reesult_coupon,
-            'rate'  => $coupon->discount_rate,
-            'type'  => $coupon->type,
-        );
+
         // if ($reesult_coupon) {
         //     $cookies = json_decode(request()->cookie('konveksi-carts'), true);
         //     foreach ($arr as $key => $value) {
