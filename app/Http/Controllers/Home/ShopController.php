@@ -52,4 +52,10 @@ class ShopController extends Controller
         $relateProduct = $this->productService->relatedProduct($category);
         return view('home.pages.shop.product-details',compact('detail','cart','subtotal','relateProduct'));
     }
+
+    public function quickViewModal($slug)
+    {
+        $detail = $this->productService->getBySlug($slug);
+        return view('home.pages.shop.modal.quick-view',compact('detail'));
+    }
 }

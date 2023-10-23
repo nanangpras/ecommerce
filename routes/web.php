@@ -37,6 +37,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('home.about');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 Route::get('/product/detail/{slug}',[ShopController::class,'productDetailSlug'])->name('product.detail');
+Route::get('/product/modal-detail/{slug}',[ShopController::class,'quickViewModal'])->name('product.detail.modal');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 
 Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout.index');

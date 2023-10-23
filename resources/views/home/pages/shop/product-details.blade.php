@@ -374,7 +374,7 @@
                             <div class="product-hover-action">
                                 <ul>
                                     <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                                        <a href="#" title="Quick View" id="btn_quick_view" data-slug="{{$item->slug}}" data-bs-toggle="modal" data-bs-target="#quick_view_modal_1">
                                             <i class="far fa-eye"></i>
                                         </a>
                                     </li>
@@ -430,6 +430,26 @@
     </div>
 </div>
 
+<!-- MODAL AREA START (Quick View Modal) -->
+<div class="ltn__modal-area ltn__quick-view-modal-area" id="modalQuickView">
+    <div class="modal fade" id="quick_view_modal_1" tabindex="-1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <!-- <i class="fas fa-times"></i> -->
+                    </button>
+                </div>
+                <div class="content_modal_view">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL AREA END -->
+
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @push('after-scripts')
@@ -456,6 +476,23 @@
                     }
                 });
             });
+        });
+
+        $(document).on('click', '#btn_quick_view', function() {
+            var slug = $(this).data('slug');
+            $.ajax({
+                type: "GET",
+                url:('/product/modal-detail/'+slug),
+
+                success: function (response) {
+                    $('.content_modal_view').html(response);
+                    $('#modalQuickView').show();
+                }
+            });
+            // $.get('/quick-view/' + id, function(data) {
+            //     $('.modal').html(data);
+            //     $('.modal').show();
+            // });
         });
     </script>
 @endpush
