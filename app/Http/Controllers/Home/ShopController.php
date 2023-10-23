@@ -44,11 +44,12 @@ class ShopController extends Controller
     public function productDetailSlug($slug)
     {
         $detail = $this->productService->getBySlug($slug);
+        $category = $detail->category_id;
         $cart = $this->getCarts();
         $subtotal = collect($cart)->sum(function($q){
             return $q['qty'] * $q['price'];
         });
-        // dd($detail);
-        return view('home.pages.shop.product-details',compact('detail','cart','subtotal'));
+        $relateProduct = $this->productService->relatedProduct($category);
+        return view('home.pages.shop.product-details',compact('detail','cart','subtotal','relateProduct'));
     }
 }

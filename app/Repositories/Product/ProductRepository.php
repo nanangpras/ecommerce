@@ -50,6 +50,11 @@ class ProductRepository implements InterfaceProduct
         return $this->product->with(['category','productImages'])->where('slug',$slug)->firstOrFail();
     }
 
+    public function relatedProduct($category)
+    {
+        return $this->product->where('category_id',$category)->get();
+    }
+
     public function save(Request $request)
     {
         $product = new $this->product;

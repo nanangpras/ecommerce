@@ -48,6 +48,7 @@ class HomeController extends Controller
             return $q['qty'] * $q['price'];
         });
         $banner  = $this->bannerService->getAll();
+        // dd($banner);
         $company = $this->companyProfile->getAll();
         $article = $this->articleService->articlePublish();
         return view('home.homefront', compact('banner', 'cart', 'subtotal','company','article'));

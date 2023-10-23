@@ -8,7 +8,7 @@
         @foreach ($banner as $item)
 
             <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3 bg-image" data-bg="{{$item->banner_image}}">
-                <div class="ltn__slide-item-inner  text-right text-end">
+                <div class="ltn__slide-item-inner text-right text-end">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 align-self-center">
@@ -20,10 +20,9 @@
                                             </a>
                                         </div>
                                         <h6 class="slide-sub-title ltn__secondary-color animated text-uppercase"><span><i class="fas fa-square-full"></i></span> Great Experience In Building</h6>
-                                        <h1 class="slide-title animated ">Highest Standards <br> Of Construction</h1>
+                                        <h1 class="slide-title animated ">{{$item->name}}</h1>
                                         <div class="slide-brief animated">
-                                            <p>All types of work – from designing and laying the Foundation
-                                                finishing and commissioning. Tight deadlines, reasonable.</p>
+                                            <p>{{$item->description}}</p>
                                         </div>
                                         <div class="btn-wrapper animated">
                                             <a href="about.html" class="theme-btn-1 btn btn-effect-1">Make An Enquiry</a>
@@ -34,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="slide-item-img">
-                                    <!-- <img src="img/slider/21.png" alt="#"> -->
+                                    {{-- <img src="{{url('themes-frontend/img/slider/21.png')}}" alt="#"> --}}
                                 </div>
                             </div>
                         </div>

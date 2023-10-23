@@ -126,20 +126,6 @@
             <li class="{{set_active(['sale-store.index','sale-store.create'])}}">
                 <a href="{{route('member.mytransaction',Auth::user()->id)}}" ><i class="material-icons">paid</i>Transaksi Saya</a>
             </li>
-            <li>
-                <a href=""><i class="material-icons">summarize</i>Laporan<i class="material-icons has-sub-menu">add</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="#">Hutang</a>
-                    </li>
-                    <li>
-                        <a href="#">Piutang</a>
-                    </li>
-                    <li>
-                        <a href="#">Stok</a>
-                    </li>
-                </ul>
-            </li>
             <li class="sidebar-title">
                 Shop
             </li>

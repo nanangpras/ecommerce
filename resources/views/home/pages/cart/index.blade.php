@@ -55,10 +55,10 @@
                                         <tr>
                                             <td class="cart-product-remove">x</td>
                                             <td class="cart-product-image">
-                                                <a href="product-details.html"><img src="{{$item['image']}}" alt="#"></a>
+                                                <a href="#"><img src="{{$item['image']}}" alt="#"></a>
                                             </td>
                                             <td class="cart-product-info">
-                                                <h4><a href="product-details.html">{{$item['title']}}</a></h4>
+                                                <h4><a href="#">{{$item['title']}}</a></h4>
                                             </td>
                                             <td class="cart-product-price">{{$item['price']}}</td>
                                             <td class="cart-product-quantity">
@@ -69,7 +69,7 @@
                                             </td>
                                             <td class="cart-product-subtotal">{{$item['price'] * $item['qty']}}</td>
                                         </tr>
-                                        <input type="hidden" name="product_id[]" value="{{ $item['product_id'] }}" class="form-control">
+                                        <input type="hidden" name="product_id[]" name="product_id" value="{{ $item['product_id'] }}" class="form-control">
                                     @empty
                                     <tr>
                                         <td colspan="6"> Tidak ada keranjang belanja</td>
@@ -77,12 +77,6 @@
                                     @endforelse
 
                                     <tr class="cart-coupon-row">
-                                        <td colspan="6">
-                                            <div class="cart-coupon">
-                                                <input type="text" name="code" id="code_coupon" placeholder="Coupon code">
-                                                <button type="button" id="btn_coupon" class="btn theme-btn-2 btn-effect-2">Apply Coupon</button>
-                                            </div>
-                                        </td>
                                         <td>
                                             <button type="submit" class="btn theme-btn-2 btn-effect-2">Update Cart</button>
                                         </td>

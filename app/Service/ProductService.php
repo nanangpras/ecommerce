@@ -31,6 +31,11 @@ class ProductService
         return $this->productRepository->getBySlug($slug);
     }
 
+    public function relatedProduct($category)
+    {
+        return $this->productRepository->relatedProduct($category);
+    }
+
     public function update(Request $request, $id)
     {
         return $this->productRepository->update($request,$id);
