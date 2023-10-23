@@ -36,6 +36,12 @@
                             My Account
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log Out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                        </form>
+                    </li>
                 @endauth
                 <li>
                     <a href="wishlist.html" title="Wishlist">
