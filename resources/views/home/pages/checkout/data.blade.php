@@ -203,8 +203,6 @@
                             }
                             if (value.type == 'expired') {
                                 $("#rate_coupon").text(value.rate);
-                                element.text(value.result_total);
-                                element_total.val(value.result_total);
                                 idcoupon.val(value.idcoupon);
                                 alert( code_coupon + ': Sudah tidak berlaku');
                             }

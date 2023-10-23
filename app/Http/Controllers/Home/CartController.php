@@ -76,8 +76,9 @@ class CartController extends Controller
         $subtotal = collect($cart)->sum(function($q) use ($coupon) {
             return ($q['qty'] * $q['price']);
         });
-        $today  = Carbon::now()->format('d-m-Y');
-        if ($coupon->end_date > $today) {
+        $today  = Carbon::now()->format('Y-m-d');
+        if ($today > $coupon->end_date) {
+            // return print('kupon tidak berlaku');
                 $arr[] = array(
                     'result_total' => 0,
                     'rate'  => 0,
