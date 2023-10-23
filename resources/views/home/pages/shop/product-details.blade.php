@@ -83,10 +83,12 @@
                                 <div class="ltn__product-details-menu-3">
                                     <ul>
                                         <li>
-                                            <a href="#" class="" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
-                                                <i class="far fa-heart"></i>
-                                                <span>Add to Wishlist</span>
-                                            </a>
+                                            @if ($detail->link)
+                                                <a href="{{$detail->link}}" target="_blank" class="">
+                                                    <i class="far fa-eye"></i>
+                                                    <span>Preview Link</span>
+                                                </a>
+                                            @endif
                                         </li>
                                         {{-- <li>
                                             <a href="#" class="" title="Compare" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
@@ -128,7 +130,8 @@
                         <div class="tab-pane fade active show" id="liton_tab_details_1_1">
                             <div class="ltn__shop-details-tab-content-inner">
                                 <h4 class="title-2">{{$detail->title}}</h4>
-                                <p>{{$detail->description}}</p>
+                                {{-- <p>{{$detail->description}}</p> --}}
+                                <p>{!!$detail->description!!}</p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="liton_tab_details_1_2">

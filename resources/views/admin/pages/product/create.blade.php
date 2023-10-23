@@ -60,8 +60,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Link</label>
+                            <input type="text" name="link" class="form-control" id="link" aria-describedby="name" placeholder="Masukan Link Preview">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Deskripsi Produk</label>
-                            <textarea name="description" class="form-control" id="description" cols="30" rows="10">Deskripsi Produk</textarea>
+                            <textarea id="summernote" name="description"></textarea>
+                            {{-- <textarea name="description" class="form-control" id="description" cols="30" rows="10">Deskripsi Produk</textarea> --}}
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Gambar</label>
@@ -85,6 +90,13 @@
     <script src="{{ asset('imageuploader/imageuploader.js') }}"></script>
     <script>
         $('.input-images-1').imageUploader();
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 250
+            });
+        });
     </script>
 @endpush
 
