@@ -25,8 +25,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Input Kupon</h5>
-                    <form action="{{route('coupon.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('coupon.update',$editCoupon->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama</label>
                             <input type="text" name="name" class="form-control" id="name" aria-describedby="name" value="{{$editCoupon->name}}">

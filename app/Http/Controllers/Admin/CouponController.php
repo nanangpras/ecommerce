@@ -62,7 +62,7 @@ class CouponController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $this->couponService->update($id, $request);
+        $this->couponService->update($request,$id);
         return redirect()->route('coupon.index')->with('success','Data berhasil diupdate');
     }
 
