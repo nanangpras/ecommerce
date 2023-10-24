@@ -35,6 +35,11 @@ class TransactionRepository implements InterfaceTransaction
         return $this->transaction->where('id',$id)->first();
     }
 
+    public function getByCode($code)
+    {
+        return $this->transaction->with(['details','details.product'])->where('code',$code)->first();
+    }
+
     public function save(Request $request)
     {
         $transaction = new $this->transaction;

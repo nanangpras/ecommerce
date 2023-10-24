@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
+use App\Service\RajaOngkirService;
 use App\Service\TransactionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,10 +11,13 @@ use Illuminate\Support\Facades\Auth;
 class MemberDashboradController extends Controller
 {
     protected $trxService;
+    protected $rajaOngkirService;
 
-    public function __construct(TransactionService $trxService)
+    public function __construct(TransactionService $trxService,
+    RajaOngkirService $rajaOngkirService)
     {
-        $this->trxService = $trxService;
+        $this->trxService        = $trxService;
+        $this->rajaOngkirService = $rajaOngkirService;
     }
 
     public function index()
@@ -21,9 +25,10 @@ class MemberDashboradController extends Controller
         return view('member.pages.dashboard.dashboard-member');
     }
 
-    public function detailTransaction($id)
+    public function detailTransaction($code)
     {
-        $detail = $this->trxService->getById($id);
+        $detail = $this->trxService->getByCode($code);
+        // dd($detail);
         return view('member.pages.transaction.detail',compact('detail'));
     }
 

@@ -121,22 +121,96 @@ class ArticleRepository implements InterfaceArticle
 
     public function update(Request $request, $id)
     {
-        $update = $this->banner->find($id);
-        $update->name = $request->name;
-        $update->description = $request->description;
-        $update->slug = Str::slug($request->name);
-        $update->status = $request->status;
-        $update->link = $request->link;
-        $update->status = $request->status;
-        if ($request->file('banner_image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-                // $image_path = $request->oldImage;
-                // unlink($image_path);
+        $storage="storage/artikel/image";
+        $dom=new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($request->body,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
+        libxml_clear_errors();
+        $images=$dom->getElementsByTagName('img');
+        foreach($images as $img){
+            $src=$img->getAttribute('src');
+            if(preg_match('/data:image/',$src)){
+                preg_match('/data:image\/(?<mime>.*?)\;/',$src,$groups);
+                $mimetype=$groups['mime'];
+                $fileNameContent=uniqid();
+                $fileNameContentRand=substr(md5($fileNameContent),6,6).'_'.time();
+                if (!is_dir($storage)) {
+                    mkdir($storage, 0775, true);
+                }
+                $filepath=("$storage/$fileNameContentRand.$mimetype");
+                $image=Image::make($src)
+                    ->resize(1200,1200)
+                    ->encode($mimetype,100)
+                    ->save(public_path($filepath));
+                $new_src=asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$new_src);
+                $img->setAttribute('class','img-responsive');
             }
-            $update->banner_image = $this->uploadImages($request->file('image'),'image/category');
         }
-        $update->save();
-        return $update->fresh();
+
+        $file_thumbnail         = $request->hasFile('thumbnailedit');
+        $file_image             = $request->hasFile('imageedit');
+        $article = $this->article->find($id);
+        if ($article) {
+            if ($file_image) {
+                if ($request->oldImage) {
+                    Storage::delete($request->oldImage);
+                }
+                $article->update([
+                    'image'         => $this->uploadImages($file_image,'image/article')
+                ]);
+            }
+
+            if ($file_thumbnail) {
+                if ($request->oldThumbnail) {
+                    Storage::delete($request->oldThumbnail);
+                }
+                $article->update([
+                    'thumbnail'     =>  $this->uploadImages($file_thumbnail,'image/article/thumbanail'),
+                ]);
+            }
+
+            $article->update([
+                'titles'        => $request->titles,
+                'body'          => $dom->saveHTML(),
+                'category_id'   => $request->category_id,
+                'status'        => $request->status ?? 1,
+                'user_id'       => Auth::user()->id,
+                'slug'          => Str::slug($request->titles),
+                'tags'          => $request->tags,
+                'view'          => 0,
+            ]);
+
+        }
+        // $update = Article::where('id',$id)->update([
+        //     'titles'        => $request->titles,
+        //     'body'          => $dom->saveHTML(),
+        //     'category_id'   => $request->category_id,
+        //     'status'        => $request->status ?? 1,
+        //     'user_id'       => Auth::user()->id,
+        //     'slug'          => Str::slug($request->titles),
+        //     'tags'          => $request->tags,
+        //     'view'          => 0,
+        // ]);
+
+
+        // $update = $this->banner->find($id);
+        // $update->name = $request->name;
+        // $update->description = $request->description;
+        // $update->slug = Str::slug($request->name);
+        // $update->status = $request->status;
+        // $update->link = $request->link;
+        // $update->status = $request->status;
+        // if ($request->file('banner_image')) {
+        //     if ($request->oldImage) {
+        //         Storage::delete($request->oldImage);
+        //         // $image_path = $request->oldImage;
+        //         // unlink($image_path);
+        //     }
+        //     $update->banner_image = $this->uploadImages($request->file('image'),'image/category');
+        // }
+        // $update->save();
+        return $article->fresh();
     }
 }

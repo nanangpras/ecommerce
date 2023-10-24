@@ -31,6 +31,11 @@ class TransactionService
         return $this->trxRepo->myTransaction($id);
     }
 
+    public function getByCode($code)
+    {
+        return $this->trxRepo->getByCode($code);
+    }
+
     public function update(Request $request, $id)
     {
         return $this->trxRepo->update($request,$id);

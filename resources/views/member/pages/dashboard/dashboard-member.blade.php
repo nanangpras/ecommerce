@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <div class="stats-info">
                         <h5 class="card-title">1</h5>
-                        <p class="stats-text"><span class="badge badge-danger">Piutang (Rp)</span></p>
+                        <p class="stats-text"><span class="badge badge-danger">Gagal (Rp)</span></p>
                     </div>
                     <div class="stats-icon change-danger">
                         <i class="material-icons">account_balance_wallet</i>
@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="stats-info">
                         <h5 class="card-title">2</h5>
-                        <p class="stats-text"><span class="badge badge-success">Hutang (Rp)</span></p>
+                        <p class="stats-text"><span class="badge badge-success">Selesai (Rp)</span></p>
                     </div>
                     <div class="stats-icon change-success">
                         <i class="material-icons">paid</i>
@@ -49,7 +49,7 @@
                 <div class="card-body">
                     <div class="stats-info">
                         <h5 class="card-title">3</h5>
-                        <p class="stats-text"><span class="badge badge-warning">Stok</span></p>
+                        <p class="stats-text"><span class="badge badge-warning">Pending</span></p>
                     </div>
                     <div class="stats-icon change-success">
                         <i class="material-icons">inventory_2</i>

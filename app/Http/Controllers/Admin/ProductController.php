@@ -58,7 +58,8 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = $this->productService->getById($id);
-        return view('admin.pages.product.edit',compact('product'));
+        $category = $this->categoryService->getCategoryProduct();
+        return view('admin.pages.product.edit',compact('product','category'));
     }
 
     /**
@@ -66,7 +67,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       
+        $this->productService->update($request,$id);
+        return redirect()->route('product.index')->with('success','Data berhasil diperbarui');
     }
 
     /**

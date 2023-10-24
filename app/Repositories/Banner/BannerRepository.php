@@ -76,7 +76,7 @@ class BannerRepository implements InterfaceBanner
         $update->status = $request->status;
         $update->link = $request->link;
         $update->status = $request->status;
-        if ($request->file('banner_image')) {
+        if ($request->file('image')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
                 // $image_path = $request->oldImage;

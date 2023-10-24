@@ -27,6 +27,7 @@
                     <h5 class="card-title">Input Produk</h5>
                     <form action="{{route('product.update',$product->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('patch')
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama Produk</label>
                             <input type="text" name="title" value="{{$product->title}}" class="form-control" id="title" aria-describedby="name" placeholder="Masukan nama produk">
@@ -34,9 +35,9 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kategori</label>
                             <select name="category_id" id="type" class="form-control">
-                                {{-- @foreach ($category as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach --}}
+                                @foreach ($category as $item)
+                                    <option value="{{$item->id}}" {{$item->id == $product->category_id ? 'selected' : '' }} >{{$item->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="row">
@@ -61,14 +62,14 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Deskripsi Produk</label>
-                            <textarea name="description" class="form-control" id="description" cols="30" rows="10">{{$product->description}}</textarea>
+                            <textarea id="summernote" name="description">{{$product->description}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Gambar</label>
                             <div class="input-images-1 pt-2">
-                                @foreach ($product->productImages as $item)
-                                        <img src=" {{$item->image}}" class="img-preview img-fluid col-sm-5 mt-3">
-                                @endforeach
+                                {{-- @foreach ($product->productImages as $item)
+                                        <img src=" {{$item->image}}" class="col-sm-5 mt-3">
+                                @endforeach --}}
                             </div>
                             {{-- <input type="file" name="image" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori"> --}}
                         </div>
@@ -88,7 +89,26 @@
 @push('after-scripts')
     <script src="{{ asset('imageuploader/imageuploader.js') }}"></script>
     <script>
-        $('.input-images-1').imageUploader();
+        let preloaded= {!!$product->productImages!!}
+        console.log(preloaded);
+        for (var i = 0; i < preloaded.length; i++) {
+            var product = preloaded[i];
+            var image = product.image;
+            // Lakukan sesuatu dengan data produk, misalnya tampilkan di halaman
+            // console.log(product);
+        }
+        $('.input-images-1').imageUploader({
+            preloaded: preloaded,
+            imagesInputName: 'images',
+            preloadedInputName: 'old',
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 250
+            });
+        });
     </script>
 @endpush
 

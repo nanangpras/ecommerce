@@ -60,7 +60,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::get('/member/dashboard', [MemberDashboradController::class,'index'])->name('member.dashboard');
     Route::post('/checkout-process',[CheckoutController::class, 'process'])->name('checkout.process');
-    Route::get('/member/transaction/detail/{id}',[MemberDashboradController::class, 'detailTransaction'])->name('member.detail.transaction');
+    Route::get('/member/transaction/detail/{code}',[MemberDashboradController::class, 'detailTransaction'])->name('member.detail.transaction');
     Route::get('/member/transaction/list/{id}',[MemberDashboradController::class, 'myTransaaction'])->name('member.mytransaction');
     Route::post('/member/transaction/callback',[CheckoutController::class,'postCallback'])->name('post.callback');
 

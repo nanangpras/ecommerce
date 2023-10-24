@@ -22,19 +22,10 @@
 @endif
 <div class="main-wrapper">
     <div class="row">
-        <div class="col-md-12">
-            <div class="page-title">
-                <a href="{{route('category.create')}}" class="btn btn-primary btn-sm"  style="float: right;">buat kategori</a>
-                {{-- <p class="page-desc">DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds many advanced features to any HTML table.</p> --}}
-            </div>
-            <br>
-        </div>
-    </div>
-    <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Data Kategori</h5>
+                    <h5 class="card-title">Data Transaksi</h5>
                     <br>
                     <table id="zero-conf" class="display" style="width:100%">
                         <thead>
@@ -56,13 +47,14 @@
                                     <td>{{$item->transaction_status}}</td>
                                     <td>{{$item->va_number}}</td>
                                     <td>
-                                        {{-- <a href="{{route('member.transaction.edit',$item->id)}}" class="btn btn-secondary">Edit</a>
-                                        <form action="{{ route('member.transaction',$item->id) }}" method="POST" style="display: inline-block;">
+                                        <a href="{{route('member.detail.transaction',$item->code)}}" class="btn btn-secondary">Detail</a>
+                                        <a href="{{route('member.detail.transaction',$item->id)}}" class="btn btn-primary">Bayar</a>
+                                        {{-- <form action="{{ route('member.transaction',$item->id) }}" method="POST" style="display: inline-block;">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="btn btn-danger" value="Delete"
                                                 onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data {{ $item->name }} ?')">
-                                                 Hapus
+                                                 Batalkan
                                             </button>
                                         </form> --}}
                                     </td>

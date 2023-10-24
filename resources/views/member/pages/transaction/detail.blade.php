@@ -18,8 +18,43 @@
 </div>
 <div class="main-wrapper">
     <h6>Detail Transaksi</h6>
-    <p>Silahkan lakukan pembayaran</p>
-    <button type="button" id="pay-button" class="btn btn-success">Bayar</button>
+
+    <div class="profile-content">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <table class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <td>Produk</td>
+                                <td>Harga</td>
+                                <td>Qty</td>
+                                <td>Subtotal</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($detail->details as $item)
+                                <tr>
+                                    <td>{{$item->product->title}}</td>
+                                    <td>Rp {{$item->product->price}}</td>
+                                    <td>{{$item->qty}}</td>
+                                    <td>{{$item->transaction_subtotal}}</td>
+                                </tr>
+                        </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3">Total</td>
+                                    <td>Rp {{$item->transaction_total}}</td>
+                                </tr>
+                            </tfoot>
+                            @endforeach
+                    </table>
+                </div>
+            </div>
+            <p>Silahkan lakukan pembayaran</p>
+            <button type="button" id="pay-button" class="btn btn-success">Bayar</button>
+        </div>
+    </div>
 </div>
 <form action="{{route('post.callback')}}" id="submit_form" method="POST">
     @csrf

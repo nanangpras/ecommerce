@@ -1,6 +1,6 @@
 <div class="page-sidebar">
     <div class="logo-box">
-        <a href="#" class="logo-text">Konveksi</a><a href="#" id="sidebar-close">
+        <a href="{{route('home')}}" class="logo-text">Konveksi</a><a href="#" id="sidebar-close">
 
             <i class="material-icons">close</i></a> <a href="#" id="sidebar-state">
             <i class="material-icons">adjust</i><i class="material-icons compact-sidebar-icon">panorama_fish_eye</i>
@@ -115,15 +115,15 @@
             <li class="sidebar-title">
                 Apps
             </li>
-            <li class="{{set_active('home')}}">
-                <a href="#"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
+            <li class="{{set_active('member.dashboard')}}">
+                <a href="{{route('member.dashboard')}}"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
             </li>
 
 
             <li class="sidebar-title">
                 Transaksi
             </li>
-            <li class="{{set_active(['sale-store.index','sale-store.create'])}}">
+            <li class="{{set_active(['member.detail.transaction','member.mytransaction'])}}">
                 <a href="{{route('member.mytransaction',Auth::user()->id)}}" ><i class="material-icons">paid</i>Transaksi Saya</a>
             </li>
             <li class="sidebar-title">
@@ -136,8 +136,9 @@
             <li class="sidebar-title">
                 Settings
             </li>
-            <li class="{{set_active(['sale-store.index','sale-store.create'])}}">
-                <a href="#" ><i class="material-icons">paid</i>Profile</a>
+            <li class="{{set_active(['profile.edit'])}}">
+                <a href="{{route('profile.edit')}}"><i class="material-icons">group</i>User</a>
+                {{-- <a href="{{route('profile.edit')}}" >group<i class="material-icons">User</i>Profile</a> --}}
             </li>
             <li>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">logout</i>Log Out</a>

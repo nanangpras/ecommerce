@@ -21,6 +21,11 @@ class RajaOngkirService
         return $this->ongkir->getCity($id);
     }
 
+    public function getCityAll()
+    {
+        return $this->ongkir->getCityAll();
+    }
+
     public function getSubdistrict($id)
     {
         return $this->ongkir->getSubdistrict($id);

@@ -61,7 +61,9 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $editArticle = $this->articleService->getById($id);
+        $category    = $this->categoryService->getCategoryArticle();
+        return view('admin.pages.article.edit',compact('editArticle','category'));
     }
 
     /**
@@ -69,7 +71,9 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        $this->articleService->update($request, $id);
+        return redirect()->route('article.index')->with('success','Data berhasil diperbarui');
     }
 
     /**
@@ -77,6 +81,7 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->articleService->delete($id);
+        return redirect()->back()->with('success','Data berhasil dihapus');
     }
 }
