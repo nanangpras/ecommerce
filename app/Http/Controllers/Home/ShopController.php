@@ -40,15 +40,17 @@ class ShopController extends Controller
 
     public function productDetailSlug($slug)
     {
-        $detail = $this->productService->getBySlug($slug);
-        $category = $detail->category_id;
-        $cart = $this->getCarts();
+        $detail         = $this->productService->getBySlug($slug);
+        $category       = $detail->category_id;
+        $cartHelper     = new CartCookie();
+        $cart           = $cartHelper->getCarts();
+        $count_cart     = $cartHelper->getTotalCart();
         $subtotal = collect($cart)->sum(function($q){
             return $q['qty'] * $q['price'];
         });
         $relateProduct = $this->productService->relatedProduct($category);
         $breadcrumb = 'Detail Product';
-        return view('home.pages.shop.product-details',compact('detail','cart','subtotal','relateProduct','breadcrumb'));
+        return view('home.pages.shop.product-details',compact('detail','cart','subtotal','relateProduct','breadcrumb','count_cart'));
     }
 
     public function quickViewModal($slug)
