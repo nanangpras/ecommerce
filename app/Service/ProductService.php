@@ -36,6 +36,11 @@ class ProductService
         return $this->productRepository->relatedProduct($category);
     }
 
+    public function popularProduct()
+    {
+        return $this->productRepository->popularProduct();
+    }
+
     public function update(Request $request, $id)
     {
         return $this->productRepository->update($request,$id);

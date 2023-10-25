@@ -40,6 +40,21 @@ class TransactionRepository implements InterfaceTransaction
         return $this->transaction->with(['details','details.product'])->where('code',$code)->first();
     }
 
+    public function income()
+    {
+        return $this->transaction->where('transaction_status', 'SUCCESS')->sum('transaction_total');
+    }
+
+    public function sumPendingPay()
+    {
+        return $this->transaction->where('transaction_status', 'PENDING')->sum('transaction_total');
+    }
+
+    public function topFiveTransaction()
+    {
+        return $this->transaction->latest()->take(5)->get();
+    }
+
     public function save(Request $request)
     {
         $transaction = new $this->transaction;

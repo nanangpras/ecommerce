@@ -13,7 +13,7 @@
                     Apps
                 </li>
                 <li class="{{set_active('home')}}">
-                    <a href="#"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
+                    <a href="{{route('admin.dashboard')}}"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
                 </li>
                 <li class="sidebar-title">
                     Master Data
@@ -28,7 +28,7 @@
                     <a href="{{route('banner.index')}}"><i class="material-icons">collections</i>Banner</a>
                 </li>
                 <li class="{{set_active(['article.index','article.create','article.edit'])}}">
-                    <a href="{{route('article.index')}}"><i class="material-icons">feeds</i>Artikel</a>
+                    <a href="{{route('article.index')}}"><i class="material-icons">newspaper</i>Artikel</a>
                 </li>
                 <li class="{{set_active(['user.index','user.create','user.edit'])}}">
                     <a href=""><i class="material-icons">group</i>User<i class="material-icons has-sub-menu">add</i></a>
@@ -46,7 +46,7 @@
                     {{-- <a href="{{route('user.index')}}"><i class="material-icons">group</i>User</a> --}}
                 </li>
                 <li class="{{set_active(['coupon.index','coupon.create','coupon.edit'])}}">
-                    <a href="{{route('coupon.index')}}"><i class="material-icons">collections</i>Kupon</a>
+                    <a href="{{route('coupon.index')}}"><i class="material-icons">local_offer</i>Kupon</a>
                 </li>
 
                 <li class="sidebar-title">

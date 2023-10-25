@@ -6,6 +6,7 @@ use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Repositories\Product\InterfaceProduct;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -54,6 +55,13 @@ class ProductRepository implements InterfaceProduct
     public function relatedProduct($category)
     {
         return $this->product->where('category_id',$category)->get();
+    }
+
+    public function popularProduct()
+    {
+        // $today  = Carbon::now()->format('Y-m-d');
+        $popularProducts = $this->product->withCount('transactionDetails')->orderBy('transaction_details_count','desc')->take(5)->get();
+        return $popularProducts;
     }
 
     public function save(Request $request)

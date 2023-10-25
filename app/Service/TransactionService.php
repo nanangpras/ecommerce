@@ -41,6 +41,21 @@ class TransactionService
         return $this->trxRepo->update($request,$id);
     }
 
+    public function income()
+    {
+        return $this->trxRepo->income();
+    }
+
+    public function transactionPending()
+    {
+        return $this->trxRepo->sumPendingPay();
+    }
+
+    public function fiveLatestTransaction()
+    {
+        return $this->trxRepo->topFiveTransaction();
+    }
+
     public function save(Request $request)
     {
         $validator = Validator::make($request->all(), [

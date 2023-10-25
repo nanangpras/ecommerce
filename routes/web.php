@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -70,9 +71,7 @@ Route::group(['middleware' => 'roleCheck:user','auth'], function(){
 });
 
 Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard',[AdminDashboardController::class,'index'])->name('admin.dashboard');
 
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
