@@ -20,35 +20,44 @@
     <h6>Detail Transaksi</h6>
 
     <div class="profile-content">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-lg-8">
+            <div class="card card-transactions">
                 <div class="card-body">
-                    <table class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <td>Produk</td>
-                                <td>Harga</td>
-                                <td>Qty</td>
-                                <td>Subtotal</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($detail->details as $item)
+                    <h5 class="card-title">Detail Transaksi<a href="#" class="card-title-helper blockui-transactions"><i class="material-icons">refresh</i></a></h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{$item->product->title}}</td>
-                                    <td>Rp {{$item->product->price}}</td>
-                                    <td>{{$item->qty}}</td>
-                                    <td>{{$item->transaction_subtotal}}</td>
+                                    <td>Produk</td>
+                                    <td>Harga</td>
+                                    <td>Qty</td>
+                                    <td>Total</td>
                                 </tr>
-                        </tbody>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $sumtotal = 0;
+                                @endphp
+                                @foreach ($detail->details as $item)
+                                    <tr>
+                                        <td>{{$item->product->title}}</td>
+                                        <td>Rp {{$item->product->price}}</td>
+                                        <td>{{$item->qty}}</td>
+                                        <td>{{$item->transaction_subtotal}}</td>
+                                    </tr>
+                                    @php
+                                        $sumtotal += $item->transaction_subtotal;
+                                    @endphp
+                                @endforeach
+                            </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="3">Total</td>
-                                    <td>Rp {{$item->transaction_total}}</td>
+                                    <td colspan="3">Rp {{$sumtotal}}</td>
                                 </tr>
                             </tfoot>
-                            @endforeach
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </div>
             <p>Silahkan lakukan pembayaran</p>

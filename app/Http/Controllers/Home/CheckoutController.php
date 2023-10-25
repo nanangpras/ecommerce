@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Service\RajaOngkirService;
@@ -79,18 +80,20 @@ class CheckoutController extends Controller
         //     'cost' => $request->ongkir
         // ]);
         $trx = $this->transactionService->save($request);
+
         foreach ($cart as $item) {
+            $product = Product::with(['productImages'])->find($item['product_id']);
             TransactionDetail::create([
                 'transaction_id' => $trx->id,
                 'qty' => $item['qty'],
                 'product_id' => $item['product_id'],
-                'transaction_subtotal' => $subtotal,
+                'transaction_subtotal' => $item['qty'] * $product->price,
             ]);
         }
         //
         $cart = [];
         $cookie = cookie('konveksi-carts',json_encode($cart),2880);
-        return redirect()->route('member.detail.transaction', $trx->id)->cookie($cookie);
+        return redirect()->route('member.detail.transaction', $trx->code)->cookie($cookie);
     }
 
     public function postCallback(Request $request)
