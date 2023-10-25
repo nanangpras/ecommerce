@@ -8,6 +8,7 @@ use App\Service\CompanyProfileService;
 use App\Service\ProductService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use App\Helpers\CartCookie;
 
 class ShopController extends Controller
 {
@@ -22,24 +23,19 @@ class ShopController extends Controller
         $this->comproService = $comproService;
     }
 
-    private function getCarts()
-    {
-        $cart = json_decode(request()->cookie('konveksi-carts'), true);
-        $cart = $cart != '' ? $cart:[];
-        return $cart;
-    }
-
     public function index(): View
     {
+        $cartHelper = new CartCookie();
         $product = $this->productService->getAll();
         $category = $this->categoryService->getAll();
         $company = $this->comproService->getAll();
-        $cart = $this->getCarts();
+        $cart = $cartHelper->getCarts();
+        $count_cart = $cartHelper->getTotalCart();
         $subtotal = collect($cart)->sum(function($q){
             return $q['qty'] * $q['price'];
         });
         $breadcrumb = 'Shop';
-        return view('home.pages.shop.index',compact('product','category','company','cart','subtotal','breadcrumb'));
+        return view('home.pages.shop.index',compact('product','category','company','cart','subtotal','breadcrumb','count_cart'));
     }
 
     public function productDetailSlug($slug)

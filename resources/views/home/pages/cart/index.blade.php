@@ -63,13 +63,13 @@
                                             <td class="cart-product-price">{{$item['price']}}</td>
                                             <td class="cart-product-quantity">
                                                 <div class="cart-plus-minus">
-                                                    <input type="text" value="{{ $item['qty'] }}" id="qty" name="qtybutton" class="cart-plus-minus-box">
+                                                    <input type="text" value="{{ $item['qty'] }}" id="qty" name="qty[]" class="cart-plus-minus-box">
                                                     {{-- <input type="hidden" name="product_id[]" value="{{ $item['id'] }}" class="form-control"> --}}
                                                 </div>
                                             </td>
                                             <td class="cart-product-subtotal">{{$item['price'] * $item['qty']}}</td>
                                         </tr>
-                                        <input type="hidden" name="product_id[]" name="product_id" value="{{ $item['product_id'] }}" class="form-control">
+                                        <input type="hidden" name="product_id[]" value="{{ $item['product_id'] }}" class="form-control">
                                     @empty
                                     <tr>
                                         <td colspan="6"> Tidak ada keranjang belanja</td>
@@ -78,7 +78,7 @@
 
                                     <tr class="cart-coupon-row">
                                         <td>
-                                            <button type="submit" class="btn theme-btn-2 btn-effect-2">Update Cart</button>
+                                            <button type="submit" class="btn theme-btn-2 btn-effect-2" id="update_cart">Update Cart</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -194,6 +194,19 @@
                     }
                 });
             });
+
+            // $("#update_cart").click(function (e) {
+            //     e.preventDefault();
+            //     // alert('ok');
+            //     $.ajax({
+            //         type: "get",
+            //         url: "{{route('cart.session')}}",
+            //         success: function (response) {
+            //             console.log(response);
+            //         }
+            //     });
+
+            // });
         });
     </script>
 @endpush

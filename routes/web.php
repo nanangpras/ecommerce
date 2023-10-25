@@ -40,6 +40,7 @@ Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 Route::get('/product/detail/{slug}',[ShopController::class,'productDetailSlug'])->name('product.detail');
 Route::get('/product/modal-detail/{slug}',[ShopController::class,'quickViewModal'])->name('product.detail.modal');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+Route::get('/cart/session',[CartController::class,'getSessionCart'])->name('cart.session');
 
 Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout.index');
 // Rajaongkir

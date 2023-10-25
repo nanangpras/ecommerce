@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
+use App\Helpers\CartCookie;
 
 class CartController extends Controller
 {
@@ -19,28 +20,26 @@ class CartController extends Controller
         $this->getCoupon = $getCoupon;
     }
 
-    private function getCarts()
-    {
-        $cart = json_decode(request()->cookie('konveksi-carts'), true);
-        $cart = $cart != '' ? $cart:[];
-        return $cart;
-    }
-
     public function index()
     {
-        $cart = $this->getCarts();
+        // $cart = $this->getCarts();
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
         $subtotal = collect($cart)->sum(function($q){
             return $q['qty'] * $q['price'];
         });
         $breadcrumb = 'Cart';
-        return view('home.pages.cart.index',compact('cart', 'subtotal','breadcrumb'));
+        $count_cart = $cartHelper->getTotalCart();
+        return view('home.pages.cart.index',compact('cart', 'subtotal','breadcrumb','count_cart'));
     }
 
     public function addToCart(Request $request)
     {
 
         if (Auth::check()) {
-            $cart = $this->getCarts();
+            $cartHelper = new CartCookie();
+            $cart = $cartHelper->getCarts();
+            // $cart = $this->getCarts();
             if ($cart && array_key_exists($request->id, $cart)) {
                 $cart[$request->id]['qty'] += $request->qty;
             }else{
@@ -72,7 +71,9 @@ class CartController extends Controller
     public function applyCoupon(Request $request)
     {
         $code   = $request->code;
-        $cart   = $this->getCarts();
+        // $cart   = $this->getCarts();
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
         $coupon = $this->getCoupon->getByCode($code);
         $subtotal = collect($cart)->sum(function($q) use ($coupon) {
             return ($q['qty'] * $q['price']);
@@ -117,9 +118,16 @@ class CartController extends Controller
         return $arr;
     }
 
+    public function getSessionCart()
+    {
+        return $this->getCarts();
+    }
+
     public function updateCart(Request $request)
     {
-        $cart = json_decode(request()->cookie('konveksi-carts'), true);
+        // $cart = json_decode(request()->cookie('konveksi-carts'), true);
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
         foreach ($request->product_id as $key => $item) {
             if ($request->qty[$key] == 0) {
                 unset($cart[$item]);

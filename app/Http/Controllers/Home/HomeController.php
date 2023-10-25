@@ -10,6 +10,7 @@ use App\Service\CompanyProfileService;
 use App\Service\RajaOngkirService;
 use Illuminate\Http\Request;
 use Iodev\Whois\Factory;
+use App\Helpers\CartCookie;
 
 class HomeController extends Controller
 {
@@ -43,7 +44,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $cart = $this->getCarts();
+        // $cart = $this->getCarts();
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
+        $count_cart = $cartHelper->getTotalCart();
         $subtotal = collect($cart)->sum(function ($q) {
             return $q['qty'] * $q['price'];
         });
@@ -51,7 +55,7 @@ class HomeController extends Controller
         // dd($banner);
         $company = $this->companyProfile->getAll();
         $article = $this->articleService->articlePublish();
-        return view('home.homefront', compact('banner', 'cart', 'subtotal','company','article'));
+        return view('home.homefront', compact('banner', 'cart', 'subtotal','company','article','count_cart'));
     }
 
     public function getCity($id)
@@ -66,36 +70,42 @@ class HomeController extends Controller
 
     public function register()
     {
-        $cart = $this->getCarts();
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
+        $count_cart = $cartHelper->getTotalCart();
         $subtotal = collect($cart)->sum(function ($q) {
             return $q['qty'] * $q['price'];
         });
         $company = $this->companyProfile->getAll();
         $provinsi = $this->rajaOngkirService->getProvince();
         $breadcrumb = 'Register';
-        return view('home.pages.register',compact('provinsi','cart','subtotal','company','breadcrumb'));
+        return view('home.pages.register',compact('provinsi','cart','subtotal','company','breadcrumb','count_cart'));
     }
 
     public function loginUser()
     {
-        $cart = $this->getCarts();
-        $subtotal = collect($cart)->sum(function ($q) {
+        $cartHelper     = new CartCookie();
+        $cart           = $cartHelper->getCarts();
+        $count_cart     = $cartHelper->getTotalCart();
+        $subtotal       = collect($cart)->sum(function ($q) {
             return $q['qty'] * $q['price'];
         });
         $company = $this->companyProfile->getAll();
         $breadcrumb = 'Login';
-        return view('home.pages.login',compact('company','subtotal','cart','breadcrumb'));
+        return view('home.pages.login',compact('company','subtotal','cart','breadcrumb','count_cart'));
     }
 
     public function about()
     {
-        $cart = $this->getCarts();
+        $cartHelper     = new CartCookie();
+        $cart           = $cartHelper->getCarts();
+        $count_cart     = $cartHelper->getTotalCart();
         $subtotal = collect($cart)->sum(function ($q) {
             return $q['qty'] * $q['price'];
         });
         $company = $this->companyProfile->getAll();
         $breadcrumb = 'About';
-        return view('home.pages.about.index',compact('company','cart','subtotal','breadcrumb'));
+        return view('home.pages.about.index',compact('company','cart','subtotal','breadcrumb','count_cart'));
     }
 
     public function cekDomain(Request $request)
@@ -147,7 +157,9 @@ class HomeController extends Controller
 
     public function detailBlog($slug)
     {
-        $cart = $this->getCarts();
+        $cartHelper     = new CartCookie();
+        $cart           = $cartHelper->getCarts();
+        $count_cart     = $cartHelper->getTotalCart();
         $subtotal = collect($cart)->sum(function ($q) {
             return $q['qty'] * $q['price'];
         });
@@ -155,6 +167,6 @@ class HomeController extends Controller
         $category   = $this->categoryService->getCategoryArticle();
         $related    = $this->articleService->relatedPost($detailBlog->category_id);
         $breadcrumb = 'Detail Blog';
-        return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related','breadcrumb'));
+        return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related','breadcrumb','count_cart'));
     }
 }
