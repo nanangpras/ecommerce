@@ -3,6 +3,7 @@
 namespace App\Service\Midtrans;
 
 use App\Models\RequestIklan;
+use App\Models\Transaction;
 use App\Services\Midtrans\Midtrans;
 use Midtrans\Notification;
 
@@ -71,7 +72,7 @@ class CallbackService extends Midtrans
         $notification = new Notification();
 
         $orderNumber = $notification->order_id;
-        $order = RequestIklan::where('code', $orderNumber)->first();
+        $order = Transaction::where('code', $orderNumber)->first();
 
         $this->notification = $notification;
         $this->order = $order;
