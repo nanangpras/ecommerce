@@ -19,21 +19,18 @@ class PaymentCallbackController extends Controller
             if ($callback->isSuccess()) {
                 Transaction::where('code', $order->code)->update([
                     'transaction_status' => 'SUCCESS',
-                    'dibayar_pada' => $notification->transaction_time
                 ]);
             }
 
             if ($callback->isExpire()) {
                 Transaction::where('code', $order->code)->update([
-                    'status_pembayaran' => 'EXPIRED',
-                    'dibayar_pada' => $notification->transaction_time
+                    'transaction_status' => 'EXPIRED',
                 ]);
             }
 
             if ($callback->isCancelled()) {
                 Transaction::where('code', $order->code)->update([
-                    'status_pembayaran' => 'CANCEL',
-                    'dibayar_pada' => $notification->transaction_time
+                    'transaction_status' => 'CANCEL',
                 ]);
             }
 
@@ -59,22 +56,22 @@ class PaymentCallbackController extends Controller
         if ($hased == $request->signature_key) {
             if ($request->transaction_status == 'settlement') {
                 $request_iklan = Transaction::where('code',$request->order_id)->first();
-                $request_iklan->status_pembayaran = 'SUCCESS';
+                $request_iklan->transaction_status = 'SUCCESS';
                 $request_iklan->save();
             }
             if ($request->transaction_status == 'pending') {
                 $request_iklan = Transaction::where('code',$request->order_id)->first();
-                $request_iklan->status_pembayaran = 'PENDING';
+                $request_iklan->transaction_status = 'PENDING';
                 $request_iklan->save();
             }
             if ($request->transaction_status == 'deny') {
                 $request_iklan = Transaction::where('code',$request->order_id)->first();
-                $request_iklan->status_pembayaran = 'REJECT';
+                $request_iklan->transaction_status = 'REJECT';
                 $request_iklan->save();
             }
             if ($request->transaction_status == 'expire') {
                 $request_iklan = Transaction::where('code',$request->order_id)->first();
-                $request_iklan->status_pembayaran = 'EXPIRE';
+                $request_iklan->transaction_status = 'EXPIRE';
                 $request_iklan->save();
             }
         }
@@ -86,6 +83,5 @@ class PaymentCallbackController extends Controller
         $code_order = $request->order_id;
         $order = Transaction::where('code',$code_order)->first();
         return view('member.pages.transaction.success',compact('order'));
-        // return view('merchant.request_iklan.success',compact('order'));
     }
 }
