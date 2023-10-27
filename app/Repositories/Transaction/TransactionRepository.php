@@ -45,9 +45,30 @@ class TransactionRepository implements InterfaceTransaction
         return $this->transaction->where('transaction_status', 'SUCCESS')->sum('transaction_total');
     }
 
+    public function sumSuccsesUser($user_id)
+    {
+        return $this->transaction->where('transaction_status', 'SUCCESS')
+                                ->where('user_id',$user_id)
+                                ->sum('transaction_total');
+    }
+
     public function sumPendingPay()
     {
         return $this->transaction->where('transaction_status', 'PENDING')->sum('transaction_total');
+    }
+
+    public function sumPendingPayUser($user_id)
+    {
+        return $this->transaction->where('transaction_status', 'PENDING')
+                                ->where('user_id',$user_id)
+                                ->get()->count();
+    }
+
+    public function sumCancelPayUser($user_id)
+    {
+        return $this->transaction->where('transaction_status', 'CANCEL')
+                                ->where('user_id',$user_id)
+                                ->sum('transaction_total');
     }
 
     public function topFiveTransaction()

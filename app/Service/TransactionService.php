@@ -51,6 +51,21 @@ class TransactionService
         return $this->trxRepo->sumPendingPay();
     }
 
+    public function transactionSuccessUser($user_id)
+    {
+        return $this->trxRepo->sumSuccsesUser($user_id);
+    }
+
+    public function transactionPendingUser($user_id)
+    {
+        return $this->trxRepo->sumPendingPayUser($user_id);
+    }
+
+    public function transactionCancelUser($user_id)
+    {
+        return $this->trxRepo->sumCancelPayUser($user_id);
+    }
+
     public function fiveLatestTransaction()
     {
         return $this->trxRepo->topFiveTransaction();
