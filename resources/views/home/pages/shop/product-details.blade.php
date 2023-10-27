@@ -368,7 +368,7 @@
                 <div class="col-lg-12">
                     <div class="ltn__product-item ltn__product-item-3 text-center">
                         <div class="product-img">
-                            <a href="{{route('product.detail',$item->slug)}}"><img src="{{$item->productImages->first()->image}}" alt="#"></a>
+                            <a href="{{route('product.detail',$item->slug)}}"><img src="{{$item->productImages->first()->image ?? ''}}" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
                                     <li class="sale-badge">New</li>
