@@ -66,7 +66,7 @@
                     <div class="top-products-list">
                         @foreach ($popularProduct as $item)
                             <div class="product-item mb-4">
-                                <img src="{{$item->productImages->first()->image}}" width="60" height="80" alt="">
+                                <img src="{{$item->productImages->first()->image ?? ''}}" width="60" height="80" alt="">
                                 <h5>{{$item->title}}</h5>
                                 <span>{{$item->transaction_details_count}} transaksi</span>
                                 {{-- <i class="material-icons product-item-status product-item-success">arrow_upward</i> --}}
