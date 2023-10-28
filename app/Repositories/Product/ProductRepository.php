@@ -79,6 +79,14 @@ class ProductRepository implements InterfaceProduct
         return $domain->fresh();
     }
 
+    public function updateStockCheckout($qty, $id)
+    {
+        $product = $this->product->find($id);
+        $product->available_qty = $product->available_qty - $qty;
+        $product->save();
+        return $product->fresh();
+    }
+
     public function save(Request $request)
     {
 

@@ -46,6 +46,11 @@ class ProductService
         return $this->productRepository->update($request,$id);
     }
 
+    public function updateStock($qty, $id)
+    {
+        return $this->productRepository->updateStockCheckout($qty,$id);
+    }
+
     public function addDomainCheckout(Request $request)
     {
         return $this->productRepository->addDomain($request);

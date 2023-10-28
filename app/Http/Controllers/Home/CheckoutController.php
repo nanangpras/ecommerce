@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use App\Service\ProductService;
 use App\Service\RajaOngkirService;
 use App\Service\TransactionService;
 use Illuminate\Http\Request;
@@ -15,13 +16,16 @@ class CheckoutController extends Controller
 {
     protected $rajaOngkirService;
     protected $transactionService;
+    protected $productService;
 
     public function __construct(
         RajaOngkirService $rajaOngkirService,
-        TransactionService $transactionService)
+        TransactionService $transactionService,
+        ProductService $productService)
     {
-        $this->rajaOngkirService = $rajaOngkirService;
-        $this->transactionService = $transactionService;
+        $this->rajaOngkirService    = $rajaOngkirService;
+        $this->transactionService   = $transactionService;
+        $this->productService       = $productService;
     }
 
     private function getCarts()
@@ -82,22 +86,14 @@ class CheckoutController extends Controller
         $trx = $this->transactionService->save($request);
 
         foreach ($cart as $item) {
-            if ($item['product_id'] == 007) {
-                TransactionDetail::create([
-                    'transaction_id' => $trx->id,
-                    'qty' => $item['qty'],
-                    'product_id' => $item['product_id'],
-                    'transaction_subtotal' => $item['qty'] * 180000,
-                ]);
-            }else{
-                $product = Product::with(['productImages'])->find($item['product_id']);
-                TransactionDetail::create([
-                    'transaction_id' => $trx->id,
-                    'qty' => $item['qty'],
-                    'product_id' => $item['product_id'],
-                    'transaction_subtotal' => $item['qty'] * $product->price,
-                ]);
-            }
+            $product = Product::with(['productImages'])->find($item['product_id']);
+            $this->productService->updateStock($item['qty'],$product->id);
+            TransactionDetail::create([
+                'transaction_id' => $trx->id,
+                'qty' => $item['qty'],
+                'product_id' => $item['product_id'],
+                'transaction_subtotal' => $item['qty'] * $product->price,
+            ]);
         }
         //
         $cart = [];
