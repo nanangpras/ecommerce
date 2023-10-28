@@ -54,7 +54,6 @@ class CartController extends Controller
                     'coupon' => 0,
                     'coupon_rate' => 0,
                     'type_coupon' => '',
-                    'domain'=>''
                 ];
             }
             $cookie = cookie('konveksi-carts',json_encode($cart),2880);
@@ -120,7 +119,9 @@ class CartController extends Controller
 
     public function getSessionCart()
     {
-        return $this->getCarts();
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
+        return $cart;
     }
 
     public function updateCart(Request $request)
@@ -137,6 +138,24 @@ class CartController extends Controller
         }
 
         $cookie = cookie('konveksi-carts',json_encode($cart),2880);
+        return redirect()->back()->cookie($cookie);
+    }
+
+    public function deleteCart(Request $request, $id)
+    {
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
+        foreach ($cart as $key => $item) {
+            if ($item['product_id'] == $id) {
+
+                // unset($cart[$item]);
+                unset($cart [$key]);
+            }else{
+
+            }
+        }
+        $cookie = cookie('konveksi-carts',json_encode($cart),2880);
+        // $cookie = $request->session()->push('jitus-carts', $cart);
         return redirect()->back()->cookie($cookie);
     }
 }

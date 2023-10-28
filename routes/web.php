@@ -68,6 +68,7 @@ Route::group(['middleware' => 'roleCheck:user','auth'], function(){
 
     Route::post('/add-domain',[HomeController::class,'addDomainCookie'])->name('add.domain');
     Route::post('/cart/update-cart',[CartController::class,'updateCart'])->name('update.cart');
+    Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
     Route::post('/cart/apply-coupon',[CartController::class,'applyCoupon'])->name('apply.coupon');
 });
 

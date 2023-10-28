@@ -11,6 +11,7 @@ use App\Service\RajaOngkirService;
 use Illuminate\Http\Request;
 use Iodev\Whois\Factory;
 use App\Helpers\CartCookie;
+use App\Service\ProductService;
 
 class HomeController extends Controller
 {
@@ -19,13 +20,15 @@ class HomeController extends Controller
     protected $companyProfile;
     protected $articleService;
     protected $categoryService;
+    protected $productService;
 
     public function __construct(
         BannerService $bannerService,
         RajaOngkirService $rajaOngkirService,
         CompanyProfileService $companyProfile,
         ArticleService $articleService,
-        CategoryService $categoryService
+        CategoryService $categoryService,
+        ProductService $productService
     )
     {
         $this->bannerService = $bannerService;
@@ -33,6 +36,7 @@ class HomeController extends Controller
         $this->companyProfile = $companyProfile;
         $this->articleService = $articleService;
         $this->categoryService = $categoryService;
+        $this->productService = $productService;
     }
 
     private function getCarts()
@@ -135,24 +139,53 @@ class HomeController extends Controller
 
     public function addDomainCookie(Request $request)
     {
-        $carts = json_decode(request()->cookie('konveksi-carts'), true);
-        foreach ($carts as $key => $value) {
-            $carts[$key]['domain'] = $request->domain;
-        }
-        $cookie = cookie('konveksi-carts', json_encode($carts), 2880);
-        cookie($cookie);
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
 
-        // return $carts;
-        // foreach ($request->domain as $key => $row) {
-        //     //DI CHECK, JIKA QTY DENGAN KEY YANG SAMA DENGAN PRODUCT_ID = 0
-        //     if ($request->qty[$key] == 0) {
-        //         //MAKA DATA TERSEBUT DIHAPUS DARI ARRAY
-        //         unset($carts[$row]);
-        //     } else {
-        //         //SELAIN ITU MAKA AKAN DIPERBAHARUI
-        //         $carts[$row]['domain'] = $request->qty[$key];
-        //     }
-        // }
+        // dd($request->all());
+        $newProductDomain = $this->productService->addDomainCheckout($request);
+        if ($cart && array_key_exists($request->id, $cart)) {
+            $cart[$request->id]['qty'] += $request->qty;
+        }elseif($newProductDomain){
+            $cart [$newProductDomain->id] = [
+                'qty' => $request->qty,
+                'product_id' => $newProductDomain->id,
+                'title' => $request->title_domain,
+                'price' => 180000,
+                'weight' => 1,
+                'image' => url('themes-frontend/img/domain_webiin.png'),
+                'coupon' => 0,
+                'coupon_rate' => 0,
+                'type_coupon' => '',
+            ];
+        }else{
+            $cart [] = [
+                'qty' => $request->qty,
+                'product_id' => $newProductDomain->id,
+                'title' => $request->title_domain,
+                'price' => 180000,
+                'weight' => 1,
+                'image' => url('themes-frontend/img/domain_webiin.png'),
+                'coupon' => 0,
+                'coupon_rate' => 0,
+                'type_coupon' => '',
+            ];
+        }
+
+        $cookie = cookie('konveksi-carts',json_encode($cart),2880);
+        // return $cart;
+
+        // return view('home.pages.cart.modal.add-to-cart',compact('cart'));
+        return redirect()->route('cart.index')->cookie($cookie);
+
+        // $domain = $request->domain;
+        // $carts[] =
+        // [
+        //     'domain' => $domain,
+        // ];
+        // $cookie = cookie('konveksi-carts', json_encode($carts), 2880);
+        // // return cookie($cookie);
+        // return redirect()->back()->cookie($cookie);
     }
 
     public function detailBlog($slug)

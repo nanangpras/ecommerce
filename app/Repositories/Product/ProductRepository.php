@@ -64,6 +64,21 @@ class ProductRepository implements InterfaceProduct
         return $popularProducts;
     }
 
+    public function addDomain(Request $request)
+    {
+        $domain = new $this->product;
+        $domain->title = $request->title_domain;
+        $domain->category_id = 1000;
+        $domain->available_qty = $request->qty;
+        $domain->price = 180000;
+        $domain->description = 'domain '.$request->title_domain;
+        $domain->weight = 0;
+        $domain->link = $request->title_domain;
+        $domain->slug = Str::slug($request->title_domain);
+        $domain->save();
+        return $domain->fresh();
+    }
+
     public function save(Request $request)
     {
 

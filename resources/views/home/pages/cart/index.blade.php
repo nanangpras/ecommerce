@@ -28,9 +28,15 @@
                     <div id="result_domain_cek">
                         <div class="row">
                             <div class="col">
-                                <h4 id="text_warning_domain"></h4>
-                                <input type="hidden" id="result_domain">
-                                <button type="button" class="btn theme-btn-1 btn-effect-2" id="btn_add_domain" style="display: none;">Tambahkan</button>
+                                <form action="{{route('add.domain')}}" method="POST">
+                                    @csrf
+                                    <h4 id="text_warning_domain"></h4>
+                                    <input type="hidden" id="result_domain" name="title_domain">
+                                    <input type="hidden" id="iddomain" name="id" value="007" class="form-control">
+                                    <input type="hidden" id="qty" value="1" name="qty" class="cart-plus-minus-box">
+                                    <button type="submit" class="btn theme-btn-1 btn-effect-2" id="btn_add_domain" style="display: none;">Tambahkan</button>
+                                </form>
+                                {{-- <button type="button" class="btn theme-btn-1 btn-effect-2" id="btn_cek_cookie" style="display: none;">Cek</button> --}}
                             </div>
                         </div>
                     </div>
@@ -53,7 +59,7 @@
                                 <tbody>
                                     @forelse ($cart as $item)
                                         <tr>
-                                            <td class="cart-product-remove">x</td>
+                                            <td class="cart-product-remove"><a href="{{ route('delete-cart',$item['product_id'])}}">X</a></td>
                                             <td class="cart-product-image">
                                                 <a href="#"><img src="{{$item['image']}}" alt="#"></a>
                                             </td>
@@ -166,6 +172,7 @@
                         if(data.tersedia == 'ya')
                         {
                             $("#btn_add_domain").css('display', 'block');
+                            $("#btn_cek_cookie").css('display', 'block');
                             $("#result_domain").val(data.domain);
                             $("#text_warning_domain").text(data.result);
                         }
@@ -177,19 +184,33 @@
                     }
                 });
             });
+            // $("#btn_add_domain").click(function (e) {
+            //     e.preventDefault();
+            //     let domain = $("#result_domain").val();
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "{{route('add.domain')}}",
+            //         data : {
+            //             _token: CSRF_TOKEN,
+            //             domain,
+            //         },
+            //         success: function (response) {
 
-            $("#btn_add_domain").click(function (e) {
+            //             // window.location.reload();
+            //             $("#domain-cart").val(domain);
+            //             $("#add_domain_cart").css('display', 'block');
+            //             console.log(response);
+            //         }
+            //     });
+            // });
+
+            $("#btn_cek_cookie").click(function (e) {
                 e.preventDefault();
                 let domain = $("#result_domain").val();
                 $.ajax({
-                    type: "POST",
-                    url: "{{route('add.domain')}}",
-                    data : {
-                        _token: CSRF_TOKEN,
-                        domain,
-                    },
+                    type: "GET",
+                    url: "{{route('cart.session')}}",
                     success: function (response) {
-                        window.location.reload();
                         console.log(response);
                     }
                 });

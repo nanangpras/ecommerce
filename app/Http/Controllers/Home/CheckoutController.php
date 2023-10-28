@@ -82,13 +82,22 @@ class CheckoutController extends Controller
         $trx = $this->transactionService->save($request);
 
         foreach ($cart as $item) {
-            $product = Product::with(['productImages'])->find($item['product_id']);
-            TransactionDetail::create([
-                'transaction_id' => $trx->id,
-                'qty' => $item['qty'],
-                'product_id' => $item['product_id'],
-                'transaction_subtotal' => $item['qty'] * $product->price,
-            ]);
+            if ($item['product_id'] == 007) {
+                TransactionDetail::create([
+                    'transaction_id' => $trx->id,
+                    'qty' => $item['qty'],
+                    'product_id' => $item['product_id'],
+                    'transaction_subtotal' => $item['qty'] * 180000,
+                ]);
+            }else{
+                $product = Product::with(['productImages'])->find($item['product_id']);
+                TransactionDetail::create([
+                    'transaction_id' => $trx->id,
+                    'qty' => $item['qty'],
+                    'product_id' => $item['product_id'],
+                    'transaction_subtotal' => $item['qty'] * $product->price,
+                ]);
+            }
         }
         //
         $cart = [];

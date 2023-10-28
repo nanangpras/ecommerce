@@ -46,6 +46,11 @@ class ProductService
         return $this->productRepository->update($request,$id);
     }
 
+    public function addDomainCheckout(Request $request)
+    {
+        return $this->productRepository->addDomain($request);
+    }
+
     public function save(Request $request)
     {
         $validator = Validator::make($request->all(), [
