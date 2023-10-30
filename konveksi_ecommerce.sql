@@ -141,7 +141,7 @@ CREATE TABLE `detail_company` (
 -- Records of detail_company
 -- ----------------------------
 BEGIN;
-INSERT INTO `detail_company` (`id`, `name`, `tagline`, `description`, `image`, `link`, `address`, `link_fb`, `link_ig`, `link_tiktok`, `phone`, `email`, `logo`, `created_at`, `updated_at`) VALUES (1, 'Mahendra Berkah S', 'maju sukses selalu', 'Minuman yang terbuat dari aloe vera dengan rasa nanas', 'http://127.0.0.1:8000/storage/image/company_profile/2023/1697247205_google.jpg', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', 'RUKO PURI KENDEDES BLOK A1 KAV 3 SINGOSARI', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', '085729334303', 'mana@gmail.com', 'http://127.0.0.1:8000/storage/image/company_profile/logo/2023/1697247205_LOGO-UGM-BAKU-tnp-back-grou.png', '2023-10-14 01:33:25', '2023-10-14 01:33:25');
+INSERT INTO `detail_company` (`id`, `name`, `tagline`, `description`, `image`, `link`, `address`, `link_fb`, `link_ig`, `link_tiktok`, `phone`, `email`, `logo`, `created_at`, `updated_at`) VALUES (1, 'Webiin siap menjadi Layanan andalan ', 'maju sukses selalu', 'Minuman yang terbuat dari aloe vera dengan rasa nanas', 'http://127.0.0.1:8000/storage/image/company_profile/2023/1697247205_google.jpg', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', 'RUKO PURI KENDEDES BLOK A1 KAV 3 SINGOSARI', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', 'https://maps.app.goo.gl/99DoZyTmqTjejdZVA', '085729334303', 'mana@gmail.com', 'http://127.0.0.1:8000/storage/image/company_profile/logo/2023/1697247205_LOGO-UGM-BAKU-tnp-back-grou.png', '2023-10-14 01:33:25', '2023-10-14 01:33:25');
 COMMIT;
 
 -- ----------------------------

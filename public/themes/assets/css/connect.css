@@ -64,7 +64,7 @@ body,
 span,
 text,
 a {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 a:hover,
@@ -91,7 +91,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 /* Divider */
@@ -680,7 +680,7 @@ h6 {
     text-transform: capitalize;
     font-weight: bold;
     font-size: 22px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
@@ -828,7 +828,7 @@ h6 {
     color: rgba(0,0,0);
     font-size: 12px;
     opacity: .25;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .accordion-menu li.sidebar-title:first-child {
@@ -1690,7 +1690,7 @@ h6 {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     color: #5c6662;
     border-color: #e8e8e8;
 }
@@ -1700,7 +1700,7 @@ h6 {
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     color: #5c6662;
 }
 
@@ -1777,7 +1777,7 @@ h6 {
     font-size: 12px;
     margin-bottom: 15px;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: bold;
 }
 
@@ -2018,7 +2018,7 @@ body.modal-open {
 
 .modal-title {
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     color: #5c6662;
@@ -2143,7 +2143,7 @@ body.modal-open {
     background: transparent;
     border-bottom-color: transparent;
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     color: #5c6662;
@@ -2169,7 +2169,7 @@ body.modal-open {
 .progress .progress-bar {
     background: #5FD0A5;
     font-weight: bold;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 
@@ -2236,7 +2236,7 @@ body.modal-open {
     font-weight: bold;
     border-top: 0;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 12px;
     color: rgba(92, 102, 98, .8);
     border-bottom-width: 1px;
@@ -2683,7 +2683,7 @@ textarea.form-control {
     padding: 6px;
     font-size: 11px;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: bold;
     opacity: .7;
 }
@@ -2715,7 +2715,7 @@ table.dataTable thead th,
 table.dataTable tfoot th {
     font-weight: bold;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 12px;
     color: rgba(92, 102, 98, .8);
 }
@@ -2833,7 +2833,7 @@ tr.group {
 
 .error-page-text h3 {
     font-size: 24px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     text-transform: uppercase;
     font-weight: 300;
     color: rgba(92, 102, 98, .7);
@@ -3321,7 +3321,7 @@ tr.group {
     float: left;
     line-height: 38px;
     font-size: 19px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     margin-bottom: 20px;
 }
 
@@ -3461,7 +3461,7 @@ tr.group {
     margin-top: 45px;
     display: block;
     color: rgba(125, 125, 131, 1);
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Nunito Sans',sans-serif;
     font-size: 12px;
     text-transform: uppercase;
     font-weight: bold;
@@ -3510,7 +3510,7 @@ tr.group {
     align-self: flex-end;
     padding: 20px 25px;
     font-weight: bold;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 12px;
     text-transform: uppercase;
 }
@@ -3989,7 +3989,7 @@ tr.group {
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .fc-day-header {
@@ -4032,7 +4032,7 @@ tr.group {
     text-align: right;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 12px;
 }
 
@@ -4312,7 +4312,7 @@ tr.group {
     line-height: 32px;
     margin-bottom: 0;
     font-weight: 500;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 #server-load-chart {

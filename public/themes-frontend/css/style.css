@@ -52,25 +52,25 @@
 /* -------------------------------------
     Google fonts
 ------------------------------------- */
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat Alternates:wght@400;500;600;700&display=swap'); */
 /*
 font-family: 'Open Sans', sans-serif;
-font-family: 'Rajdhani', sans-serif;
+font-family: 'Montserrat Alternates', sans-serif;
 */
 /* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Titillium+Web:wght@400;600;700;900&display=swap'); */
 /*
 font-family: 'Nunito Sans', sans-serif;
 font-family: 'Titillium Web', sans-serif;
 */
-/* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Nunito Sans:wght@400;500;600;700;800;900&display=swap'); */
 /*
 font-family: 'Nunito Sans', sans-serif;
-font-family: 'Poppins', sans-serif;
+font-family: 'Nunito Sans', sans-serif;
 */
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Montserrat Alternates:wght@300;400;500;600;700&display=swap");
 /*
 font-family: 'Nunito Sans', sans-serif;
-font-family: 'Rajdhani', sans-serif;
+font-family: 'Montserrat Alternates', sans-serif;
 */
 /* ====================================================
     Gutter Code
@@ -196,22 +196,22 @@ font-family: 'Rajdhani', sans-serif;
     padding-left: 8px; } }
 
 /* ----------------------------------------------------
-    Normalize    0B2C3D
+    Normalize    08244D
 ---------------------------------------------------- */
 :root {
-  --ltn__primary-color: #0B2C3D;
+  --ltn__primary-color: #08244D;
   --ltn__primary-color-2: #141414;
   /* Darken */
   --ltn__primary-color-3: #133236;
   /* Lighten */
-  --ltn__secondary-color: #FF5E15;
-  --ltn__secondary-color-2: #cb3421;
+  --ltn__secondary-color: #0095FF;
+  --ltn__secondary-color-2: #0095FF;
   /* Darken */
   --ltn__secondary-color-3: #fb412a;
   /* Lighten */
   --ltn__heading-color: #0B1E33;
-  --ltn__paragraph-color: #152E3A;
-  --ltn__heading-font: 'Rajdhani', sans-serif;
+  --ltn__paragraph-color: #08244D;
+  --ltn__heading-font: 'Montserrat Alternates', sans-serif;
   --ltn__body-font: 'Nunito Sans', sans-serif;
   /* Footer ACD2D8 8CB2B2  */
   --ltn__color-1: #8cb2b2;
@@ -236,7 +236,7 @@ font-family: 'Rajdhani', sans-serif;
   /* Black */
   --section-bg-5: #FFF2F0;
   /* White */
-  --section-bg-6: #0B2C3D;
+  --section-bg-6: #08244D;
   /* Black */
   --section-bg-7: #282b38;
   /* Black */

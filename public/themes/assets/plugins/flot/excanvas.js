@@ -371,7 +371,7 @@ if (!document.createElement('canvas').getContext) {
     salmon: '#FA8072',
     sandybrown: '#F4A460',
     seagreen: '#2E8B57',
-    seashell: '#FFF5EE',
+    seashell: '#FF9000',
     sienna: '#A0522D',
     skyblue: '#87CEEB',
     slateblue: '#6A5ACD',
