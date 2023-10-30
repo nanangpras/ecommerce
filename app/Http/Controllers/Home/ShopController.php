@@ -9,6 +9,8 @@ use App\Service\ProductService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Helpers\CartCookie;
+use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ShopController extends Controller
 {
@@ -23,7 +25,7 @@ class ShopController extends Controller
         $this->comproService = $comproService;
     }
 
-    public function index(): View
+    public function index(Request $request, Product $prod): View
     {
         $cartHelper = new CartCookie();
         $product = $this->productService->getAll();
@@ -35,6 +37,20 @@ class ShopController extends Controller
             return $q['qty'] * $q['price'];
         });
         $breadcrumb = 'Shop';
+        $prod = $prod->newQuery();
+        if ($request->has('search')) {
+            $prod->where('title', 'like', '%'.$request->input('search').'%');
+            // $prod->whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$request->input('search')]);
+        }
+        $product=$prod->get();
+
+        // if ($search = $request->query('search')) {
+        //     $search =  str_replace('-',' ',Str::slug($search));
+        //     $product = Product::whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$search]);
+        //     dd($product);
+
+        //     // var_dump($slug);exit;
+        // }
         return view('home.pages.shop.index',compact('product','category','company','cart','subtotal','breadcrumb','count_cart'));
     }
 

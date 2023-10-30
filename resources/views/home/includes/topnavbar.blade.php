@@ -107,8 +107,8 @@
                             </div>
                         </div>
                         <div class="header-search-1-form">
-                            <form id="#" method="get"  action="#">
-                                <input type="text" name="search" value="" placeholder="Search here..."/>
+                            <form id="#" method="get"  action="{{url('/shop')}}">
+                                <input type="text" name="search" value="{{$search ?? ''}}" placeholder="Search here..."/>
                                 <button type="submit">
                                     <span><i class="icon-search"></i></span>
                                 </button>

@@ -122,7 +122,7 @@
                                                     <del>Rp {{$item->price}}</del>
                                                 </div>
                                                 <div class="product-brief">
-                                                    <p>{{$item->description}}</p>
+                                                    <p>{!!$item->description!!}</p>
                                                 </div>
                                                 {{-- <div class="product-hover-action">
                                                     <ul>
