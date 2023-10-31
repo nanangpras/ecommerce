@@ -90,6 +90,8 @@ Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
     Route::post('/permission/add',[PermissionController::class,'add'])->name('permission.store');
     Route::get('role',[RoleController::class,'index'])->name('role.index');
     Route::post('/role/add',[RoleController::class,'add'])->name('role.store');
+    Route::get('transaction',[AdminDashboardController::class,'listTransactions'])->name('transaction.list');
+    Route::get('/transaction/detail/{code}',[AdminDashboardController::class, 'detailTransactions'])->name('transaction.detail');
 });
 
 

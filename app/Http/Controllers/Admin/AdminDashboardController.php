@@ -30,4 +30,16 @@ class AdminDashboardController extends Controller
         $popularProduct = $this->productService->popularProduct();
         return view('admin.dashboard',compact('count_transaction','income','pending','lastFive','popularProduct'));
     }
+
+    public function listTransactions()
+    {
+        $transaction = $this->trxService->getAll();
+        return view('admin.pages.transactions.list',compact('transaction'));
+    }
+
+    public function detailTransactions($code)
+    {
+        $detail = $this->trxService->getByCode($code);
+        return view('admin.pages.transactions.detail',compact('detail'));
+    }
 }

@@ -17,10 +17,26 @@
     </div> --}}
 </div>
 <div class="main-wrapper">
-    <h6>Detail Transaksi</h6>
+
 
     <div class="profile-content">
+
         <div class="col-lg-8">
+            <div class="mb-4">
+                <h6>Detail Transaksi <strong>{{$detail->code}}</strong></h6>
+                <h6>Status <strong>{{$detail->transaction_status}}</strong></h6>
+            </div>
+            <div class="card card-transactions">
+                <div class="card-body">
+                    <h5 class="card-title">Contact Info</h5>
+                    <ul class="list-unstyled profile-about-list">
+                        <li><i class="material-icons">person</i><span>{{$detail->user->name}}</span></li>
+                        <li><i class="material-icons">mail_outline</i><span>{{$detail->user->email}}</span></li>
+                        <li><i class="material-icons">home</i><span>Alamat {{$detail->user->address}}</span></li>
+                        <li><i class="material-icons">local_phone</i><span>{{$detail->user->phone}}</span></li>
+                    </ul>
+                </div>
+            </div>
             <div class="card card-transactions">
                 <div class="card-body">
                     <h5 class="card-title">Detail Transaksi<a href="#" class="card-title-helper blockui-transactions"><i class="material-icons">refresh</i></a></h5>
@@ -60,56 +76,10 @@
                     </div>
                 </div>
             </div>
-            <p>Silahkan lakukan pembayaran</p>
-            <button type="button" id="pay-button" class="btn btn-success">Bayar</button>
+            <a href="{{route('transaction.list')}}" type="button" id="pay-button" class="btn btn-success">Kembali</a>
         </div>
     </div>
 </div>
-<form action="{{route('post.callback')}}" id="submit_form" method="POST">
-    @csrf
-    <input type="hidden" name="json" id="json_callback">
-</form>
-
-
-
-
 @endsection
-@push('after-scripts')
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
-// {{-- <script src="https://app.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"> --}}
-</script>
-<script>
-    const payButton = document.querySelector('#pay-button');
-    payButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        snap.pay('{{ $detail->payment_token }}', {
-            // Optional
-            onSuccess: function(result) {
-                /* You may add your own js here, this is just example */
-                // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                console.log(result)
-                send_response_to_form(result);
-            },
-            // Optional
-            onPending: function(result) {
-                /* You may add your own js here, this is just example */
-                // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                console.log(result)
-                send_response_to_form(result);
-            },
-            // Optional
-            onError: function(result) {
-                /* You may add your own js here, this is just example */
-                // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                console.log(result)
-                send_response_to_form(result);
-            }
-        });
-    });
-    function send_response_to_form (result) {
-        document.getElementById('json_callback').value = JSON.stringify(result);
-        $('#submit_form').submit();
-     }
-</script>
-@endpush
+
 
