@@ -208,6 +208,8 @@ font-family: 'Montserrat Alternates', sans-serif;
   --ltn__secondary-color-2: #0095FF;
   /* Darken */
   --ltn__secondary-color-3: #fb412a;
+  /* Theme-Rifqi */
+  --ltn__secondary-color-4: #00CEC9;
   /* Lighten */
   --ltn__heading-color: #0B1E33;
   --ltn__paragraph-color: #08244D;
@@ -306,6 +308,7 @@ font-family: 'Montserrat Alternates', sans-serif;
   --aqua: #00FFFF;
   --teal: #008080;
   --blue: #0000FF;
+  --blue2: #0095FF;
   --navy: #000080;
   --fuchsia: #B13BFF;
   --purple: #800080;
@@ -4379,7 +4382,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   margin-right: 0px; }
 
 .ltn__main-menu > ul > li > a {
-  font-size: 18px;
+  font-size: 16px;
   padding: 20px 10px;
   display: inline-block;
   white-space: nowrap;
@@ -6134,7 +6137,8 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 .ltn__slide-item {
   padding-top: 100px;
   padding-bottom: 100px;
-  height: 750px; }
+  /* height: 750px; } */
+  height: 1080px; }
 
 .ltn__slide-item-inner {
   height: 100%;
@@ -9236,7 +9240,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     bottom: 0;
     width: 0%;
     height: 4px;
-    background-color: var(--ltn__secondary-color);
+    background-color: var(--ltn__secondary-color-4);
     -webkit-transition: all 0.5s ease 0s;
     -o-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s;
@@ -10848,7 +10852,7 @@ blockquote {
 
 @media (max-width: 767px) {
   .ltn__team-item-3 {
-    max-width: 300px;
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto; } }
 
@@ -14426,9 +14430,11 @@ input.cart-plus-minus-box {
     color: var(--white); }
 
 .theme-btn-2 {
-  background-color: var(--ltn__primary-color);
+  background-color: var(--ltn__secondary-color);
+  border-radius: 30px;
   color: var(--white); }
   .theme-btn-2:hover {
+    border-radius: 30px;
     background-color: var(--ltn__secondary-color);
     color: var(--white); }
 
@@ -14519,6 +14525,7 @@ input.cart-plus-minus-box {
   height: 100%;
   top: 0;
   right: 0;
+  border-radius: 30px;
   background: var(--white); }
 
 .btn-effect-2:hover {

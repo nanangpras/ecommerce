@@ -18,24 +18,6 @@
                     <div class="top-bar-right text-right text-end">
                         <div class="ltn__top-bar-menu">
                             <ul>
-                                <li class="d-none">
-                                    <!-- ltn__language-menu -->
-                                    <div class="ltn__drop-menu ltn__currency-menu ltn__language-menu">
-                                        <ul>
-                                            <li><a href="#" class="dropdown-toggle"><span
-                                                        class="active-currency">English</span></a>
-                                                <ul>
-                                                    <li><a href="#">Arabic</a></li>
-                                                    <li><a href="#">Bengali</a></li>
-                                                    <li><a href="#">Chinese</a></li>
-                                                    <li><a href="#">English</a></li>
-                                                    <li><a href="#">French</a></li>
-                                                    <li><a href="#">Hindi</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
                                 <li>
                                     <!-- ltn__social-media -->
                                     <div class="ltn__social-media">
@@ -93,13 +75,11 @@
                             <div class="ltn__main-menu">
                                 <ul>
                                     <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li><a href="{{ route('home.about') }}">About</a></li>
-                                    <li class="menu-icon"><a href="{{ route('home') }}">Service</a></li>
-                                    <li><a href="{{ route('home') }}">Portofolio</a></li>
-
-                                    <li><a href="{{ route('shop.index') }}">Shop</a></li>
-
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ route('home.about') }}">Pertanyaan</a></li>
+                                    {{-- <li class="menu-icon"><a href="{{ route('home') }}">Service</a></li> --}}
+                                    {{-- <li><a href="{{ route('home') }}">Portofolio</a></li> --}}
+                                    <li><a href="{{ route('shop.index') }}">Template</a></li>
+                                    {{-- <li><a href="contact.html">Contact</a></li> --}}
                                 </ul>
                             </div>
                         </nav>

@@ -24,12 +24,12 @@
                                             <h6 class="slide-sub-title ltn__secondary-color animated text-uppercase">
                                                 <span><i class="fas fa-square-full"></i></span> Layanan Kami
                                             </h6>
-                                            <h1 style="color:#fff" class="slide-title animated ">{{ $item->name }}</h1>
+                                            <h1 class="slide-title animated ">{{ $item->name }}</h1>
                                             <div class="slide-brief animated">
-                                                <p style="color:#fff">{{ $item->description }}</p>
+                                                <p>{{ $item->description }}</p>
                                             </div>
                                             <div class="btn-wrapper animated">
-                                                <a href="#" class="theme-btn-1 btn btn-effect-1"
+                                                <a href="#" class="theme-btn-2 btn btn-effect-2"
                                                     style="border-radius :30px">Buat Sekarang</a>
                                                 {{-- <a class="ltn__video-play-btn bg-white" href="https://www.youtube.com/embed/HnbMYzdjuBs?autoplay=1&amp;showinfo=0" data-rel="lightcase">
                                                 <i class="icon-play  ltn__secondary-color"></i>
@@ -51,7 +51,7 @@
     </div>
     <!-- SLIDER AREA END -->
 
-    <!-- FEATURE START -->
+    <!-- FITUR KAMI START -->
     <div class="ltn__feature-area section-bg-1--- pt-120 pb-90">
         <div class="container">
             <div class="row">
@@ -71,57 +71,105 @@
                             <span><i class="flaticon-slider"></i></span>
                         </div>
                         <div class="ltn__feature-info">
-                            <h3><a href="service-details.html">Fast Performance
+                            <h3><a href="service-details.html">Performa Stabil
                                 </a></h3>
                             <p>Nor again is there anyone who loves or pursues or desires to pain, because it is pain, but
                                 because occasionally
 
                             </p>
-                            <a class="ltn__service-btn ltn__service-btn-2" href="service-details.html">Service Details <i
-                                    class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="ltn__feature-item ltn__feature-item-6 box-shadow-1">
-                        <div class="ltn__feature-icon">
+                        <div class="ltn__feature-icon" style="color: #00CEC9">
                             <span><i class="flaticon-building"></i></span>
                         </div>
                         <div class="ltn__feature-info">
-                            <h3><a href="service-details.html">Easy to setup
+                            <h3><a href="service-details.html">Mudah
                                 </a></h3>
                             <p>Nor again is there anyone who loves or pursues or desires to pain, because it is pain, but
                                 because occasionally
 
                             </p>
-                            <a class="ltn__service-btn ltn__service-btn-2" href="service-details.html">Service Details <i
-                                    class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="ltn__feature-item ltn__feature-item-6 box-shadow-1">
-                        <div class="ltn__feature-icon">
+
+                        <div class="ltn__feature-icon" style="color: #F7578C">
                             <span><i class="flaticon-house"></i></span>
                         </div>
                         <div class="ltn__feature-info">
-                            <h3><a href="service-details.html">Simple and clean UI
+                            <h3><a href="service-details.html">UI Menarik
                                 </a></h3>
                             <p>Nor again is there anyone who loves or pursues or desires to pain, because it is pain, but
                                 because occasionally
 
                             </p>
-                            <a class="ltn__service-btn ltn__service-btn-2" href="service-details.html">Service Details <i
-                                    class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- FEATURE END -->
+    <!-- FITUR KAMI END -->
+    <!-- TEMPLATE START (Team - 3) -->
+    <div class="ltn__team-area pt-120 pb-90---">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2 text-center">
+                        <h6 class="section-subtitle ltn__secondary-color"><span><i class="fas fa-square-full"></i></span>
+                            Gabung Sekarang</h6>
+                        <h1 class="section-title">Banyak Pilihan Template</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
+                        <div class="team-img">
+                            <img src="{{ url('/storage/image/banner/2023/1.png') }}" alt="Image"
+                                style="border-radius: 30px">
+                        </div>
+                        <div class="team-info">
+                            <h4><a href="team-details.html">Clean and Playfull</a></h4>
+                            <h6 class="ltn__secondary-color">Technology Officer</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
+                        <div class="team-img">
+                            <img src="{{ url('/storage/image/banner/2023/2.png') }}" alt="Image"
+                                style="border-radius: 30px">
+                        </div>
+                        <div class="team-info">
+                            <h4><a href="team-details.html">Clean and Playfull</a></h4>
+                            <h6 class="ltn__secondary-color">Technology Officer</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
+                        <div class="team-img">
+                            <img src="{{ url('/storage/image/banner/2023/3.png') }}" alt="Image"
+                                style="border-radius: 30px">
+                        </div>
+                        <div class="team-info">
+                            <h4><a href="team-details.html">Clean and Playfull</a></h4>
+                            <h6 class="ltn__secondary-color">Technology Officer</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TEMPLATE END -->
 
-    <!-- ABOUT US AREA START -->
+    <!-- MARKETING -->
     <div class="ltn__about-us-area pt-90 pb-120">
         <div class="container">
             <div class="row">
@@ -149,23 +197,23 @@
                         <div class="about-author-info d-flex mt-50">
                             <div class="author-name-designation  align-self-center mr-30">
                                 <!-- <h4 class="mb-0">Jerry Henson</h4>
-                                                        <small>/ Shop Director</small> -->
+                                                                                                <small>/ Shop Director</small> -->
                                 <div class="btn-wrapper mt-0">
-                                    <a class="btn theme-btn-2 btn-effect-1" href="about.html">About Us</a>
+                                    {{-- <a class="btn theme-btn-2 btn-effect-1" href="about.html">About Us</a> --}}
                                 </div>
                             </div>
-                            <div class="author-sign  align-self-center">
+                            {{-- <div class="author-sign  align-self-center">
                                 <img src="{{ url('themes-frontend/img/icons/icon-img/author-sign.png') }}" alt="#">
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ABOUT US AREA END -->
+    <!-- MARKETING END -->
 
-    <!-- CALL TO ACTION START (call-to-action-4) -->
+    <!-- HUB KAMI START (call-to-action-4) -->
     <div class="ltn__call-to-action-area ltn__call-to-action-4 bg-image"
         data-bg="{{ $company->image ?? url('themes-frontend/img/bg/36.jpg') }}">
         <div class="container">
@@ -173,23 +221,23 @@
                 <div class="col-lg-12">
                     <div class="call-to-action-inner call-to-action-inner-4 text-center--- pt-115 pb-120">
                         <div class="section-title-area ltn__section-title-2">
-                            <h6 class="section-subtitle ltn__secondary-color"><a
-                                    href="tel:+123456789">{{ $company->phone }}</a></h6>
-                            <h1 class="section-title black-color">A Company Involved In <br>
-                                Service, Maintenance</h1>
+                            <h6 class="section-subtitle ltn__secondary-color"><span><i
+                                        class="fas fa-square-full"></i></span> SOLUSI BISNIS ANDA</h6>
+                            <h1 class="section-title black-color">Pastikan Bisnis Anda <br>
+                                Mendunia</h1>
                         </div>
                         <div class="btn-wrapper">
-                            <a href="contact.html" class="theme-btn-1 btn btn-effect-1">Buat Website Sekarang</a>
+                            <a href="contact.html" class="theme-btn-2 btn btn-effect-2">Cara Order</a>
                         </div>
                     </div>
                     <div class="ltn__call-to-4-img-2">
-                        <img src="{{ url('themes-frontend/img/bg/35.png') }}" alt="#">
+                        <img src="{{ url('/storage/image/banner/2023/marketing2.png') }}" alt="#">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- CALL TO ACTION END -->
+    <!-- HUB KAMI ACTION END -->
 
 
     <!-- ABOUT US AREA START -->
@@ -200,37 +248,69 @@
                     <div class="about-us-info-wrap">
                         <div class="section-title-area ltn__section-title-2 mb-20">
                             <h6 class="section-subtitle ltn__secondary-color"><span><i
-                                        class="fas fa-square-full ltn__secondary-color"></i></span> Great Experience In
-                                Building</h6>
-                            <h1 class="section-title">Our Specialization &
-                                Company Features</h1>
+                                        class="fas fa-square-full ltn__secondary-color"></i></span> Q&A</h6>
+                            <h1 class="section-title">Pertanyaan Sering</h1>
                         </div>
-                        <ul class="ltn__list-item-half ltn__list-item-half-2 list-item-margin clearfix">
-                            <li>
-                                <i class="icon-done"></i>
-                                Living rooms are pre-wired for Surround
-                            </li>
-                            <li>
-                                <i class="icon-done"></i>
-                                Luxurious interior design and amenities
-                            </li>
-                            <li>
-                                <i class="icon-done"></i>
-                                Nestled in the Buckhead Vinings communities
-                            </li>
-                            <li>
-                                <i class="icon-done"></i>
-                                Private balconies with stunning views
-                            </li>
-                            <li>
-                                <i class="icon-done"></i>
-                                A rare combination of inspired architecture
-                            </li>
-                            <li>
-                                <i class="icon-done"></i>
-                                Outdoor grilling with dining court
-                            </li>
-                        </ul>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Accordion Item #1
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <strong>This is the first item's accordion body.</strong> It is shown by default,
+                                        until the collapse plugin adds the appropriate classes that we use to style each
+                                        element. These classes control the overall appearance, as well as the showing and
+                                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                        our default variables. It's also worth noting that just about any HTML can go within
+                                        the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Accordion Item #2
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                        until the collapse plugin adds the appropriate classes that we use to style each
+                                        element. These classes control the overall appearance, as well as the showing and
+                                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                        our default variables. It's also worth noting that just about any HTML can go within
+                                        the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Accordion Item #3
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                                        until the collapse plugin adds the appropriate classes that we use to style each
+                                        element. These classes control the overall appearance, as well as the showing and
+                                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                        our default variables. It's also worth noting that just about any HTML can go within
+                                        the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 align-self-center">
@@ -243,80 +323,9 @@
     </div>
     <!-- ABOUT US AREA END -->
 
-    <!-- TEAM AREA START (Team - 3) -->
-    <div class="ltn__team-area pt-120 pb-90---">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-area ltn__section-title-2 text-center">
-                        <h6 class="section-subtitle ltn__secondary-color"><span><i class="fas fa-square-full"></i></span>
-                            Our Expert Worker</h6>
-                        <h1 class="section-title">Our Expert Worker</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2">
-                        <div class="team-img">
-                            <img src="{{ url('themes-frontend/img/team/1.jpg') }}" alt="Image">
-                        </div>
-                        <div class="team-info">
-                            <h4><a href="team-details.html">Rosalina D. William</a></h4>
-                            <h6 class="ltn__secondary-color">Technology Officer</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2">
-                        <div class="team-img">
-                            <img src="{{ url('themes-frontend/img/team/2.jpg') }}" alt="Image">
-                        </div>
-                        <div class="team-info">
-                            <h4><a href="team-details.html">Kelian Anderson</a></h4>
-                            <h6 class="ltn__secondary-color">Engineering Officer</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2">
-                        <div class="team-img">
-                            <img src="{{ url('themes-frontend/img/team/3.jpg') }}" alt="Image">
-                        </div>
-                        <div class="team-info">
-                            <h4><a href="team-details.html">Miranda H. Halim</a></h4>
-                            <h6 class="ltn__secondary-color">Property Seller</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- TEAM AREA END -->
 
     <!-- TESTIMONIAL AREA START (testimonial-8) -->
-    <div class="ltn__testimonial-area section-bg-1--- pt-115--- pb-75">
+    <div class="ltn__testimonial-area section-bg-1--- pt-115--- pb-75 mt-100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

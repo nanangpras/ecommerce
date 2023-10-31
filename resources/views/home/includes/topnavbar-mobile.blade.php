@@ -15,10 +15,10 @@
         <div class="ltn__utilize-menu">
             <ul>
                 <li><a href="{{route('home')}}">Home</a></li>
-                <li><a href="{{route('home.about')}}">About</a></li>
-                <li><a href="{{route('shop.index')}}">Shop</a></li>
-                <li><a href="{{route('home')}}">News</a></li>
-                <li><a href="{{route('home')}}">Contact</a></li>
+                <li><a href="{{route('home.about')}}">Pertanyaan</a></li>
+                <li><a href="{{route('shop.index')}}">Template</a></li>
+                {{-- <li><a href="{{route('home')}}">News</a></li>
+                <li><a href="{{route('home')}}">Contact</a></li> --}}
             </ul>
         </div>
         <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
@@ -43,7 +43,7 @@
                         </form>
                     </li>
                 @endauth
-                <li>
+                {{-- <li>
                     <a href="wishlist.html" title="Wishlist">
                         <span class="utilize-btn-icon">
                             <i class="far fa-heart"></i>
@@ -60,16 +60,16 @@
                         </span>
                         Shoping Cart
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
-        <div class="ltn__social-media-2">
+        {{-- <div class="ltn__social-media-2">
             <ul>
                 <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                 <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                 <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
             </ul>
-        </div>
+        </div> --}}
     </div>
 </div>
