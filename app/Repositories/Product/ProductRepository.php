@@ -39,7 +39,10 @@ class ProductRepository implements InterfaceProduct
 
     public function getAll()
     {
-        return $this->product->with(['category','productImages'])->where('category_id','!=',1000)->get();
+        return $this->product->with(['category','productImages'])->where(function($q){
+            $q->where('category_id','!=',1000);
+            // $q->where('weight','=',0);
+        })->get();
     }
 
     public function getById($id)

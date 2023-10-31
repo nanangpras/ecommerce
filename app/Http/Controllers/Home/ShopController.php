@@ -29,7 +29,8 @@ class ShopController extends Controller
     {
         $cartHelper = new CartCookie();
         $product = $this->productService->getAll();
-        $category = $this->categoryService->getAll();
+        // dd($product);
+        $category = $this->categoryService->getCategoryProduct();
         $company = $this->comproService->getAll();
         $cart = $cartHelper->getCarts();
         $count_cart = $cartHelper->getTotalCart();
@@ -37,12 +38,12 @@ class ShopController extends Controller
             return $q['qty'] * $q['price'];
         });
         $breadcrumb = 'Shop';
-        $prod = $prod->newQuery();
+        $prod = $prod->newQuery()->where('category_id','!=',1000);
         if ($request->has('search')) {
             $prod->where('title', 'like', '%'.$request->input('search').'%');
             // $prod->whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$request->input('search')]);
         }
-        $product=$prod->get();
+        $product=$prod->paginate(4);
 
         // if ($search = $request->query('search')) {
         //     $search =  str_replace('-',' ',Str::slug($search));
@@ -73,5 +74,14 @@ class ShopController extends Controller
     {
         $detail = $this->productService->getBySlug($slug);
         return view('home.pages.shop.modal.quick-view',compact('detail'));
+    }
+
+    public function sortProduct(Request $request,Product $prod)
+    {
+        $prod = $prod->newQuery()->where('category_id','!=',1000);
+        if ($request->has('search')) {
+            $prod->where('title', 'like', '%'.$request->input('search').'%');
+            // $prod->whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$request->input('search')]);
+        }
     }
 }
