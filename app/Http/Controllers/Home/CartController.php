@@ -36,35 +36,32 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
 
-        if (Auth::check()) {
-            $cartHelper = new CartCookie();
-            $cart = $cartHelper->getCarts();
-            // $cart = $this->getCarts();
-            if ($cart && array_key_exists($request->id, $cart)) {
-                $cart[$request->id]['qty'] += $request->qty;
-            }else{
-                $product = Product::with(['productImages'])->find($request->id);
-                $cart [$request->id] = [
-                    'qty' => $request->qty,
-                    'product_id' => $product->id,
-                    'title' => $product->title,
-                    'price' => $product->price,
-                    'weight' => $product->weight,
-                    'image' => $product->productImages->first()->image,
-                    'coupon' => 0,
-                    'coupon_rate' => 0,
-                    'type_coupon' => '',
-                ];
-            }
-            $cookie = cookie('konveksi-carts',json_encode($cart),2880);
-            // return $cart;
-
-            // return view('home.pages.cart.modal.add-to-cart',compact('cart'));
-            return redirect()->route('cart.index')->cookie($cookie);
-            // return redirect()->back()->with(['success' => 'Produk ditambahkan ke keranjang'])->cookie($cookie);
-        } else {
-            return redirect()->route('login.user');
+        $cartHelper = new CartCookie();
+        $cart = $cartHelper->getCarts();
+        // $cart = $this->getCarts();
+        if ($cart && array_key_exists($request->id, $cart)) {
+            $cart[$request->id]['qty'] += $request->qty;
+        }else{
+            $product = Product::with(['productImages'])->find($request->id);
+            $cart [$request->id] = [
+                'qty' => $request->qty,
+                'product_id' => $product->id,
+                'title' => $product->title,
+                'price' => $product->price,
+                'weight' => $product->weight,
+                'image' => $product->productImages->first()->image,
+                'coupon' => 0,
+                'coupon_rate' => 0,
+                'type_coupon' => '',
+            ];
         }
+        $cookie = cookie('konveksi-carts',json_encode($cart),2880);
+        // return $cart;
+
+        // return view('home.pages.cart.modal.add-to-cart',compact('cart'));
+        return redirect()->route('cart.index')->cookie($cookie);
+        // return redirect()->back()->with(['success' => 'Produk ditambahkan ke keranjang'])->cookie($cookie);
+
     }
 
     public function applyCoupon(Request $request)

@@ -82,8 +82,8 @@
                         <div class="footer-menu">
                             <ul>
 
-                                <li><a href="{{ route('login.user') }}">Sign in</a></li>
-                                <li><a href="{{ route('register.user') }}">Register</a></li>
+                                <li><a href="{{ route('login') }}">Sign in</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
                             </ul>
                         </div>
                     </div>

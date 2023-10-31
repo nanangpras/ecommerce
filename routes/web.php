@@ -39,7 +39,7 @@ Route::get('/about',[HomeController::class,'about'])->name('home.about');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 Route::get('/product/detail/{slug}',[ShopController::class,'productDetailSlug'])->name('product.detail');
 Route::get('/product/modal-detail/{slug}',[ShopController::class,'quickViewModal'])->name('product.detail.modal');
-Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+
 Route::get('/cart/session',[CartController::class,'getSessionCart'])->name('cart.session');
 
 Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout.index');
@@ -51,7 +51,7 @@ Route::get('register/user',[HomeController::class, 'register'])->name('register.
 Route::get('login/user',[HomeController::class, 'loginUser'])->name('login.user');
 
 Route::get('blog/detail/{slug}', [HomeController::class, 'detailBlog'])->name('blog.detail');
-Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
+
 
 Route::post('/cek/domain', [HomeController::class, 'cekDomain'])->name('cek.domain');
 
@@ -67,6 +67,8 @@ Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::post('/member/transaction/callback',[CheckoutController::class,'postCallback'])->name('post.callback');
 
     Route::post('/add-domain',[HomeController::class,'addDomainCookie'])->name('add.domain');
+    Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
     Route::post('/cart/update-cart',[CartController::class,'updateCart'])->name('update.cart');
     Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
     Route::post('/cart/apply-coupon',[CartController::class,'applyCoupon'])->name('apply.coupon');

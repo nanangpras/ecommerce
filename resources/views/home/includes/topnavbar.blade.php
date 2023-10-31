@@ -111,8 +111,8 @@
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
                                     @guest
-                                        <li><a href="{{ route('login.user') }}">Sign in</a></li>
-                                        <li><a href="{{ route('register.user') }}">Register</a></li>
+                                        <li><a href="{{ route('login') }}">Sign in</a></li>
+                                        <li><a href="{{ route('register') }}">Register</a></li>
                                     @endguest
                                     @auth
                                         <li><a href="{{ route('member.dashboard') }}">{{ Auth::user()->name }}</a></li>

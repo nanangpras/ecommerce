@@ -24,8 +24,8 @@
         <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
             <ul>
                 @guest
-                    <li><a href="{{route('login.user')}}">Sign in</a></li>
-                    <li><a href="{{route('register.user')}}">Register</a></li>
+                    <li><a href="{{route('login')}}">Sign in</a></li>
+                    <li><a href="{{route('register')}}">Register</a></li>
                 @endguest
                 @auth
                     <li>
