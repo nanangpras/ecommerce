@@ -4,7 +4,7 @@ namespace App\Service\Midtrans;
 
 use App\Models\RequestIklan;
 use App\Models\Transaction;
-use App\Services\Midtrans\Midtrans;
+use App\Service\Midtrans\Midtrans;
 use Midtrans\Notification;
 
 class CallbackService extends Midtrans

@@ -84,4 +84,18 @@ class PaymentCallbackController extends Controller
         $order = Transaction::where('code',$code_order)->first();
         return view('member.pages.transaction.success',compact('order'));
     }
+
+    public function unfinish(Request $request)
+    {
+        $code_order = $request->order_id;
+        $order = Transaction::where('code',$code_order)->first();
+        return view('member.pages.transaction.unfinish',compact('order'));
+    }
+
+    public function error(Request $request)
+    {
+        $code_order = $request->order_id;
+        $order = Transaction::where('code',$code_order)->first();
+        return view('member.pages.transaction.error',compact('order'));
+    }
 }

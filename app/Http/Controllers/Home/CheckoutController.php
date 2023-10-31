@@ -113,6 +113,9 @@ class CheckoutController extends Controller
                 $update_order->bank_name      = 'mandiri';
                 $update_order->va_number      = $get_json->bill_key;
                 $update_order->bill_code      = $get_json->biller_code;
+            }elseif($get_json->payment_type == "qris"){
+                $update_order->bank_name      = 'qris';
+                $update_order->payment_type      = 'qris';
             }else{
                 foreach ($get_json->va_numbers as $card) {
                     $update_order->bank_name      = $card->bank ?? '';
