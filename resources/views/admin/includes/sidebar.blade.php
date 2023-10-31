@@ -56,7 +56,7 @@
                     <a href=""><i class="material-icons">receipt_long</i>Purchase<i class="material-icons has-sub-menu">add</i></a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="#" class="{{set_active_sub('purchase.create')}}">List Transaksi</a>
+                            <a href="{{route('transaction.list')}}" class="{{set_active_sub('purchase.create')}}">List Transaksi</a>
                         </li>
                     </ul>
                 </li>
