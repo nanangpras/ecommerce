@@ -324,7 +324,7 @@
     <!-- ABOUT US AREA END -->
 
 
-    <!-- TESTIMONIAL AREA START (testimonial-8) -->
+    {{-- <!-- TESTIMONIAL AREA START (testimonial-8) -->
     <div class="ltn__testimonial-area section-bg-1--- pt-115--- pb-75 mt-100">
         <div class="container">
             <div class="row">
@@ -493,7 +493,7 @@
             </a>
         </div>
     </div>
-    <!-- VIDEO AREA END -->
+    <!-- VIDEO AREA END --> --}}
 
     <!-- BLOG AREA START (blog-3) -->
     <div class="ltn__blog-area pt-120 pb-70">

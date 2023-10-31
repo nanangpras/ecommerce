@@ -75,10 +75,10 @@
                             <div class="ltn__main-menu">
                                 <ul>
                                     <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('shop.index') }}">Template</a></li>
                                     <li><a href="{{ route('home.about') }}">Pertanyaan</a></li>
                                     {{-- <li class="menu-icon"><a href="{{ route('home') }}">Service</a></li> --}}
                                     {{-- <li><a href="{{ route('home') }}">Portofolio</a></li> --}}
-                                    <li><a href="{{ route('shop.index') }}">Template</a></li>
                                     {{-- <li><a href="contact.html">Contact</a></li> --}}
                                 </ul>
                             </div>
@@ -154,8 +154,8 @@
                                 <path d="M300,320 L540,320" id="middle"></path>
                                 <path
                                     d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
-                                    id="bottom"
-                                    transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                                    id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) ">
+                                </path>
                             </svg>
                         </a>
                     </div>

@@ -91,7 +91,7 @@
                 <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                     <div class="footer-widget footer-newsletter-widget">
                         <h4 class="footer-title">Pembayaran</h4>
-                        <img src="{{ url('themes-frontend/img/icons/payment-4.png') }}" alt="Payment Image">
+                        <img src="{{ url('/storage/image/banner/2023/payment.png') }}" alt="Payment Image">
 
                     </div>
                 </div>
