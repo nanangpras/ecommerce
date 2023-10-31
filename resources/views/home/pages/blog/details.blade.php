@@ -18,7 +18,7 @@
                         <div class="ltn__blog-meta">
                             <ul>
                                 <li class="ltn__blog-author">
-                                    <a href="#"><img src="img/blog/author.jpg" alt="#">By: {{$detailBlog->user_id}}</a>
+                                    <a href="#"><img src="img/blog/author.jpg" alt="#">By: {{$detailBlog->author->name}}</a>
                                 </li>
                                 <li class="ltn__blog-date">
                                     <i class="far fa-calendar-alt"></i>{{$detailBlog->created_at}}
@@ -98,16 +98,16 @@
                     </div>
                     <!-- comment-area -->
                     <div class="ltn__comment-area mb-50">
-                        <div class="ltn-author-introducing clearfix">
+                        {{-- <div class="ltn-author-introducing clearfix">
                             <div class="author-img">
                                 <img src="{{url('themes-frontend/img/blog/author.jpg')}}" alt="Author Image">
                             </div>
                             <div class="author-info">
                                 <h6>Written by</h6>
-                                <h1>Rosalina D. William</h1>
+                                <h1>{{$detailBlog->author->name}}</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation is enougn for today.</p>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- <h4 class="title-2">03 Comments</h4>
                         <div class="ltn__comment-inner">
                             <ul>
@@ -212,78 +212,25 @@
                     <div class="widget ltn__popular-post-widget">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Popular Feeds</h4>
                         <ul>
-                            <li>
-                                <div class="popular-post-widget-item clearfix">
-                                    <div class="popular-post-widget-img">
-                                        <a href="blog-details.html"><img src="img/team/5.jpg" alt="#"></a>
-                                    </div>
-                                    <div class="popular-post-widget-brief">
-                                        <h6><a href="blog-details.html">Lorem ipsum dolor sit
-                                            cing elit, sed do.</a></h6>
-                                        <div class="ltn__blog-meta">
-                                            <ul>
-                                                <li class="ltn__blog-date">
-                                                    <a href="#"><i class="far fa-calendar-alt"></i>June 22, 2020</a>
-                                                </li>
-                                            </ul>
+                            @foreach ($popularView as $item)
+                                <li>
+                                    <div class="popular-post-widget-item clearfix">
+                                        <div class="popular-post-widget-img">
+                                            <a href="{{ route('blog.detail', $item->slug) }}"><img src="{{$item->thumbnail}}" alt="#"></a>
+                                        </div>
+                                        <div class="popular-post-widget-brief">
+                                            <h6><a href="{{ route('blog.detail', $item->slug) }}">{{$item->titles}}</a></h6>
+                                            <div class="ltn__blog-meta">
+                                                <ul>
+                                                    <li class="ltn__blog-date">
+                                                        <a href="#"><i class="far fa-calendar-alt"></i>{{$item->created_at}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="popular-post-widget-item clearfix">
-                                    <div class="popular-post-widget-img">
-                                        <a href="blog-details.html"><img src="img/team/6.jpg" alt="#"></a>
-                                    </div>
-                                    <div class="popular-post-widget-brief">
-                                        <h6><a href="blog-details.html">Lorem ipsum dolor sit
-                                            cing elit, sed do.</a></h6>
-                                        <div class="ltn__blog-meta">
-                                            <ul>
-                                                <li class="ltn__blog-date">
-                                                    <a href="#"><i class="far fa-calendar-alt"></i>June 22, 2020</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="popular-post-widget-item clearfix">
-                                    <div class="popular-post-widget-img">
-                                        <a href="blog-details.html"><img src="img/team/7.jpg" alt="#"></a>
-                                    </div>
-                                    <div class="popular-post-widget-brief">
-                                        <h6><a href="blog-details.html">Lorem ipsum dolor sit
-                                            cing elit, sed do.</a></h6>
-                                        <div class="ltn__blog-meta">
-                                            <ul>
-                                                <li class="ltn__blog-date">
-                                                    <a href="#"><i class="far fa-calendar-alt"></i>June 22, 2020</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="popular-post-widget-item clearfix">
-                                    <div class="popular-post-widget-img">
-                                        <a href="blog-details.html"><img src="img/team/8.jpg" alt="#"></a>
-                                    </div>
-                                    <div class="popular-post-widget-brief">
-                                        <h6><a href="blog-details.html">Lorem ipsum dolor sit
-                                            cing elit, sed do.</a></h6>
-                                        <div class="ltn__blog-meta">
-                                            <ul>
-                                                <li class="ltn__blog-date">
-                                                    <a href="#"><i class="far fa-calendar-alt"></i>June 22, 2020</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- Menu Widget (Category) -->

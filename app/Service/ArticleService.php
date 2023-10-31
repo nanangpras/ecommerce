@@ -36,6 +36,11 @@ class ArticleService
         return $this->articleRepo->getBySlug($slug);
     }
 
+    public function popularByView()
+    {
+        return $this->articleRepo->popularByView();
+    }
+
     public function relatedPost($category)
     {
         return $this->articleRepo->relateArticle($category);

@@ -197,11 +197,14 @@ class HomeController extends Controller
             return $q['qty'] * $q['price'];
         });
         $detailBlog = $this->articleService->getBySlug($slug);
+        // dd($detailBlog);
+        $viewUpdate = $this->articleService->getBySlug($slug)->increment('view');
+        $popularView = $this->articleService->popularByView();
         $tags       = explode(',', $detailBlog->tags);
         $category   = $this->categoryService->getCategoryArticle();
         $related    = $this->articleService->relatedPost($detailBlog->category_id);
         $breadcrumb = 'Detail Blog';
         // dd($tags);
-        return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related','breadcrumb','count_cart','tags'));
+        return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related','breadcrumb','count_cart','tags','popularView'));
     }
 }

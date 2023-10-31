@@ -56,7 +56,12 @@ class ArticleRepository implements InterfaceArticle
 
     public function getBySlug($slug)
     {
-        return $this->article->where('slug',$slug)->first();
+        return $this->article->with('author')->where('slug',$slug)->first();
+    }
+
+    public function popularByView()
+    {
+        return $this->article->orderBy('view','desc')->take(4)->get();
     }
 
     public function relateArticle($category)

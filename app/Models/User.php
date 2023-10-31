@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function article()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasOne(Article::class,'user_id');
     }
 
     public function transaction()
