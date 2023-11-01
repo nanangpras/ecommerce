@@ -38,7 +38,7 @@ class ShopController extends Controller
             return $q['qty'] * $q['price'];
         });
         $breadcrumb = 'Shop';
-        $prod = $prod->newQuery()->where('category_id','!=',1000);
+        $prod = $prod->newQuery()->where('category_id','!=',1000)->orderBy('created_at', 'DESC');
         if ($request->has('search')) {
             $prod->where('title', 'like', '%'.$request->input('search').'%');
             // $prod->whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$request->input('search')]);

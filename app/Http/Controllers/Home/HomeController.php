@@ -58,8 +58,9 @@ class HomeController extends Controller
         $banner  = $this->bannerService->getAll();
         // dd($banner);
         $company = $this->companyProfile->getAll();
+        $popular_product = $this->productService->popularProductHome();
         $article = $this->articleService->articlePublish();
-        return view('home.homefront', compact('banner', 'cart', 'subtotal','company','article','count_cart'));
+        return view('home.homefront', compact('banner', 'cart', 'subtotal','company','article','count_cart','popular_product'));
     }
 
     public function getCity($id)

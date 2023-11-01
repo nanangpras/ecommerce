@@ -128,42 +128,24 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
-                        <div class="team-img">
-                            <img src="{{ url('/storage/image/banner/2023/1.png') }}" alt="Image"
-                                style="border-radius: 30px">
-                        </div>
-                        <div class="team-info">
-                            <h4><a href="team-details.html">Clean and Playfull</a></h4>
-                            <h6 class="ltn__secondary-color">Technology Officer</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
-                        <div class="team-img">
-                            <img src="{{ url('/storage/image/banner/2023/2.png') }}" alt="Image"
-                                style="border-radius: 30px">
-                        </div>
-                        <div class="team-info">
-                            <h4><a href="team-details.html">Clean and Playfull</a></h4>
-                            <h6 class="ltn__secondary-color">Technology Officer</h6>
+                @foreach ($popular_product as $item)
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
+                            <div class="team-img">
+                                <img src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}" alt="#" style="border-radius: 30px">
+                            </div>
+                            <div class="team-info">
+                                <h4><a href="team-details.html">{{$item->title}}</a></h4>
+                                <h6 class="ltn__secondary-color">{{$item->category->name}}</h6>
+                            </div>
+                            <div class="col-lg-6" style="text-align: right">
+                                <a href="{{$item->link}}" target="_blank" class="">
+                                    <button class="btn-small theme-btn-5">Demo</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
-                        <div class="team-img">
-                            <img src="{{ url('/storage/image/banner/2023/3.png') }}" alt="Image"
-                                style="border-radius: 30px">
-                        </div>
-                        <div class="team-info">
-                            <h4><a href="team-details.html">Clean and Playfull</a></h4>
-                            <h6 class="ltn__secondary-color">Technology Officer</h6>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -314,7 +296,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 align-self-center">
-                    
+
                     <div class="about-us-img-wrap about-img-left">
                     </div>
                 </div>

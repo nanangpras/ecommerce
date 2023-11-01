@@ -67,6 +67,13 @@ class ProductRepository implements InterfaceProduct
         return $popularProducts;
     }
 
+    public function popularProductHome()
+    {
+        // $today  = Carbon::now()->format('Y-m-d');
+        $popularProductHome = $this->product->withCount('transactionDetails')->orderBy('transaction_details_count','desc')->take(3)->get();
+        return $popularProductHome;
+    }
+
     public function addDomain(Request $request)
     {
         $domain = new $this->product;
