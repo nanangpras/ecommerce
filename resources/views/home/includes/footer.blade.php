@@ -63,15 +63,12 @@
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
-                        <h4 class="footer-title">Services</h4>
+                        <h4 class="footer-title">Layanan</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="#">Layanan Offline</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="account.html">My account</a></li>
-                                <li><a href="about.html">Terms & Conditions</a></li>
-                                <li><a href="about.html">Promotional Offers</a></li>
+                                <li><a href="#">Pembuatan Website</a></li>
+                                <li><a href="#">Pembuatan Web Apps</a></li>
+                                <li><a href="#">Aplikasi Mobile</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,6 +81,7 @@
 
                                 <li><a href="{{ route('login') }}">Sign in</a></li>
                                 <li><a href="{{ route('register') }}">Register</a></li>
+                                <li><a href="#">Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -103,7 +101,7 @@
             <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="ltn__copyright-design clearfix">
-                        <p>All Rights Reserved @ Company <span class="current-year"></span></p>
+                        <p>All Rights Reserved @ webiin.com <span class="current-year"></span></p>
                     </div>
                 </div>
                 <div class="col-md-6 col-12 align-self-center">

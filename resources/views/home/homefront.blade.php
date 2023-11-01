@@ -242,21 +242,21 @@
 
     <!-- ABOUT US AREA START -->
     <div class="ltn__about-us-area section-bg-6 bg-image-right-before pt-120 pb-90">
-        <div class="container">
+        <div class="container" >
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="about-us-info-wrap">
                         <div class="section-title-area ltn__section-title-2 mb-20">
                             <h6 class="section-subtitle ltn__secondary-color"><span><i
                                         class="fas fa-square-full ltn__secondary-color"></i></span> Q&A</h6>
-                            <h1 class="section-title">Pertanyaan Sering</h1>
+                            <h1 class="section-title">Pertanyaan Populer</h1>
                         </div>
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Accordion Item #1
+                                        Apa itu Webiin?
                                     </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show"
@@ -275,7 +275,7 @@
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Accordion Item #2
+                                       Bagaimana Pembelian di website Webiin?
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -295,7 +295,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        Accordion Item #3
+                                        Bagaimana Metode Pembayarannya?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse"
@@ -314,8 +314,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6 align-self-center">
+                    
                     <div class="about-us-img-wrap about-img-left">
-
                     </div>
                 </div>
             </div>
@@ -502,8 +502,8 @@
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
                         <h6 class="section-subtitle ltn__secondary-color"><span><i class="fas fa-square-full"></i></span>
-                            News & Blogs</h6>
-                        <h1 class="section-title">See Our Leatest News <br> & Read Blogs</h1>
+                            INFO DARI WEBIIN</h6>
+                        <h1 class="section-title">Berita &  Blogs</h1>
                     </div>
                 </div>
             </div>

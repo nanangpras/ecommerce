@@ -2,7 +2,8 @@
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-                <a href="{{route('home')}}"><img src="{{url('themes-frontend/img/logo.png')}}" alt="Logo"></a>
+                <a href="{{route('home')}}"> <img src="{{ $company->logo ?? '' }}" alt="Logo"></a>
+          
             </div>
             <button class="ltn__utilize-close">×</button>
         </div>
