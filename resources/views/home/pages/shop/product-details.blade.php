@@ -35,7 +35,9 @@
                                 <div class="product-price">
                                     <span>@currency($detail->price)</span>
                                     <br>
-                                    <del style="color:rgb(62, 61, 61); font-size:14px">@currency($detail->price)</del>
+                                    @if ($detail->price_coret)
+                                        <del style="color:rgb(62, 61, 61); font-size:14px">@currency($detail->price_coret)</del>
+                                    @endif
                                 </div>
                                 <div class="modal-product-meta ltn__product-details-menu-1">
                                     <ul>
@@ -57,7 +59,8 @@
                                 <div>
                                     <strong>Info Produk:</strong>
                                     <div>
-                                        <ul>
+                                        <p>{!!$detail->short_description!!}</p>
+                                        {{-- <ul>
                                             <i class="fas fa-check-circle"> </i>
                                             <span> Kualitas checked by webiin</span>
                                             <br>
@@ -70,7 +73,7 @@
                                             <i class="fas fa-check-circle"> </i>
                                             <span> Akses Dashboard</span>
                                             <br>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>

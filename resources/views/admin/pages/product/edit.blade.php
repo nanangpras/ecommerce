@@ -59,6 +59,16 @@
                                     <input type="number" name="price" value="{{$product->price}}" class="form-control" id="name" aria-describedby="name" placeholder="Masukan harga produk">
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Harga Coret</label>
+                                    <input type="number" name="price_coret" value="{{$product->price_coret}}" class="form-control" id="name" aria-describedby="name" placeholder="Masukan harga produk">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Deskripsi Singkat</label>
+                            <textarea id="summernote_short" name="short_description">{{$product->short_description}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Deskripsi Produk</label>
@@ -106,6 +116,13 @@
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
+                height: 250
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote_short').summernote({
                 height: 250
             });
         });

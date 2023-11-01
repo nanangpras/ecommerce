@@ -58,10 +58,21 @@
                                     <input type="number" name="price" class="form-control" id="name" aria-describedby="name" placeholder="Masukan harga produk">
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Harga Coret</label>
+                                    <input type="number" name="price_coret" class="form-control" id="name" aria-describedby="name" placeholder="Masukan harga coret">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Link</label>
                             <input type="text" name="link" class="form-control" id="link" aria-describedby="name" placeholder="Masukan Link Preview">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Deskripsi Singkat</label>
+                            <textarea id="summernote_short" name="short_description"></textarea>
+                            {{-- <textarea name="description" class="form-control" id="description" cols="30" rows="10">Deskripsi Produk</textarea> --}}
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Deskripsi Produk</label>
@@ -94,6 +105,13 @@
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
+                height: 250
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote_short').summernote({
                 height: 250
             });
         });

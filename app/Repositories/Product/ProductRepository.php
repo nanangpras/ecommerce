@@ -121,12 +121,42 @@ class ProductRepository implements InterfaceProduct
             }
         }
 
+        $storage="storage/product/image_description";
+        $short_description=new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $short_description->loadHTML($request->short_description,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
+        libxml_clear_errors();
+        $short_description_images=$short_description->getElementsByTagName('img');
+        foreach($short_description_images as $img){
+            $src=$img->getAttribute('src');
+            if(preg_match('/data:image/',$src)){
+                preg_match('/data:image\/(?<mime>.*?)\;/',$src,$groups);
+                $mimetype=$groups['mime'];
+                $fileNameContent=uniqid();
+                $fileNameContentRand=substr(md5($fileNameContent),6,6).'_'.time();
+                if (!is_dir($storage)) {
+                    mkdir($storage, 0775, true);
+                }
+                $filepath=("$storage/$fileNameContentRand.$mimetype");
+                $image=Image::make($src)
+                    ->resize(1200,1200)
+                    ->encode($mimetype,100)
+                    ->save(public_path($filepath));
+                $new_src=asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$new_src);
+                $img->setAttribute('class','img-responsive');
+            }
+        }
+
         $product = Product::create([
             'title'         => $request->title,
             'category_id'   => $request->category_id,
             'available_qty' => $request->available_qty,
             'price'         => $request->price,
+            'price_coret'   => $request->price_coret,
             'description'   => $dom->saveHTML(),
+            'short_description' => $short_description->saveHTML(),
             'weight'        => $request->weight,
             'link'          => $request->link,
             'slug'          => Str::slug($request->title),
