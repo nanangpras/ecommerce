@@ -1,5 +1,5 @@
 /*
-    Template Name: Spero
+    Template Name: Webiin
     Description: Construction HTML Template
     Version: 1.0.0
 */
@@ -210,6 +210,8 @@ font-family: 'Montserrat Alternates', sans-serif;
   --ltn__secondary-color-3: #fb412a;
   /* Theme-Rifqi */
   --ltn__secondary-color-4: #00CEC9;
+  /* Theme-Price */
+  --ltn__secondary-color-5: #16A34A;
   /* Lighten */
   --ltn__heading-color: #0B1E33;
   --ltn__paragraph-color: #08244D;
@@ -7235,7 +7237,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   .ltn__product-item-3 .product-img::before {
     display: none; }
   .ltn__product-item-3 .product-info {
-    padding: 25px 30px 15px; }
+    padding: 25px 15px 15px; }
   .ltn__product-item-3 .product-title {
     font-size: 16px;
     margin-bottom: 0; }
@@ -14404,6 +14406,41 @@ input.cart-plus-minus-box {
 .btn-wrapper {
   display: block;
   margin-top: 30px; }
+.btn-small{
+  border-radius: 0;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: var(--ltn__body-font);
+  padding: 5px 15px;
+  text-align: right;
+  border-radius: 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  z-index: 1;
+  margin-right: 15px; }
+  .btn:last-child {
+    margin-right: 0; }
+.btn-preview{
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--ltn__body-font);
+  padding: 5px 15px;
+  text-align: right;
+  border-radius: 15px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  z-index: 1;
+  margin-right: 15px; }
+
+
 
 .btn {
   border-radius: 0;
@@ -14445,6 +14482,14 @@ input.cart-plus-minus-box {
   .theme-btn-3:hover {
     background-color: var(--ltn__secondary-color);
     border-color: var(--ltn__secondary-color);
+    color: var(--white); }
+.theme-btn-5 {
+  background-color: var(--ltn__secondary-color-5);
+  border: 2px solid var(--border-color-9); 
+  color: var(--white);}
+  .theme-btn-5:hover {
+    background-color: var(--ltn__secondary-color-5);
+    border-color: var(--ltn__secondary-color-5);
     color: var(--white); }
 
 .reverse-color {

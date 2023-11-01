@@ -44,7 +44,8 @@
                                 <h3>{{$detail->title}}</h3>
                                 <div class="product-price">
                                     <span>Rp {{$detail->price}}</span>
-                                    <del>Rp {{$detail->price}}</del>
+                                    <br>
+                                    <del style="color:rgb(62, 61, 61); font-size:14px">Rp {{$detail->price}}</del>
                                 </div>
                                 <div class="modal-product-meta ltn__product-details-menu-1">
                                     <ul>
@@ -68,14 +69,10 @@
                                                 @csrf
                                                 <input type="hidden" id="idproduct" name="id" value="{{ $detail->id }}" class="form-control">
                                                 <input type="hidden" id="weight" name="weight" value="{{ $detail->weight }}" class="form-control">
-                                                <button class="theme-btn-1 btn btn-effect-1" type="submit">
+                                                <button class="theme-btn-1 btn-preview btn-effect-1" type="submit">
                                                     <i class="fas fa-shopping-cart"></i>
-                                                    <span>ADD TO CART YA</span>
+                                                    <span> Masukkan Keranjang</span>
                                                 </button>
-                                                {{-- <a href="#" id="add-to-cart" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                                    <i class="fas fa-shopping-cart"></i>
-                                                    <span>ADD TO CART YA</span>
-                                                </a> --}}
                                             </li>
                                         </ul>
                                     </form>
@@ -85,21 +82,17 @@
                                         <li>
                                             @if ($detail->link)
                                                 <a href="{{$detail->link}}" target="_blank" class="">
-                                                    <i class="far fa-eye"></i>
-                                                    <span>Preview Link</span>
+                                                    {{-- <i class="far fa-eye"></i>
+                                                    <span>Preview Link</span> --}}
+                                                    <button class="theme-btn-1 btn-preview  btn-effect-1">
+                                                        Preview</button>
                                                 </a>
                                             @endif
                                         </li>
-                                        {{-- <li>
-                                            <a href="#" class="" title="Compare" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                                <i class="fas fa-exchange-alt"></i>
-                                                <span>Compare</span>
-                                            </a>
-                                        </li> --}}
                                     </ul>
                                 </div>
                                 <hr>
-                                <div class="ltn__social-media">
+                                {{-- <div class="ltn__social-media">
                                     <ul>
                                         <li>Share:</li>
                                         <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
@@ -108,7 +101,7 @@
                                         <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
 
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <hr>
                                 <div class="ltn__safe-checkout">
                                     <h5>Guaranteed Safe Checkout</h5>
