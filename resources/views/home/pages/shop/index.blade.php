@@ -89,16 +89,16 @@
                                                         <h2 class="product-title " style="text-align: left; "><a
                                                                 href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                         </h2>
-                                                        <p style="font-size: .75rem;text-align: left">Teknologi
+                                                        <p style="font-size: .75rem;text-align: left">{{$item->category->name}}
                                                         </p>
                                                     </div>
-                                                    
-                                                    <div class="col-lg-6" style="text-align: right">
-                                                        <a href=""><button class="btn-small theme-btn-5">
-                                                                Demo</button></a>
-
-
-                                                    </div>
+                                                    @if ($item->link)
+                                                        <div class="col-lg-6" style="text-align: right">
+                                                            <a href="{{$item->link}}" target="_blank" class="">
+                                                                <button class="btn-small theme-btn-5">Demo</button>
+                                                            </a>
+                                                        </div>
+                                                    @endif
                                                 </div>
 
                                             </div>

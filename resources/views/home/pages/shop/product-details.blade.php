@@ -119,10 +119,7 @@
                                         <li>
                                             @if ($detail->link)
                                             <a href="{{$detail->link}}" target="_blank" class="">
-                                                {{-- <i class="far fa-eye"></i>
-                                                <span>Preview Link</span> --}}
-                                                <button class="theme-btn-5 btn-preview  btn-effect-1 block">
-                                                    Demo</button>
+                                                <button class="theme-btn-5 btn-preview  btn-effect-1 block">Demo</button>
                                             </a>
                                             @endif
                                         </li>
