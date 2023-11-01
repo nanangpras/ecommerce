@@ -136,7 +136,7 @@
                             </div>
                             <div class="team-info">
                                 <h4><a href="team-details.html">{{$item->title}}</a></h4>
-                                <h6 class="ltn__secondary-color">{{$item->category->name}}</h6>
+                                <h6 class="ltn__secondary-color">{{$item->category->name ?? ''}}</h6>
                             </div>
                             <div class="col-lg-6" style="text-align: right">
                                 <a href="{{$item->link}}" target="_blank" class="">
