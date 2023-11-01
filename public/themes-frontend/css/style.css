@@ -7165,6 +7165,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 .product-price {
   color: var(--ltn__heading-color);
   font-weight: 600; }
+.product-des {
+  color: var(--ltn__secondary-color-4);
+  font-weight: 600; }
 
 .product-price del {
   opacity: 0.6;
@@ -7536,8 +7539,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 .modal-product-info .product-price {
   font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 10px;
-  color: var(--ltn__secondary-color);
+  color: var(--ltn__primary-color);
   line-height: 1.2;
   font-weight: 600; }
 
