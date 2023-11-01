@@ -57,7 +57,7 @@
                                 @foreach ($detail->details as $item)
                                     <tr>
                                         <td>{{$item->product->title}}</td>
-                                        <td>Rp {{$item->product->price}}</td>
+                                        <td>@currency($item->product->price)</td>
                                         <td>{{$item->qty}}</td>
                                         <td>{{$item->transaction_subtotal}}</td>
                                     </tr>

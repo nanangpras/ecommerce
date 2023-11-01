@@ -66,14 +66,14 @@
                                             <td class="cart-product-info">
                                                 <h4><a href="#">{{$item['title']}}</a></h4>
                                             </td>
-                                            <td class="cart-product-price">{{$item['price']}}</td>
+                                            <td class="cart-product-price">@currency($item['price'])</td>
                                             <td class="cart-product-quantity">
                                                 <div class="cart-plus-minus">
                                                     <input type="text" value="{{ $item['qty'] }}" id="qty" name="qty[]" class="cart-plus-minus-box">
                                                     {{-- <input type="hidden" name="product_id[]" value="{{ $item['id'] }}" class="form-control"> --}}
                                                 </div>
                                             </td>
-                                            <td class="cart-product-subtotal">{{$item['price'] * $item['qty']}}</td>
+                                            <td class="cart-product-subtotal">@currency($item['price'] * $item['qty'])</td>
                                         </tr>
                                         <input type="hidden" name="product_id[]" value="{{ $item['product_id'] }}" class="form-control">
                                     @empty
@@ -97,7 +97,7 @@
                             <tbody>
                                 <tr>
                                     <td>Cart Subtotal</td>
-                                    <td>{{$subtotal}}</td>
+                                    <td>@currency($subtotal)</td>
                                 </tr>
                                 <tr>
                                     <td>Kupon</td>
@@ -105,7 +105,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Order Total</strong></td>
-                                    <td><strong>{{$subtotal}}</strong></td>
+                                    <td><strong>@currency($subtotal)</strong></td>
                                 </tr>
                             </tbody>
                         </table>

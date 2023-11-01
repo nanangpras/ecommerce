@@ -60,7 +60,7 @@
                                             <img src="{{$img->image}}" alt="" width="100" height="100">
                                         @endforeach
                                     </td>
-                                    <td>{{$item->price}}</td>
+                                    <td>@currency($item->price)</td>
                                     <td>{{$item->available_qty}}</td>
                                     <td>{{$item->weight}}</td>
                                     <td>

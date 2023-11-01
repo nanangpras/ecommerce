@@ -35,7 +35,7 @@
             <div class="card card-transparent stats-card">
                 <div class="card-body">
                     <div class="stats-info">
-                        <h5 class="card-title">Rp {{$success ?? '0'}}</h5>
+                        <h5 class="card-title">@currency($success ?? '0')</h5>
                         <p class="stats-text"><span class="badge badge-success">Selesai (Rp)</span></p>
                     </div>
                     <div class="stats-icon change-success">
@@ -48,7 +48,7 @@
             <div class="card card-transparent stats-card">
                 <div class="card-body">
                     <div class="stats-info">
-                        <h5 class="card-title">Rp {{$pending ?? '0'}}</h5>
+                        <h5 class="card-title">@currency($pending ?? '0')</h5>
                         <p class="stats-text"><span class="badge badge-warning">Pending (Rp)</span></p>
                     </div>
                     <div class="stats-icon change-success">

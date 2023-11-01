@@ -33,9 +33,9 @@
                             <div class="modal-product-info shop-details-info pl-0">
                                 <h3>{{$detail->title}}</h3>
                                 <div class="product-price">
-                                    <span>Rp {{$detail->price}}</span>
+                                    <span>@currency($detail->price)</span>
                                     <br>
-                                    <del style="color:rgb(62, 61, 61); font-size:14px">Rp {{$detail->price}}</del>
+                                    <del style="color:rgb(62, 61, 61); font-size:14px">@currency($detail->price)</del>
                                 </div>
                                 <div class="modal-product-meta ltn__product-details-menu-1">
                                     <ul>
@@ -352,8 +352,8 @@
                         </h2>
                         <div class="product-price">
                             <span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Rp
-                                {{$item->price}}</span>
-                            <del>Rp {{$item->price}}</del>
+                                @currency($item->price)</span>
+                            <del>@currency($item->price)</del>
                         </div>
                     </div>
                 </div>

@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->code}}</td>
-                                    <td>{{$item->transaction_total}}</td>
+                                    <td>@currency($item->transaction_total)</td>
                                     <td>{{$item->transaction_status}}</td>
                                     <td>{{$item->coupon_id ?? ''}}</td>
                                     <td>{{$item->bank_name}}</td>

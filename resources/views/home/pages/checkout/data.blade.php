@@ -130,7 +130,7 @@
                                     @forelse ($cart as $item)
                                         <tr>
                                             <td>{{$item['title']}} <strong>× {{$item['qty']}}</strong></td>
-                                            <td>{{$item['qty'] * $item['price']}}</td>
+                                            <td>@currency($item['qty'] * $item['price'])</td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -143,7 +143,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong>Order Total</strong></td>
-                                        <td id="order_total"><strong>{{$subtotal}}</strong></td>
+                                        <td id="order_total"><strong>@currency($subtotal)</strong></td>
                                     </tr>
                                 </tbody>
                             </table>

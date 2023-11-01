@@ -41,9 +41,9 @@
                                 @foreach ($detail->details as $item)
                                     <tr>
                                         <td>{{$item->product->title}}</td>
-                                        <td>Rp {{$item->product->price}}</td>
+                                        <td>@currency($item->product->price)</td>
                                         <td>{{$item->qty}}</td>
-                                        <td>{{$item->transaction_subtotal}}</td>
+                                        <td>@currency($item->transaction_subtotal)</td>
                                     </tr>
                                     @php
                                         $sumtotal += $item->transaction_subtotal;
@@ -53,7 +53,7 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="3">Total</td>
-                                    <td colspan="3">Rp {{$sumtotal}}</td>
+                                    <td colspan="3">@currency($sumtotal)</td>
                                 </tr>
                             </tfoot>
                         </table>

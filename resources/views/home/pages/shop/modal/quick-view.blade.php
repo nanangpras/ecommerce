@@ -11,8 +11,8 @@
                    <div class="modal-product-info">
                        <h3><a href="{{route('product.detail',$detail->slug)}}">{{$detail->title}}</a></h3>
                        <div class="product-price">
-                           <span>Rp {{$detail->price}}</span>
-                           <del>Rp {{$detail->price}}</del>
+                           <span>@currency($detail->price)</span>
+                           <del>@currency($detail->price)</del>
                        </div>
                        <hr>
                        <div class="modal-product-brief">
