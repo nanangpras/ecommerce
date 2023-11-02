@@ -44,6 +44,7 @@
                                     <div class="ltn__product-item ltn__product-item-3 text-center">
                                         <div class="product-img">
                                             <a href="{{route('product.detail',$item->slug)}}"><img
+                                                    style="width: 300px; height:200px; object-fit:cover; "
                                                     src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}"
                                                     alt="#"></a>
                                             <div class="product-badge">
@@ -51,53 +52,29 @@
                                                     <li class="sale-badge">New</li>
                                                 </ul>
                                             </div>
-                                            {{-- <div class="product-hover-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#" title="Quick View" data-bs-toggle="modal"
-                                                            data-bs-target="#quick_view_modal">
-                                                            <i class="far fa-eye"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                                            data-bs-target="#add_to_cart_modal">
-                                                            <i class="fas fa-shopping-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="Wishlist" data-bs-toggle="modal"
-                                                            data-bs-target="#liton_wishlist_modal">
-                                                            <i class="far fa-heart"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div> --}}
                                         </div>
                                         <div class="product-info">
                                             <div class="product-ratting">
-                                                {{-- <ul>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                </ul> --}}
                                             </div>
                                             <div>
                                                 <div class="row">
                                                     <div class="col-lg-6">
-                                                        <h2 class="product-title " style="text-align: left; "><a
+                                                        <h2 class="product-title " style="text-align: left;display: block;
+                                                        white-space: nowrap;
+                                                        overflow: hidden;
+                                                        text-overflow: ellipsis; "><a
                                                                 href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                         </h2>
-                                                        <p style="font-size: .75rem;text-align: left">{{$item->category->name}}
+                                                        <p style="font-size: .75rem;text-align: left">
+                                                            {{$item->category->name}}
                                                         </p>
                                                     </div>
                                                     @if ($item->link)
-                                                        <div class="col-lg-6" style="text-align: right">
-                                                            <a href="{{$item->link}}" target="_blank" class="">
-                                                                <button class="btn-small theme-btn-5">Demo</button>
-                                                            </a>
-                                                        </div>
+                                                    <div class="col-lg-6" style="text-align: right">
+                                                        <a href="{{$item->link}}" target="_blank" class="">
+                                                            <button class="btn-small theme-btn-5">Demo</button>
+                                                        </a>
+                                                    </div>
                                                     @endif
                                                 </div>
 

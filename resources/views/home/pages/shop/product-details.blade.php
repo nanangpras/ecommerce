@@ -13,7 +13,8 @@
                                     @foreach ($detail->productImages as $item)
                                     <div class="single-large-img">
                                         <a href="{{$item->image}}" data-rel="lightcase:myCollection">
-                                            <img src="{{$item->image}}" alt="Image">
+                                            <img src="{{$item->image}}" alt="Image"
+                                                style="height: 400px; object-fit:cover; width:470px;">
                                         </a>
                                     </div>
                                     @endforeach
@@ -22,7 +23,8 @@
                                 <div class="ltn__shop-details-small-img slick-arrow-2">
                                     @foreach ($detail->productImages as $item)
                                     <div class="single-small-img">
-                                        <img src="{{$item->image}}" alt="Image">
+                                        <img src="{{$item->image}}" alt="Image"
+                                            style="height: 100px; object-fit:cover; width:100px; border-radius:15px;  ">
                                     </div>
                                     @endforeach
 
@@ -36,7 +38,8 @@
                                     <span>@currency($detail->price)</span>
                                     <br>
                                     @if ($detail->price_coret)
-                                        <del style="color:rgb(62, 61, 61); font-size:14px">@currency($detail->price_coret)</del>
+                                    <del
+                                        style="color:rgb(62, 61, 61); font-size:14px">@currency($detail->price_coret)</del>
                                     @endif
                                 </div>
                                 <div class="modal-product-meta ltn__product-details-menu-1">
@@ -122,7 +125,8 @@
                                         <li>
                                             @if ($detail->link)
                                             <a href="{{$detail->link}}" target="_blank" class="">
-                                                <button class="theme-btn-5 btn-preview  btn-effect-1 block">Demo</button>
+                                                <button
+                                                    class="theme-btn-5 btn-preview  btn-effect-1 block">Demo</button>
                                             </a>
                                             @endif
                                         </li>
@@ -310,7 +314,8 @@
                 <div class="ltn__product-item ltn__product-item-3 text-center">
                     <div class="product-img">
                         <a href="{{route('product.detail',$item->slug)}}"><img
-                                src="{{$item->productImages->first()->image ?? ''}}" alt="#"></a>
+                                src="{{$item->productImages->first()->image ?? ''}}" alt="#"
+                                style="height: 200px; width:300px;  object-fit:cover; border-radius:15px; "></a>
                         <div class="product-badge">
                             <ul>
                                 <li class="sale-badge">New</li>
@@ -324,30 +329,10 @@
                                         <i class="far fa-eye"></i>
                                     </a>
                                 </li>
-                                {{-- <li>
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Wishlist" data-bs-toggle="modal"
-                                        data-bs-target="#liton_wishlist_modal">
-                                        <i class="far fa-heart"></i></a>
-                                </li> --}}
                             </ul>
                         </div>
                     </div>
                     <div class="product-info">
-                        {{-- <div class="product-ratting">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                <li><a href="#"><i class="far fa-star"></i></a></li>
-                            </ul>
-                        </div> --}}
                         <h2 class="product-title"><a href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                         </h2>
                         <div class="product-price">
