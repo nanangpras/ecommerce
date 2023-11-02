@@ -34,13 +34,16 @@
                                     <input type="hidden" id="result_domain" name="title_domain">
                                     <input type="hidden" id="iddomain" name="id" value="007" class="form-control">
                                     <input type="hidden" id="qty" value="1" name="qty" class="cart-plus-minus-box">
-                                    <button type="submit" class="btn theme-btn-1 btn-effect-2" id="btn_add_domain" style="display: none;">Tambahkan</button>
+                                    <button type="submit" class="btn theme-btn-1 btn-effect-2" id="btn_add_domain"
+                                        style="display: none;">Tambahkan</button>
                                 </form>
-                                {{-- <button type="button" class="btn theme-btn-1 btn-effect-2" id="btn_cek_cookie" style="display: none;">Cek</button> --}}
+                                {{-- <button type="button" class="btn theme-btn-1 btn-effect-2" id="btn_cek_cookie"
+                                    style="display: none;">Cek</button> --}}
                             </div>
                         </div>
                     </div>
-                {{-- </form> --}}
+                    {{--
+                </form> --}}
             </div>
             <div class="col-lg-12">
                 <div class="shoping-cart-inner">
@@ -58,24 +61,29 @@
                                 </thead> --}}
                                 <tbody>
                                     @forelse ($cart as $item)
-                                        <tr>
-                                            <td class="cart-product-remove"><a href="{{ route('delete-cart',$item['product_id'])}}">X</a></td>
-                                            <td class="cart-product-image">
-                                                <a href="#"><img src="{{$item['image']}}" alt="#"></a>
-                                            </td>
-                                            <td class="cart-product-info">
-                                                <h4><a href="#">{{$item['title']}}</a></h4>
-                                            </td>
-                                            <td class="cart-product-price">@currency($item['price'])</td>
-                                            <td class="cart-product-quantity">
-                                                <div class="cart-plus-minus">
-                                                    <input type="text" value="{{ $item['qty'] }}" id="qty" name="qty[]" class="cart-plus-minus-box">
-                                                    {{-- <input type="hidden" name="product_id[]" value="{{ $item['id'] }}" class="form-control"> --}}
-                                                </div>
-                                            </td>
-                                            <td class="cart-product-subtotal">@currency($item['price'] * $item['qty'])</td>
-                                        </tr>
-                                        <input type="hidden" name="product_id[]" value="{{ $item['product_id'] }}" class="form-control">
+                                    <tr>
+                                        <td class="cart-product-remove"><a
+                                                href="{{ route('delete-cart',$item['product_id'])}}">X</a></td>
+                                        <td class="cart-product-image">
+                                            <a href="#"><img src="{{$item['image']}}" alt="#"
+                                                    style="height: 100px; width:100px;  object-fit:cover; border-radius:15px; border-radius:15px; border-color:rgb(58, 58, 58); border:1px solid;"></a>
+                                        </td>
+                                        <td class="cart-product-info">
+                                            <h4><a href="#">{{$item['title']}}</a></h4>
+                                        </td>
+                                        <td class="cart-product-price">@currency($item['price'])</td>
+                                        <td class="cart-product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input type="text" value="{{ $item['qty'] }}" id="qty" name="qty[]"
+                                                    class="cart-plus-minus-box">
+                                                {{-- <input type="hidden" name="product_id[]" value="{{ $item['id'] }}"
+                                                    class="form-control"> --}}
+                                            </div>
+                                        </td>
+                                        <td class="cart-product-subtotal">@currency($item['price'] * $item['qty'])</td>
+                                    </tr>
+                                    <input type="hidden" name="product_id[]" value="{{ $item['product_id'] }}"
+                                        class="form-control">
                                     @empty
                                     <tr>
                                         <td colspan="6"> Tidak ada keranjang belanja</td>
@@ -84,7 +92,8 @@
 
                                     <tr class="cart-coupon-row">
                                         <td>
-                                            <button type="submit" class="btn theme-btn-2 btn-effect-2" id="update_cart">Update Cart</button>
+                                            <button type="submit" class="btn theme-btn-2 btn-effect-2"
+                                                id="update_cart">Update Cart</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -110,7 +119,8 @@
                             </tbody>
                         </table>
                         <div class="btn-wrapper text-right text-end">
-                            <a href="{{route('checkout.index')}}" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
+                            <a href="{{route('checkout.index')}}" class="theme-btn-1 btn btn-effect-1">Proceed to
+                                checkout</a>
                         </div>
                     </div>
                 </div>
@@ -118,12 +128,12 @@
         </div>
     </div>
 </div>
-<meta name="csrf-token" content="{{ csrf_token() }}" >
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- SHOPING CART AREA END -->
 @endsection
 @push('after-scripts')
-    <script>
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function () {
             $("#btn_coupon").click(function (e) {
                 let code_coupon = $("#code_coupon").val();
@@ -229,5 +239,5 @@
 
             // });
         });
-    </script>
+</script>
 @endpush
