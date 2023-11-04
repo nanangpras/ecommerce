@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Transaction;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Repositories\Transaction\InterfaceTransaction;
@@ -27,7 +28,7 @@ class TransactionRepository implements InterfaceTransaction
 
     public function myTransaction($id)
     {
-        return $this->transaction->where('user_id',$id)->get();
+        return $this->transaction->with('details')->where('user_id',$id)->get();
     }
 
     public function getById($id)
@@ -43,6 +44,29 @@ class TransactionRepository implements InterfaceTransaction
     public function income()
     {
         return $this->transaction->where('transaction_status', 'SUCCESS')->sum('transaction_total');
+    }
+
+    public function getCategoryByTransactionUser($user)
+    {
+        $trx = Category::join('products', 'categories.id', '=', 'products.category_id')
+                        ->join('transaction_details', 'products.id', '=', 'transaction_details.product_id')
+                        ->join('transactions', 'transaction_details.transaction_id', '=', 'transactions.id')
+                        ->where('transactions.user_id', $user) // Ganti dengan ID transaksi yang sesuai
+                        ->select('categories.*')
+                        ->distinct()
+                        ->get();
+        return $trx;
+    }
+
+    public function transaactionProductUser($user,$category)
+    {
+        $product = Product::join('transaction_details','products.id', '=', 'transaction_details.product_id')
+                            ->join('transactions', 'transaction_details.transaction_id', '=', 'transactions.id')
+                            ->join('categories','products.category_id', '=', 'categories.id')
+                            ->where('transactions.user_id',$user)
+                            ->where('categories.name', $category)
+                            ->get();
+        return $product;
     }
 
     public function sumSuccsesUser($user_id)

@@ -66,6 +66,7 @@ Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::get('/member/transaction/list/{id}',[MemberDashboradController::class, 'myTransaaction'])->name('member.mytransaction');
     Route::post('/member/transaction/callback',[CheckoutController::class,'postCallback'])->name('post.callback');
 
+    Route::get('member/transaction/kategori/{user}/{category}',[MemberDashboradController::class,'myTransaactionProduct'])->name('product.mytransaction');
     Route::post('/add-domain',[HomeController::class,'addDomainCookie'])->name('add.domain');
     Route::get('/cart',[CartController::class,'index'])->name('cart.index');
     Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');

@@ -118,13 +118,24 @@
             <li class="{{set_active('member.dashboard')}}">
                 <a href="{{route('member.dashboard')}}"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
             </li>
-
+            <li class="sidebar-title">
+                Produk & Service
+            </li>
+            @forelse ($productUser as $item)
+                <li class="active">
+                    <a href="{{route('product.mytransaction', ['user' => Auth::user()->id, 'category' => $item->name])}}" ><i class="material-icons">web_asset</i>{{$item->name}}</a>
+                </li>
+            @empty
+                <li class="#">
+                    <a href="#" ><i class="material-icons">web_asset</i>Anda belum membeli produk</a>
+                </li>
+            @endforelse
 
             <li class="sidebar-title">
                 Transaksi
             </li>
             <li class="{{set_active(['member.detail.transaction','member.mytransaction'])}}">
-                <a href="{{route('member.mytransaction',Auth::user()->id)}}" ><i class="material-icons">paid</i>Transaksi Saya</a>
+                <a href="{{route('member.mytransaction',Auth::user()->id)}}" ><i class="material-icons">paid</i>Invoice</a>
             </li>
             <li class="sidebar-title">
                 Shop

@@ -29,23 +29,42 @@ class MemberDashboradController extends Controller
     public function index()
     {
         $popularProduct = $this->productService->popularProduct();
-        $pending = $this->trxService->transactionPendingUser(Auth::user()->id);
-        $success = $this->trxService->transactionSuccessUser(Auth::user()->id);
-        $cancel = $this->trxService->transactionCancelUser(Auth::user()->id);
-        return view('member.pages.dashboard.dashboard-member',compact('popularProduct','pending','success','cancel'));
+        $pending        = $this->trxService->transactionPendingUser(Auth::user()->id);
+        $success        = $this->trxService->transactionSuccessUser(Auth::user()->id);
+        $cancel         = $this->trxService->transactionCancelUser(Auth::user()->id);
+        $productUser    = self::categoryProductTransaction(Auth::user()->id);
+        return view('member.pages.dashboard.dashboard-member',compact('popularProduct','pending','success','cancel','productUser'));
     }
 
     public function detailTransaction($code)
     {
         $detail = $this->trxService->getByCode($code);
+        $productUser    = self::categoryProductTransaction(Auth::user()->id);
         // dd($detail);
-        return view('member.pages.transaction.detail',compact('detail'));
+        return view('member.pages.transaction.detail',compact('detail','productUser'));
     }
 
     public function myTransaaction($id)
     {
         $user_id = Auth::user()->id;
         $data = $this->trxService->getMyTransaction($user_id);
-        return view('member.pages.transaction.data',compact('data'));
+        $productUser    = self::categoryProductTransaction(Auth::user()->id);
+        return view('member.pages.transaction.data',compact('data','productUser'));
+    }
+
+    public function myTransaactionProduct($user,$category)
+    {
+        $data = $this->trxService->productUserBuy($user,$category);
+        $productUser    = self::categoryProductTransaction(Auth::user()->id);
+        return view('member.pages.transaction.product.data',compact('data','productUser'));
+        // return dd($data);
+    }
+
+    public function categoryProductTransaction($user)
+    {
+        $user = Auth::user()->id;
+        $data = $this->trxService->cekCategoryProductTransaction($user);
+        return $data;
+        // dd($data);
     }
 }

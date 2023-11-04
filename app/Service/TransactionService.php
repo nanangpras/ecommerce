@@ -46,6 +46,16 @@ class TransactionService
         return $this->trxRepo->income();
     }
 
+    public function cekCategoryProductTransaction($user)
+    {
+        return $this->trxRepo->getCategoryByTransactionUser($user);
+    }
+
+    public function productUserBuy($user,$category)
+    {
+        return $this->trxRepo->transaactionProductUser($user,$category);
+    }
+
     public function transactionPending()
     {
         return $this->trxRepo->sumPendingPay();
