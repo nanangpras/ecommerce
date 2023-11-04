@@ -35,7 +35,7 @@
             <div class="card card-transparent stats-card">
                 <div class="card-body">
                     <div class="stats-info">
-                        <h5 class="card-title">{{$income}}</h5>
+                        <h5 class="card-title">@currency($income)</h5>
                         <p class="stats-text"><span class="badge badge-success">Income (Rp)</span></p>
                     </div>
                     <div class="stats-icon change-success">
@@ -48,7 +48,7 @@
             <div class="card card-transparent stats-card">
                 <div class="card-body">
                     <div class="stats-info">
-                        <h5 class="card-title">Rp {{$pending}}</h5>
+                        <h5 class="card-title">@currency($pending)</h5>
                         <p class="stats-text"><span class="badge badge-warning">Pending (Rp)</span></p>
                     </div>
                     <div class="stats-icon change-success">
