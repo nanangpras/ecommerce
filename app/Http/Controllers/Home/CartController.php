@@ -88,14 +88,15 @@ class CartController extends Controller
                 $reesult_coupon = $subtotal - $coupon->discount_rate;
             }
             if ($coupon->type == 'percentage') {
-                $percent = $coupon->discount_rate / 100 * $subtotal;
+                $percent        = $coupon->discount_rate / 100 * $subtotal;
                 $reesult_coupon = $subtotal - $percent;
             }
             $arr[] = array(
-                'result_total' => $reesult_coupon,
-                'rate'  => $coupon->discount_rate,
-                'type'  => $coupon->type,
-                'idcoupon' => $coupon->id,
+                'result_total'  => $reesult_coupon,
+                'rate'          => $coupon->discount_rate,
+                'type'          => $coupon->type,
+                'idcoupon'      => $coupon->id,
+                'description'   => $coupon->description,
             );
         }
 

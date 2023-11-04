@@ -21,7 +21,7 @@ class CouponRepository implements InterfaceCoupon
 
     public function getAll()
     {
-        return $this->coupon->get();
+        return $this->coupon->orderBy('created_at','desc')->get();
     }
 
     public function getById($id)
@@ -39,6 +39,7 @@ class CouponRepository implements InterfaceCoupon
         $coupon                 = new $this->coupon;
         $coupon->name           = $request->name;
         $coupon->code           = $request->code;
+        $coupon->description    = $request->description;
         $coupon->type           = $request->type;
         $coupon->discount_rate  = $request->discount_rate;
         $coupon->start_date     = $request->start_date;

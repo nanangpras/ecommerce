@@ -27,13 +27,24 @@
                     <h5 class="card-title">Input Kupon</h5>
                     <form action="{{route('coupon.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nama</label>
-                            <input type="text" name="name" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Nama</label>
+                                    <input type="text" name="name" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Code</label>
+                                    <input type="text" name="code" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Code</label>
-                            <input type="text" name="code" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
+                            <label for="exampleInputEmail1">Deskripsi</label>
+                            <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+                            {{-- <input type="text" name="code" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori"> --}}
                         </div>
                         <div class="row">
                             <div class="col">

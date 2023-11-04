@@ -138,7 +138,7 @@
                                         </tr>
                                     @endforelse
                                     <tr>
-                                        <td><strong>Kupon</strong></td>
+                                        <td><strong>Kupon</strong> <br> <div id="description_coupon">kupon deskripsi untuk anda</div></td>
                                         <td id="rate_coupon"><strong>0</strong></td>
                                     </tr>
                                     <tr>
@@ -183,21 +183,24 @@
                     },
                     // dataType: "dataType",
                     success: function (response) {
-                        console.log(response);
+                        // console.log(response);
 
                         $.each(response, function (key, value) {
                             const element       = $("#order_total");
                             const element_total = $("#trx_total");
                             const idcoupon      = $("#idcoupon");
+                            const description   = $("#description_coupon");
                             if (value.type == 'numeric') {
                                 $("#rate_coupon").text(value.rate);
                                 element.text(value.result_total);
+                                description.text(value.description);
                                 element_total.val(value.result_total);
                                 idcoupon.val(value.idcoupon);
                             }
                             if (value.type == 'percentage') {
                                 $("#rate_coupon").text(value.rate);
                                 element.text(value.result_total);
+                                description.text(value.description);
                                 element_total.val(value.result_total);
                                 idcoupon.val(value.idcoupon);
                             }

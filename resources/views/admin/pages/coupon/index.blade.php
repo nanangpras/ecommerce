@@ -62,11 +62,11 @@
                                     <td>{{$item->end_date}}</td>
                                     <td>{{$item->counter ?? '0'}}</td>
                                     <td>
-                                        <a href="{{route('coupon.edit',$item->id)}}" class="btn btn-secondary">Edit</a>
+                                        <a href="{{route('coupon.edit',$item->id)}}" class="btn btn-sm btn-secondary">Edit</a>
                                         <form action="{{ route('coupon.destroy',$item->id) }}" method="POST" style="display: inline-block;">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger" value="Delete"
+                                            <button type="submit" class="btn btn-sm btn-danger" value="Delete"
                                                 onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data {{ $item->name }} ?')">
                                                  Hapus
                                             </button>
