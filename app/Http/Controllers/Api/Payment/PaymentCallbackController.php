@@ -19,18 +19,21 @@ class PaymentCallbackController extends Controller
             if ($callback->isSuccess()) {
                 Transaction::where('code', $order->code)->update([
                     'transaction_status' => 'SUCCESS',
+                    'progress_status'    => 'Diterima',
                 ]);
             }
 
             if ($callback->isExpire()) {
                 Transaction::where('code', $order->code)->update([
                     'transaction_status' => 'EXPIRED',
+                    'progress_status'    => 'Selesai',
                 ]);
             }
 
             if ($callback->isCancelled()) {
                 Transaction::where('code', $order->code)->update([
                     'transaction_status' => 'CANCEL',
+                    'progress_status'    => 'Selesai',
                 ]);
             }
 
