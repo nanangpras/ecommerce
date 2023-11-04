@@ -33,10 +33,11 @@
                                 <th>No</th>
                                 <th>Kode</th>
                                 <th>Total</th>
-                                <th>Status</th>
                                 <th>Kupon</th>
                                 <th>Bank</th>
                                 <th>VA Number</th>
+                                <th>Status</th>
+                                <th>Progress</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -46,12 +47,41 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->code}}</td>
                                     <td>@currency($item->transaction_total)</td>
-                                    <td>{{$item->transaction_status}}</td>
                                     <td>{{$item->coupon_id ?? ''}}</td>
                                     <td>{{$item->bank_name}}</td>
                                     <td>{{$item->va_number ?? ''}}</td>
+                                    <td>{{$item->transaction_status}}</td>
+                                    <td>{{$item->progress_status}}</td>
                                     <td>
-                                        <a href="{{route('transaction.detail',$item->code)}}" class="btn btn-secondary">Detail</a>
+                                        <a href="{{route('transaction.detail',$item->code)}}" class="btn btn-sm btn-secondary">Detail</a>
+
+                                            <button class="btn btn-sm btn-outline-info dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Progress</button>
+                                            <div class="dropdown-menu">
+                                              <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form').submit();">Pending</a>
+                                              <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-terima').submit();">Diterima</a>
+                                              <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-proses').submit();">Proses</a>
+                                              <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-selesai').submit();">Selesai</a>
+                                            </div>
+                                            <form id="progress-form" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="progress_status" value="Pending">
+                                            </form>
+                                            <form id="progress-form-terima" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="progress_status" value="Diterima">
+                                            </form>
+                                            <form id="progress-form-proses" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="progress_status" value="Proses">
+                                            </form>
+                                            <form id="progress-form-selesai" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="progress_status" value="Selesai">
+                                            </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -70,6 +100,5 @@
 
 @endsection
 @push('after-scripts')
-
 @endpush
 

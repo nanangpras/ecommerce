@@ -95,6 +95,7 @@ Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
     Route::post('/role/add',[RoleController::class,'add'])->name('role.store');
     Route::get('transaction',[AdminDashboardController::class,'listTransactions'])->name('transaction.list');
     Route::get('/transaction/detail/{code}',[AdminDashboardController::class, 'detailTransactions'])->name('transaction.detail');
+    Route::patch('/transaction/update/progress/{id}',[AdminDashboardController::class,'updateProgressTrx'])->name('transaction.update-progress');
 });
 
 

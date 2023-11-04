@@ -46,6 +46,17 @@ class TransactionRepository implements InterfaceTransaction
         return $this->transaction->where('transaction_status', 'SUCCESS')->sum('transaction_total');
     }
 
+    public function updateProgressTransaction(Request $request,$id)
+    {
+        $update = $this->transaction->where('code',$id)->first();
+        // if ($request->progress_status == "Proses") {
+        //     $update->where('transaction_status','SUCCESS')
+        // }
+        $update->progress_status = $request->progress_status;
+        $update->save();
+        return $update->fresh();
+    }
+
     public function getCategoryByTransactionUser($user)
     {
         $trx = Category::join('products', 'categories.id', '=', 'products.category_id')

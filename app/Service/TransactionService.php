@@ -41,6 +41,11 @@ class TransactionService
         return $this->trxRepo->update($request,$id);
     }
 
+    public function updateProgressTransaction(Request $request, $id)
+    {
+        return $this->trxRepo->updateProgressTransaction($request,$id);
+    }
+
     public function income()
     {
         return $this->trxRepo->income();

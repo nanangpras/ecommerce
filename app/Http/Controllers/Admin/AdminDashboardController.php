@@ -42,4 +42,10 @@ class AdminDashboardController extends Controller
         $detail = $this->trxService->getByCode($code);
         return view('admin.pages.transactions.detail',compact('detail'));
     }
+
+    public function updateProgressTrx(Request $request, $id)
+    {
+        $this->trxService->updateProgressTransaction($request, $id);
+        return redirect()->route('transaction.list')->with('success','Progress berhasil diupdate');
+    }
 }

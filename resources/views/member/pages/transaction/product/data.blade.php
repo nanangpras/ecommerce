@@ -34,6 +34,7 @@
                                 <th>Kode</th>
                                 <th>Produk</th>
                                 <th>Status</th>
+                                <th>Progress</th>
                                 <th>Qty</th>
                                 {{-- <th>Gambar</th> --}}
                                 {{-- <th>Aksi</th> --}}
@@ -46,6 +47,7 @@
                                     <td>{{$item->code}}</td>
                                     <td>{{$item->title}}</td>
                                     <td>{{$item->transaction_status}}</td>
+                                    <td>{{$item->progress_status}}</td>
                                     <td>{{$item->qty}}</td>
                                     {{-- <td>{{$item->qty}}</td> --}}
                                     {{-- <td> --}}
