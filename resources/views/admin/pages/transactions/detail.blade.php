@@ -56,7 +56,13 @@
                                 @endphp
                                 @foreach ($detail->details as $item)
                                     <tr>
-                                        <td>{{$item->product->title}}</td>
+                                        <td>{{$item->product->title}}
+                                            <br>
+                                            @if ($item->product->attachment || $item->product->attachment_link)
+                                                <a href="{{$item->product->attachment_link}}" target="_blank" class="btn btn-sm btn-outline-warning" >link</a>
+                                                <a href="{{asset($item->product->attachment)}}" class="btn btn-sm btn-outline-success" >berkas</a>
+                                            @endif
+                                        </td>
                                         <td>@currency($item->product->price)</td>
                                         <td>{{$item->qty}}</td>
                                         <td>{{$item->transaction_subtotal}}</td>
