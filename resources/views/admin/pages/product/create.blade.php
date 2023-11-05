@@ -65,9 +65,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Link</label>
-                            <input type="text" name="link" class="form-control" id="link" aria-describedby="name" placeholder="Masukan Link Preview">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Link</label>
+                                    <input type="text" name="link" class="form-control" id="link" aria-describedby="name" placeholder="Masukan Link Preview">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Attachment</label>
+                                    <input type="file" name="attachment" id="attachment" class="form-control" accept="application/zip">
+                                    {{-- <input type="text" name="attachment" class="form-control" id="link" aria-describedby="name" placeholder="Masukan Link Preview"> --}}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Attachment Link</label>
+                                    <input type="text" name="attachment_link" class="form-control" id="link" aria-describedby="name" placeholder="Masukan attachment Link">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Deskripsi Singkat</label>

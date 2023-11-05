@@ -17,6 +17,8 @@ class Product extends Model
         'available_qty',
         'price',
         'price_coret',
+        'attachment',
+        'attachment_link',
         'slug',
         'link',
         'weight',

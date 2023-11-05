@@ -166,6 +166,8 @@ class ProductRepository implements InterfaceProduct
             'short_description' => $short_description->saveHTML(),
             'weight'        => $request->weight,
             'link'          => $request->link,
+            'attachment'    => $this->uploadImages($request->attachment,'image/attachment'),
+            'attachment_link'=> $request->attachment_link,
             'slug'          => Str::slug($request->title),
         ]);
 
