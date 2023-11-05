@@ -49,6 +49,7 @@
                                     <div class="logo-box"><a href="#" class="logo-text">Login</a></div>
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
+                                        <input type="hidden" name="url" value="{{URL::previous()}}">
                                         <div class="form-group">
                                             <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" aria-describedby="emailHelp" placeholder="Enter email">
 

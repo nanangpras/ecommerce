@@ -28,10 +28,14 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $url = $request->url;
 
         if (Auth::user() && Auth::user()->role == 'admin') {
             return redirect()->route('admin.dashboard');
         }elseif(Auth::user() && Auth::user()->role == 'user'){
+            if ($url) {
+                return redirect()->to($url);
+            }
             return redirect()->route('member.dashboard');
         }else{
             Auth::guard('web')->logout();
