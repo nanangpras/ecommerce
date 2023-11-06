@@ -43,7 +43,7 @@ class ShopController extends Controller
             $prod->where('title', 'like', '%'.$request->input('search').'%');
             // $prod->whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$request->input('search')]);
         }
-        $product=$prod->paginate(4);
+        $product=$prod->paginate(10);
 
         // if ($search = $request->query('search')) {
         //     $search =  str_replace('-',' ',Str::slug($search));
