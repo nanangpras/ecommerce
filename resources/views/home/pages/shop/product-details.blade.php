@@ -338,7 +338,11 @@
                         <div class="product-price">
                             <span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Rp
                                 @currency($item->price)</span>
-                            <del>@currency($item->price)</del>
+                                @if ($item->price_coret)
+                                <del
+                                    style="color:rgb(62, 61, 61); font-size:14px">@currency($item->price_coret)</del>
+                                @endif
+                            {{-- <del>@currency($item->price)</del> --}}
                         </div>
                     </div>
                 </div>
