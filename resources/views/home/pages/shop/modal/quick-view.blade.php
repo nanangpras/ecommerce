@@ -12,11 +12,13 @@
                        <h3><a href="{{route('product.detail',$detail->slug)}}">{{$detail->title}}</a></h3>
                        <div class="product-price">
                            <span>@currency($detail->price)</span>
-                           <del>@currency($detail->price)</del>
+                           @if($detail->price_coret)
+                            <del>@currency($detail->price_coret)</del>
+                           @endif
                        </div>
                        <hr>
                        <div class="modal-product-brief">
-                           <p>{{$detail->description}}</p>
+                           <p>{!!$detail->description!!}</p>
                        </div>
                        <div class="modal-product-meta ltn__product-details-menu-1 d-none">
                            <ul>
