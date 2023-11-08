@@ -60,6 +60,12 @@
                                               <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form').submit();">Pending</a>
                                               <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-terima').submit();">Diterima</a>
                                               <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-proses').submit();">Proses</a>
+                                              <a class="dropdown-item" href="#" data-toggle="modal"
+                                                id="btnModalProgress" data-target="#exampleModal" data-title="Peringatan"
+                                                data-key="progress_done"
+                                                data-remote="{{ route('transaction.detail', $item->code) }}">
+                                                + Sub
+                                            </a>
                                               <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-selesai').submit();">Selesai</a>
                                             </div>
                                             <form id="progress-form" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
@@ -95,10 +101,64 @@
 
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+{{-- <div class="modal fade" id="modalSub" style="display: none"> --}}
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Progress Selesai</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="material-icons">close</i>
+            </button>
+        </div>
+        <div id="loader">
+            <div class="text-center mt-2 mb-2" style="position: absolute; left: 0; right: 0;">
+                <img src="{{ url('themes/assets/icons/loader.gif') }}">
+            </div>
+        </div>
+        <div id="content_subcategory">
+
+        </div>
+    </div>
+</div>
+</div>
 
 
 
 @endsection
 @push('after-scripts')
+<script>
+    $(document).on('click', '#btnModalProgress', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-remote');
+            let key  = $(this).attr('data-key');
+            $.ajax({
+                url: href,
+                data:{
+                    key :key,
+                },
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    console.log(href);
+                    $('#exampleModal').modal("show");
+                    $('#content_subcategory').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
 @endpush
 

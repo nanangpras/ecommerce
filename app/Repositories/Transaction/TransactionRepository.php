@@ -53,6 +53,7 @@ class TransactionRepository implements InterfaceTransaction
         //     $update->where('transaction_status','SUCCESS')
         // }
         $update->progress_status = $request->progress_status;
+        $update->notes = $request->notes ?? NULL;
         $update->save();
         return $update->fresh();
     }

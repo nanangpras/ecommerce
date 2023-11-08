@@ -60,8 +60,19 @@
                     </div>
                 </div>
             </div>
-            <p>Silahkan lakukan pembayaran</p>
-            <button type="button" id="pay-button" class="btn btn-success">Bayar</button>
+            @if ($detail->transaction_status == "SUCCESS")
+                <button type="button" class="btn btn-success">Sudah Bayar</button>
+                @if ($detail->transaction_status == "SUCCESS" && $detail->progress_status == "Selesai")
+                    @if ($detail->notes)
+                    <div class="card-body">
+                        <p>{{$detail->notes}}</p>
+                    </div>
+                    @endif
+                @endif
+            @else
+                <p>Silahkan lakukan pembayaran</p>
+                <button type="button" id="pay-button" class="btn btn-success">Bayar</button>
+            @endif
         </div>
     </div>
 </div>

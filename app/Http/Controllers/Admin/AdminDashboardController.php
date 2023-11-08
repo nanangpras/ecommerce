@@ -37,9 +37,14 @@ class AdminDashboardController extends Controller
         return view('admin.pages.transactions.list',compact('transaction'));
     }
 
-    public function detailTransactions($code)
+    public function detailTransactions(Request $request,$code)
     {
         $detail = $this->trxService->getByCode($code);
+        if ($request->key == "progress_done") {
+            return view('admin.pages.transactions.modal.progress',compact('detail'));
+        } else {
+            return view('admin.pages.transactions.detail',compact('detail'));
+        }
         return view('admin.pages.transactions.detail',compact('detail'));
     }
 
