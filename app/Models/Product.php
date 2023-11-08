@@ -14,6 +14,7 @@ class Product extends Model
         'description',
         'short_description',
         'category_id',
+        'subcategory_id',
         'available_qty',
         'price',
         'price_coret',

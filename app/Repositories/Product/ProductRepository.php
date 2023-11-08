@@ -159,6 +159,7 @@ class ProductRepository implements InterfaceProduct
         $product = Product::create([
             'title'         => $request->title,
             'category_id'   => $request->category_id,
+            'subcategory_id'=> $request->subcategory_id,
             'available_qty' => $request->available_qty,
             'price'         => $request->price,
             'price_coret'   => $request->price_coret,

@@ -32,6 +32,10 @@
                             <input type="text" name="name" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Nama Sub kategori</label>
+                            <input type="text" name="namesubcategory" class="form-control" id="name" aria-describedby="name" placeholder="Masukan nama kategori">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Tipe kategori</label>
                             <select name="type" id="type" class="form-control">
                                 <option value="artikel">Artikel</option>

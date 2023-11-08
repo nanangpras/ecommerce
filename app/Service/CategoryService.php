@@ -57,6 +57,20 @@ class CategoryService
         return $result;
     }
 
+    public function saveSub(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            throw new InvalidArgumentException($validator->errors()->first());
+        }
+        $save = $this->categoryRepository->saveSubCategory($request);
+        return $save;
+
+    }
+
     public function delete($id)
     {
         return $this->categoryRepository->delete($id);

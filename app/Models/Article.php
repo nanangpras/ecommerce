@@ -14,6 +14,7 @@ class Article extends Model
         'titles',
         'body',
         'category_id',
+        'subcategory_id',
         'status',
         'image',
         'thumbnail',

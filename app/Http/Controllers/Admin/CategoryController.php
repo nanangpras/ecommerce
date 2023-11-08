@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 // use App\Service\Category\CategoryService as CategoryService;
 use App\Service\CategoryService;
 use Illuminate\Http\Request;
@@ -37,9 +38,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->categoryService->save($request);
+        $category = $this->categoryService->save($request);
+        $subcategory = new Category();
+        $subcategory->parent_id = $category->id;
+        $subcategory->name = $request->namesubcategory;
+        $subcategory->type = $request->type;
+        $subcategory->image = url('themes/assets/images/app_category.png');
+        $subcategory->save();
         return redirect()->route('category.index')->with('success', 'Data berhasil ditambahkan');
 
+    }
+
+    public function saveSubcategory(Request $request)
+    {
+        $this->categoryService->saveSub($request);
+        return redirect()->route('category.index')->with('success', 'Data Sub Kategori berhasil ditambahkan');
     }
 
     /**
@@ -48,6 +61,12 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+    public function getSubCategory($id)
+    {
+        $this->categoryService->getById($id);
+
     }
 
     /**

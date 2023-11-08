@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ShopController as AdminShopController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Home\CartController;
@@ -79,6 +80,10 @@ Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
     Route::get('/admin/dashboard',[AdminDashboardController::class,'index'])->name('admin.dashboard');
 
     Route::resource('category', CategoryController::class);
+    Route::resource('subcategory', SubCategoryController::class);
+    Route::get('/subcategory/product/{id}', [SubCategoryController::class, 'getSubProduct'])->name('subcategory.product');
+    Route::get('/subcategory/article/{id}', [SubCategoryController::class, 'getSubArticle'])->name('subcategory.article');
+    // Route::post('/category/subcategory',[CategoryController::class, 'saveSubcategory'])->name('subcategory.store');
     Route::resource('product', ProductController::class);
     Route::resource('banner', BannerController::class);
     Route::resource('user', UserController::class);

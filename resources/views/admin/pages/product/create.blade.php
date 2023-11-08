@@ -31,13 +31,25 @@
                             <label for="exampleInputEmail1">Nama Produk</label>
                             <input type="text" name="title" class="form-control" id="title" aria-describedby="name" placeholder="Masukan nama produk">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Kategori</label>
-                            <select name="category_id" id="type" class="form-control">
-                                @foreach ($category as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach
-                            </select>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Kategori</label>
+                                    <select name="category_id" id="type" class="form-control">
+                                        @foreach ($category as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Sub Kategori</label>
+                                    <select name="subcategory_id" id="subcategory_id" class="form-control">
+                                        <option>Pilih Sub</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -123,6 +135,26 @@
         $(document).ready(function() {
             $('#summernote').summernote({
                 height: 250
+            });
+
+            $('select[name="category_id"]').on('change',function () {
+                let category_id = $(this).val();
+                if (category_id) {
+                    jQuery.ajax({
+                        url:"/subcategory/product/"+category_id,
+                        type:'GET',
+                        dataType:'json',
+                        success:function(data){
+                            // console.log(data);
+                            $('select[name="subcategory_id"]').empty();
+                            $.each(data,function (key,value) {
+                                $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.name + '</option>');
+                            })
+                        }
+                    })
+                }else{
+                    $('select[name="subcategory_id"]').empty();
+                }
             });
         });
     </script>

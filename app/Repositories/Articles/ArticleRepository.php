@@ -105,6 +105,7 @@ class ArticleRepository implements InterfaceArticle
             'titles'        => $request->titles,
             'body'          => $dom->saveHTML(),
             'category_id'   => $request->category_id,
+            'subcategory_id'=> $request->subcategory_id,
             'status'        => $request->status ?? 1,
             'user_id'       => Auth::user()->id,
             'slug'          => Str::slug($request->titles),

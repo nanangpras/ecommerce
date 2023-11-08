@@ -40,6 +40,12 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Sub Kategori</label>
+                            <select name="subcategory_id" id="subcategory_id" class="form-control">
+                                <option>Pilih Sub</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="">Isi</label>
                             <textarea id="summernote" name="body"></textarea>
                         </div>
@@ -95,6 +101,29 @@
 
 
            }).trigger('change');
+        });
+     </script>
+     <script>
+        $(document).ready(function () {
+            $('select[name="category_id"]').on('change',function () {
+                let category_id = $(this).val();
+                if (category_id) {
+                    jQuery.ajax({
+                        url:"/subcategory/article/"+category_id,
+                        type:'GET',
+                        dataType:'json',
+                        success:function(data){
+                            // console.log(data);
+                            $('select[name="subcategory_id"]').empty();
+                            $.each(data,function (key,value) {
+                                $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.name + '</option>');
+                            })
+                        }
+                    })
+                }else{
+                    $('select[name="subcategory_id"]').empty();
+                }
+            });
         });
      </script>
 @endpush

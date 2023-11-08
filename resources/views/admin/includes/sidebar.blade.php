@@ -19,7 +19,15 @@
                     Master Data
                 </li>
                 <li class="{{set_active('category.index')}}">
-                    <a href="{{route('category.index')}}"><i class="material-icons">category</i>Kategori</a>
+                    <a href="{{route('category.index')}}"><i class="material-icons">category</i><i class="material-icons has-sub-menu">add</i>Kategori</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{route('category.index')}}" class="{{set_active_sub('purchase.create')}}">List Kategori</a>
+                        </li>
+                        <li>
+                            <a href="{{route('subcategory.index')}}" class="{{set_active_sub('purchase.create')}}">Sub Kategori</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="{{ set_active(['product.index','product.create','product.edit']) }}">
                     <a href="{{route('product.index')}}" ><i class="material-icons">inventory</i>Produk</a>
