@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Helpers\SendWa;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Transaction;
@@ -96,6 +97,7 @@ class CheckoutController extends Controller
             ]);
         }
         //
+        SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
         $cart = [];
         $cookie = cookie('konveksi-carts',json_encode($cart),2880);
         return redirect()->route('member.detail.transaction', $trx->code)->cookie($cookie);
