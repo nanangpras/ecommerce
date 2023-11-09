@@ -54,7 +54,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->title}}</td>
-                                    <td>{{$item->category->name}}</td>
+                                    <td>{{$item->category->name ?? ''}}</td>
                                     <td>
                                         @foreach ($item->productImages as $img)
                                             <img src="{{$img->image}}" alt="" width="100" height="100">
