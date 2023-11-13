@@ -57,7 +57,7 @@ class ProductRepository implements InterfaceProduct
 
     public function relatedProduct($category)
     {
-        return $this->product->where('category_id',$category)->take(6);
+        return $this->product->where('category_id',$category)->take(6)->get()ta;
     }
 
     public function popularProduct()
