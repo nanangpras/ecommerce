@@ -66,7 +66,7 @@
                                                                 href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                         </h2>
                                                         <p style="font-size: .75rem;text-align: left">
-                                                            {{$item->category->name}}
+                                                            {{$item->category->name ?? ''}}
                                                         </p>
                                                     </div>
                                                     @if ($item->link)
