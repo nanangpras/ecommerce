@@ -68,6 +68,7 @@
                                             @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block btn-submit">Sign In</button>
+                                        <a href="{{route('login.google.redirect')}}" type="button" class="btn btn-danger btn-block btn-submit">Sign In Google</a>
                                         <div class="auth-options">
                                             <div class="custom-control custom-checkbox form-group">
                                                 <input type="checkbox" class="custom-control-input" id="exampleCheck1">

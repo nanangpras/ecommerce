@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Service\RajaOngkirService;
+use App\Service\TransactionService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,9 +15,11 @@ class ProfileController extends Controller
 {
 
     protected $rajaOngkirService;
-    public function __construct(RajaOngkirService $rajaOngkirService)
+    protected $trxService;
+    public function __construct(RajaOngkirService $rajaOngkirService, TransactionService $trxService,)
     {
         $this->rajaOngkirService = $rajaOngkirService;
+        $this->trxService        = $trxService;
     }
 
     /**
@@ -33,12 +36,14 @@ class ProfileController extends Controller
         $kabupaten = json_decode($dtkabupaten,true);
         $dtkecamatan = $this->rajaOngkirService->getSubdistrict($user->city_id);
         $kecamatan = json_decode($dtkecamatan,true);
+        $productUser    = self::categoryProductTransaction(Auth::user()->id);
         // dd($kabupaten);
         return view('member.pages.profile.profile', [
             'user'      => $request->user(),
             'provinsi'  => $provinsi,
             'kabupaten'  => $kabupaten,
             'kecamatan'  => $kecamatan,
+            'productUser' => $productUser,
         ]);
     }
 
@@ -76,5 +81,13 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function categoryProductTransaction($user)
+    {
+        $user = Auth::user()->id;
+        $data = $this->trxService->cekCategoryProductTransaction($user);
+        return $data;
+        // dd($data);
     }
 }

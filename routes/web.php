@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ShopController as AdminShopController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserRoleController;
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\CheckoutController;
 use App\Http\Controllers\Home\HomeController;
@@ -55,6 +56,10 @@ Route::get('blog/detail/{slug}', [HomeController::class, 'detailBlog'])->name('b
 
 
 Route::post('/cek/domain', [HomeController::class, 'cekDomain'])->name('cek.domain');
+Route::prefix('auth/google')->group(function(){
+    Route::get('callback', [SocialiteController::class,'handleProviderCallback'])->name('login.google.callback');
+    Route::get('redirect', [SocialiteController::class,'redirect'])->name('login.google.redirect');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
