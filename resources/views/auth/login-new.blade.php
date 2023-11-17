@@ -74,7 +74,7 @@
                                                 <input type="checkbox" class="custom-control-input" id="exampleCheck1">
                                                 <label class="custom-control-label" for="exampleCheck1">Remember me</label>
                                             </div>
-                                            <a href="#" class="forgot-link">Forgot Password?</a>
+                                            <a href="{{route('password.request')}}" class="forgot-link">Forgot Password?</a>
                                         </div>
                                     </form>
                                 </div>
