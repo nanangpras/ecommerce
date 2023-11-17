@@ -1,0 +1,13 @@
+# MAIL_MAILER=smtp
+# MAIL_MAILER=sendemail
+# MAIL_HOST=smtp.gmail.com
+# MAIL_PORT=465
+# MAIL_USERNAME=prasetiyann@gmail.com
+# MAIL_PASSWORD=psvzwykvdgrbygzh
+# MAIL_ENCRYPTION=ssl
+# MAIL_FROM_ADDRESS=no-reply@gmail.com
+# MAIL_FROM_NAME="${APP_NAME}"
+
+# GOOGLE_CLIENT_ID=73536113121-4hssmc683noohvklvbcm8v1doan1h8sr.apps.googleusercontent.com
+# GOOGLE_CLIENT_SECRET=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
+# GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback
