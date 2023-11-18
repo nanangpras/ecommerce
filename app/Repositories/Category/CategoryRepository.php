@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Category\InterfaceCategory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryRepository implements InterfaceCategory
 {
@@ -38,6 +39,21 @@ class CategoryRepository implements InterfaceCategory
         return $this->category->with('children')->where('parent_id',null)->get();
     }
 
+    public function getCategoryTypeRoot($type)
+    {
+        return $this->category->where('type','=',$type)->where('parent_id',null)->get();
+    }
+
+    public function getCategoryTypeSub($type,$sub_id)
+    {
+        return $this->category->where('type','=',$type)->where('parent_id',$sub_id)->get();
+    }
+    
+    public function getProductCategorySlug($slug)
+    {
+        return $this->category->where('slug','=',$slug)->with(['product','product.productImages','children','productsub'])->paginate(12);
+    }
+
     public function getCategoryProduct()
     {
         return $this->category->where('type','=','produk')->where('parent_id',null)->get();
@@ -57,6 +73,7 @@ class CategoryRepository implements InterfaceCategory
     {
         $category = new $this->category;
         $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
         $file = $request->file('image');
         $category->image = $this->uploadImages($file,'image/category');
         $category->type = $request->type;
@@ -70,6 +87,7 @@ class CategoryRepository implements InterfaceCategory
         $subCategory = new $this->category;
         $subCategory->parent_id = $request->parent_id;
         $subCategory->name = $request->name;
+        $subCategory->slug = Str::slug($request->name);
         $file = $request->file('imagesub');
         if ($file) {
             $subCategory->image = $this->uploadImages($file,'image/subcategory');
@@ -92,6 +110,7 @@ class CategoryRepository implements InterfaceCategory
     {
         $update = $this->category->find($id);
         $update->name = $request->name;
+        $update->slug = Str::slug($request->name);
         $update->type = $request->type;
         if ($request->file('image')) {
             if ($request->oldImage) {

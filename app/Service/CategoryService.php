@@ -21,6 +21,11 @@ class CategoryService
         return $this->categoryRepository->getAll();
     }
 
+    public function getProductByCategory($slug)
+    {
+        return $this->categoryRepository->getProductCategorySlug($slug);
+    }
+
     public function getCategoryProduct()
     {
         return $this->categoryRepository->getCategoryProduct();

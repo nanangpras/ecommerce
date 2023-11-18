@@ -135,7 +135,8 @@
                 {{ $product->links('vendor.pagination.default') }}
 
             </div>
-            <div class="col-lg-4  mb-100">
+            @include('home.includes.shop-product-category')
+            {{-- <div class="col-lg-4  mb-100">
                 <aside class="sidebar ltn__shop-sidebar">
                     <!-- Category Widget -->
                     <div class="widget ltn__menu-widget">
@@ -157,7 +158,7 @@
                     </div>
 
                 </aside>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

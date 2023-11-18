@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Subcategory\InterfaceSubcategory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SubcategoryRepository implements InterfaceSubcategory
 {
@@ -63,6 +64,7 @@ class SubcategoryRepository implements InterfaceSubcategory
         $subCategory = new $this->category;
         $subCategory->parent_id = $request->parent_id;
         $subCategory->name = $request->name;
+        $subCategory->slug = Str::slug($request->name);
         $file = $request->file('imagesub');
         if ($file) {
             $subCategory->image = $this->uploadImages($file,'image/subcategory');
@@ -85,6 +87,7 @@ class SubcategoryRepository implements InterfaceSubcategory
     {
         $update = $this->category->where('id',$id)->first();
         $update->name = $request->name;
+        $update->slug = Str::slug($request->name);
         $update->type = $request->type;
         if ($request->file('image')) {
             if ($request->oldImage) {

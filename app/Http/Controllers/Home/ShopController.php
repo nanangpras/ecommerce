@@ -84,4 +84,27 @@ class ShopController extends Controller
             // $prod->whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$request->input('search')]);
         }
     }
+
+    public function categoryWithProduct(Request $request, $slug,Product $prod)
+    {
+        $cartHelper = new CartCookie();
+        $product = $this->categoryService->getProductByCategory($slug);
+        $breadcrumb = 'Category';
+        // $prod = $prod->newQuery()->where('category_id','!=',1000)->orderBy('created_at', 'DESC');
+        // if ($request->has('search')) {
+        //     $prod->where('title', 'like', '%'.$request->input('search').'%');
+        //     // $prod->whereRaw('MATCH(title, slug, description) AGAINST (? IN NATURAL LANGUAGE MODE)',[$request->input('search')]);
+        // }
+        // $product=$prod->paginate(12);
+
+        $company = $this->comproService->getAll();
+        $cart = $cartHelper->getCarts();
+        $count_cart = $cartHelper->getTotalCart();
+        $subtotal = collect($cart)->sum(function($q){
+            return $q['qty'] * $q['price'];
+        });
+        $category = $this->categoryService->getCategoryProduct();
+        // dd($product);
+        return view('home.pages.shop.category-product',compact('cart','product','company','subtotal','count_cart','breadcrumb','category'));
+    }
 }

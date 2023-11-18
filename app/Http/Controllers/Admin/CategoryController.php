@@ -7,6 +7,7 @@ use App\Models\Category;
 // use App\Service\Category\CategoryService as CategoryService;
 use App\Service\CategoryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -42,6 +43,7 @@ class CategoryController extends Controller
         $subcategory = new Category();
         $subcategory->parent_id = $category->id;
         $subcategory->name = $request->namesubcategory;
+        $subcategory->slug = Str::slug($request->namesubcategory);
         $subcategory->type = $request->type;
         $subcategory->image = url('themes/assets/images/app_category.png');
         $subcategory->save();
