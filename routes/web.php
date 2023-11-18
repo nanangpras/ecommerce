@@ -61,9 +61,9 @@ Route::prefix('auth/google')->group(function(){
     Route::get('redirect', [SocialiteController::class,'redirect'])->name('login.google.redirect');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::get('/member/dashboard', [MemberDashboradController::class,'index'])->name('member.dashboard');
