@@ -73,11 +73,10 @@
                         <span><i class="flaticon-slider"></i></span>
                     </div>
                     <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Performa Stabil
-                            </a></h3>
-                        <p>Nor again is there anyone who loves or pursues or desires to pain, because it is pain, but
-                            because occasionally
-
+                        <h3>Performa Stabil
+                        </h3>
+                        <p>Website yang stabil dapat membantu meningkatkan efisiensi operasional dengan memberikan akses
+                            cepat dan mudah ke informasi internal, komunikasi antar tim, dan alat manajemen bisnis.
                         </p>
                     </div>
                 </div>
@@ -88,10 +87,10 @@
                         <span><i class="flaticon-building"></i></span>
                     </div>
                     <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Mudah
-                            </a></h3>
-                        <p>Nor again is there anyone who loves or pursues or desires to pain, because it is pain, but
-                            because occasionally
+                        <h3>Mudah
+                        </h3>
+                        <p>Memungkinkan Anda menyediakan informasi produk atau layanan dengan mudah diakses oleh
+                            pengguna.
 
                         </p>
                     </div>
@@ -104,10 +103,10 @@
                         <span><i class="flaticon-house"></i></span>
                     </div>
                     <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">UI Menarik
-                            </a></h3>
-                        <p>Nor again is there anyone who loves or pursues or desires to pain, because it is pain, but
-                            because occasionally
+                        <h3>UI Menarik
+                        </h3>
+                        <p>pengalaman yang menyenangkan, dan mendorong interaksi lebih lanjut, menciptakan landasan
+                            positif untuk interaksi digital yang efektif.
 
                         </p>
                     </div>
@@ -126,6 +125,12 @@
                     <h6 class="section-subtitle ltn__secondary-color"><span><i class="fas fa-square-full"></i></span>
                         Gabung Sekarang</h6>
                     <h1 class="section-title">Banyak Pilihan Template</h1>
+                    <div class="btn-wrapper">
+                        <a href="{{ route('shop.index') }}" class="theme-btn-2 btn btn-effect-2">Semua Template</a>
+
+
+                        {{-- <li><a href="{{ route('shop.index') }}">Template</a></li> --}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,7 +221,8 @@
                             Mendunia</h1>
                     </div>
                     <div class="btn-wrapper">
-                        <a href="contact.html" class="theme-btn-2 btn btn-effect-2">Cara Order</a>
+                        <a href="{{ route('home.about') }}" class="theme-btn-2 btn btn-effect-2">Cara Order</a>
+
                     </div>
                 </div>
                 <div class="ltn__call-to-4-img-2">
