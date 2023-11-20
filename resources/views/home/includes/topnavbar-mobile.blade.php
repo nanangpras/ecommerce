@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="{{route('home')}}">Home</a></li>
                 <li><a href="{{route('home.about')}}">Pertanyaan</a></li>
-                <li><a href="{{route('shop.index')}}">Template</a></li>
+                <li><a href="{{route('shop.index')}}">Cara Order</a></li>
                 {{-- <li><a href="{{route('home')}}">News</a></li>
                 <li><a href="{{route('home')}}">Contact</a></li> --}}
             </ul>

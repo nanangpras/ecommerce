@@ -1,5 +1,7 @@
 <footer class="ltn__footer-area  ">
     <div class="footer-top-area  section-bg-2 plr--5">
+
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-md-6 col-sm-6 col-12">
@@ -116,4 +118,10 @@
             </div>
         </div>
     </div>
+    {{-- Cek Whatsapp Button --}}
+    {{-- <a class="wafixed" href="https://wa.me/62823928XXX" target="_blank"><span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x text-success"></i>
+            <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+        </span></a> --}}
+    {{-- End Whatsapp Button --}}
 </footer>
