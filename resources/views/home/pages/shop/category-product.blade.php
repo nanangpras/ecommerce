@@ -34,11 +34,11 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-6 mb-4" style="text-align: right">
+                <div class="col-lg-12 mb-4" style="text-align: center">
                     @foreach ($product as $item)
                         @if (count($item->children) > 0)
                             @foreach ($item->children as $subcategory)
-                                <a href="{{route('shop.category',$subcategory->slug ?? '')}}" type="button" class="btn-small theme-btn4">{{$subcategory->name}}</a>
+                                <a href="{{route('shop.category',$subcategory->slug ?? '')}}" type="button" class="btn-small btn-white">{{$subcategory->name}}</a>
                             @endforeach
                         @endif
                     @endforeach
