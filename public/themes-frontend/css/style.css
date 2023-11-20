@@ -226,6 +226,8 @@ font-family: 'Montserrat Alternates', sans-serif;
     --ltn__secondary-color-4: #00cec9;
     /* Theme-Price */
     --ltn__secondary-color-5: #16a34a;
+    /* Theme-Checkout */
+    --ltn__secondary-color-6: #ff8533;
     /* Lighten */
     --ltn__heading-color: #0b1e33;
     --ltn__paragraph-color: #08244d;
@@ -2107,7 +2109,7 @@ ul {
 .ltn__scrollbar::-webkit-scrollbar {
     width: 2px;
     background-color: #f5f5f5;
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .ltn__scrollbar::-webkit-scrollbar-thumb {
@@ -2121,7 +2123,7 @@ ul {
 .mean-nav::-webkit-scrollbar {
     width: 3px;
     background-color: var(--ltn__primary-color);
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .mean-nav::-webkit-scrollbar-thumb {
@@ -13819,8 +13821,9 @@ input.cart-plus-minus-box {
     margin-top: 0;
 }
 
-.product-details-content .product-details-buy-btn .theme-btn-1 {
+.product-details-content .product-details-buy-btn .theme-btn-6 {
     padding: 10px 100px 9px;
+    border-radius: 15px;
 }
 
 /* ----------------------------------------------------
@@ -13914,8 +13917,9 @@ input.cart-plus-minus-box {
 .shoping-cart-total .btn-wrapper {
     margin-top: 0;
 }
-.shoping-cart-total .btn-wrapper .theme-btn-1 {
+.shoping-cart-total .btn-wrapper .theme-btn-6 {
     display: block;
+    border-radius: 15px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -16684,6 +16688,7 @@ input.cart-plus-minus-box {
 .ltn__checkout-single-content-info {
     padding: 30px;
     border: 1px solid var(--border-color-1);
+    border-radius: 15px;
 }
 
 .ltn__checkout-payment-method .card {
@@ -17775,7 +17780,7 @@ input.cart-plus-minus-box {
     height: 50px;
     text-align: center;
     line-height: 50px;
-    border-radius: 30px;
+    border-radius: 15px;
     display: block;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
@@ -17869,7 +17874,7 @@ input.cart-plus-minus-box {
     font-family: var(--ltn__body-font);
     padding: 5px 15px;
     text-align: right;
-    border-radius: 30px;
+    border-radius: 15px;
     cursor: pointer;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
@@ -17929,11 +17934,11 @@ input.cart-plus-minus-box {
 
 .theme-btn-2 {
     background-color: var(--ltn__secondary-color);
-    border-radius: 30px;
+    border-radius: 15px;
     color: var(--white);
 }
 .theme-btn-2:hover {
-    border-radius: 30px;
+    border-radius: 15px;
     background-color: var(--ltn__secondary-color);
     color: var(--white);
 }
@@ -17957,6 +17962,26 @@ input.cart-plus-minus-box {
     border-color: var(--ltn__secondary-color-5);
     color: var(--white);
 }
+.theme-btn-6 {
+    background-color: var(--ltn__secondary-color-6);
+    color: var(--white);
+    /* border-radius: 15px; */
+}
+.theme-btn-6:hover {
+    background-color: var(--ltn__primary-color);
+    color: var(--border-color-4);
+    /* border-radius: 15px; */
+}
+.theme-btn-7 {
+    background-color: var(--ltn__secondary-color-6);
+    color: var(--white);
+    border-radius: 15px;
+}
+.theme-btn-7:hover {
+    background-color: var(--ltn__primary-color);
+    color: var(--border-color-4);
+    border-radius: 15px;
+}
 
 .reverse-color {
     background-color: var(--ltn__secondary-color);
@@ -17970,10 +17995,12 @@ input.cart-plus-minus-box {
     color: var(--ltn__primary-color);
     -webkit-box-shadow: var(--ltn__box-shadow-3);
     box-shadow: var(--ltn__box-shadow-3);
+    border-radius: 15px;
 }
 .btn-white:hover {
     background-color: var(--ltn__secondary-color);
     color: var(--white);
+    border-radius: 15px;
 }
 
 .btn-black {
@@ -18058,7 +18085,7 @@ input.cart-plus-minus-box {
     height: 100%;
     top: 0;
     right: 0;
-    border-radius: 30px;
+    border-radius: 15px;
     background: var(--white);
 }
 
@@ -18098,6 +18125,37 @@ input.cart-plus-minus-box {
 .btn-effect-4:hover::after {
     width: 100%;
 }
+.btn-effect-6:after {
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--ltn__secondary-color-6);
+}
+
+.btn-effect-6:hover {
+    color: var(--white);
+}
+.btn-effect-6:hover::after {
+    width: 100%;
+}
+
+.btn-effect-7:after {
+    width: 0%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    border-radius: 15px;
+    background: var(--white);
+}
+
+.btn-effect-7:hover {
+    color: var(--ltn__heading-color);
+}
+.btn-effect-7:hover::after {
+    width: 100%;
+}
+
 
 .btn-full-width {
     display: block;

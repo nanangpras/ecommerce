@@ -1,4 +1,4 @@
-@extends('home.layouts.layout-pages')
+@extends('home.layouts.layout-home')
 @section('content')
 <!-- SHOPING CART AREA START -->
 <div class="liton__shoping-cart-area mb-120">
@@ -119,8 +119,7 @@
                             </tbody>
                         </table>
                         <div class="btn-wrapper text-right text-end">
-                            <a href="{{route('checkout.index')}}" class="theme-btn-1 btn btn-effect-1">Proceed to
-                                checkout</a>
+                            <a href="{{route('checkout.index')}}" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a>
                         </div>
                     </div>
                 </div>
