@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 order-lg-2 mb-100">
-                <div class="ltn__shop-options">
+                <div class="ltn__shop-options" >
                     <ul>
                         <li>
                             <div class="ltn__grid-list-tab-menu ">
@@ -16,8 +16,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="short-by text-center">
+                        <li >
+                            <div class="short-by text-center" >
                                 <select class="nice-select">
                                     <option>Default sorting</option>
                                     <option>Sort by popularity</option>
