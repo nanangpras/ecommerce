@@ -183,15 +183,11 @@
                 <div class="about-us-info-wrap">
                     <div class="section-title-area ltn__section-title-2">
                         <h6 class="section-subtitle ltn__secondary-color"><span><i
-                                    class="fas fa-square-full"></i></span> CARA ORDER</h6>
-                        <h1>Pastikan Bisnis teteap Deras saat Hujan datang!!</h1>
-                        <p>"Waktunya beraksi sekarang sebelum badai menghantam bisnis Anda! Jangan biarkan peluang
-                            mengalir begitu saja. Sedia payung sebelum hujan -
-                            onlinekan bisnis Anda sekarang juga! </p>
-                        {{-- <h1 class="section-title">{{ $company->name }}</h1> --}}
-                        {{-- <p>{{ $company->tagline }}</p> --}}
+                                    class="fas fa-square-full"></i></span> MARKETING</h6>
+                        <h1 class="section-title">{{ $company->name }}</h1>
+                        <p>{{ $company->tagline }}</p>
                     </div>
-                    {{-- <p>{{ $company->description }}</p> --}}
+                    <p>{{ $company->description }}</p>
                     <div class="about-author-info d-flex mt-50">
                         <div class="author-name-designation  align-self-center mr-30">
                             <!-- <h4 class="mb-0">Jerry Henson</h4>
@@ -223,13 +219,9 @@
                                     class="fas fa-square-full"></i></span> SOLUSI BISNIS ANDA</h6>
                         <h1 class="section-title black-color">Pastikan Bisnis Anda <br>
                             Mendunia</h1>
-                        <p>"jangan terlalu lama berpikir!!, berinovasilah, dan buat kehadiran online yang memukau sekarang
-                            juga! Dengan bergerak cepat, Anda tidak hanya melindungi bisnis dari badai, tetapi juga
-                            membuka pintu untuk pertumbuhan dan sukses yang luar biasa di dunia digital yang terus
-                            berkembang." </p>
                     </div>
                     <div class="btn-wrapper">
-                        <a href="{{ route('home.about') }}" class="theme-btn-2 btn btn-effect-2"> Kenapa Webiin.com?</a>
+                        <a href="{{ route('home.about') }}" class="theme-btn-2 btn btn-effect-2">Cara Order</a>
 
                     </div>
                 </div>
@@ -265,89 +257,50 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong> Webiin.com adalah platform pelayanan</strong> yang menghadirkan solusi
-                                    lengkap bagi Usaha Mikro, Kecil, dan Menengah (UMKM) dalam mengembangkan keberadaan
-                                    online mereka. Dengan fokus pada pemberian layanan web yang efisien dan berkualitas,
-                                    Webiin.com hadir sebagai mitra terpercaya untuk membantu UMKM meraih potensi penuh
-                                    dari keberadaan online.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#c2" aria-expanded="false" aria-controls="collapseOne">
-                                    Apakah saya membuat website sendiri?
-                                </button>
-                            </h2>
-                            <div id="c2" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <strong>Produk website yang Anda terima sudah dalam bentuk website</strong> Anda
-                                    tinggal
-                                    edit dan upload materi. Semua sangat mudah dikerjakan.
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseOne">
-                                    Bagaimana pembelian dan pembayaran di website Webiin?
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Bagaimana Pembelian di website Webiin?
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body"><strong>memudahkan
-                                        proses pembayaran melalui integrasi dengan penyedia layanan pembayaran pihak
-                                        ketiga, </strong>
-                                    Midtrans. Dengan tingkat keamanan transaksi yang tinggi, pelanggan dapat berbelanja
-                                    dengan keyakinan penuh. Midtrans mendukung berbagai metode pembayaran, transfer
-                                    bank, dan opsi pembayaran digital lainnya, memberikan
-                                    fleksibilitas kepada pelanggan. Proses pembayaran yang cepat dan efisien, pembaruan
-                                    status otomatis, serta layanan pelanggan yang responsif adalah bagian dari komitmen
-                                    kami untuk memberikan pengalaman berbelanja online yang lancar dan memuaskan melalui
-                                    Webiin.com.
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#c5" aria-expanded="false" aria-controls="c5">
-                                    Bisakah membatalkan pembelian website di Webiin?
-
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Bagaimana Metode Pembayarannya?
                                 </button>
                             </h2>
-                            <div id="c5" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Webiin.com tidak menyediakan refund dana karena setiap domain dan
-                                    website yang dipesan akan otomatis teregister dengan sistem domain dan server kami.
-                                    Jadi kalian harus memastikan nama domain dan data yang dipesan benar-benar sesuai
-                                    yah!
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="hc6">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#c6" aria-expanded="false" aria-controls="c5">
-                                    Semudah itu kah membuat Website dengan Webiin.com?
-
-                                </button>
-                            </h2>
-                            <div id="c6" class="accordion-collapse collapse" aria-labelledby="hc6"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <strong>Ya, kami menyediakan template yang mempermudah anda</strong> Webbin.com
-                                    memberikan solusi lengkap
-                                    dengan menyediakan layanan template yang sudah
-                                    termasuk dalam paket kami. Dengan fokus pada kenyamanan dan efisiensi, kami
-                                    menghadirkan berbagai pilihan desain template yang siap pakai untuk memenuhi
-                                    kebutuhan berbagai jenis situs web. Pelanggan Webbin.com dapat dengan mudah memilih
-                                    template yang sesuai dengan visi dan gaya mereka, mempercepat proses pembangunan
-                                    situs tanpa harus memikirkan desain dari awal.
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
                                 </div>
                             </div>
                         </div>
@@ -536,6 +489,7 @@
     </div>
 </div>
 <!-- VIDEO AREA END --> --}}
+
 <!-- BLOG AREA START (blog-3) -->
 <div class="ltn__blog-area pt-120 pb-70">
     <div class="container">
@@ -590,10 +544,4 @@
     </div>
 </div>
 <!-- BLOG AREA END -->
-<!-- render the button and direct it to wa.me -->
-
-{{-- <p><a href="tel:+0123-456789">{{ $company->phone ?? '' }}</a></p> --}}
-<a href="https://wa.me/{{ $company->phone ?? '' }}?text=Hi%20Webiin.com" class="floating" target="_blank">
-    <i class="fab fa-whatsapp fab-icon"></i>
-</a>
 @endsection

@@ -1,5 +1,5 @@
-<!-- preloader area start -->
-<div class="preloader d-none" id="preloader">
+ <!-- preloader area start -->
+ <div class="preloader d-none" id="preloader">
     <div class="preloader-inner">
         <div class="spinner">
             <div class="dot1"></div>
@@ -12,4 +12,4 @@
 <!-- All JS Plugins -->
 <script src="{{url('themes-frontend/js/plugins.js')}}"></script>
 <!-- Main JS -->
-<script src="{{url('themes-frontend/js/main.js')}}"></script>ß
+<script src="{{url('themes-frontend/js/main.js')}}"></script>

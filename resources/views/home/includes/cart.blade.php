@@ -10,7 +10,7 @@
                     <div class="mini-cart-item clearfix">
                         <div class="mini-cart-img">
                             <a href="#"><img src="{{$item['image']}}" alt="Image"></a>
-                            <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                            <button class="mini-cart-item-delete"><i class="icon-cancel" data-id="{{$item['product_id']}}" id="delete_cart_side"></i></button>
                         </div>
                         <div class="mini-cart-info">
                             <h6><a href="#">{{$item['title']}}</a></h6>
@@ -54,3 +54,26 @@
 
     </div>
 </div>
+@push('after-scripts')
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function () {
+        $("#delete_cart_side").click(function (e) { 
+            var itemId = $(this).data('id');
+            e.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: "/delete-cart/"+itemId,
+                ssuccess: function (response) {
+                    console.log('sukses deleted');
+                    location.reload();
+                    // Tambahkan logika atau perubahan tampilan sesuai kebutuhan Anda
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+@endpush

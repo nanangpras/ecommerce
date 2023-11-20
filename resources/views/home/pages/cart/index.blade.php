@@ -1,4 +1,4 @@
-@extends('home.layouts.layout-home')
+@extends('home.layouts.layout-pages')
 @section('content')
 <!-- SHOPING CART AREA START -->
 <div class="liton__shoping-cart-area mb-120">
