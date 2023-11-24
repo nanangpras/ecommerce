@@ -59,7 +59,7 @@
                                     <ul>
                                         <li><a href="{{ route('home') }}">Home</a></li>
                                         <li><a href="{{ route('shop.index') }}">Template</a></li>
-                                        <li><a href="{{ route('home.about') }}">Pertanyaan</a></li>
+                                        <li><a href="{{ route('home.about') }}">Cara Order</a></li>
                                         {{-- <li class="menu-icon"><a href="{{ route('home') }}">Service</a></li> --}}
                                         {{-- <li><a href="{{ route('home') }}">Portofolio</a></li> --}}
                                         {{-- <li><a href="contact.html">Contact</a></li> --}}
@@ -94,20 +94,19 @@
                                     <a href="#"><i class="icon-user"></i></a>
                                     <ul>
                                         @guest
-                                        <li><a href="{{ route('login') }}">Sign in</a></li>
-                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                        <li><a href="{{ route('login') }}">Masuk</a></li>
+                                        <li><a href="{{ route('register') }}">Daftar</a></li>
                                         @endguest
                                         @auth
                                         <li><a href="{{ route('member.dashboard') }}">{{ Auth::user()->name }}</a></li>
                                         @if (auth::user()->role == 'admin')
-                                        <li><a href="{{ route('admin.dashboard') }}">My Account</a></li>
+                                        <li><a href="{{ route('admin.dashboard') }}">Akun Saya</a></li>
                                         @else
-                                        <li><a href="{{ route('member.dashboard') }}">My Account</a></li>
+                                        <li><a href="{{ route('member.dashboard') }}">Akun Saya</a></li>
                                         @endif
                                         <li>
                                             <a href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log
-                                                Out</a>
+                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">Keluar</a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                                 @csrf
                                             </form>
