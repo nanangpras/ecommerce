@@ -28,7 +28,7 @@ class TransactionRepository implements InterfaceTransaction
 
     public function myTransaction($id)
     {
-        return $this->transaction->with('details')->where('user_id',$id)->get();
+        return $this->transaction->with('details')->where('user_id',$id)->orderBy('id','DESC')->get();
     }
 
     public function getById($id)

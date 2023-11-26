@@ -48,7 +48,7 @@
                                     <td>{{$item->va_number}}</td>
                                     <td>
                                         <a href="{{route('member.detail.transaction',$item->code)}}" class="btn btn-secondary">Detail</a>
-                                        <a href="{{route('member.detail.transaction',$item->id)}}" class="btn btn-primary">Bayar</a>
+                                        {{-- <a href="{{route('member.detail.transaction',$item->id)}}" class="btn btn-primary">Bayar</a> --}}
                                         {{-- <form action="{{ route('member.transaction',$item->id) }}" method="POST" style="display: inline-block;">
                                             @method('delete')
                                             @csrf
