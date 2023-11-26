@@ -40,7 +40,6 @@
                         <hr>
                         <p>Username : </p><br>
                         <p>Password : </p><br>
-
                         <a href="#" class="btn btn-secondary btn-sm">Login Website</a>
                         <a href="#" class="btn btn-secondary btn-sm">Login Cpanel</a>
                     </div>

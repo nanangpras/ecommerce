@@ -15,7 +15,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div class="ltn__top-bar-menu">
                             <ul>
                                 <li><a href="#"> KODE PROMO</a></li>
@@ -26,7 +26,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

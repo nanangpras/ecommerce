@@ -1,6 +1,7 @@
 <div class="page-sidebar">
     <div class="logo-box">
-        <a href="{{route('home')}}" class="logo-text">Konveksi</a><a href="#" id="sidebar-close">
+        <a href="{{route('home')}}" class="logo-text">webiin</a><a href="#" id="sidebar-close">
+            <p>{{ $company->address ?? '' }}</p>
 
             <i class="material-icons">close</i></a> <a href="#" id="sidebar-state">
             <i class="material-icons">adjust</i><i class="material-icons compact-sidebar-icon">panorama_fish_eye</i>
