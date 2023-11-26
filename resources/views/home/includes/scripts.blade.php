@@ -13,3 +13,6 @@
 <script src="{{url('themes-frontend/js/plugins.js')}}"></script>
 <!-- Main JS -->
 <script src="{{url('themes-frontend/js/main.js')}}"></script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+

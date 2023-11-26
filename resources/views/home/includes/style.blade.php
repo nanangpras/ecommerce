@@ -9,3 +9,6 @@
     <link rel="stylesheet" href="{{url('themes-frontend/css/style.css')}}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{url('themes-frontend/css/responsive.css')}}">
+    <!-- Responsive AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+

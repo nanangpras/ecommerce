@@ -62,7 +62,8 @@
         <div class="col-lg-8">
             <div class="card card-transactions">
                 <div class="card-body">
-                    <h5 class="card-title">Transaksi<a href="#" class="card-title-helper blockui-transactions"><i class="material-icons">refresh</i></a></h5>
+                    <h5 class="card-title">Transaksi<a href="#" class="card-title-helper blockui-transactions"><i
+                                class="material-icons">refresh</i></a></h5>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -75,24 +76,24 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $sumtotal = 0;
+                                $sumtotal = 0;
                                 @endphp
                                 @foreach ($lastFive as $item)
-                                    <tr>
-                                        <td>{{$item->code}}</td>
-                                        <td>
-                                            @if ($item->transaction_status == 'PENDING')
-                                                <span class="badge badge-warning">{{$item->transaction_status}}</span>
-                                            @elseif($item->transaction_status == 'SUCCESS')
-                                                <span class="badge badge-success">{{$item->transaction_status}}</span>
-                                            @endif
-                                        </td>
-                                        <td>{{$item->user->name}}</td>
-                                        <td>Rp {{$item->transaction_total}}</td>
-                                    </tr>
-                                    @php
-                                        $sumtotal += $item->transaction_total;
-                                    @endphp
+                                <tr>
+                                    <td>{{$item->code}}</td>
+                                    <td>
+                                        @if ($item->transaction_status == 'PENDING')
+                                        <span class="badge badge-warning">{{$item->transaction_status}}</span>
+                                        @elseif($item->transaction_status == 'SUCCESS')
+                                        <span class="badge badge-success">{{$item->transaction_status}}</span>
+                                        @endif
+                                    </td>
+                                    <td>{{$item->user->name}}</td>
+                                    <td>Rp {{$item->transaction_total}}</td>
+                                </tr>
+                                @php
+                                $sumtotal += $item->transaction_total;
+                                @endphp
                                 @endforeach
                             </tbody>
                             <tfoot>
@@ -110,24 +111,27 @@
             <div class="card top-products">
                 <div class="card-body">
                     <h5 class="card-title">Popular Products<span class="card-title-helper">Today</span></h5>
-                    <div class="top-products-list">
-                        @foreach ($popularProduct as $item)
+                    {{-- <div class="top-products-list"> --}}
+                        <div>
+                            @foreach ($popularProduct as $item)
                             <div class="product-item">
                                 <h5>{{$item->title}}</h5>
                                 <span>{{$item->transaction_details_count}} transaksi</span>
-                                {{-- <i class="material-icons product-item-status product-item-success">arrow_upward</i> --}}
-                                {{-- <i class="material-icons product-item-status product-item-danger">arrow_downward</i> --}}
+                                {{-- <i class="material-icons product-item-status product-item-success">arrow_upward</i>
+                                --}}
+                                {{-- <i
+                                    class="material-icons product-item-status product-item-danger">arrow_downward</i>
+                                --}}
                             </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 
-@endsection
-
+    @endsection

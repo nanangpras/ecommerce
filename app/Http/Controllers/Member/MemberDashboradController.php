@@ -29,6 +29,7 @@ class MemberDashboradController extends Controller
     public function index()
     {
         $popularProduct = $this->productService->popularProduct();
+        // dd($popularProduct);
         $pending        = $this->trxService->transactionPendingUser(Auth::user()->id);
         $success        = $this->trxService->transactionSuccessUser(Auth::user()->id);
         $cancel         = $this->trxService->transactionCancelUser(Auth::user()->id);
