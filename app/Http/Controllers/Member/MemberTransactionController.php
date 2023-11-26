@@ -11,4 +11,9 @@ class MemberTransactionController extends Controller
     {
         
     }
+
+    public function myInvoiceDetail()
+    {
+        
+    }
 }

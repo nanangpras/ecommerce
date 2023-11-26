@@ -42,7 +42,8 @@ class MemberDashboradController extends Controller
         $detail = $this->trxService->getByCode($code);
         $productUser    = self::categoryProductTransaction(Auth::user()->id);
         // dd($detail);
-        return view('member.pages.transaction.detail',compact('detail','productUser'));
+        return view('member.pages.transaction.invoice',compact('productUser','detail'));
+        // return view('member.pages.transaction.detail',compact('detail','productUser'));
     }
 
     public function myTransaction()
