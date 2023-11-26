@@ -61,6 +61,11 @@ class TransactionService
         return $this->trxRepo->transaactionProductUser($user,$category);
     }
 
+    public function productUserBuyDetail($code)
+    {
+        return $this->trxRepo->transaactionProductUserDetail($code);
+    }
+
     public function transactionPending()
     {
         return $this->trxRepo->sumPendingPay();

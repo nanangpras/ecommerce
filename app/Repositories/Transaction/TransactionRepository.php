@@ -81,6 +81,16 @@ class TransactionRepository implements InterfaceTransaction
         return $product;
     }
 
+    public function transaactionProductUserDetail($code)
+    {
+        $product = Product::join('transaction_details','products.id', '=', 'transaction_details.product_id')
+                            ->join('transactions', 'transaction_details.transaction_id', '=', 'transactions.id')
+                            ->join('categories','products.category_id', '=', 'categories.id')
+                            ->where('transactions.code',$code)
+                            ->first();
+        return $product;
+    }
+
     public function sumSuccsesUser($user_id)
     {
         return $this->transaction->where('transaction_status', 'SUCCESS')

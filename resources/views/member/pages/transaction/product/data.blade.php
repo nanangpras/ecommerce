@@ -37,7 +37,7 @@
                                 <th>Progress</th>
                                 <th>Qty</th>
                                 {{-- <th>Gambar</th> --}}
-                                {{-- <th>Aksi</th> --}}
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,9 +50,9 @@
                                     <td>{{$item->progress_status}}</td>
                                     <td>{{$item->qty}}</td>
                                     {{-- <td>{{$item->qty}}</td> --}}
-                                    {{-- <td> --}}
-                                        {{-- <a href="{{route('member.detail.transaction',$item->code)}}" class="btn btn-secondary">Detail</a>
-                                        <a href="{{route('member.detail.transaction',$item->id)}}" class="btn btn-primary">Bayar</a> --}}
+                                    <td>
+                                        <a href="{{route('product.mytransaction.detail',$item->code)}}" class="btn btn-secondary btn-sm">Detail</a>
+                                        {{-- <a href="{{route('member.detail.transaction',$item->id)}}" class="btn btn-primary">Bayar</a> --}}
                                         {{-- <form action="{{ route('member.transaction',$item->id) }}" method="POST" style="display: inline-block;">
                                             @method('delete')
                                             @csrf
@@ -61,7 +61,7 @@
                                                  Batalkan
                                             </button>
                                         </form> --}}
-                                    {{-- </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
 

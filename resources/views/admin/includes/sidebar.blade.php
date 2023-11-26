@@ -131,7 +131,8 @@
             </li>
             @forelse ($productUser as $item)
                 <li class="active">
-                    <a href="{{route('product.mytransaction', ['user' => Auth::user()->id, 'category' => $item->name])}}" ><i class="material-icons">web_asset</i>{{$item->name}}</a>
+                    <a href="{{route('product.mytransaction', $item->name)}}" ><i class="material-icons">web_asset</i>{{$item->name}}</a>
+                    {{-- <a href="{{route('product.mytransaction', ['user' => Auth::user()->id, 'category' => $item->name])}}" ><i class="material-icons">web_asset</i>{{$item->name}}</a> --}}
                 </li>
             @empty
                 <li class="#">
@@ -143,7 +144,7 @@
                 Transaksi
             </li>
             <li class="{{set_active(['member.detail.transaction','member.mytransaction'])}}">
-                <a href="{{route('member.mytransaction',Auth::user()->id)}}" ><i class="material-icons">paid</i>Invoice</a>
+                <a href="{{route('member.mytransaction')}}" ><i class="material-icons">paid</i>Invoice</a>
             </li>
             <li class="sidebar-title">
                 Shop

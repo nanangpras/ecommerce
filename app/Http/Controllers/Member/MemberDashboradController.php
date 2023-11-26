@@ -45,7 +45,7 @@ class MemberDashboradController extends Controller
         return view('member.pages.transaction.detail',compact('detail','productUser'));
     }
 
-    public function myTransaaction($id)
+    public function myTransaction()
     {
         $user_id = Auth::user()->id;
         $data = $this->trxService->getMyTransaction($user_id);
@@ -53,12 +53,20 @@ class MemberDashboradController extends Controller
         return view('member.pages.transaction.data',compact('data','productUser'));
     }
 
-    public function myTransaactionProduct($user,$category)
+    public function myTransactionProduct($category)
     {
-        $data = $this->trxService->productUserBuy($user,$category);
+        $data = $this->trxService->productUserBuy(Auth::user()->id,$category);
         $productUser    = self::categoryProductTransaction(Auth::user()->id);
         return view('member.pages.transaction.product.data',compact('data','productUser'));
         // return dd($data);
+    }
+
+    public function myTransactionProductDetail($code)
+    {
+        $data = $this->trxService->productUserBuyDetail($code);
+        // dd($data);
+        $productUser    = self::categoryProductTransaction(Auth::user()->id);
+        return view('member.pages.transaction.product.detail',compact('data','productUser'));
     }
 
     public function categoryProductTransaction($user)

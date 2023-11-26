@@ -70,10 +70,11 @@ Route::group(['middleware' => 'roleCheck:user','auth'], function(){
     Route::get('/member/dashboard', [MemberDashboradController::class,'index'])->name('member.dashboard');
     Route::post('/checkout-process',[CheckoutController::class, 'process'])->name('checkout.process');
     Route::get('/member/transaction/detail/{code}',[MemberDashboradController::class, 'detailTransaction'])->name('member.detail.transaction');
-    Route::get('/member/transaction/list/{id}',[MemberDashboradController::class, 'myTransaaction'])->name('member.mytransaction');
+    Route::get('/member/transaction/list',[MemberDashboradController::class, 'myTransaction'])->name('member.mytransaction');
     Route::post('/member/transaction/callback',[CheckoutController::class,'postCallback'])->name('post.callback');
 
-    Route::get('member/transaction/kategori/{user}/{category}',[MemberDashboradController::class,'myTransaactionProduct'])->name('product.mytransaction');
+    Route::get('member/transaction/kategori/{category}',[MemberDashboradController::class,'myTransactionProduct'])->name('product.mytransaction');
+    Route::get('member/transaction/kategori/detail/{code}',[MemberDashboradController::class,'myTransactionProductDetail'])->name('product.mytransaction.detail');
     Route::post('/add-domain',[HomeController::class,'addDomainCookie'])->name('add.domain');
     Route::get('/cart',[CartController::class,'index'])->name('cart.index');
     Route::post('/cart/add-cart',[CartController::class,'addToCart'])->name('add.to.cart');
