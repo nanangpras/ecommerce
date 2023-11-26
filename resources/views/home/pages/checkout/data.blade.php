@@ -154,7 +154,7 @@
                             <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                             <input type="hidden" id="trx_total" value="{{$subtotal}}" name="transaction_total">
                             <input type="hidden" id="idcoupon" name="idcoupon">
-                            <button class="btn theme-btn-7 btn-effect-7 text-uppercase" type="submit">Lanjutkan</button>
+                            <button class="btn theme-btn-7 btn-effect-7 text-uppercase" id="pay-button" type="submit">Lanjutkan</button>
 
 
                         </div>
@@ -218,4 +218,33 @@
             });
         });
 </script>
+{{-- midtrans --}}
+{{-- <script type="text/javascript" src="https://app.stg.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+<script type="text/javascript">
+    // For example trigger on button clicked, or any time you need
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
+      // Also, use the embedId that you defined in the div above, here.
+      window.snap.embed('{{$snap}}', {
+        embedId: 'snap-container',
+        onSuccess: function (result) {
+          /* You may add your own implementation here */
+          alert("payment success!"); console.log(result);
+        },
+        onPending: function (result) {
+          /* You may add your own implementation here */
+          alert("wating your payment!"); console.log(result);
+        },
+        onError: function (result) {
+          /* You may add your own implementation here */
+          alert("payment failed!"); console.log(result);
+        },
+        onClose: function () {
+          /* You may add your own implementation here */
+          alert('you closed the popup without finishing the payment');
+        }
+      });
+    });
+  </script> --}}
 @endpush

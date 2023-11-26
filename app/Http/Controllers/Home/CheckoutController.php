@@ -72,19 +72,8 @@ class CheckoutController extends Controller
                 return $q['qty'] * $q['price'];
             });
 
-        // $book = Book::findOrFail($id);
-        // $transaction = Transaction::create([
-        //     // 'code_transaction' => 'INV'- Carbon::now(),
-        //     'code_transaction' => 'INV' . '-' . time(),
-        //     'user_id' => Auth::user()->id,
-        //     'transaction_total' => $subtotal + $request->ongkir,
-        //     'transaction_status' => 'In_Cart',
-        //     'bank_name' => 'BNI',
-        //     'va_number' => 12,
-        //     'courier' => $request->courier,
-        //     'cost' => $request->ongkir
-        // ]);
         $trx = $this->transactionService->save($request);
+        $snap = $trx->payment_token;
 
         foreach ($cart as $item) {
             $product = Product::with(['productImages'])->find($item['product_id']);
@@ -97,10 +86,17 @@ class CheckoutController extends Controller
             ]);
         }
         //
-        SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
+        // SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
         $cart = [];
         $cookie = cookie('konveksi-carts',json_encode($cart),2880);
-        return redirect()->route('member.detail.transaction', $trx->code)->cookie($cookie);
+        // $response = view('home.pages.checkout.success',compact('snap'));
+        // $response = cookie($cookie);
+        return redirect($trx->payment_url)->cookie($cookie);
+        // return redirect()->back()->cookie($cookie)->with('snap', $snap);
+        // return redirect()->route('member.detail.transaction', $trx->code)->cookie($cookie);
+        // return view('home.checkout.success',compact('snap'))->cookie($cookie);
+        // return $response;
+        // redirect()->route('member.detail.transaction', $trx->code)->cookie($cookie);
     }
 
     public function postCallback(Request $request)

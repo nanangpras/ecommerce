@@ -128,8 +128,15 @@ class TransactionRepository implements InterfaceTransaction
 
 
         $midtrans = new CreateSnapTokenService($transaction,Auth::user());
-        $snap_token = $midtrans->getSnapToken();
-        $transaction->payment_token = $snap_token;
+        // $snap_token = $midtrans->getSnapToken();
+        $paymentUrl = $midtrans->transaction();
+        if ($paymentUrl->token) {
+			$transaction->payment_token = $paymentUrl->token;
+			$transaction->payment_url   = $paymentUrl->redirect_url;
+			// $transaction->bank_name = $paymentUrl->va_number;
+			$transaction->save();
+		}
+        // $transaction->payment_token = $snap_token;
 
         $transaction->save();
 
