@@ -9884,7 +9884,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 .ltn__product-details-menu-3 ul li {
     list-style: none;
     display: inline-block;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     font-size: 14px;
     font-weight: 600;
 }
@@ -17924,10 +17924,12 @@ input.cart-plus-minus-box {
 }
 
 .theme-btn-1 {
+    border-radius: 15px;
     background-color: var(--ltn__secondary-color);
     color: var(--white);
 }
 .theme-btn-1:hover {
+    border-radius: 15px;
     background-color: var(--ltn__primary-color);
     color: var(--white);
 }
@@ -17944,33 +17946,38 @@ input.cart-plus-minus-box {
 }
 
 .theme-btn-3 {
+    border-radius: 15px;
     background-color: transparent;
     border: 2px solid var(--border-color-9);
 }
 .theme-btn-3:hover {
+    border-radius: 15px;
     background-color: var(--ltn__secondary-color);
     border-color: var(--ltn__secondary-color);
     color: var(--white);
 }
 .theme-btn-5 {
+    border-radius: 15px;
     background-color: var(--ltn__secondary-color-5);
     border: 2px solid var(--border-color-9);
     color: var(--white);
 }
 .theme-btn-5:hover {
+    border-radius: 15px;
     background-color: var(--ltn__secondary-color-5);
     border-color: var(--ltn__secondary-color-5);
     color: var(--white);
 }
 .theme-btn-6 {
+    border-radius: 15px;
     background-color: var(--ltn__secondary-color-6);
     color: var(--white);
     /* border-radius: 15px; */
 }
 .theme-btn-6:hover {
+    border-radius: 15px;
     background-color: var(--ltn__primary-color);
     color: var(--border-color-4);
-    /* border-radius: 15px; */
 }
 .theme-btn-7 {
     background-color: var(--ltn__secondary-color-6);
@@ -18126,6 +18133,7 @@ input.cart-plus-minus-box {
     width: 100%;
 }
 .btn-effect-6:after {
+    border-radius: 15px;
     width: 0%;
     height: 100%;
     top: 0;
@@ -18155,7 +18163,6 @@ input.cart-plus-minus-box {
 .btn-effect-7:hover::after {
     width: 100%;
 }
-
 
 .btn-full-width {
     display: block;

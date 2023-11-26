@@ -107,30 +107,32 @@
                                                 </div>
                                             </li>
                                             <li>
+                                                @if ($detail->link)
+                                                <a href="{{$detail->link}}" target="_blank" class="">
+                                                    <button type="submit" class="btn theme-btn-5 btn-effect-2"
+                                                        id="update_cart">Demo</button>
+                                                    {{-- <button
+                                                        class="theme-btn-5 btn-preview  btn-effect-1 block">Demo</button>
+                                                    --}}
+                                                </a>
+                                                @endif
+                                            </li>
+                                            <li>
                                                 @csrf
                                                 <input type="hidden" id="idproduct" name="id" value="{{ $detail->id }}"
                                                     class="form-control">
                                                 <input type="hidden" id="weight" name="weight"
                                                     value="{{ $detail->weight }}" class="form-control">
-                                                <button class="theme-btn-1 btn-preview btn-effect-1 " type="submit">
+                                                {{-- <button class="theme-btn-1 btn-preview btn-effect-1 "
+                                                    type="submit">
 
                                                     <span> + Keranjang</span>
-                                                </button>
+                                                </button> --}}
+                                                <button type="submit" class="btn theme-btn-7 btn-effect-2"
+                                                    id="update_cart">Masukkan Keranjang</button>
                                             </li>
                                         </ul>
                                     </form>
-                                </div>
-                                <div class="ltn__product-details-menu-3">
-                                    <ul>
-                                        <li>
-                                            @if ($detail->link)
-                                            <a href="{{$detail->link}}" target="_blank" class="">
-                                                <button
-                                                    class="theme-btn-5 btn-preview  btn-effect-1 block">Demo</button>
-                                            </a>
-                                            @endif
-                                        </li>
-                                    </ul>
                                 </div>
                                 <hr>
                             </div>
@@ -338,10 +340,9 @@
                         <div class="product-price">
                             <span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Rp
                                 @currency($item->price)</span>
-                                @if ($item->price_coret)
-                                <del
-                                    style="color:rgb(62, 61, 61); font-size:14px">@currency($item->price_coret)</del>
-                                @endif
+                            @if ($item->price_coret)
+                            <del style="color:rgb(62, 61, 61); font-size:14px">@currency($item->price_coret)</del>
+                            @endif
                             {{-- <del>@currency($item->price)</del> --}}
                         </div>
                     </div>
