@@ -90,6 +90,11 @@ class TransactionService
     {
         return $this->trxRepo->topFiveTransaction();
     }
+    
+    public function fiveTransactionMember($user_id)
+    {
+        return $this->trxRepo->topFiveTransactionMember($user_id);
+    }
 
     public function save(Request $request)
     {

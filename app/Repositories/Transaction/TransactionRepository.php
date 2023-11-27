@@ -122,6 +122,11 @@ class TransactionRepository implements InterfaceTransaction
         return $this->transaction->latest()->take(5)->get();
     }
 
+    public function topFiveTransactionMember($user_id)
+    {
+        return $this->transaction->where('user_id',$user_id)->where('transaction_status','=','PENDING')->latest()->take(5)->get();
+    }
+
     public function save(Request $request)
     {
         $transaction = new $this->transaction;

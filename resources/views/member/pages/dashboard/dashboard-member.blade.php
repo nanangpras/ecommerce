@@ -78,19 +78,28 @@
                                     <th>Jatuh Tempo </th>
                                     <th>No Invoice </th>
                                     <th>Jumlah</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse ($listTransaction as $item)
+                                    <tr>
+                                        <td>{{$item->created_at}}</td>
+                                        <td>{{$item->code}}</td>
+                                        <td>{{$item->transaction_total}}</td>
+                                        <td>{{$item->transaction_status}}</td>
+                                        <td>
+                                            <a href="{{route('member.detail.transaction',$item->code)}}" class="btn btn-primary">Bayar</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Tidak ada invoice</td>
+                                    </tr>
+                                @endforelse
                                 {{-- @foreach ($data as $item) --}}
-                                <tr>
-                                    <td> Haloooo</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Bayar</a>
-                                    </td>
-                                </tr>
+                                
                                 {{-- @endforeach --}}
 
                             </tbody>

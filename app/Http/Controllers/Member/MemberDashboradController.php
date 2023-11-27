@@ -39,7 +39,8 @@ class MemberDashboradController extends Controller
         $cancel         = $this->trxService->transactionCancelUser(Auth::user()->id);
         $productUser    = self::categoryProductTransaction(Auth::user()->id);
         $article        = $this->articleService->newsMember();
-        return view('member.pages.dashboard.dashboard-member',compact('popularProduct','pending','success','cancel','productUser','article'));
+        $listTransaction= $this->trxService->fiveTransactionMember(Auth::user()->id);
+        return view('member.pages.dashboard.dashboard-member',compact('popularProduct','pending','success','cancel','productUser','article','listTransaction'));
     }
 
     public function detailTransaction($code)
