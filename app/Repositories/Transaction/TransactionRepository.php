@@ -4,7 +4,7 @@ namespace App\Repositories\Transaction;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Transaction;
-use App\Models\TransactionModel;
+use App\Models\TransactionLog;
 use Illuminate\Http\Request;
 use App\Repositories\Transaction\InterfaceTransaction;
 use App\Service\Midtrans\CreateSnapTokenService;
@@ -63,7 +63,7 @@ class TransactionRepository implements InterfaceTransaction
                 return back()->with('status', 2)->with('message', 'Proses gagal');
             }
 
-            $update_log = new TransactionModel();
+            $update_log = new TransactionLog();
 
             $update_log->transaction_id             = $update->id;
             $update_log->setting_username_website   = $request->username_website;
@@ -111,6 +111,7 @@ class TransactionRepository implements InterfaceTransaction
     {
         $product = Product::join('transaction_details','products.id', '=', 'transaction_details.product_id')
                             ->join('transactions', 'transaction_details.transaction_id', '=', 'transactions.id')
+                            ->join('transaction_logs','transaction_logs.transaction_id', '=', 'transactions.id')
                             ->join('categories','products.category_id', '=', 'categories.id')
                             ->where('transactions.code',$code)
                             ->first();
