@@ -101,18 +101,15 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Berita 
-                        </h5>
-                        <br>
-                        <table id="zero-conf" class="display" style="width:100%">
-                           
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
+                        <h5 class="card-title">Berita </h5>
+                        <hr>
+                        @foreach ($article as $item)
+                            <div class="card card-transactions">
+                                <div class="card-body">
+                                    <p>{{$item->titles}} <a target="_blank" href="{{ route('blog.detail', $item->slug) }}" class="btn btn-sm btn-secondary">lihat</a></p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

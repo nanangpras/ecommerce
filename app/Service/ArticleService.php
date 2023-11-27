@@ -46,6 +46,11 @@ class ArticleService
         return $this->articleRepo->relateArticle($category);
     }
 
+    public function newsMember()
+    {
+        return $this->articleRepo->newsForMember();
+    }
+
     public function update(Request $request, $id)
     {
         return $this->articleRepo->update($request,$id);

@@ -69,6 +69,11 @@ class ArticleRepository implements InterfaceArticle
         return $this->article->where('category_id',$category)->paginate(2);
     }
 
+    public function newsForMember()
+    {
+        return $this->article->orderBy('created_at','DESC')->take(4)->get();
+    }
+
     public function save(Request $request)
     {
         $storage="storage/artikel/image";
