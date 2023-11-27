@@ -100,6 +100,7 @@
                         <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Register</button>
                     </div>
                 </form>
+                
             </div>
             {{-- <div class="col-lg-6 offset-lg-3">
                 <div class="account-login-inner">

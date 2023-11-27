@@ -137,10 +137,10 @@
         <div class="row justify-content-center">
             @foreach ($popular_product as $item)
             <div class="col-lg-4 col-sm-6">
-                <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 30px">
+                <div class="ltn__team-item ltn__team-item-3 ltn__team-item-3-2" style="border-radius: 15px">
                     <div class="team-img">
                         <img src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}" alt="#"
-                            style="border-radius: 30px; width: 370px;height:429px; object-fit: cover ">
+                            style="border-radius: 15px; width: 370px;height:429px; object-fit: cover ">
                     </div>
                     <div class="team-info">
                         <h4><a href="team-details.html" style="display: block;

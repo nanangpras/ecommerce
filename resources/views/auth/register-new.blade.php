@@ -171,6 +171,11 @@
                                         <a href="#" class="forgot-link">Forgot Password?</a>
                                     </div>
                                 </form>
+                                <div class="text-center">
+
+                                    <label class="" for="">Sudah Punya Akun?  </label>
+                                    <a href="{{ route('login') }}" class="forgot-link">Masuk</a>
+                                </div>
                             </div>
                         </div>
                     </div>
