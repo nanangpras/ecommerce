@@ -4,11 +4,13 @@ namespace App\Repositories\Transaction;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Transaction;
+use App\Models\TransactionLog;
 use Illuminate\Http\Request;
 use App\Repositories\Transaction\InterfaceTransaction;
 use App\Service\Midtrans\CreateSnapTokenService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Mockery\CountValidator\AtMost;
 
@@ -48,14 +50,38 @@ class TransactionRepository implements InterfaceTransaction
 
     public function updateProgressTransaction(Request $request,$id)
     {
-        $update = $this->transaction->where('code',$id)->first();
-        // if ($request->progress_status == "Proses") {
-        //     $update->where('transaction_status','SUCCESS')
-        // }
-        $update->progress_status = $request->progress_status;
-        $update->notes = $request->notes ?? NULL;
-        $update->save();
-        return $update->fresh();
+        DB::beginTransaction();
+        try {
+            $update = $this->transaction->where('code',$id)->first();
+            // if ($request->progress_status == "Proses") {
+            //     $update->where('transaction_status','SUCCESS')
+            // }
+            $update->progress_status = $request->progress_status;
+            $update->notes = $request->notes ?? NULL;
+            if (!$update->save()) {
+                DB::rollBack() ;
+                return back()->with('status', 2)->with('message', 'Proses gagal');
+            }
+
+            $update_log = new TransactionLog();
+
+            $update_log->transaction_id             = $update->id;
+            $update_log->setting_username_website   = $request->username_website;
+            $update_log->setting_password_website   = $request->password_website;
+            $update_log->setting_username_cpanel    = $request->username_cpanel;
+            $update_log->setting_password_cpanel    = $request->password_cpanel;
+            $update_log->transaction_status         = $request->progress_status;
+            $update_log->download_assets            = $request->download_assets ?? NULL;
+            if (!$update_log->save()) {
+                DB::rollBack() ;
+                return back()->with('status', 2)->with('message', 'Proses gagal');
+            }
+
+            DB::commit() ;
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
+        return $update_log->fresh();
     }
 
     public function getCategoryByTransactionUser($user)
@@ -85,6 +111,7 @@ class TransactionRepository implements InterfaceTransaction
     {
         $product = Product::join('transaction_details','products.id', '=', 'transaction_details.product_id')
                             ->join('transactions', 'transaction_details.transaction_id', '=', 'transactions.id')
+                            ->join('transaction_logs','transaction_logs.transaction_id', '=', 'transactions.id')
                             ->join('categories','products.category_id', '=', 'categories.id')
                             ->where('transactions.code',$code)
                             ->first();

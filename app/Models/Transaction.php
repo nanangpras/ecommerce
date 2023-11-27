@@ -18,4 +18,9 @@ class Transaction extends Model
     {
         return $this->hasMany(TransactionDetail::class);
     }
+
+    public function notes_log()
+    {
+        return $this->hasOne(TransactionLog::class);
+    }
 }
