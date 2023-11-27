@@ -64,9 +64,9 @@
                                                 id="btnModalProgress" data-target="#exampleModal" data-title="Peringatan"
                                                 data-key="progress_done"
                                                 data-remote="{{ route('transaction.detail', $item->code) }}">
-                                                + Sub
+                                                Selesai
                                             </a>
-                                              <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-selesai').submit();">Selesai</a>
+                                              {{-- <a class="dropdown-item" href="{{route('transaction.update-progress',$item->code)}}" onclick="event.preventDefault();document.getElementById('progress-form-selesai').submit();">Selesai</a> --}}
                                             </div>
                                             <form id="progress-form" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
                                                 @csrf
@@ -83,11 +83,11 @@
                                                 @method('PATCH')
                                                 <input type="hidden" name="progress_status" value="Proses">
                                             </form>
-                                            <form id="progress-form-selesai" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
+                                            {{-- <form id="progress-form-selesai" action="{{route('transaction.update-progress',$item->code)}}" method="POST">
                                                 @csrf
                                                 @method('PATCH')
                                                 <input type="hidden" name="progress_status" value="Selesai">
-                                            </form>
+                                            </form> --}}
                                     </td>
                                 </tr>
                             @endforeach
