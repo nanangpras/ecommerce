@@ -107,17 +107,6 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                @if ($detail->link)
-                                                <a href="{{$detail->link}}" target="_blank" class="">
-                                                    <button type="submit" class="btn theme-btn-5 btn-effect-2"
-                                                        id="update_cart">Demo</button>
-                                                    {{-- <button
-                                                        class="theme-btn-5 btn-preview  btn-effect-1 block">Demo</button>
-                                                    --}}
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li>
                                                 @csrf
                                                 <input type="hidden" id="idproduct" name="id" value="{{ $detail->id }}"
                                                     class="form-control">
@@ -133,6 +122,16 @@
                                             </li>
                                         </ul>
                                     </form>
+                                </div>
+                                <div class="">
+                                    @if ($detail->link)
+                                    <a href="{{$detail->link}}" target="_blank" class="">
+                                        <button class="btn theme-btn-5 btn-effect-2">Demo</button>
+                                        {{-- <button class="theme-btn-5 btn-preview  btn-effect-1 block">Demo</button>
+                                        --}}
+
+                                    </a>
+                                    @endif
                                 </div>
                                 <hr>
                             </div>
