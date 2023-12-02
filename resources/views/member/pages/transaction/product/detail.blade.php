@@ -26,22 +26,22 @@
                     <div class="card-body">
                         <h5 class="card-title">Status<a href="#" class="card-title-helper blockui-transactions"><i class="material-icons">refresh</i></a></h5>
                         <hr>
-                        <p>Status : {{$data->progress_status}}</p>
-                        <p>Produk : {{$data->title}}</p>
-                        <p>Price : {{$data->price}}</p>
-                        <p>Invoice : {{$data->code}}</p>
+                        <p>Status : {{$data->progress_status ?? ''}}</p>
+                        <p>Produk : {{$data->title ?? ''}}</p>
+                        <p>Price : {{$data->price ?? ''}}</p>
+                        <p>Invoice : {{$data->code ?? ''}}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="card card-transactions">
                     <div class="card-body">
-                        <h1 class="card-title">{{$data->title}}<a href="#" class="card-title-helper blockui-transactions"><i class="material-icons">refresh</i></a></h1>
+                        <h1 class="card-title">{{$data->title ?? ''}}<a href="#" class="card-title-helper blockui-transactions"><i class="material-icons">refresh</i></a></h1>
                         <hr>
-                        <p>Username website : {{$data->setting_username_website}}</p><br>
-                        <p>Password website : {{$data->setting_password_website}}</p><br>
-                        <p>Username cpanel : {{$data->setting_username_cpanel}}</p><br>
-                        <p>Password cpanel : {{$data->setting_password_cpanel}}</p><br>
+                        <p>Username website : {{$data->setting_username_website ?? ''}}</p><br>
+                        <p>Password website : {{$data->setting_password_website ?? ''}}</p><br>
+                        <p>Username cpanel : {{$data->setting_username_cpanel ?? ''}}</p><br>
+                        <p>Password cpanel : {{$data->setting_password_cpanel ?? ''}}</p><br>
                         <a href="#" class="btn btn-secondary btn-sm">Login Website</a>
                         <a href="#" class="btn btn-secondary btn-sm">Login Cpanel</a>
                     </div>
