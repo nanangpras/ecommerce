@@ -11,7 +11,7 @@
     <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Login - Dashboard</title>
+    <title>Daftar - Webiin</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
@@ -99,6 +99,7 @@
                                     </div>
                                     <div class="form-group">
                                         <select name="province_id" id="province_id" class="form-control">
+                                            <option selected="true" disabled="disabled"> Pilih Provinsi</option>
                                             @foreach ($provinsi as $row)
                                                     <option value="{{ $row['province_id'] }}" name="{{ $row['province'] }}">{{ $row['province'] }}</option>
                                                 @endforeach
@@ -110,10 +111,13 @@
                                                 @enderror
                                         </select>
                                     </div>
+                                    <div class="text-center loader_show" id="loader_show" style="position: absolute; left: 0; right: 0; display:none">
+                                        <img src="{{ url('themes/assets/icons/loader.gif') }}">
+                                    </div>
                                     <div class="form-group">
                                         <div class="input-item">
                                             <select name="city_id" id="city_id" class="form-control">
-                                                <option>Select Kota</option>
+                                                <option>Pilih Kota</option>
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +125,7 @@
                                         <div class="input-item">
                                             <div class="input-item">
                                                 <select name="kecamatan_id" id="kecamatan_id" class="form-control">
-                                                    <option>Select Kecamatan</option>
+                                                    <option>Pilih Kecamatan</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -198,17 +202,18 @@
             $('select[name="province_id"]').on('change',function () {
                 let provinceid = $(this).val();
                 if (provinceid) {
+                    $(".loader_show").show();
                     jQuery.ajax({
                         url:"/city/"+provinceid,
                         type:'GET',
                         dataType:'json',
                         success:function(data){
-                            console.log(data);
-                            alert('ok');
                             $('select[name="city_id"]').empty();
+                            $('select[name="city_id"]').append('<option selected="true" disabled="disabled"> Pilih Kota</option>');
                             $.each(data,function (key,value) {
                                 $('select[name="city_id"]').append('<option value="'+ value.city_id +'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
                             })
+                            $(".loader_show").hide();
                         }
                     })
                 }else{
@@ -219,17 +224,19 @@
             $('select[name="city_id"]').on('change',function () {
                 let kecamatanid = $(this).val();
                 if (kecamatanid) {
+                    $(".loader_show").show();
                     jQuery.ajax({
                         url:"/subdistrict/"+kecamatanid,
                         type:'GET',
                         dataType:'json',
                         success:function(data){
-                            console.log(data);
 
                             $('select[name="kecamatan_id"]').empty();
+                            $('select[name="kecamatan_id"]').append('<option selected="true" disabled="disabled"> Pilih Kecamatan</option>');
                             $.each(data,function (key,value) {
                                 $('select[name="kecamatan_id"]').append('<option value="'+ value.subdistrict_id +'" namakota="'+ value.city +' ' +value.subdistrict_name+ '">' + value.city + ' ' + value.subdistrict_name + '</option>');
                             })
+                            $(".loader_show").hide();
                         }
                     })
                 }else{
