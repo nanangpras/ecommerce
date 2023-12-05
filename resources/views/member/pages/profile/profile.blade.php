@@ -80,10 +80,14 @@
                                     <input type="number" name="phone" class="form-control" id="name" value="{{$user->phone}}" aria-describedby="name">
                                 </div>
                                 <div class="row">
+                                    <div class="text-center loader_show" id="loader_show" style="position: absolute; left: 0; right: 0; display:none">
+                                        <img src="{{ url('themes/assets/icons/loader.gif') }}">
+                                    </div>
                                     <div class="col">
                                         <div class="form-group">
                                             <label>Provinsi</label>
                                             <select name="province_id" id="province_id" class="form-control">
+                                                <option selected="true" disabled="disabled"> Pilih Provinsi</option>
                                                 @foreach ($provinsi as $row)
                                                         <option value="{{ $row['province_id'] }}" {{$user->province_id == $row['province_id'] ? 'selected' : '' }} >{{ $row['province'] }}</option>
                                                     @endforeach
@@ -191,17 +195,18 @@
             $('select[name="province_id"]').on('change',function () {
                 let provinceid = $(this).val();
                 if (provinceid) {
+                    $(".loader_show").show();
                     jQuery.ajax({
                         url:"/city/"+provinceid,
                         type:'GET',
                         dataType:'json',
                         success:function(data){
-                            console.log(data);
-                            alert('ok');
                             $('select[name="city_id"]').empty();
+                            $('select[name="city_id"]').append('<option selected="true" disabled="disabled"> Pilih Kota</option>');
                             $.each(data,function (key,value) {
                                 $('select[name="city_id"]').append('<option value="'+ value.city_id +'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
                             })
+                            $(".loader_show").hide();
                         }
                     })
                 }else{
@@ -212,17 +217,18 @@
             $('select[name="city_id"]').on('change',function () {
                 let kecamatanid = $(this).val();
                 if (kecamatanid) {
+                    $(".loader_show").show();
                     jQuery.ajax({
                         url:"/subdistrict/"+kecamatanid,
                         type:'GET',
                         dataType:'json',
                         success:function(data){
-                            console.log(data);
-
                             $('select[name="subdistrict_id"]').empty();
+                            $('select[name="subdistrict_id"]').append('<option selected="true" disabled="disabled"> Pilih Kecamatan</option>');
                             $.each(data,function (key,value) {
                                 $('select[name="subdistrict_id"]').append('<option value="'+ value.subdistrict_id +'" namakota="'+ value.city +' ' +value.subdistrict_name+ '">' + value.city + ' ' + value.subdistrict_name + '</option>');
                             })
+                            $(".loader_show").hide();
                         }
                     })
                 }else{
