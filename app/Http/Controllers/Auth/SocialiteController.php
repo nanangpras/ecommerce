@@ -44,7 +44,7 @@ class SocialiteController extends Controller
 
 
                     \auth()->login($create, true);
-                    return redirect()->route('member.dashboard');
+                    return redirect()->route('profile.edit')->with('error','Segera lengkapi profile anda');
                 }
 
             } catch (\Exception $e) {

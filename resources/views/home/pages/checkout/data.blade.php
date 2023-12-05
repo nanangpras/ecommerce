@@ -48,6 +48,39 @@
                             {{-- Informasi Anda --}}
 
                             <div class="ltn__checkout-inner">
+                                @if (session('error'))
+                                    <!-- Modal -->
+                                    <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+                                        <div class="modal fade" id="profileModal" tabindex="-1">
+                                            <div class="modal-dialog modal-md" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                         <div class="ltn__quick-view-modal-inner">
+                                                             <div class="modal-product-item">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                         <div class="modal-product-info">
+                                                                            <h5>Peringatan</h5>
+                                                                            <p class="added-cart"><i class="fa fa-times-circle"></i> {{ session('error') }}</p>
+                                                                            <div class="btn-wrapper">
+                                                                                <a href="{{route('profile.edit')}}" class="theme-btn-1 btn btn-effect-1">Profile</a>
+                                                                            </div>
+                                                                         </div>
+                                                                    </div>
+                                                                </div>
+                                                             </div>
+                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="ltn__checkout-single-content">
                                     <div class="ltn__checkout-single-content-info">
                                         <form action="#">
@@ -133,13 +166,25 @@
                                             @endforelse
                                             <tr>
                                                 <td><strong>Kupon</strong> <br>
-                                                    <div id="description_coupon">kupon deskripsi untuk anda</div>
+                                                    <div id="description_coupon">kupon</div>
                                                 </td>
-                                                <td id="rate_coupon"><strong>0</strong></td>
+                                                <td id="rate_coupon">Rp 0</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Order Total</strong></td>
-                                                <td id="order_total"><strong>@currency($subtotal)</strong></td>
+                                                <td><strong>Sub Total</strong></td>
+                                                <td id="order_total">@currency($subtotal)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Pajak 11%</strong>
+                                                </td>
+                                                <td><div id="pajak">Rp 0</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Grand Total</strong>
+                                                </td>
+                                                <td><strong><div id="grand_total">0</div></strong></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -172,6 +217,10 @@
 <script>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function () {
+            @if(session('error'))
+                $('#profileModal').modal('show');
+            @endif
+            pajak();
             $("#btn_coupon").click(function (e) {
                 let code_coupon = $("#code_coupon").val();
                 e.preventDefault();
@@ -216,6 +265,25 @@
                     }
                 });
             });
+
+            function pajak(){
+                let subtotal = $("#trx_total").val();
+                let pajaktotal = parseInt(subtotal)* 0.11;
+                let pajakresult = formatCurrency(pajaktotal);
+                let grand_total_pajak = parseInt(subtotal) + parseInt(pajaktotal);
+                $("#pajak").text(pajakresult);
+                $("#grand_total").text(formatCurrency(grand_total_pajak));
+            }
+
+            function formatCurrency ($params){
+                let formatter = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+                })
+                return formatter.format($params)
+            }
         });
 </script>
 {{-- midtrans --}}

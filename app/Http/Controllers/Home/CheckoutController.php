@@ -10,6 +10,7 @@ use App\Models\TransactionDetail;
 use App\Service\ProductService;
 use App\Service\RajaOngkirService;
 use App\Service\TransactionService;
+use App\Service\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,15 +19,18 @@ class CheckoutController extends Controller
     protected $rajaOngkirService;
     protected $transactionService;
     protected $productService;
+    protected $userService;
 
     public function __construct(
         RajaOngkirService $rajaOngkirService,
         TransactionService $transactionService,
+        UserService $userService,
         ProductService $productService)
     {
         $this->rajaOngkirService    = $rajaOngkirService;
         $this->transactionService   = $transactionService;
         $this->productService       = $productService;
+        $this->userService          = $userService;
     }
 
     private function getCarts()
@@ -71,27 +75,36 @@ class CheckoutController extends Controller
             {
                 return $q['qty'] * $q['price'];
             });
+        $check_user = $this->userService->getById(Auth::user()->id);
+        try {
+            if ($check_user->province_id == 0 && $check_user->city_id == 0 && $check_user->subdisctrict_id == 0 && $check_user->postcode == 0 && $check_user->phone == 0) {
+                return redirect()->route('checkout.index')->with('error', 'Silahkan lengkapi profile anda dahulu');
+            }else{
+                $trx = $this->transactionService->save($request);
+                $snap = $trx->payment_token;
 
-        $trx = $this->transactionService->save($request);
-        $snap = $trx->payment_token;
-
-        foreach ($cart as $item) {
-            $product = Product::with(['productImages'])->find($item['product_id']);
-            $this->productService->updateStock($item['qty'],$product->id);
-            TransactionDetail::create([
-                'transaction_id' => $trx->id,
-                'qty' => $item['qty'],
-                'product_id' => $item['product_id'],
-                'transaction_subtotal' => $item['qty'] * $product->price,
-            ]);
+                foreach ($cart as $item) {
+                    $product = Product::with(['productImages'])->find($item['product_id']);
+                    $this->productService->updateStock($item['qty'],$product->id);
+                    TransactionDetail::create([
+                        'transaction_id' => $trx->id,
+                        'qty' => $item['qty'],
+                        'product_id' => $item['product_id'],
+                        'transaction_subtotal' => $item['qty'] * $product->price,
+                    ]);
+                }
+                //
+                // SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
+                $cart = [];
+                $cookie = cookie('konveksi-carts',json_encode($cart),2880);
+                // $response = view('home.pages.checkout.success',compact('snap'));
+                // $response = cookie($cookie);
+                return redirect($trx->payment_url)->cookie($cookie);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
         }
-        //
-        // SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
-        $cart = [];
-        $cookie = cookie('konveksi-carts',json_encode($cart),2880);
-        // $response = view('home.pages.checkout.success',compact('snap'));
-        // $response = cookie($cookie);
-        return redirect($trx->payment_url)->cookie($cookie);
+
         // return redirect()->back()->cookie($cookie)->with('snap', $snap);
         // return redirect()->route('member.detail.transaction', $trx->code)->cookie($cookie);
         // return view('home.checkout.success',compact('snap'))->cookie($cookie);

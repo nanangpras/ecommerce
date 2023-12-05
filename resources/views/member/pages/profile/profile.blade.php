@@ -11,6 +11,14 @@
     </button> --}}
 </div>
 @endif
+@if (session('error'))
+<div class="alert alert-danger outline-alert" role="alert">
+    {{ session('error') }}
+    {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button> --}}
+</div>
+@endif
 <div class="main-wrapper">
     <div class="profile-header">
         <div class="row">
@@ -20,7 +28,7 @@
                 </div>
                 <div class="profile-name">
                     <h3 style="color: black">{{$user->name}}</h3>
-                    <span>Member Of Toko</span>
+                    <span>Member Of Webiin</span>
                 </div>
                 <div class="profile-menu" style="color: black">
                     <ul>
