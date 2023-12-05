@@ -23,6 +23,8 @@ use App\Http\Controllers\Member\MemberDashboradController;
 use App\Http\Controllers\ProfileController;
 use Faker\Provider\ar_EG\Company;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,6 +121,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    return redirect('/')->with('success','Successfully cleared');
+    // return "Cache is cleared";
+    // redirect()
+});
+Route::get('/optimal', function() {
+    Artisan::call('optimize:clear');
+    return redirect('/')->with('success','Optimalisasi berhasil');
+    // return "Optimasi cache berhasil";
 });
 
 require __DIR__.'/auth.php';
