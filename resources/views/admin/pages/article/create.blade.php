@@ -31,9 +31,13 @@
                             <label for="exampleInputEmail1">Judul</label>
                             <input type="text" name="titles" class="form-control" id="title" aria-describedby="name" placeholder="Masukan judul">
                         </div>
+                        <div class="text-center loader_show" id="loader_show" style="position: absolute; left: 0; right: 0; display:none">
+                            <img src="{{ url('themes/assets/icons/loader.gif') }}">
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tipe kategori</label>
-                            <select name="category_id" id="category_id" class="form-control">
+                            <select name="category_id" id="category_id" class="form-control" data-type="artikel">
+                                <option selected="true" disabled="disabled"> Pilih Kategori</option>
                                 @foreach ($category as $item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
@@ -107,17 +111,21 @@
         $(document).ready(function () {
             $('select[name="category_id"]').on('change',function () {
                 let category_id = $(this).val();
+                let type        = $(this).attr('data-type');
                 if (category_id) {
+                    $(".loader_show").show();
                     jQuery.ajax({
-                        url:"/subcategory/article/"+category_id,
+                        url:'/subcategory/list/' + type + '/' + category_id,
                         type:'GET',
                         dataType:'json',
                         success:function(data){
-                            // console.log(data);
+                            console.log(data);
                             $('select[name="subcategory_id"]').empty();
+                            $('select[name="subcategory_id"]').append('<option selected="true" disabled="disabled"> Pilih Sub Kategori</option>');
                             $.each(data,function (key,value) {
                                 $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.name + '</option>');
                             })
+                            $(".loader_show").hide();
                         }
                     })
                 }else{

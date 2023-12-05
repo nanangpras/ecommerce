@@ -21,6 +21,11 @@ class SubCategoryService
         return $this->subCategoryRepository->getAll();
     }
 
+    public function getCategorySubType($type,$sub_id)
+    {
+        return $this->subCategoryRepository->getCategoryTypeSub($type,$sub_id);
+    }
+
     public function getsubCategoryProduct($id)
     {
         return $this->subCategoryRepository->getSubCategoryProduct($id);

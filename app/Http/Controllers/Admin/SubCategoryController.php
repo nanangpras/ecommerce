@@ -86,9 +86,9 @@ class SubCategoryController extends Controller
         $subproduct = $this->subCategoryService->getsubCategoryProduct($id);
         return response()->json($subproduct);
     }
-    public function getSubArticle($id)
+    public function getSubCategory($type,$sub_id)
     {
-        $subarticle = $this->subCategoryService->getsubCategoryArticle($id);
-        return response()->json($subarticle);
+        $subCategory = $this->subCategoryService->getCategorySubType($type,$sub_id);
+        return response()->json($subCategory);
     }
 }

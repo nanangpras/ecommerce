@@ -39,6 +39,11 @@ class SubcategoryRepository implements InterfaceSubcategory
         return $this->category->where('parent_id','!=', null)->get();
     }
 
+    public function getCategoryTypeSub($type,$sub_id)
+    {
+        return $this->category->where('type','=',$type)->where('parent_id',$sub_id)->get();
+    }
+
     public function getSubCategoryProduct($id)
     {
         return $this->category->where('type','=','produk')->where('parent_id',$id)->get();

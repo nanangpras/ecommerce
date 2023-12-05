@@ -44,11 +44,6 @@ class CategoryRepository implements InterfaceCategory
         return $this->category->where('type','=',$type)->where('parent_id',null)->get();
     }
 
-    public function getCategoryTypeSub($type,$sub_id)
-    {
-        return $this->category->where('type','=',$type)->where('parent_id',$sub_id)->get();
-    }
-    
     public function getProductCategorySlug($slug)
     {
         return $this->category->where('slug','=',$slug)->with(['product','product.productImages','children','productsub'])->paginate(12);

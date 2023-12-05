@@ -35,7 +35,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $category = $this->categoryService->getCategoryArticle();
+        $category = $this->categoryService->getCategoryRootType('artikel');
         return view('admin.pages.article.create',compact('category'));
     }
 

@@ -89,7 +89,7 @@ Route::group(['middleware' => 'roleCheck:admin','auth'], function(){
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubCategoryController::class);
     Route::get('/subcategory/product/{id}', [SubCategoryController::class, 'getSubProduct'])->name('subcategory.product');
-    Route::get('/subcategory/article/{id}', [SubCategoryController::class, 'getSubArticle'])->name('subcategory.article');
+    Route::get('/subcategory/list/{type}/{id}', [SubCategoryController::class, 'getSubCategory'])->name('subcategory.list');
     // Route::post('/category/subcategory',[CategoryController::class, 'saveSubcategory'])->name('subcategory.store');
     Route::resource('product', ProductController::class);
     Route::resource('banner', BannerController::class);
