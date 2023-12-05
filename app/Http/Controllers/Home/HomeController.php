@@ -208,4 +208,16 @@ class HomeController extends Controller
         // dd($tags);
         return view('home.pages.blog.details',compact('detailBlog','cart','subtotal','category','related','breadcrumb','count_cart','tags','popularView'));
     }
+
+    public function pageError()
+    {
+        $cartHelper     = new CartCookie();
+        $cart           = $cartHelper->getCarts();
+        $count_cart     = $cartHelper->getTotalCart();
+        $subtotal = collect($cart)->sum(function ($q) {
+            return $q['qty'] * $q['price'];
+        });
+        $breadcrumb = '404';
+        return view('home.pages.404',compact('cart','breadcrumb','count_cart','subtotal'));
+    }
 }

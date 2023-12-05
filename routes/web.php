@@ -24,7 +24,7 @@ use App\Http\Controllers\ProfileController;
 use Faker\Provider\ar_EG\Company;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,5 +134,7 @@ Route::get('/optimal', function() {
     return redirect('/')->with('success','Optimalisasi berhasil');
     // return "Optimasi cache berhasil";
 });
+
+Route::any('/{page?}',[HomeController::class,'pageError'])->where('page','.*');
 
 require __DIR__.'/auth.php';
