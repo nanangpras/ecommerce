@@ -52,10 +52,10 @@
 /* -------------------------------------
     Google fonts
 ------------------------------------- */
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat Alternates:wght@400;500;600;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap'); */
 /*
 font-family: 'Open Sans', sans-serif;
-font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Montserrat', sans-serif;
 */
 /* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Titillium+Web:wght@400;600;700;900&display=swap'); */
 /*
@@ -67,10 +67,10 @@ font-family: 'Titillium Web', sans-serif;
 font-family: 'Nunito Sans', sans-serif;
 font-family: 'Nunito Sans', sans-serif;
 */
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Montserrat Alternates:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap");
 /*
 font-family: 'Nunito Sans', sans-serif;
-font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Montserrat', sans-serif;
 */
 /* ====================================================
     Gutter Code
@@ -231,7 +231,7 @@ font-family: 'Montserrat Alternates', sans-serif;
     /* Lighten */
     --ltn__heading-color: #0b1e33;
     --ltn__paragraph-color: #08244d;
-    --ltn__heading-font: "Montserrat Alternates", sans-serif;
+    --ltn__heading-font: "Montserrat", sans-serif;
     --ltn__body-font: "Nunito Sans", sans-serif;
     /* Footer ACD2D8 8CB2B2  */
     --ltn__color-1: #8cb2b2;
