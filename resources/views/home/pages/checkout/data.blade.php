@@ -247,6 +247,7 @@
                                 description.text(value.description);
                                 element_total.val(value.result_total);
                                 idcoupon.val(value.idcoupon);
+                                pajak();
                             }
                             if (value.type == 'percentage') {
                                 $("#rate_coupon").text(value.rate);
@@ -254,11 +255,13 @@
                                 description.text(value.description);
                                 element_total.val(value.result_total);
                                 idcoupon.val(value.idcoupon);
+                                pajak();
                             }
                             if (value.type == 'expired') {
                                 $("#rate_coupon").text(value.rate);
                                 idcoupon.val(value.idcoupon);
                                 alert( code_coupon + ': Sudah tidak berlaku');
+                                pajak();
                             }
 
                         });
