@@ -23,17 +23,17 @@
 
         <div class="col-lg-8">
             <div class="mb-4">
-                <h6>Detail Transaksi <strong>{{$detail->code}}</strong></h6>
-                <h6>Status <strong>{{$detail->transaction_status}}</strong></h6>
+                <h6>Detail Transaksi <strong>{{$detail->code ?? ''}}</strong></h6>
+                <h6>Status <strong>{{$detail->transaction_status ?? ''}}</strong></h6>
             </div>
             <div class="card card-transactions">
                 <div class="card-body">
                     <h5 class="card-title">Contact Info</h5>
                     <ul class="list-unstyled profile-about-list">
-                        <li><i class="material-icons">person</i><span>{{$detail->user->name}}</span></li>
-                        <li><i class="material-icons">mail_outline</i><span>{{$detail->user->email}}</span></li>
-                        <li><i class="material-icons">home</i><span>Alamat {{$detail->user->address}}</span></li>
-                        <li><i class="material-icons">local_phone</i><span>{{$detail->user->phone}}</span></li>
+                        <li><i class="material-icons">person</i><span>{{$detail->user->name ?? ''}}</span></li>
+                        <li><i class="material-icons">mail_outline</i><span>{{$detail->user->email ?? ''}}</span></li>
+                        <li><i class="material-icons">home</i><span>Alamat {{$detail->user->address ?? ''}}</span></li>
+                        <li><i class="material-icons">local_phone</i><span>{{$detail->user->phone ?? ''}}</span></li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                                 @php
                                     $sumtotal = 0;
                                 @endphp
-                                @foreach ($detail->details as $item)
+                                @forelse ($detail->details as $item)
                                     <tr>
                                         <td>{{$item->product->title}}
                                             <br>
@@ -70,7 +70,11 @@
                                     @php
                                         $sumtotal += $item->transaction_subtotal;
                                     @endphp
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="4">Tidak ada detail transaksi</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>

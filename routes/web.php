@@ -25,6 +25,7 @@ use Faker\Provider\ar_EG\Company;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\View;
+use App\Helpers\CartCookie;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,6 +136,22 @@ Route::get('/optimal', function() {
     // return "Optimasi cache berhasil";
 });
 
-Route::any('/{page?}',[HomeController::class,'pageError'])->where('page','.*');
+Route::fallback(function ($parameter) {
+    $cartHelper     = new CartCookie();
+    $cart           = $cartHelper->getCarts();
+    $count_cart     = $cartHelper->getTotalCart();
+    $subtotal = collect($cart)->sum(function ($q) {
+        return $q['qty'] * $q['price'];
+    });
+    $breadcrumb = '404';
+    return view('errors.custom404', [
+        'cart' => $cart,
+        'count_cart' => $count_cart,
+        'subtotal' => $subtotal,
+        'breadcrumb' => $breadcrumb,
+    ]);
+});
+
+// Route::any('/{page?}',[HomeController::class,'pageError'])->where('page','.*');
 
 require __DIR__.'/auth.php';
