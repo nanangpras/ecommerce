@@ -197,7 +197,8 @@
                                     Privasi.</p>
                             </div>
                             <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
-                            <input type="hidden" id="trx_total" value="{{$subtotal}}" name="transaction_total">
+                            <input type="hidden" id="trx_total" value="{{$subtotal}}">
+                            <input type="hidden" id="grand_total_send" value="{{$subtotal}}" name="transaction_total">
                             <input type="hidden" id="idcoupon" name="idcoupon">
                             <button class="btn theme-btn-7 btn-effect-7 text-uppercase" id="pay-button" type="submit">Lanjutkan</button>
 
@@ -239,6 +240,7 @@
                         $.each(response, function (key, value) {
                             const element       = $("#order_total");
                             const element_total = $("#trx_total");
+                            const grand_total   = $("#trx_total");
                             const idcoupon      = $("#idcoupon");
                             const description   = $("#description_coupon");
                             if (value.type == 'numeric') {
@@ -274,6 +276,7 @@
                 let pajaktotal = parseInt(subtotal)* 0.11;
                 let pajakresult = formatCurrency(pajaktotal);
                 let grand_total_pajak = parseInt(subtotal) + parseInt(pajaktotal);
+                $("#grand_total_send").val(grand_total_pajak);
                 $("#pajak").text(pajakresult);
                 $("#grand_total").text(formatCurrency(grand_total_pajak));
             }
