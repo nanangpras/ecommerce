@@ -53,6 +53,8 @@
                             <tbody>
                                 @php
                                     $sumtotal = 0;
+                                    $pajak =0;
+                                    $sumcoupon=0;
                                 @endphp
                                 @forelse ($detail->details as $item)
                                     <tr>
@@ -65,7 +67,7 @@
                                         </td>
                                         <td>@currency($item->product->price)</td>
                                         <td>{{$item->qty}}</td>
-                                        <td>{{$item->transaction_subtotal}}</td>
+                                        <td>@currency($item->transaction_subtotal)</td>
                                     </tr>
                                     @php
                                         $sumtotal += $item->transaction_subtotal;
@@ -78,8 +80,54 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="3">Total</td>
-                                    <td colspan="3">Rp {{$sumtotal}}</td>
+                                    <td colspan="3">Subtotal</td>
+                                    <td colspan="3">@currency($sumtotal)</td>
+                                </tr>
+                                @if ($detail->coupon_id != null)
+                                    @php
+                                        if ($detail->coupon->type == 'numeric') {
+                                            $sumcoupon = $sumtotal - $detail->coupon->discount_rate;
+                                        }
+                                        if ($detail->coupon->type == 'percentage') {
+                                            $percent = $detail->$coupon->discount_rate / 100 * $sumtotal;
+                                            $sumcoupon = $sumtotal - $percent;
+                                        }
+                                    @endphp
+                                    <tr>
+                                        <td colspan="3">Kupon <br>
+                                            {{$detail->coupon->code}}
+                                        </td>
+                                        <td colspan="3">
+                                            @if ($detail->coupon->type == 'numeric')
+                                                @currency($detail->coupon->discount_rate)
+                                            @endif
+                                            @if ($detail->coupon->type == 'percentage')
+                                                ($detail->coupon->discount_rate) %
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">Total </td>
+                                        <td class="text-end">@currency($sumcoupon)</td>
+                                    </tr>
+                                @endif
+                                @php
+                                    if($sumcoupon){$pajak = $sumcoupon * 0.11;}
+                                    else {
+                                        $pajak = $sumtotal * 0.11;
+                                    }
+                                @endphp
+                                <tr>
+                                    <td colspan="3">Tax (11%)</td>
+                                    <td class="text-end">@currency($pajak)</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Biaya Payment</td>
+                                    <td class="text-danger text-end">-</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-bold-800" colspan="3">Grand Total</td>
+                                    <td class="text-bold-800 text-end" colspan="3"><strong>@currency($detail->transaction_total)</strong> </td>
                                 </tr>
                             </tfoot>
                         </table>

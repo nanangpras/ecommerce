@@ -14,6 +14,8 @@
     </div>
     @php
         $sumtotal = 0;
+        $sumcoupon = 0;
+        $pajak = 0;
     @endphp
     <div class="main-wrapper">
         <div class="row">
@@ -24,7 +26,7 @@
                             <div class="col-lg-3 ps-0">
                                 <a href="#" class="noble-ui-logo d-block mt-3">Toko<span>Webiin</span></a>
                                 <p class="mt-1 mb-1"><b>Webiin</b></p>
-                                <p>108,<br> Great Russell St,<br>London, WC1B 3NA.</p>
+                                <p>Karang Wuni<br> Caturtunggal<br>Depok, Sleman</p>
                                 <h5 class="mt-5 mb-2 text-muted">Invoice to :</h5>
                                 <p>{{$detail->user->name}}<br> {{$detail->user->address}}<br> {{$detail->user->phone}}</p>
                             </div>
@@ -80,17 +82,51 @@
                                                 <td>Sub Total</td>
                                                 <td class="text-end">@currency($sumtotal)</td>
                                             </tr>
+                                            @if ($detail->coupon_id != null)
+                                                @php
+                                                    if ($detail->coupon->type == 'numeric') {
+                                                        $sumcoupon = $sumtotal - $detail->coupon->discount_rate;
+                                                    }
+                                                    if ($detail->coupon->type == 'percentage') {
+                                                        $percent = $detail->$coupon->discount_rate / 100 * $sumtotal;
+                                                        $sumcoupon = $sumtotal - $percent;
+                                                    }
+                                                @endphp
+                                                <tr>
+                                                    <td>Kupon <br>
+                                                        {{$detail->coupon->code}}
+                                                    </td>
+                                                    <td>
+                                                        @if ($detail->coupon->type == 'numeric')
+                                                            @currency($detail->coupon->discount_rate)
+                                                        @endif
+                                                        @if ($detail->coupon->type == 'percentage')
+                                                            ($detail->coupon->discount_rate) %
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total </td>
+                                                    <td class="text-end">@currency($sumcoupon)</td>
+                                                </tr>
+                                            @endif
+                                            @php
+                                                if($sumcoupon){$pajak = $sumcoupon * 0.11;}
+                                                else {
+                                                    $pajak = $sumtotal * 0.11;
+                                                }
+                                            @endphp
                                             <tr>
-                                                <td>TAX (12%)</td>
-                                                <td class="text-end">-</td>
+                                                <td>Tax (11%)</td>
+                                                <td class="text-end">@currency($pajak)</td>
                                             </tr>
                                             <tr>
                                                 <td>Biaya Payment</td>
                                                 <td class="text-danger text-end">-</td>
                                             </tr>
                                             <tr>
-                                                <td class="text-bold-800">Total</td>
-                                                <td class="text-bold-800 text-end"> @currency($sumtotal)</td>
+                                                <td class="text-bold-800">Grand Total</td>
+                                                <td class="text-bold-800 text-end"> @currency($detail->transaction_total)</td>
                                             </tr>
                                             {{-- <tr class="bg-light">
                                                 <td class="text-bold-800">Balance Due</td>

@@ -23,4 +23,9 @@ class Transaction extends Model
     {
         return $this->hasOne(TransactionLog::class);
     }
+
+    public function coupon()
+    {
+        return $this->hasOne(Coupon::class,'id','coupon_id');
+    }
 }

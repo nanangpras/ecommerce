@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Transaction;
 use App\Models\Category;
+use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionLog;
@@ -25,7 +26,7 @@ class TransactionRepository implements InterfaceTransaction
 
     public function getAll()
     {
-        return $this->transaction->get();
+        return $this->transaction->orderBy('id','DESC')->get();
     }
 
     public function myTransaction($id)

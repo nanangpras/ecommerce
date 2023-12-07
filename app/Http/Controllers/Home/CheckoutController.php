@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Helpers\SendWa;
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
@@ -70,6 +71,7 @@ class CheckoutController extends Controller
 
     public function process(Request $request)
     {
+        // dd($request->all());
         $cart = $this->getCarts();
         $subtotal = collect($cart)->sum(function ($q)
             {
@@ -92,6 +94,11 @@ class CheckoutController extends Controller
                         'product_id' => $item['product_id'],
                         'transaction_subtotal' => $item['qty'] * $product->price,
                     ]);
+                }
+                if ($request->idcoupon) {
+                    $updateCoupon = Coupon::where('id',$request->idcoupon)->first();
+                    $updateCoupon->update(['counter' => $updateCoupon->counter + 1]);
+                    // $updateCoupon->increment('counter');
                 }
                 //
                 // SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
@@ -134,7 +141,7 @@ class CheckoutController extends Controller
                 }
             }
             $update_order->save();
-            return redirect()->route('member.dashboard')->with('success','Iklan berhasil dibuat');
+            return redirect()->route('member.dashboard')->with('success','Transaksi berhasil dibayar');
         }
         return redirect()->route('member.dashboard');
     }
