@@ -17,7 +17,7 @@
                                 <select name="ekstensi" id="ekstensi" class="nice-select">
                                     <option value=".com">.com</option>
                                     <option value=".id">.id</option>
-                                    <option value=".co.id">.co.id</option>
+                                    {{-- <option value=".co.id">.co.id</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -73,12 +73,17 @@
                                         </td>
                                         <td class="cart-product-price">@currency($item['price'])</td>
                                         <td class="cart-product-quantity">
-                                            <div class="cart-plus-minus">
-                                                <input type="text" value="{{ $item['qty'] }}" id="qty" name="qty[]"
-                                                    class="cart-plus-minus-box">
-                                                {{-- <input type="hidden" name="product_id[]" value="{{ $item['id'] }}"
-                                                    class="form-control"> --}}
-                                            </div>
+                                            @if ($item['category_id'] !== 1000)
+                                                <div class="cart-plus-minus">
+                                                    <input type="text" value="{{ $item['qty'] }}" id="qty" name="qty[]"
+                                                        class="cart-plus-minus-box">
+                                                    {{-- <input type="hidden" name="product_id[]" value="{{ $item['id'] }}"
+                                                        class="form-control"> --}}
+                                                </div>
+                                            @else
+                                                <div class="cart-plus-minus">
+                                                </div>
+                                            @endif
                                         </td>
                                         <td class="cart-product-subtotal">@currency($item['price'] * $item['qty'])</td>
                                     </tr>

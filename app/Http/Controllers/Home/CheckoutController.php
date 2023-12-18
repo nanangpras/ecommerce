@@ -8,6 +8,7 @@ use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use App\Service\CouponService;
 use App\Service\ProductService;
 use App\Service\RajaOngkirService;
 use App\Service\TransactionService;
@@ -21,17 +22,21 @@ class CheckoutController extends Controller
     protected $transactionService;
     protected $productService;
     protected $userService;
+    protected $couponService;
 
     public function __construct(
         RajaOngkirService $rajaOngkirService,
         TransactionService $transactionService,
         UserService $userService,
-        ProductService $productService)
+        ProductService $productService,
+        CouponService $couponService
+        )
     {
         $this->rajaOngkirService    = $rajaOngkirService;
         $this->transactionService   = $transactionService;
         $this->productService       = $productService;
         $this->userService          = $userService;
+        $this->couponService        = $couponService;
     }
 
     private function getCarts()
@@ -77,7 +82,18 @@ class CheckoutController extends Controller
             {
                 return $q['qty'] * $q['price'];
             });
-        $check_user = $this->userService->getById(Auth::user()->id);
+        $check_user          = $this->userService->getById(Auth::user()->id);
+        $check_coupon_repeat = $this->couponService->getByCode($request->code);
+        $check_transaction_with_coupon = $this->transactionService->getMyTransaction($check_user->id);
+
+        // check copuon sudah digunakan berulang
+        foreach($check_transaction_with_coupon as $transaction)
+        {
+            if ($check_coupon_repeat->coupon_repeat == 0 && $transaction->coupon_id == $check_coupon_repeat->id) {
+                return redirect()->route('checkout.index')->with('error', 'Maaf kode kupon sudah digunakan ditransaksi Anda yang lain');
+            }
+        }
+
         try {
             if ($check_user->province_id == 0 && $check_user->city_id == 0 && $check_user->subdisctrict_id == 0 && $check_user->postcode == 0 && $check_user->phone == 0) {
                 return redirect()->route('checkout.index')->with('error', 'Silahkan lengkapi profile anda dahulu');

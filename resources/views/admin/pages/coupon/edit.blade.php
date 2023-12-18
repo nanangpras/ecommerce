@@ -52,6 +52,15 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Dapat digunakan berulang ?</label>
+                                    <select name="type" id="type" class="form-control">
+                                        <option value="1" {{ $editCoupon->coupon_repeat == 1 ? 'selected' : '' }}>Ya</option>
+                                        <option value="0" {{ $editCoupon->coupon_repeat == 0 ? 'selected' : '' }}>Tidak</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">

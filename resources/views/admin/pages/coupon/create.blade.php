@@ -62,6 +62,15 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Dapat digunakan berulang ?</label>
+                                    <select name="coupon_repeat" id="coupon_repeat" class="form-control">
+                                        <option value="1">Ya</option>
+                                        <option value="0">Tidak</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">

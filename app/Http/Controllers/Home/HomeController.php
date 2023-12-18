@@ -151,6 +151,7 @@ class HomeController extends Controller
             $cart [$newProductDomain->id] = [
                 'qty' => $request->qty,
                 'product_id' => $newProductDomain->id,
+                'category_id' => $newProductDomain->category_id,
                 'title' => $request->title_domain,
                 'price' => 0,
                 'weight' => 1,
@@ -163,6 +164,7 @@ class HomeController extends Controller
             $cart [] = [
                 'qty' => $request->qty,
                 'product_id' => $newProductDomain->id,
+                'category_id' => $newProductDomain->category_id,
                 'title' => $request->title_domain,
                 'price' => 0,
                 'weight' => 1,

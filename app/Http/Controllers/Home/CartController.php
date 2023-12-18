@@ -46,6 +46,7 @@ class CartController extends Controller
             $cart [$request->id] = [
                 'qty' => $request->qty,
                 'product_id' => $product->id,
+                'category_id' => $product->category_id,
                 'title' => $product->title,
                 'price' => $product->price,
                 'weight' => $product->weight,

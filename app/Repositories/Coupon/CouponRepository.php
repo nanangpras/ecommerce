@@ -41,6 +41,7 @@ class CouponRepository implements InterfaceCoupon
         $coupon->code           = $request->code;
         $coupon->description    = $request->description;
         $coupon->type           = $request->type;
+        $coupon->coupon_repeat  = $request->coupon_repeat;
         $coupon->discount_rate  = $request->discount_rate;
         $coupon->start_date     = $request->start_date;
         $coupon->end_date       = $request->end_date;
@@ -62,6 +63,7 @@ class CouponRepository implements InterfaceCoupon
         $update->name           = $request->name;
         $update->code           = $request->code;
         $update->type           = $request->type;
+        $update->coupon_repeat  = $request->coupon_repeat;
         $update->discount_rate  = $request->discount_rate;
         $update->start_date     = $request->start_date;
         $update->end_date       = $request->end_date;
