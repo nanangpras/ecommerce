@@ -54,6 +54,7 @@ class CartController extends Controller
                 'coupon' => 0,
                 'coupon_rate' => 0,
                 'type_coupon' => '',
+                'domain'      => '',
             ];
         }
         $cookie = cookie('konveksi-carts',json_encode($cart),2880);

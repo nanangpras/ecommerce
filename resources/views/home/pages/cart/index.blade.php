@@ -4,6 +4,34 @@
 <div class="liton__shoping-cart-area mb-120">
     <div class="container">
         <div class="row">
+            <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+                <div class="modal fade modalDomainError" id="modalDomainError" tabindex="-1">
+                    <div class="modal-dialog modal-md" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                 <div class="ltn__quick-view-modal-inner">
+                                     <div class="modal-product-item">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                 <div class="modal-product-info">
+                                                    <h5>Peringatan</h5>
+                                                    <p class="added-cart"><i class="fa fa-times-circle"></i> Anda belum menambahkan domain</p>
+                                                    
+                                                 </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="ltn__coupon-code-form mb-50">
                 <p>Cek Domain</p>
                 {{-- <form action="{{route('cek.domain')}}" method="POST">
@@ -124,7 +152,8 @@
                             </tbody>
                         </table>
                         <div class="btn-wrapper text-right text-end">
-                            <a href="{{route('checkout.index')}}" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a>
+                            {{-- <a href="{{ route('checkout.index') }}" id="btn_next_cart" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a> --}}
+                            <a href="#" id="btn_next_cart" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a>
                         </div>
                     </div>
                 </div>
@@ -230,6 +259,30 @@
                 });
             });
 
+            $("#btn_next_cart").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "GET",
+                    url: "{{route('cart.session')}}",
+                    success: function (response) {
+                        var countDomain = 0;
+                        $.each(response, function(key, value) {
+                            // console.log("Domain: " + value.domain);
+                            if (value.hasOwnProperty('domain') && value.domain === 1) {
+                                countDomain++;
+                            }
+                        });
+                        if (countDomain > 0) {
+                            window.location.href = "{{ route('checkout.index') }}";
+                        }else{
+                            $('.modalDomainError').modal('show');
+                        }
+                    }
+                });
+
+
+            });
+
             // $("#update_cart").click(function (e) {
             //     e.preventDefault();
             //     // alert('ok');
@@ -242,6 +295,8 @@
             //     });
 
             // });
+
+            
         });
 </script>
 @endpush

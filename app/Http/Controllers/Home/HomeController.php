@@ -159,6 +159,7 @@ class HomeController extends Controller
                 'coupon' => 0,
                 'coupon_rate' => 0,
                 'type_coupon' => '',
+                'domain'      => 1,
             ];
         }else{
             $cart [] = [
@@ -172,6 +173,7 @@ class HomeController extends Controller
                 'coupon' => 0,
                 'coupon_rate' => 0,
                 'type_coupon' => '',
+                'domain'      => 1,
             ];
         }
 

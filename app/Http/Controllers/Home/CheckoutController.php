@@ -86,6 +86,11 @@ class CheckoutController extends Controller
         $check_coupon_repeat = $this->couponService->getByCode($request->code);
         $check_transaction_with_coupon = $this->transactionService->getMyTransaction($check_user->id);
 
+        // validasi total transaksi 0 atau minus
+        if ($request->transaction_total <= 0) {
+            return redirect()->route('checkout.index')->with('error', 'Transaksi tidak boleh 0');
+        }
+
         // check copuon sudah digunakan berulang
         foreach($check_transaction_with_coupon as $transaction)
         {
