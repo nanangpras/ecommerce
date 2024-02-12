@@ -10,7 +10,7 @@
                         <div class="ltn__blog-meta">
                             <ul>
                                 <li class="ltn__blog-category">
-                                    <a href="#">{{$detailBlog->category->name}}</a>
+                                    <a href="javascript:void(0);" >{{$detailBlog->category->name}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -18,14 +18,14 @@
                         <div class="ltn__blog-meta">
                             <ul>
                                 <li class="ltn__blog-author">
-                                    <a href="#"><img src="img/blog/author.jpg" alt="#">By: {{$detailBlog->author->name}}</a>
+                                    <a href="#">Penulis : {{$detailBlog->author->name}}</a>
                                 </li>
                                 <li class="ltn__blog-date">
                                     <i class="far fa-calendar-alt"></i>{{$detailBlog->created_at}}
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="#"><i class="far fa-comments"></i>0 Comments</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                         <p>{!!$detailBlog->body!!}</p>
@@ -34,7 +34,7 @@
                     <!-- blog-tags-social-media -->
                     <div class="ltn__blog-tags-social-media mt-80 row">
                         <div class="ltn__tagcloud-widget col-lg-8">
-                            <h4>Releted Tags</h4>
+                            <h4>Tags</h4>
                             <ul>
                                 @foreach ($tags as $item)
                                     <li>
@@ -44,7 +44,7 @@
 
                             </ul>
                         </div>
-                        <div class="ltn__social-media text-right text-end col-lg-4">
+                        {{-- <div class="ltn__social-media text-right text-end col-lg-4">
                             <h4>Social Share</h4>
                             <ul>
                                 <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
@@ -53,11 +53,11 @@
 
                                 <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                     <hr>
                     <!-- prev-next-btn -->
-                    <div class="ltn__prev-next-btn row mb-50">
+                    {{-- <div class="ltn__prev-next-btn row mb-50">
                         <div class="blog-prev col-lg-6">
                             <h6>Prev Post</h6>
                             <h3 class="ltn__blog-title"><a href="#">Tips On Minimalist</a></h3>
@@ -66,25 +66,30 @@
                             <h6>Next Post</h6>
                             <h3 class="ltn__blog-title"><a href="#">Less Is More</a></h3>
                         </div>
-                    </div>
+                    </div> --}}
                     <hr>
                     <!-- related-post -->
                     <div class="related-post-area mb-50">
-                        <h4 class="title-2">Related Post</h4>
+                        <h4 class="title-2">Rekomendasi Blog</h4>
                         <div class="row">
                             @foreach ($related as $item)
                                 <div class="col-md-6">
                                     <!-- Blog Item -->
                                     <div class="ltn__blog-item ltn__blog-item-6">
                                         <div class="ltn__blog-img">
-                                            <a href="{{route('blog.detail',$item->slug)}}"><img src="{{url('themes-frontend/img/blog/blog-details/11.jpg')}}" alt="Image"></a>
+                                            {{-- <a href="{{route('blog.detail',$item->slug)}}"><img src="{{url('themes-frontend/img/blog/blog-details/11.jpg')}}" alt="Image"></a> --}}
+                                            <a href="{{ route('blog.detail', $item->slug) }}"><img src="{{ $item->thumbnail }}" alt="#"></a>
                                         </div>
                                         <div class="ltn__blog-brief">
                                             <div class="ltn__blog-meta">
-                                                <ul>
+                                                {{-- <ul>
                                                     <li class="ltn__blog-date ltn__secondary-color">
                                                         <i class="far fa-calendar-alt"></i>June 22, 2020
                                                     </li>
+                                                </ul> --}}
+                                                <ul>
+                                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>{{ $item->created_at
+                                                        }}</li>
                                                 </ul>
                                             </div>
                                             <h3 class="ltn__blog-title"><a href="{{route('blog.detail',$item->slug)}}">{{$item->titles}}</a></h3>
@@ -201,16 +206,16 @@
                         </div>
                     </div> --}}
                     <!-- Search Widget -->
-                    <div class="widget ltn__search-widget">
+                    {{-- <div class="widget ltn__search-widget">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Search Objects</h4>
                         <form action="#">
                             <input type="text" name="search" placeholder="Search your keyword...">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
-                    </div>
+                    </div> --}}
                     <!-- Popular Post Widget -->
                     <div class="widget ltn__popular-post-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Popular Feeds</h4>
+                        <h4 class="ltn__widget-title ltn__widget-title-border">Blog Populer</h4>
                         <ul>
                             @foreach ($popularView as $item)
                                 <li>
@@ -235,7 +240,7 @@
                     </div>
                     <!-- Menu Widget (Category) -->
                     <div class="widget ltn__menu-widget ltn__menu-widget-2 ltn__menu-widget-2-color-2">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
+                        <h4 class="ltn__widget-title ltn__widget-title-border">Kategori</h4>
                         <ul>
                             @foreach ($category as $item)
                                 <li><a href="#">{{$item->name}} </a></li>
@@ -258,18 +263,14 @@
                     </div> --}}
                     <!-- Tagcloud Widget -->
                     <div class="widget ltn__tagcloud-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Popular Tags</h4>
+                        <h4 class="ltn__widget-title ltn__widget-title-border">Tags Populer</h4>
                         <ul>
                             @foreach ($tags as $item)
                                 <li>
-                                    <a href="#">{{$item}}</a>
+                                    <a href="javascript:void(0);">{{$item}}</a>
                                 </li>
                             @endforeach
                         </ul>
-                    </div>
-                    <!-- Banner Widget -->
-                    <div class="widget ltn__banner-widget">
-                        <a href="shop.html"><img src="{{url('themes-frontend/img/banner/banner-4.jpg')}}" alt="Banner Image"></a>
                     </div>
 
                 </aside>
