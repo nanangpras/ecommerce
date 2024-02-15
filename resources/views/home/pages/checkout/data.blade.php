@@ -2,7 +2,7 @@
 @section('content')
 <!-- WISHLIST AREA START -->
 <div class="ltn__checkout-area mb-105">
-    <div class="container">
+    <div class="container-fluid">
         @guest
         <div class="row">
             <div class="col-lg-12">

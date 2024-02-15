@@ -79,14 +79,14 @@ header {
     margin: auto;
 
     .slick-list {
-        border-radius: 15px;
+        border-radius: 10px;
     }
 }
 //keuntungan
 .ltn__feature-area {
     .ltn__feature-item {
         background: #fff;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
@@ -106,7 +106,7 @@ header {
 .ltn__team-area {
     .ltn__team-item {
         background: #fff;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
         flex-direction: column;
         height: 100%;
@@ -120,17 +120,39 @@ header {
     }
 }
 
+.ltn__about-us-area {
+    .accordion {
+        .accordion-item {
+            &:first-child {
+                border-radius: 10px 10px 0 0;
+                .accordion-button {
+                    border-radius: 10px 10px 0 0;
+                }
+            }
+            &:last-child {
+                border-radius: 0 0 10px 10px;
+                .accordion-button {
+                    border-radius: 0;
+                    &.collapsed {
+                        border-radius: 0 0 10px 10px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .ltn__blog-area {
     .slick-slider {
         .slick-list {
             .slick-slide {
                 .ltn__blog-item {
                     .ltn__blog-img {
-                        border-radius: 15px 15px 0 0;
+                        border-radius: 10px 10px 0 0;
                     }
 
                     .ltn__blog-brief {
-                        border-radius: 0 0 15px 15px;
+                        border-radius: 0 0 10px 10px;
                     }
                 }
             }
@@ -166,7 +188,7 @@ header {
 .ltn__product-area {
     .ltn__product-item {
         background: #fff;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
         flex-direction: column;
         position: relative;
@@ -178,7 +200,7 @@ header {
         }
 
         .product-img {
-            border-radius: 15px;
+            border-radius: 10px;
         }
 
         .product-info {
@@ -208,7 +230,7 @@ header {
 .ltn__product-slider-area {
     .ltn__product-item {
         background: #fff;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
         flex-direction: column;
         position: relative;
@@ -220,11 +242,11 @@ header {
         }
 
         .product-img {
-            border-radius: 15px;
+            border-radius: 10px;
 
             .product-hover-action {
                 a {
-                    border-radius: 15px;
+                    border-radius: 10px;
                 }
             }
         }
@@ -238,7 +260,74 @@ header {
 .ltn__modal-area {
     .modal {
         .modal-content {
-            border-radius: 15px !important;
+            border-radius: 10px !important;
         }
     }
+}
+
+//detail blog
+.ltn__page-details-area {
+    .ltn__blog-details-wrap {
+        border-radius: 10px;
+
+        .ltn__blog-category {
+            a {
+                border-radius: 10px !important;
+            }
+        }
+
+        .ltn__blog-title {
+            white-space: normal;
+            word-break: break-all;
+        }
+        .related-post-area {
+            .ltn__blog-item {
+                border-radius: 10px;
+                .ltn__blog-img {
+                    img {
+                        border-radius: 10px 10px 0 0 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .blog-sidebar {
+        .ltn__popular-post-widget,
+        .ltn__menu-widget,
+        .ltn__tagcloud-widget {
+            border-radius: 10px !important;
+        }
+    }
+}
+
+//loader
+.loader {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #1f2128;
+    z-index: 9999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    .spinner-grow {
+        top: 50%;
+        left: 50%;
+        margin: -13px 0 0 -13px;
+        position: absolute;
+
+        &.text-primary {
+            color: #56c4b6 !important;
+        }
+    }
+}
+.no-loader .loader {
+    visibility: hidden;
+    opacity: 0;
 }

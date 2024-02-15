@@ -38,7 +38,7 @@
                             <ul>
                                 @foreach ($tags as $item)
                                     <li>
-                                        <a href="#">{{$item}}</a>
+                                        <a href="javascript:void(0);" style="border-radius:10px">{{$item}}</a>
                                     </li>
                                 @endforeach
 
@@ -92,7 +92,10 @@
                                                         }}</li>
                                                 </ul>
                                             </div>
-                                            <h3 class="ltn__blog-title"><a href="{{route('blog.detail',$item->slug)}}">{{$item->titles}}</a></h3>
+                                            <h3 class="ltn__blog-title"><a href="{{route('blog.detail',$item->slug)}}" style="display: block;
+                                                white-space: nowrap;
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;">{{$item->titles}}</a></h3>
                                             <p>{{ Str::limit($item->description, 20) }}</p>
                                         </div>
                                     </div>
@@ -221,10 +224,15 @@
                                 <li>
                                     <div class="popular-post-widget-item clearfix">
                                         <div class="popular-post-widget-img">
-                                            <a href="{{ route('blog.detail', $item->slug) }}"><img src="{{$item->thumbnail}}" alt="#"></a>
+                                            <a href="{{ route('blog.detail', $item->slug) }}"><img src="{{$item->thumbnail}}" alt="#" style="border-radius: 10px;"></a>
                                         </div>
                                         <div class="popular-post-widget-brief">
-                                            <h6><a href="{{ route('blog.detail', $item->slug) }}">{{$item->titles}}</a></h6>
+                                            <h6><a href="{{ route('blog.detail', $item->slug) }}" style="
+                                                display: block;
+                                                white-space: nowrap;
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                ">{{$item->titles}}</a></h6>
                                             <div class="ltn__blog-meta">
                                                 <ul>
                                                     <li class="ltn__blog-date">
@@ -243,7 +251,7 @@
                         <h4 class="ltn__widget-title ltn__widget-title-border">Kategori</h4>
                         <ul>
                             @foreach ($category as $item)
-                                <li><a href="#">{{$item->name}} </a></li>
+                                <li><a href="">{{$item->name}} </a></li>
                             @endforeach
 
                         </ul>
@@ -267,7 +275,7 @@
                         <ul>
                             @foreach ($tags as $item)
                                 <li>
-                                    <a href="javascript:void(0);">{{$item}}</a>
+                                    <a href="javascript:void(0);" style="border-radius: 10px">{{$item}}</a>
                                 </li>
                             @endforeach
                         </ul>

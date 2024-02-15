@@ -2,7 +2,7 @@
 @section('content')
 <!-- PRODUCT DETAILS AREA START -->
 <div class="ltn__product-area ltn__product-gutter">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8 order-lg-2 mb-100">
                 <div class="ltn__shop-options">
@@ -44,7 +44,7 @@
                                     <div class="ltn__product-item ltn__product-item-3 text-center">
                                         <div class="product-img">
                                             <a href="{{route('product.detail',$item->slug)}}"><img
-                                                    style="width: 300px; height:200px; object-fit:cover; "
+                                                    style="width: 100%; height:200px; object-fit:cover; "
                                                     src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}"
                                                     alt="#"></a>
                                             {{-- <div class="product-badge">
@@ -57,20 +57,22 @@
                                             <div class="product-ratting">
                                             </div>
                                             <div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <h2 class="product-title " style="text-align: left;display: block;
+                                                <div class="d-block d-sm-flex justify-content-sm-between justify-content-center">
+                                                    <div class="">
+                                                        <h2 class="product-title " 
+                                                        style="display: block;
                                                         white-space: nowrap;
                                                         overflow: hidden;
-                                                        text-overflow: ellipsis; "><a
+                                                        text-overflow: ellipsis; ">
+                                                        <a
                                                                 href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                         </h2>
-                                                        <p style="font-size: .75rem;text-align: left">
+                                                        <p style="font-size: .75rem;" class="text-sm-start text-center">
                                                             {{$item->category->name ?? ''}}
                                                         </p>
                                                     </div>
                                                     @if ($item->link)
-                                                    <div class="col-lg-6" style="text-align: right">
+                                                    <div class="" >
                                                         <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product">
                                                             Demo
                                                         </a>
@@ -103,8 +105,9 @@
                                                         <li class="sale-badge">New</li>
                                                     </ul>
                                                 </div> --}}
+                                            </a>
                                         </div>
-                                        <div class="d-flex align-items-center">
+                                        <div class="d-block d-md-flex d-xl-flex d-xxl-flex align-items-center">
                                             <div class="product-info px-3 pt-2">
                                                 <h2 class="product-title"><a
                                                         href="{route('product.detail',$item->slug)}}">{{$item->title}}</a>
@@ -127,7 +130,7 @@
                                                 </div>
                                             </div>
                                             @if ($item->link)
-                                            <div class="ms-auto pe-5">
+                                            <div class="ms-auto pe-5 ps-3 ps-md-0 pb-2 pb-md-0">
                                                 <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product">
                                                     Demo
                                                 </a>

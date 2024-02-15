@@ -137,7 +137,7 @@
                 </li>
             @empty
                 <li class="#">
-                    <a href="#" ><i class="material-icons">web_asset</i>Anda belum membeli produk</a>
+                    <a href="javascript:void(0);" ><i class="material-icons">web_asset</i>Anda belum membeli produk</a>
                 </li>
             @endforelse
 

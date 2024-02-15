@@ -21,8 +21,8 @@
     <!-- ltn__header-top-area end -->
 
     <!-- ltn__header-middle-area start -->
-    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white ltn__logo-right-menu-option">
-        <div class="container">
+    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white ltn__logo-right-menu-option pt-md-3 pt-3">
+        <div class="container-fluid">
             <div class="d-flex align-items-md-center justify-content-between align-items-sm-start">
                 <div class="">
                     <div class="">
@@ -128,7 +128,7 @@
                     </div>
 
                     <!-- Mobile Menu Button -->
-                    <div class="mobile-menu-toggle d-md-none ">
+                    <div class="mobile-menu-toggle d-md-none">
                         
                         <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle shadow-none">
                             <svg viewBox="0 0 800 600">
