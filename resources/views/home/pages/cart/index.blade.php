@@ -2,8 +2,14 @@
 @section('content')
 <!-- SHOPING CART AREA START -->
 
+<div class='loader' id="loading" style="display: none">
+    <div class='spinner-grow text-primary' role='status'>
+        <span class='sr-only'>Loading...</span>
+    </div>
+</div>
+
 <div class="liton__shoping-cart-area mb-120">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="ltn__modal-area ltn__add-to-cart-modal-area">
                 <div class="modal fade modalDomainError" id="modalDomainError" tabindex="-1">
@@ -39,7 +45,7 @@
                     @csrf --}}
                     <div class="row">
                         <div class="col-lg-4">
-                            <input type="text" name="domain" id="domain" placeholder="Cek Domain">
+                            <input type="text" name="domain" id="domain" placeholder="Cek Domain" required>
                         </div>
                         <div class="col-lg-2">
                             <div class="input-item">
@@ -94,11 +100,11 @@
                                         <td class="cart-product-remove"><a
                                                 href="{{ route('delete-cart',$item['product_id'])}}">X</a></td>
                                         <td class="cart-product-image">
-                                            <a href="#"><img src="{{$item['image']}}" alt="#"
+                                            <a href="javascript:void(0);"><img src="{{$item['image']}}" alt="#"
                                                     style="height: 100px; width:100px;  object-fit:cover; border-radius:15px; border-radius:15px; border-color:rgb(58, 58, 58); border:1px solid;"></a>
                                         </td>
                                         <td class="cart-product-info">
-                                            <h4><a href="#">{{$item['title']}}</a></h4>
+                                            <h4><a href="javascript:void(0);">{{$item['title']}}</a></h4>
                                         </td>
                                         <td class="cart-product-price">@currency($item['price'])</td>
                                         <td class="cart-product-quantity">
@@ -199,9 +205,11 @@
 
 
             $("#btn_cek_domain").click(function (e) {
+                $('#loading').hide();
                 e.preventDefault();
                 let domain   = $("#domain").val();
                 let ekstensi = $("#ekstensi").val();
+                $('#loading').show();
                 $.ajax({
                     type: "POST",
                     url: "{{route('cek.domain')}}",
@@ -219,10 +227,12 @@
                             $("#btn_cek_cookie").css('display', 'block');
                             $("#result_domain").val(data.domain);
                             $("#text_warning_domain").text(data.result);
+                            $('#loading').hide();
                         }
                         if(data.tersedia == 'tidak')
                         {
                             $("#text_warning_domain").text(data.result);
+                            $('#loading').hide();
                         }
 
                     }

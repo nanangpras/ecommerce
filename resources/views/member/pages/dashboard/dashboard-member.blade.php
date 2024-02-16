@@ -114,8 +114,12 @@
                         <hr>
                         @foreach ($article as $item)
                             <div class="card card-transactions">
-                                <div class="card-body">
-                                    <p>{{$item->titles}} <a target="_blank" href="{{ route('blog.detail', $item->slug) }}" class="btn btn-sm btn-secondary">lihat</a></p>
+                                <div class="card-body d-flex align-items-center justify-content-between ">
+                                    <p style="display: block;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;" class="m-0">{{$item->titles}} </p>
+                                    <a target="_blank" href="{{ route('blog.detail', $item->slug) }}" class="btn btn-sm btn-secondary">lihat</a>
                                 </div>
                             </div>
                         @endforeach
@@ -131,11 +135,11 @@
     <div class="col-lg-12">
         <div class="card card-transparent file-list recent-files">
             <div class="card-body">
-                <h5 class="card-title">Semua Produk dan Service</h5>
+                <h5 class="card-title">Produk Lainnya</h5>
                 <div class="row">
                     @foreach($popularProduct as $item)
                     <div class="col-lg-6 col-xl-3 col-6 mt-4">
-                        <div class="card file photo">
+                        <div class="card file photo" style="border-radius: 10px">
                             <div class="file-options dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -144,22 +148,27 @@
                                     <a class="dropdown-item" href="#">Add to Cart</a>
                                 </div>
                             </div>
-                            <div class=""> <img
+                            <div class=""> 
+                                <a href="{{route('product.detail',$item->slug)}}">
+                                    <img
                                     src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}"
-                                    alt="" style=" object-fit: cover; padding-top: 10px;" alt="" width="100%"
+                                    alt="" style=" object-fit: cover; border-radius:10px" alt="" width="100%"
                                     height="200px">
+                                </a>
+
                             </div>
-                            <div class="card-body file-info">
+                            <div class="card-body file-info pl-3 pt-0">
+                                <a href="{{route('product.detail',$item->slug)}}">
                                 <p style="display: block;
                                 white-space: nowrap;
                                 overflow: hidden;
                                 text-overflow: ellipsis;">{{$item->title}}</p>
+                                </a>
                                 <span class="file-size">{{$item->price}}</span><br>
                                 <span class="file-date mt-3 " style="text-align: -webkit-center;">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModalCenter">
-                                        belum dibayar
-                                    </button>
+                                    <a href="{{route('product.detail',$item->slug)}}" class="btn btn-primary">
+                                            Detail
+                                    </a>
                                 </span>
                             </div>
                         </div>

@@ -7,7 +7,15 @@
                 @foreach ($category as $item)
                 <li><a href="{{route('shop.category',$item->slug ?? '')}}">{{$item->name}} <span><i class="fas fa-long-arrow-alt-right"></i></span></a>
                 </li>
+                @if (count($item->children) > 0)
+                        @foreach ($item->children as $subcategory)
+                            <div class="ps-3">
+                                <a href="{{route('shop.category',$subcategory->slug ?? '')}}">{{$subcategory->name}}</a>
+                            </div>
+                        @endforeach
+                    @endif
                 @endforeach
+                
             </ul>
         </div>
         <!-- Search Widget -->

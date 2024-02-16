@@ -9,7 +9,7 @@
         <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3 bg-image"
             data-bg="{{ $item->banner_image }}">
             <div class="ltn__slide-item-inner text-center">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 align-self-center">
                             <div class="slide-item-info">
@@ -55,7 +55,7 @@
 
 <!-- FITUR KAMI START -->
 <div class="ltn__feature-area section-bg-1--- pt-20 pb-90">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area ltn__section-title-2 text-center">
@@ -135,7 +135,7 @@
 <!-- FITUR KAMI END -->
 <!-- TEMPLATE START (Team - 3) -->
 <div class="ltn__team-area pt-20 pb-90---">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area ltn__section-title-2 text-center">
@@ -156,23 +156,26 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="ltn__team-item p-0" style="border-radius: 15px">
                     <div class="team-img">
-                        <img src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}" alt="#"
-                            style="border-radius: 15px; width: 100%;height: 225px; object-fit: cover ">
+                        <a href="{{route('product.detail',$item->slug)}}">
+                            <img src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}" alt="#"
+                                style="border-radius: 15px; width: 100%;height: 225px; object-fit: cover ">
+                        </a>
                     </div>
                     <div class="team-info m-0 p-0">
+                        <a href="{{route('product.detail',$item->slug)}}">
                         <h4 class="m-0" style="display: block;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;">{{$item->title}}</h4>
+                        </a>
+
                         <h6 class="ltn__secondary-color" style="
-                        @auth
                             position: absolute;
                             margin-top: -68px;
                             background-color: #E8F1FE;
                             padding: 2px 10px;
                             border-radius: 0 10px 10px 0;
-                            color: #2C95FB !important;
-                        @endauth">{{$item->category->name ?? ''}}</h6>
+                            color: #2C95FB !important;">{{$item->category->name ?? ''}}</h6>
                     </div>
                     <div style="text-align: center">
                         <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product mt-3"
@@ -190,7 +193,7 @@
 
 <!-- MARKETING -->
 <div class="ltn__about-us-area pt-90 pb-120">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 align-self-center">
                 <div class="about-us-img-wrap about-img-left">
@@ -244,8 +247,8 @@
 
 <!-- HUB KAMI START (call-to-action-4) -->
 <div class="ltn__call-to-action-area ltn__call-to-action-4 bg-image"
-    data-bg="{{ $company->image ?? url('/themes-frontend/img/bg/20.jpg') }}">
-    <div class="container">
+    data-bg="url('/themes-frontend/img/bg/20.jpg')">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="call-to-action-inner call-to-action-inner-4 text-center--- pt-115 pb-120">
@@ -277,7 +280,7 @@
 
 <!-- ABOUT US AREA START -->
 <div class="ltn__about-us-area section-bg-6 bg-image-right-before pt-120 pb-90">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 align-self-center">
                 <div class="about-us-info-wrap">
@@ -397,7 +400,7 @@
 {{--
 <!-- TESTIMONIAL AREA START (testimonial-8) -->
 <div class="ltn__testimonial-area section-bg-1--- pt-115--- pb-75 mt-100">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area ltn__section-title-2 text-center">
@@ -591,14 +594,17 @@
                         <div class="ltn__blog-meta">
                             <ul>
                                 <li class="ltn__blog-author">
-                                    <a href="#"><i class="far fa-user"></i>by: {{ $item->user_id }}</a>
+                                    <a href="javascript:void(0);"><i class="far fa-user"></i>by: {{ $item->user_id }}</a>
                                 </li>
                                 <li class="ltn__blog-tags">
-                                    <a href="#"><i class="fas fa-tags"></i>{{ $item->category->name }}</a>
+                                    <a href="javascript:void(0);"><i class="fas fa-tags"></i>{{ $item->category->name }}</a>
                                 </li>
                             </ul>
                         </div>
-                        <h3 class="ltn__blog-title"><a href="{{ route('blog.detail', $item->slug) }}">{{ $item->titles
+                        <h3 class="ltn__blog-title" style="display: block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;"><a href="{{ route('blog.detail', $item->slug) }}">{{ $item->titles
                                 }}</a></h3>
                         <div class="ltn__blog-meta-btn">
                             <div class="ltn__blog-meta">

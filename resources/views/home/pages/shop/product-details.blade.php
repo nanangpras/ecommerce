@@ -2,7 +2,7 @@
 @section('content')
 <!-- SHOP DETAILS AREA START -->
 <div class="ltn__shop-details-area pb-85">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="ltn__shop-details-inner mb-60">
@@ -297,7 +297,7 @@
 
 <!-- PRODUCT SLIDER AREA START -->
 <div class="ltn__product-slider-area ltn__product-gutter pb-70">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area ltn__section-title-2">
@@ -314,7 +314,7 @@
                     <div class="product-img">
                         <a href="{{route('product.detail',$item->slug)}}"><img
                                 src="{{$item->productImages->first()->image ?? ''}}" alt="#"
-                                style="height: 200px; width:300px;  object-fit:cover; border-radius:15px; "></a>
+                                style="height: 200px; width:100%;  object-fit:cover; border-radius:15px; "></a>
                         {{-- <div class="product-badge">
                             <ul>
                                 <li class="sale-badge">New</li>

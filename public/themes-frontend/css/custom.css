@@ -59,12 +59,12 @@ header .ltn__header-middle-area .btn-search button i {
   margin: auto;
 }
 .ltn__slider-area .slick-list {
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .ltn__feature-area .ltn__feature-item {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -80,7 +80,7 @@ header .ltn__header-middle-area .btn-search button i {
 
 .ltn__team-area .ltn__team-item {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   height: 100%;
@@ -92,11 +92,27 @@ header .ltn__header-middle-area .btn-search button i {
   top: -1px;
 }
 
+.ltn__about-us-area .accordion .accordion-item:first-child {
+  border-radius: 10px 10px 0 0;
+}
+.ltn__about-us-area .accordion .accordion-item:first-child .accordion-button {
+  border-radius: 10px 10px 0 0;
+}
+.ltn__about-us-area .accordion .accordion-item:last-child {
+  border-radius: 0 0 10px 10px;
+}
+.ltn__about-us-area .accordion .accordion-item:last-child .accordion-button {
+  border-radius: 0;
+}
+.ltn__about-us-area .accordion .accordion-item:last-child .accordion-button.collapsed {
+  border-radius: 0 0 10px 10px !important;
+}
+
 .ltn__blog-area .slick-slider .slick-list .slick-slide .ltn__blog-item .ltn__blog-img {
-  border-radius: 15px 15px 0 0;
+  border-radius: 10px 10px 0 0;
 }
 .ltn__blog-area .slick-slider .slick-list .slick-slide .ltn__blog-item .ltn__blog-brief {
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 10px 10px;
 }
 .ltn__blog-area .slick-slider .slick-arrow {
   display: flex;
@@ -116,7 +132,7 @@ header .ltn__header-middle-area .btn-search button i {
 
 .ltn__product-area .ltn__product-item {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   position: relative;
@@ -127,7 +143,7 @@ header .ltn__header-middle-area .btn-search button i {
   top: -1px;
 }
 .ltn__product-area .ltn__product-item .product-img {
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .ltn__product-area .ltn__product-item .product-info .product-brief p {
   margin: 0;
@@ -141,7 +157,7 @@ header .ltn__header-middle-area .btn-search button i {
 
 .ltn__product-slider-area .ltn__product-item {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   position: relative;
@@ -152,15 +168,64 @@ header .ltn__header-middle-area .btn-search button i {
   top: -1px;
 }
 .ltn__product-slider-area .ltn__product-item .product-img {
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .ltn__product-slider-area .ltn__product-item .product-img .product-hover-action a {
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .ltn__product-slider-area .slick-arrow {
   display: flex !important;
 }
 
 .ltn__modal-area .modal .modal-content {
-  border-radius: 15px !important;
+  border-radius: 10px !important;
+}
+
+.ltn__page-details-area .ltn__blog-details-wrap {
+  border-radius: 10px;
+}
+.ltn__page-details-area .ltn__blog-details-wrap .ltn__blog-category a {
+  border-radius: 10px !important;
+}
+.ltn__page-details-area .ltn__blog-details-wrap .ltn__blog-title {
+  white-space: normal;
+  word-break: break-all;
+}
+.ltn__page-details-area .ltn__blog-details-wrap .related-post-area .ltn__blog-item {
+  border-radius: 10px;
+}
+.ltn__page-details-area .ltn__blog-details-wrap .related-post-area .ltn__blog-item .ltn__blog-img img {
+  border-radius: 10px 10px 0 0 !important;
+}
+.ltn__page-details-area .blog-sidebar .ltn__popular-post-widget,
+.ltn__page-details-area .blog-sidebar .ltn__menu-widget,
+.ltn__page-details-area .blog-sidebar .ltn__tagcloud-widget {
+  border-radius: 10px !important;
+}
+
+.loader {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #1f2128;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 1s ease-in-out;
+}
+.loader .spinner-grow {
+  top: 50%;
+  left: 50%;
+  margin: -13px 0 0 -13px;
+  position: absolute;
+}
+.loader .spinner-grow.text-primary {
+  color: #56c4b6 !important;
+}
+
+.no-loader .loader {
+  visibility: hidden;
+  opacity: 0;
 }/*# sourceMappingURL=custom.css.map */
