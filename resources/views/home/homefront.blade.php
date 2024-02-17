@@ -153,32 +153,26 @@
         </div>
         <div class="row justify-content-center">
             @foreach ($popular_product as $item)
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="ltn__team-item p-0" style="border-radius: 15px">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-lg-0 mb-2">
+                <div class="ltn__team-item p-0 " style="border-radius: 10px">
                     <div class="team-img">
                         <a href="{{route('product.detail',$item->slug)}}">
                             <img src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}" alt="#"
-                                style="border-radius: 15px; width: 100%;height: 225px; object-fit: cover ">
+                                style="border-radius: 10px 10px 0 0; width: 100%;height: 225px; object-fit: cover ">
                         </a>
                     </div>
                     <div class="team-info m-0 p-0">
                         <a href="{{route('product.detail',$item->slug)}}">
-                        <h4 class="m-0" style="display: block;
+                        <h4 class="m-0 pt-2 px-3" style="display: block;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;">{{$item->title}}</h4>
                         </a>
 
-                        <h6 class="ltn__secondary-color" style="
-                            position: absolute;
-                            margin-top: -68px;
-                            background-color: #E8F1FE;
-                            padding: 2px 10px;
-                            border-radius: 0 10px 10px 0;
-                            color: #2C95FB !important;">{{$item->category->name ?? ''}}</h6>
+                        <h6 class="ltn__secondary-color m-0">{{$item->category->name ?? ''}}</h6>
                     </div>
                     <div style="text-align: center">
-                        <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product mt-3"
+                        <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product mt-3 mb-3"
                             style="display: block; text-align:-webkit-center;">
                             Demo
                         </a>

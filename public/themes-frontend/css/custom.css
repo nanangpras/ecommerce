@@ -83,7 +83,6 @@ header .ltn__header-middle-area .btn-search button i {
   border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   flex-direction: column;
-  height: 100%;
   position: relative;
   transition: translate 0.18s, box-shadow 0.18s;
 }
@@ -123,7 +122,7 @@ header .ltn__header-middle-area .btn-search button i {
   top: 175px;
 }
 .sidebar .widget form button {
-  border-radius: 0 15px 15px 0;
+  border-radius: 0 10px 10px 0;
 }
 .sidebar .widget form button:hover {
   background-color: #0095ff;
@@ -143,7 +142,7 @@ header .ltn__header-middle-area .btn-search button i {
   top: -1px;
 }
 .ltn__product-area .ltn__product-item .product-img {
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 }
 .ltn__product-area .ltn__product-item .product-info .product-brief p {
   margin: 0;
@@ -168,7 +167,7 @@ header .ltn__header-middle-area .btn-search button i {
   top: -1px;
 }
 .ltn__product-slider-area .ltn__product-item .product-img {
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 }
 .ltn__product-slider-area .ltn__product-item .product-img .product-hover-action a {
   border-radius: 10px;

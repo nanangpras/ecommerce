@@ -24,7 +24,7 @@
                                     @foreach ($detail->productImages as $item)
                                     <div class="single-small-img">
                                         <img src="{{$item->image}}" alt="Image"
-                                            style="height: 100px; object-fit:cover; width:100px; border-radius:15px;  ">
+                                            style="height: 100px; object-fit:cover; width:100px; border-radius:10px;  ">
                                     </div>
                                     @endforeach
 
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="modal-product-info shop-details-info pl-0">
-                                <h3>{{$detail->title}}</h3>
+                                <h3 style="white-space: normal; word-break: break-all;">{{$detail->title}}</h3>
                                 <div class="product-price">
                                     <span>@currency($detail->price)</span>
                                     <br>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="modal-product-info shop-details-info pl-0"
-                                style="border: 2px solid; border-radius:15px;border-color:rgb(209, 209, 209)">
+                                style="border: 2px solid; border-radius:10px;border-color:rgb(209, 209, 209)">
                                 <div class="modal-product-meta ltn__product-details-menu-1 pt-4">
                                     <ul>
                                         <li >
@@ -147,7 +147,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="liton_tab_details_1_1">
                             <div class="ltn__shop-details-tab-content-inner">
-                                <h4 class="title-2">{{$detail->title}}</h4>
+                                <h4 class="title-2" style="white-space: normal; word-break: break-all;">{{$detail->title}}</h4>
                                 {{-- <p>{{$detail->description}}</p> --}}
                                 <p>{!!$detail->description!!}</p>
                             </div>
@@ -314,7 +314,7 @@
                     <div class="product-img">
                         <a href="{{route('product.detail',$item->slug)}}"><img
                                 src="{{$item->productImages->first()->image ?? ''}}" alt="#"
-                                style="height: 200px; width:100%;  object-fit:cover; border-radius:15px; "></a>
+                                style="height: 200px; width:100%;  object-fit:cover; "></a>
                         {{-- <div class="product-badge">
                             <ul>
                                 <li class="sale-badge">New</li>
@@ -332,7 +332,11 @@
                         </div>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-title"><a href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
+                        <h2 class="product-title" style="display: block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;"
+                        ><a href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                         </h2>
                         <div class="product-price">
                             <span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
