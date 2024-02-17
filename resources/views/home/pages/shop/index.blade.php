@@ -8,13 +8,13 @@
                 <div class="ltn__shop-options">
                     <ul>
                         <li>
-                            <div class="ltn__grid-list-tab-menu ">
+                            {{-- <div class="ltn__grid-list-tab-menu ">
                                 <div class="nav">
                                     <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i
                                             class="fas fa-th-large"></i></a>
                                     <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </li>
                         {{-- <li>
                             <div class="short-by text-center">
@@ -40,8 +40,8 @@
                             <div class="row">
                                 @foreach ($product as $item)
                                 <!-- ltn__product-item -->
-                                <div class="col-xl-4 col-sm-6 col-6">
-                                    <div class="ltn__product-item ltn__product-item-3 text-center">
+                                <div class="col-xl-4 col-sm-6 col-12">
+                                    <div class="ltn__product-item ltn__product-item-3 text-center pb-sm-5" >
                                         <div class="product-img">
                                             <a href="{{route('product.detail',$item->slug)}}"><img
                                                     style="width: 100%; height:200px; object-fit:cover; "
@@ -57,8 +57,8 @@
                                             <div class="product-ratting">
                                             </div>
                                             <div>
-                                                <div class="d-block d-sm-flex justify-content-sm-between justify-content-center">
-                                                    <div class="">
+                                                <div class="d-block justify-content-sm-between justify-content-center">
+                                                    <div class="px-2">
                                                         <h2 class="product-title " 
                                                         style="display: block;
                                                         white-space: nowrap;
@@ -67,12 +67,12 @@
                                                         <a
                                                                 href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                         </h2>
-                                                        <p style="font-size: .75rem;" class="text-sm-start text-center">
+                                                        <p style="font-size: 0.75rem;" class="text-sm-start text-center m-0">
                                                             {{$item->category->name ?? ''}}
                                                         </p>
                                                     </div>
                                                     @if ($item->link)
-                                                    <div class="" >
+                                                    <div class="float-sm-end float-none pt-sm-0 pt-3" >
                                                         <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product">
                                                             Demo
                                                         </a>
@@ -96,7 +96,7 @@
                                 @foreach ($product as $item)
                                 <div class="col-lg-12">
                                     <div class="ltn__product-item ltn__product-item-3">
-                                        <div class="product-img">
+                                        <div class="product-img" style="border-radius: 10px 0 0 10px !important">
                                             <a href="{{route('product.detail',$item->slug)}}">
                                                 <img src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}"
                                                     alt="#">
@@ -112,7 +112,7 @@
                                                 <h2 class="product-title"><a
                                                         href="{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                 </h2>
-                                                <div class="product-ratting">
+                                                {{-- <div class="product-ratting">
                                                     <ul>
                                                         <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                         <li><a href="#"><i class="fas fa-star"></i></a></li>
@@ -120,13 +120,13 @@
                                                         <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
                                                         <li><a href="#"><i class="far fa-star"></i></a></li>
                                                     </ul>
-                                                </div>
-                                                <div class="product-price">
+                                                </div> --}}
+                                                {{-- <div class="product-price">
                                                     <span>Rp {{$item->price}}</span>
                                                     <del>Rp {{$item->price}}</del>
-                                                </div>
+                                                </div> --}}
                                                 <div class="product-brief">
-                                                    <p>{!!$item->description!!}</p>
+                                                    <p>{{$item->category->name ?? ''}}</p>
                                                 </div>
                                             </div>
                                             @if ($item->link)

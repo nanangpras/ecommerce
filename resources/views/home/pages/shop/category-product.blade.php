@@ -53,8 +53,8 @@
                                 @foreach ($product as $item)
                                 @if (count($item->product) > 0)
                                     @foreach ($item->product as $product)
-                                        <div class="col-xl-4 col-sm-6 col-6">
-                                            <div class="ltn__product-item ltn__product-item-3 text-center">
+                                        <div class="col-xl-4 col-sm-6 col-12">
+                                            <div class="ltn__product-item ltn__product-item-3 text-center pb-sm-5">
                                                 <div class="product-img">
                                                     <a href="{{route('product.detail',$product->slug)}}"><img
                                                             style="width: 100%; height:200px; object-fit:cover; "
@@ -70,8 +70,8 @@
                                                     <div class="product-ratting">
                                                     </div>
                                                     <div>
-                                                        <div class="d-block d-sm-flex justify-content-sm-between justify-content-center">
-                                                            <div class="">
+                                                        <div class="d-block justify-content-sm-between justify-content-center">
+                                                            <div class="px-2">
                                                                 <h2 class="product-title " 
                                                                 style="display: block;
                                                                 white-space: nowrap;
@@ -80,12 +80,12 @@
                                                                 <a
                                                                         href="{{route('product.detail',$product->slug)}}">{{$product->title}}</a>
                                                                 </h2>
-                                                                <p style="font-size: 0.75rem;" class="text-sm-start text-center">
+                                                                <p style="font-size: 0.75rem;" class="text-sm-start text-center m-0">
                                                                     {{$product->category->name ?? ''}}
                                                                 </p>
                                                             </div>
                                                             @if ($product->link)
-                                                            <div class="" >
+                                                            <div class="float-sm-end float-none pt-sm-0 pt-3" >
                                                                 <a href="{{$product->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product">
                                                                     Demo
                                                                 </a>
@@ -101,8 +101,8 @@
                                 @endif
                                 @if (count($item->productsub) > 0)
                                     @foreach ($item->productsub as $subproduct)
-                                        <div class="col-xl-4 col-sm-6 col-6">
-                                            <div class="ltn__product-item ltn__product-item-3 text-center">
+                                        <div class="col-xl-4 col-sm-6 col-12">
+                                            <div class="ltn__product-item ltn__product-item-3 text-center pb-sm-5">
                                                 <div class="product-img">
                                                     <a href="{{route('product.detail',$subproduct->slug)}}"><img
                                                             style="width: 100%; height:200px; object-fit:cover; "
@@ -118,20 +118,20 @@
                                                     <div class="product-ratting">
                                                     </div>
                                                     <div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <h2 class="product-title " style="text-align: left;display: block;
+                                                        <div class="d-block justify-content-sm-between justify-content-center">
+                                                            <div class="px-2">
+                                                                <h2 class="product-title " style="display: block;
                                                                 white-space: nowrap;
                                                                 overflow: hidden;
                                                                 text-overflow: ellipsis; "><a
                                                                         href="{{route('product.detail',$subproduct->slug)}}">{{$subproduct->title}}</a>
                                                                 </h2>
-                                                                <p style="font-size: .75rem;text-align: left">
+                                                                <p style="font-size: 0.75rem;" class="text-sm-start text-center m-0">
                                                                     {{$subproduct->category->name ?? ''}}
                                                                 </p>
                                                             </div>
                                                             @if ($subproduct->link)
-                                                            <div class="col-lg-6" style="text-align: right">
+                                                            <div class="float-sm-end float-none pt-sm-0 pt-3" >
                                                                 <a href="{{$subproduct->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product">
                                                                     Demo
                                                                 </a>
