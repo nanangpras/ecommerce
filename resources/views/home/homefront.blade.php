@@ -24,19 +24,19 @@
                                     {{-- <h6 class="slide-sub-title ltn__secondary-color animated text-uppercase">
                                         <span><i class="fas fa-square-full"></i></span> Layanan Kami
                                     </h6> --}}
-                                    <h1 class="slide-title animated text-light">{{ $item->name }}</h1>
+                                    {{-- <h1 class="slide-title animated text-light">{{ $item->name }}</h1>
                                     <div class="slide-brief animated">
                                         <p class="text-light">{{ $item->description }}</p>
                                     </div>
                                     <div class="btn-wrapper animated">
                                         <a href="#" class="theme-btn-2 btn btn-effect-2"
                                             style="border-radius :30px">Buat Sekarang</a>
-                                        {{-- <a class="ltn__video-play-btn bg-white"
+                                        <a class="ltn__video-play-btn bg-white"
                                             href="https://www.youtube.com/embed/HnbMYzdjuBs?autoplay=1&amp;showinfo=0"
                                             data-rel="lightcase">
                                             <i class="icon-play  ltn__secondary-color"></i>
-                                        </a> --}}
-                                    </div>
+                                        </a>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="slide-item-img">
@@ -172,7 +172,7 @@
                         <h6 class="ltn__secondary-color m-0">{{$item->category->name ?? ''}}</h6>
                     </div>
                     <div style="text-align: center">
-                        <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product mt-3 mb-3"
+                        <a href="{{$item->link}}" target="_blank" class="btn-product mt-3 mb-3"
                             style="display: block; text-align:-webkit-center;">
                             Demo
                         </a>
@@ -588,14 +588,14 @@
                         <div class="ltn__blog-meta">
                             <ul>
                                 <li class="ltn__blog-author">
-                                    <a href="javascript:void(0);"><i class="far fa-user"></i>by: {{ $item->user_id }}</a>
+                                    <a href="javascript:void(0);" class="text-hover-webiin"><i class="fas fa-user text-webiin"></i>by: {{ $item->user_id }}</a>
                                 </li>
                                 <li class="ltn__blog-tags">
-                                    <a href="javascript:void(0);"><i class="fas fa-tags"></i>{{ $item->category->name }}</a>
+                                    <a href="javascript:void(0);" class="text-hover-webiin"><i class="fas fa-tags text-webiin"></i>{{ $item->category->name }}</a>
                                 </li>
                             </ul>
                         </div>
-                        <h3 class="ltn__blog-title" style="display: block;
+                        <h3 class="ltn__blog-title text-hover-webiin" style="display: block;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;"><a href="{{ route('blog.detail', $item->slug) }}">{{ $item->titles
@@ -603,11 +603,11 @@
                         <div class="ltn__blog-meta-btn">
                             <div class="ltn__blog-meta">
                                 <ul>
-                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>{{ $item->created_at
+                                    <li class="ltn__blog-date text-webiin"><i class="far fa-calendar-alt"></i>{{ $item->created_at
                                         }}</li>
                                 </ul>
                             </div>
-                            <div class="ltn__blog-btn">
+                            <div class="ltn__blog-btn text-webiin">
                                 <a href="{{ route('blog.detail', $item->slug) }}">Selebihnya</a>
                             </div>
                         </div>
