@@ -41,25 +41,20 @@
                                 @foreach ($product as $item)
                                 <!-- ltn__product-item -->
                                 <div class="col-xl-4 col-sm-6 col-12">
-                                    <div class="ltn__product-item ltn__product-item-3 text-center pb-sm-5" >
+                                    <div class="ltn__product-item ltn__product-item-3 text-center pb-5" >
                                         <div class="product-img">
                                             <a href="{{route('product.detail',$item->slug)}}"><img
                                                     style="width: 100%; height:200px; object-fit:cover; "
                                                     src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}"
                                                     alt="#"></a>
-                                            {{-- <div class="product-badge">
-                                                <ul>
-                                                    <li class="sale-badge">New</li>
-                                                </ul>
-                                            </div> --}}
                                         </div>
                                         <div class="product-info p-0 m-2">
                                             <div class="product-ratting">
                                             </div>
                                             <div>
-                                                <div class="d-block justify-content-sm-between justify-content-center">
+                                                <div class="d-block justify-content-sm-between ">
                                                     <div class="px-2">
-                                                        <h2 class="product-title " 
+                                                        <h2 class="product-title text-start" 
                                                         style="display: block;
                                                         white-space: nowrap;
                                                         overflow: hidden;
@@ -67,13 +62,13 @@
                                                         <a
                                                                 href="{{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                         </h2>
-                                                        <p style="font-size: 0.75rem;" class="text-sm-start text-center m-0">
+                                                        <p class="text-start m-0">
                                                             {{$item->category->name ?? ''}}
                                                         </p>
                                                     </div>
                                                     @if ($item->link)
-                                                    <div class="float-sm-end float-none pt-sm-0 pt-3" >
-                                                        <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product">
+                                                    <div class="float-end pt-1" >                                                        
+                                                        <a href="{{$item->link}}" target="_blank" class="btn-product">
                                                             Demo
                                                         </a>
                                                     </div>
@@ -131,7 +126,7 @@
                                             </div>
                                             @if ($item->link)
                                             <div class="ms-auto pe-5 ps-3 ps-md-0 pb-2 pb-md-0">
-                                                <a href="{{$item->link}}" target="_blank" class="theme-btn-2 btn btn-effect-2 btn-product">
+                                                <a href="{{$item->link}}" target="_blank" class=" btn-product">
                                                     Demo
                                                 </a>
                                             </div>

@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <button type="submit" class="btn theme-btn-1 btn-effect-2" id="btn_cek_domain">Cek</button>
+                            <button type="submit" class="btn theme-btn-1 btn-effect-2 bg-webiin" id="btn_cek_domain">Cek</button>
                         </div>
                     </div>
                     <div id="result_domain_cek">
@@ -69,7 +69,7 @@
                                     <input type="hidden" id="result_domain" name="title_domain">
                                     <input type="hidden" id="iddomain" name="id" value="007" class="form-control">
                                     <input type="hidden" id="qty" value="1" name="qty" class="cart-plus-minus-box">
-                                    <button type="submit" class="btn theme-btn-1 btn-effect-2" id="btn_add_domain"
+                                    <button type="submit" class="btn theme-btn-1 btn-effect-2 bg-webiin" id="btn_add_domain"
                                         style="display: none;">Tambahkan</button>
                                 </form>
                                 {{-- <button type="button" class="btn theme-btn-1 btn-effect-2" id="btn_cek_cookie"
@@ -160,7 +160,7 @@
                         </table>
                         <div class="btn-wrapper text-right text-end">
                             {{-- <a href="{{ route('checkout.index') }}" id="btn_next_cart" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a> --}}
-                            <a href="#" id="btn_next_cart" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a>
+                            <a href="#" id="btn_next_cart" class="theme-btn-6 btn btn-effect-2 bg-webiin-2">Lanjutkan</a>
                         </div>
                     </div>
                 </div>
