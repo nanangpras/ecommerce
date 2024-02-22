@@ -1,1 +1,82 @@
-/* Write your custom CSS here */
+.login-page,
+.register-page {
+  max-width: 1440px;
+  margin: auto;
+}
+.login-page form a.btn-google,
+.register-page form a.btn-google {
+  background-color: rgb(255, 255, 255);
+  color: rgb(80, 80, 80);
+  box-shadow: rgb(80, 80, 80) 0px 0px 0px 1px inset;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+.login-page form a.btn-google::-moz-placeholder, .register-page form a.btn-google::-moz-placeholder {
+  color: rgb(80, 80, 80);
+}
+.login-page form a.btn-google::placeholder,
+.register-page form a.btn-google::placeholder {
+  color: rgb(80, 80, 80);
+}
+.login-page form a.btn-google:hover,
+.register-page form a.btn-google:hover {
+  background-color: rgb(249, 249, 251);
+  color: rgb(48, 48, 48);
+  box-shadow: rgb(48, 48, 48) 0px 0px 0px 1px inset;
+}
+.login-page form .form-group input,
+.login-page form .form-group select,
+.register-page form .form-group input,
+.register-page form .form-group select {
+  background-color: rgb(255, 255, 255);
+  color: rgb(80, 80, 80);
+  box-shadow: rgb(80, 80, 80) 0px 0px 0px 1px inset;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+.login-page form .form-group input::-moz-placeholder, .login-page form .form-group select::-moz-placeholder, .register-page form .form-group input::-moz-placeholder, .register-page form .form-group select::-moz-placeholder {
+  color: rgb(80, 80, 80);
+}
+.login-page form .form-group input::placeholder,
+.login-page form .form-group select::placeholder,
+.register-page form .form-group input::placeholder,
+.register-page form .form-group select::placeholder {
+  color: rgb(80, 80, 80);
+}
+.login-page form .form-group input[type=email],
+.login-page form .form-group select[type=email],
+.register-page form .form-group input[type=email],
+.register-page form .form-group select[type=email] {
+  padding-left: 10px;
+}
+.login-page form .form-group input[type=password],
+.login-page form .form-group select[type=password],
+.register-page form .form-group input[type=password],
+.register-page form .form-group select[type=password] {
+  padding-left: 10px;
+}
+.login-page form .form-group input[type=text],
+.login-page form .form-group select[type=text],
+.register-page form .form-group input[type=text],
+.register-page form .form-group select[type=text] {
+  padding-left: 10px;
+}
+.login-page form .form-group input[name=province_id],
+.login-page form .form-group select[name=province_id],
+.register-page form .form-group input[name=province_id],
+.register-page form .form-group select[name=province_id] {
+  padding-left: 10px;
+}
+.login-page form .form-group input[name=city_id],
+.login-page form .form-group select[name=city_id],
+.register-page form .form-group input[name=city_id],
+.register-page form .form-group select[name=city_id] {
+  padding-left: 10px;
+}
+.login-page form .form-group input[name=kecamatan_id],
+.login-page form .form-group select[name=kecamatan_id],
+.register-page form .form-group input[name=kecamatan_id],
+.register-page form .form-group select[name=kecamatan_id] {
+  padding-left: 10px;
+}/*# sourceMappingURL=custom.css.map */

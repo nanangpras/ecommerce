@@ -40,7 +40,7 @@
                                     <button type="button" id="pay-button" class="btn btn-success">Bayar</button>
                                 @else
                                     <h3 class="text-end pb-4 mt-3">
-                                        <div class="badge badge-success">SUDAH DIBAYAR</div></h3>
+                                        <div class="badge badge-primary">SUDAH DIBAYAR</div></h3>
                                 @endif
                                 {{-- <p class="text-end mb-1 mt-2">Balance Due</p>
                                 <h4 class="text-end fw-normal">@currency($sumtotal)</h4>
