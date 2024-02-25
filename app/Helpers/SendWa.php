@@ -15,10 +15,10 @@ class SendWa
      * @var array
      */
 
-    static function sendNotifAdmin($invoice, $total_bayar, $status_bayar)
+    static function sendNotifAdmin($invoice, $total_bayar, $status_bayar, $member_phone)
     {
         // $host = route('klaim.show', $token);
-        $pesan = "Ada order masuk dengan nomer invoice $invoice dengan total $total_bayar status bayar $status_bayar. Mohon segera di proses. Terimakasih";
+        $pesan = "Ada order masuk dengan nomer invoice $invoice dengan total $total_bayar status bayar $status_bayar.Nomer whatsapp user $member_phone. Mohon segera di proses. Terimakasih";
         // $host";
         SendWa::curlWa($pesan);
     }

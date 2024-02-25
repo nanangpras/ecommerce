@@ -8,6 +8,7 @@ use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use App\Models\User;
 use App\Service\CouponService;
 use App\Service\ProductService;
 use App\Service\RajaOngkirService;
@@ -129,8 +130,8 @@ class CheckoutController extends Controller
                     $updateCoupon->update(['counter' => $updateCoupon->counter + 1]);
                     // $updateCoupon->increment('counter');
                 }
-                //
-                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
+                $member_phone = User::select('phone')->where('id',$trx->user_id)->first();
+                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status,$member_phone);
                 $cart = [];
                 $cookie = cookie('konveksi-carts',json_encode($cart),2880);
                 // $response = view('home.pages.checkout.success',compact('snap'));
