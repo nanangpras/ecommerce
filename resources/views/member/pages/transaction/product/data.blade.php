@@ -51,7 +51,7 @@
                                             @if ($item->transaction_status == 'PENDING')
                                             <div><span class="badge badge-warning">{{$item->transaction_status}}</span></div>
                                             @elseif($item->transaction_status == 'SUCCESS')
-                                            <div><span class="badge badge-success">{{$item->transaction_status}}</span></div>
+                                            <div><span class="badge badge-primary">{{$item->transaction_status}}</span></div>
                                             @elseif($item->transaction_status == 'CANCEL')
                                             <div><span class="badge badge-danger">{{$item->transaction_status}}</span></div>
                                             @elseif($item->transaction_status == 'EXPIRED')
@@ -62,11 +62,11 @@
                                             @if ($item->progress_status == 'Pending')
                                             <div><span class="badge badge-warning">{{$item->progress_status}}</span></div>
                                             @elseif($item->progress_status == 'Diterima')
-                                            <div><span class="badge badge-success">{{$item->progress_status}}</span></div>
-                                            @elseif($item->progress_status == 'Proses')
                                             <div><span class="badge badge-primary">{{$item->progress_status}}</span></div>
-                                            @elseif($item->progress_status == 'Selesai')
+                                            @elseif($item->progress_status == 'Proses')
                                             <div><span class="badge badge-success">{{$item->progress_status}}</span></div>
+                                            @elseif($item->progress_status == 'Selesai')
+                                            <div><span class="badge badge-primary">{{$item->progress_status}}</span></div>
                                             @endif
                                         </td>
                                         <td>{{$item->qty}}</td>

@@ -1,0 +1,60 @@
+//login page
+.login-page,
+.register-page {
+    max-width: 1440px;
+    margin: auto;
+    form {
+        a {
+            &.btn-google {
+                background-color: rgb(255, 255, 255);
+                color: rgb(80, 80, 80);
+                box-shadow: rgb(80, 80, 80) 0px 0px 0px 1px inset;
+                text-align: center;
+                padding: 10px 0;
+                border-radius: 10px;
+                &::placeholder {
+                    color: rgb(80, 80, 80);
+                }
+
+                &:hover {
+                    background-color: rgb(249, 249, 251);
+                    color: rgb(48, 48, 48);
+                    box-shadow: rgb(48, 48, 48) 0px 0px 0px 1px inset;
+                }
+            }
+        }
+
+        .form-group {
+            input,
+            select {
+                background-color: rgb(255, 255, 255);
+                color: rgb(80, 80, 80);
+                box-shadow: rgb(80, 80, 80) 0px 0px 0px 1px inset;
+                padding: 10px 0;
+                border-radius: 10px;
+
+                &::placeholder {
+                    color: rgb(80, 80, 80);
+                }
+                &[type="email"] {
+                    padding-left: 10px;
+                }
+                &[type="password"] {
+                    padding-left: 10px;
+                }
+                &[type="text"] {
+                    padding-left: 10px;
+                }
+                &[name="province_id"] {
+                    padding-left: 10px;
+                }
+                &[name="city_id"] {
+                    padding-left: 10px;
+                }
+                &[name="kecamatan_id"] {
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}

@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <div class="stats-info">
                         <h5 class="card-title">{{$success ?? '0'}}</h5>
-                        <p class="stats-text"><span class="badge badge-success">Selesai</span></p>
+                        <p class="stats-text"><span class="badge badge-primary">Selesai</span></p>
                     </div>
                     <div class="stats-icon change-success">
                         <i class="material-icons">paid</i>
@@ -93,7 +93,7 @@
                                                 @if ($item->transaction_status == 'PENDING')
                                                 <div><span class="badge badge-warning">{{$item->transaction_status}}</span></div>
                                                 @elseif($item->transaction_status == 'SUCCESS')
-                                                <div><span class="badge badge-success">{{$item->transaction_status}}</span></div>
+                                                <div><span class="badge badge-primary">{{$item->transaction_status}}</span></div>
                                                 @elseif($item->transaction_status == 'CANCEL')
                                                 <div><span class="badge badge-danger">{{$item->transaction_status}}</span></div>
                                                 @elseif($item->transaction_status == 'EXPIRED')

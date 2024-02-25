@@ -153,8 +153,8 @@
         </div>
         <div class="row justify-content-center">
             @foreach ($popular_product as $item)
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-lg-0 mb-2">
-                <div class="ltn__team-item p-0 " style="border-radius: 10px">
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-lg-0 mb-2 ">
+                <div class="ltn__team-item pb-5" style="border-radius: 10px">
                     <div class="team-img">
                         <a href="{{route('product.detail',$item->slug)}}">
                             <img src="{{$item->productImages->count() ? $item->productImages->first()->image : ''}}" alt="#"
@@ -162,18 +162,19 @@
                         </a>
                     </div>
                     <div class="team-info m-0 p-0">
-                        <a href="{{route('product.detail',$item->slug)}}">
-                        <h4 class="m-0 pt-2 px-3" style="display: block;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;">{{$item->title}}</h4>
-                        </a>
-
-                        <h6 class="ltn__secondary-color m-0">{{$item->category->name ?? ''}}</h6>
+                        <div class="px-3">
+                            <a href="{{route('product.detail',$item->slug)}}">
+                            <h4 class="m-0 pt-2" style="display: block;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;">{{$item->title}}</h4>
+                            </a>
+    
+                            <p class="text-start m-0">{{$item->category->name ?? ''}}</p>
+                        </div>
                     </div>
-                    <div style="text-align: center">
-                        <a href="{{$item->link}}" target="_blank" class="btn-product mt-3 mb-3"
-                            style="display: block; text-align:-webkit-center;">
+                    <div class="float-end ">
+                        <a href="{{$item->link}}" target="_blank" class="btn-product me-3">
                             Demo
                         </a>
                     </div>

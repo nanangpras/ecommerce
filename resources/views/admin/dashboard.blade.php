@@ -85,7 +85,7 @@
                                         @if ($item->transaction_status == 'PENDING')
                                         <span class="badge badge-warning">{{$item->transaction_status}}</span>
                                         @elseif($item->transaction_status == 'SUCCESS')
-                                        <span class="badge badge-success">{{$item->transaction_status}}</span>
+                                        <span class="badge badge-primary">{{$item->transaction_status}}</span>
                                         @endif
                                     </td>
                                     <td>{{$item->user->name}}</td>
