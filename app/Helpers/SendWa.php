@@ -42,7 +42,7 @@ class SendWa
         // 'countryCode' => '62', //optional
         ),
         CURLOPT_HTTPHEADER => array(
-            'Authorization: uvhXXdC3a75u8QydycHT' //change TOKEN to your actual token
+            'Authorization: FrWD3XLPnrdptx9rud!Q' //change TOKEN to your actual token
         ),
         ));
 

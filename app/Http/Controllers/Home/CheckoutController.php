@@ -130,7 +130,7 @@ class CheckoutController extends Controller
                     // $updateCoupon->increment('counter');
                 }
                 //
-                // SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
+                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status);
                 $cart = [];
                 $cookie = cookie('konveksi-carts',json_encode($cart),2880);
                 // $response = view('home.pages.checkout.success',compact('snap'));
