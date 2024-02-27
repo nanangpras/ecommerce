@@ -101,10 +101,13 @@ class CheckoutController extends Controller
         }
 
         // check copuon sudah digunakan berulang
-        foreach($check_transaction_with_coupon as $transaction)
-        {
-            if ($check_coupon_repeat->coupon_repeat == 0 && $transaction->coupon_id == $check_coupon_repeat->id) {
-                return redirect()->route('checkout.index')->with('error', 'Maaf kode kupon sudah digunakan ditransaksi Anda yang lain');
+        // check copuon code
+        if ($request->code) {
+            foreach($check_transaction_with_coupon as $transaction)
+            {
+                if ($check_coupon_repeat->coupon_repeat == 0 && $transaction->coupon_id == $check_coupon_repeat->id) {
+                    return redirect()->route('checkout.index')->with('error', 'Maaf kode kupon sudah digunakan ditransaksi Anda yang lain');
+                }
             }
         }
 
