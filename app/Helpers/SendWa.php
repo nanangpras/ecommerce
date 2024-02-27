@@ -41,8 +41,7 @@ Mohon segera di proses. Terimakasih";
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => array(
-        // 'target' => '081325119991',
-        'target' => '085729334303',
+        'target' => '081325119991',
         'message' => $pesan,
         // 'countryCode' => '62', //optional
         ),
