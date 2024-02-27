@@ -133,8 +133,8 @@ class CheckoutController extends Controller
                     $updateCoupon->update(['counter' => $updateCoupon->counter + 1]);
                     // $updateCoupon->increment('counter');
                 }
-                $member_phone = User::select('phone')->where('id',$trx->user_id)->first();
-                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status,$member_phone);
+                $user = User::select('phone','name')->where('id',$trx->user_id)->first();
+                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status,$user);
                 $cart = [];
                 $cookie = cookie('konveksi-carts',json_encode($cart),2880);
                 // $response = view('home.pages.checkout.success',compact('snap'));

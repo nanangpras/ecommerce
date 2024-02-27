@@ -7,6 +7,8 @@ use App\Models\RequestIklan;
 use App\Models\Transaction;
 use App\Service\Midtrans\CallbackService;
 use Illuminate\Http\Request;
+use App\Helpers\SendWa;
+use App\Models\User;
 
 class PaymentCallbackController extends Controller
 {
@@ -21,6 +23,10 @@ class PaymentCallbackController extends Controller
                     'transaction_status' => 'SUCCESS',
                     'progress_status'    => 'Diterima',
                 ]);
+
+                $trx  = Transaction::select('code','transaction_total','transaction_status')->where('code', $order->code)->first();
+                $user = User::select('phone','name')->where('id',$trx->user_id)->first();
+                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status,$user);
             }
 
             if ($callback->isExpire()) {
@@ -28,6 +34,10 @@ class PaymentCallbackController extends Controller
                     'transaction_status' => 'EXPIRED',
                     'progress_status'    => 'Selesai',
                 ]);
+
+                $trx  = Transaction::select('code','transaction_total','transaction_status')->where('code', $order->code)->first();
+                $user = User::select('phone','name')->where('id',$trx->user_id)->first();
+                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status,$user);
             }
 
             if ($callback->isCancelled()) {
@@ -35,6 +45,10 @@ class PaymentCallbackController extends Controller
                     'transaction_status' => 'CANCEL',
                     'progress_status'    => 'Selesai',
                 ]);
+
+                $trx  = Transaction::select('code','transaction_total','transaction_status')->where('code', $order->code)->first();
+                $user = User::select('phone','name')->where('id',$trx->user_id)->first();
+                SendWa::sendNotifAdmin($trx->code,$trx->transaction_total,$trx->transaction_status,$user);
             }
 
             return response()

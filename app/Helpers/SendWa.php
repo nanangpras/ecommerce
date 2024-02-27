@@ -15,10 +15,14 @@ class SendWa
      * @var array
      */
 
-    static function sendNotifAdmin($invoice, $total_bayar, $status_bayar, $member_phone)
+    static function sendNotifAdmin($invoice, $total_bayar, $status_bayar, $user)
     {
         // $host = route('klaim.show', $token);
-        $pesan = "Ada order masuk dengan nomer invoice $invoice dengan total $total_bayar status bayar $status_bayar.Nomer whatsapp user $member_phone. Mohon segera di proses. Terimakasih";
+        $pesan = "Ada order masuk dengan nomer invoice $invoice dengan total Rp " . number_format($total_bayar, 0, ",", ".") . "  status bayar $status_bayar.
+Detail user
+Nama            : $user->name
+Nomer whatsapps : $user->phone
+Mohon segera di proses. Terimakasih";
         // $host";
         SendWa::curlWa($pesan);
     }
@@ -37,7 +41,8 @@ class SendWa
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => array(
-        'target' => '081325119991',
+        // 'target' => '081325119991',
+        'target' => '085729334303',
         'message' => $pesan,
         // 'countryCode' => '62', //optional
         ),
