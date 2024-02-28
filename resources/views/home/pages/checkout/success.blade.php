@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Oops Error!</title>
+    <title>Success Transaction - Webiin</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,14 +36,14 @@
                 <div class="col-lg-12">
                     <div class="error-404-inner text-center">
                         <div class="error-img mb-30">
-                            <img src="{{url('themes-frontend/img/others/error-2.png')}}" alt="Image Error">
+                            <img src="{{url('themes-frontend/img/others/success-transaction-2.png')}}" alt="Img Transaction Success">
                         </div>
-                        <h1 class="error-404-title d-none">419</h1>
-                        <h2>Page Not Found!</h2>
+                        <h1 class="error-404-title d-none">400</h1>
+                        <h2>Yeayy! Pembayaran Berhasil</h2>
                         <!-- <h3>Oops! Looks like something going rong</h3> -->
-                        <p>Oops! The page you are looking for does not exist. It might have been moved or deleted.</p>
-                        <div class="btn-wrapper">
-                            <a href="{{ url()->previous() }}" class="theme-btn-2 btn btn-effect-2"><i class="fas fa-long-arrow-alt-left"></i> Kembali ke Sebelumnya</a>
+                        <div class="btn-wrapper d-flex align-items-center text-center justify-content-center mx-auto">
+                            <a href="{{route('home')}}" class="theme-btn-2 btn btn-effect-2">Kembali ke Home</a>
+                            <a href="{{route('member.dashboard')}}" class="theme-btn-7 btn btn-effect-2 mr-2">ke Dashboard</a>
                         </div>
                     </div>
                 </div>

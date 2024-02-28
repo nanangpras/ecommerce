@@ -54,14 +54,14 @@
                 <div class="col-lg-12">
                     <div class="error-404-inner text-center">
                         <div class="error-img mb-30">
-                            <img src="{{url('themes-frontend/img/others/error-2.svg')}}" alt="#">
+                            <img src="{{url('themes-frontend/img/others/error-2.png')}}" alt="#">
                         </div>
                         <h1 class="error-404-title d-none">500</h1>
-                        <h2>Page Not Found! Page Not Found!</h2>
+                        <h2>Page Not Found!</h2>
                         <!-- <h3>Oops! Looks like something going rong</h3> -->
                         <p>Oops! The page you are looking for does not exist. It might have been moved or deleted.</p>
                         <div class="btn-wrapper">
-                            <a href="{{route('home')}}" class="theme-btn-2 btn btn-effect-2"><i class="fas fa-long-arrow-alt-left"></i> Kembali ke Home</a>
+                            <a href="{{ url()->previous() }}" class="theme-btn-2 btn btn-effect-2"><i class="fas fa-long-arrow-alt-left"></i> Kembali ke Sebelumnya</a>
                         </div>
                     </div>
                 </div>

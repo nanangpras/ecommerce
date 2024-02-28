@@ -178,4 +178,11 @@ class CheckoutController extends Controller
         }
         return redirect()->route('member.dashboard');
     }
+
+    public function transactionSuccess() {
+        return view ('home.pages.checkout.success');
+    }
+    public function transactionFailed() {
+        return view ('home.pages.checkout.failed');
+    }
 }

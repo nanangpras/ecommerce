@@ -162,7 +162,7 @@
                 {{-- <a href="{{route('profile.edit')}}" >group<i class="material-icons">User</i>Profile</a> --}}
             </li>
             <li>
-                <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">logout</i>Log Out</a>
+                <a href="{{route('logout')}}" class="badge badge-danger text-danger" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">logout</i>Log Out</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                 </form>

@@ -12,6 +12,7 @@
         </ol>
     </nav>
 </div>
+ 
 <div class="main-wrapper">
     <div class="row stats-row">
         <div class="col-lg-4 col-md-12">
@@ -221,8 +222,5 @@
     </div>
 
 </div>
-
-
-
 
 @endsection
