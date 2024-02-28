@@ -79,4 +79,8 @@
 .register-page form .form-group input[name=kecamatan_id],
 .register-page form .form-group select[name=kecamatan_id] {
   padding-left: 10px;
+}
+
+.form-group span.select2.select2-container.select2-container--default {
+  width: 100% !important;
 }/*# sourceMappingURL=custom.css.map */

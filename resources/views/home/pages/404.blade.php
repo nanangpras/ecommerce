@@ -10,7 +10,7 @@
                         <img src="{{url('themes-frontend/img/others/error-1.png')}}" alt="#">
                     </div>
                     <h1 class="error-404-title d-none">404</h1>
-                    <h2>Page Not Found! Page Not Found!</h2>
+                    <h2>Page Not Found!</h2>
                     <!-- <h3>Oops! Looks like something going rong</h3> -->
                     <p>Oops! The page you are looking for does not exist. It might have been moved or deleted.</p>
                     <div class="btn-wrapper">

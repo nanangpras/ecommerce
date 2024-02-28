@@ -152,6 +152,7 @@
                                 <div>
                                     <h4 class="title-2">Ringkasan Pemesanan</h4>
 
+                                   <div class="table-responsive">
                                     <table class="table">
                                         <tbody>
                                             @forelse ($cart as $item)
@@ -188,6 +189,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                   </div>
                                 </div>
                             </div>
 
@@ -200,7 +202,7 @@
                             <input type="hidden" id="trx_total" value="{{$subtotal}}">
                             <input type="hidden" id="grand_total_send" value="{{$subtotal}}" name="transaction_total">
                             <input type="hidden" id="idcoupon" name="idcoupon">
-                            <button class="btn theme-btn-7 btn-effect-7 text-uppercase" id="pay-button" type="submit">Lanjutkan</button>
+                            <button class="btn theme-btn-7 btn-effect-7 text-uppercase d-block w-100" id="pay-button" type="submit">Bayar</button>
 
 
                         </div>

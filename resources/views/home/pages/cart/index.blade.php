@@ -2,11 +2,6 @@
 @section('content')
 <!-- SHOPING CART AREA START -->
 
-<div class='loader' id="loading" style="display: none">
-    <div class='spinner-grow text-primary' role='status'>
-        <span class='sr-only'>Loading...</span>
-    </div>
-</div>
 
 <div class="liton__shoping-cart-area mb-120">
     <div class="container-fluid">
@@ -45,11 +40,11 @@
                     @csrf --}}
                     <div class="row">
                         <div class="col-lg-4">
-                            <input type="text" name="domain" id="domain" placeholder="Cek Domain" required>
+                            <input class="border-radius-10" type="text" name="domain" id="domain" placeholder="Cek Domain" required>
                         </div>
                         <div class="col-lg-2">
                             <div class="input-item">
-                                <select name="ekstensi" id="ekstensi" class="nice-select">
+                                <select name="ekstensi" id="ekstensi" class="nice-select border-radius-10" style="border">
                                     <option value=".com">.com</option>
                                     <option value=".id">.id</option>
                                     {{-- <option value=".co.id">.co.id</option> --}}
@@ -57,7 +52,14 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <button type="submit" class="btn theme-btn-1 btn-effect-2 bg-webiin" id="btn_cek_domain">Cek</button>
+                            <button type="submit" class="btn theme-btn-1 btn-effect-2 bg-webiin" id="btn_cek_domain">
+                                <div id="text-check">
+                                    Cek
+                                </div>
+                                <div class="spinner-border spinner-border-sm" id="spinner" role="status" style="display: none">
+                                    <span class="visually-hidden">Loading...</span>
+                                  </div>
+                            </button>
                         </div>
                     </div>
                     <div id="result_domain_cek">
@@ -69,8 +71,8 @@
                                     <input type="hidden" id="result_domain" name="title_domain">
                                     <input type="hidden" id="iddomain" name="id" value="007" class="form-control">
                                     <input type="hidden" id="qty" value="1" name="qty" class="cart-plus-minus-box">
-                                    <button type="submit" class="btn theme-btn-1 btn-effect-2 bg-webiin" id="btn_add_domain"
-                                        style="display: none;">Tambahkan</button>
+                                    <button type="submit" class="btn theme-btn-7 btn-effect-2 " id="btn_add_domain"
+                                    style="display: none;">Tambahkan</button>
                                 </form>
                                 {{-- <button type="button" class="btn theme-btn-1 btn-effect-2" id="btn_cek_cookie"
                                     style="display: none;">Cek</button> --}}
@@ -96,17 +98,17 @@
                                 </thead> --}}
                                 <tbody>
                                     @forelse ($cart as $item)
-                                    <tr>
+                                    <tr class="d-flex d-md-table justify-content-between align-items-center border-bottom table-checkout">
                                         <td class="cart-product-remove"><a
                                                 href="{{ route('delete-cart',$item['product_id'])}}">X</a></td>
-                                        <td class="cart-product-image">
+                                        <td class="cart-product-image text-start">
                                             <a href="javascript:void(0);"><img src="{{$item['image']}}" alt="#"
                                                     style="height: 100px; width:100px;  object-fit:cover; border-radius:15px; border-radius:15px; border-color:rgb(58, 58, 58); border:1px solid;"></a>
                                         </td>
-                                        <td class="cart-product-info">
+                                        <td class="cart-product-info text-start">
                                             <h4><a href="javascript:void(0);">{{$item['title']}}</a></h4>
                                         </td>
-                                        <td class="cart-product-price">@currency($item['price'])</td>
+                                        <td class="cart-product-price ms-auto">@currency($item['price'])</td>
                                         <td class="cart-product-quantity">
                                             @if ($item['category_id'] !== 1000)
                                                 <div class="cart-plus-minus">
@@ -160,7 +162,7 @@
                         </table>
                         <div class="btn-wrapper text-right text-end">
                             {{-- <a href="{{ route('checkout.index') }}" id="btn_next_cart" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a> --}}
-                            <a href="#" id="btn_next_cart" class="theme-btn-6 btn btn-effect-2 bg-webiin-2">Lanjutkan</a>
+                            <a href="#exampleModal" data-bs-toggle="modal" data-bs-target="#exampleModal"  class="theme-btn-6 btn btn-effect-2 bg-webiin-2">Lanjutkan</a>
                         </div>
                     </div>
                 </div>
@@ -170,6 +172,24 @@
 </div>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- SHOPING CART AREA END -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <h3>Apakah Anda ingin melanjutkan pembayaran?</h3>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn theme-btn-1 btn-effect-2 bg-webiin-danger hover-webiin-danger" data-bs-dismiss="modal">Tutup</button>
+          <a href="#" id="btn_next_cart" type="button" class="btn theme-btn-1 btn-effect-2 bg-webiin">Ya, Lanjutkan</a>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('after-scripts')
 <script>
@@ -205,11 +225,12 @@
 
 
             $("#btn_cek_domain").click(function (e) {
-                $('#loading').hide();
+                $('#spinner').hide();
                 e.preventDefault();
                 let domain   = $("#domain").val();
                 let ekstensi = $("#ekstensi").val();
-                $('#loading').show();
+                $('#spinner').show();
+                $('#text-check').hide();
                 $.ajax({
                     type: "POST",
                     url: "{{route('cek.domain')}}",
@@ -227,12 +248,14 @@
                             $("#btn_cek_cookie").css('display', 'block');
                             $("#result_domain").val(data.domain);
                             $("#text_warning_domain").text(data.result);
-                            $('#loading').hide();
+                            $('#spinner').hide();
+                            $('#text-check').show();
                         }
                         if(data.tersedia == 'tidak')
                         {
                             $("#text_warning_domain").text(data.result);
-                            $('#loading').hide();
+                            $('#spinner').hide();
+                            $('#text-check').show();
                         }
 
                     }

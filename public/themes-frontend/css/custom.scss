@@ -15,6 +15,15 @@
     padding: 0 35px !important;
 }
 
+//border
+.border-radius-10 {
+    border-radius: 10px !important;
+}
+.table-checkout {
+    td {
+        border: none !important;
+    }
+}
 //button
 .btn-product {
     display: inline-block !important;
@@ -75,7 +84,8 @@
     -webkit-text-fill-color: transparent;
 }
 .text-hover-webiin {
-    &:hover {
+    &:hover,
+    .active {
         background-image: linear-gradient(
             90deg,
             #4797b0 0,
@@ -95,6 +105,15 @@
         #5fa7d0 48%,
         #669bda 100%
     ) !important;
+}
+.bg-webiin-danger {
+    color: #f05154 !important;
+    background: #fcdcdc !important;
+}
+.hover-webiin-danger {
+    &:hover {
+        color: #0c1e33 !important;
+    }
 }
 
 .hover-webiin {
@@ -499,33 +518,18 @@ header {
     }
 }
 
-//loader
-.loader {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background: #1f2128;
-    z-index: 9999;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
-    .spinner-grow {
-        top: 50%;
-        left: 50%;
-        margin: -13px 0 0 -13px;
-        position: absolute;
-
-        &.text-primary {
-            color: #56c4b6 !important;
+//modal
+.modal {
+    .modal-dialog {
+        .modal-content {
+            border-radius: 10px;
+            .modal-header {
+                .btn-close {
+                    margin-left: auto;
+                    margin-right: 10px;
+                    margin-top: 10px;
+                }
+            }
         }
     }
-}
-.no-loader .loader {
-    visibility: hidden;
-    opacity: 0;
 }

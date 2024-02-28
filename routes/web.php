@@ -49,6 +49,8 @@ Route::get('/product/modal-detail/{slug}',[ShopController::class,'quickViewModal
 Route::get('/cart/session',[CartController::class,'getSessionCart'])->name('cart.session');
 
 Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout.index');
+Route::get('/checkout/success', [CheckoutController::class,'transactionSuccess'])->name('transaction-success');
+Route::get('/checkout/failed', [CheckoutController::class,'transactionFailed'])->name('transaction-failed');
 // Rajaongkir
 Route::get('/city/{id}',[HomeController::class, 'getCity'])->name('city');
 Route::get('/subdistrict/{id}',[HomeController::class, 'getSubdistrict'])->name('subdistrict');
