@@ -1,6 +1,7 @@
 @extends('home.layouts.layout-pages')
 @section('content')
 <!-- PRODUCT DETAILS AREA START -->
+
 <div class="ltn__product-area ltn__product-gutter">
     <div class="container-fluid">
         <div class="row">
@@ -28,7 +29,7 @@
                             </div>
                         </li> --}}
                         <li>
-                            <div class="showing-product-number text-right text-end">
+                            <div class="showing-product-number text-right">
                                 <span>Showing {{$product->currentPage()}} of {{$product->total()}} results</span>
                             </div>
                         </li>
@@ -54,7 +55,7 @@
                                             <div>
                                                 <div class="d-block justify-content-sm-between ">
                                                     <div class="px-2">
-                                                        <h2 class="product-title text-start" 
+                                                        <h2 class="product-title product-title-bold text-start" 
                                                         style="display: block;
                                                         white-space: nowrap;
                                                         overflow: hidden;
@@ -104,7 +105,7 @@
                                         </div>
                                         <div class="d-block d-md-flex d-xl-flex d-xxl-flex align-items-center">
                                             <div class="product-info px-3 pt-2">
-                                                <h2 class="product-title"><a
+                                                <h2 class="product-title product-title-bold"><a
                                                         href="{route('product.detail',$item->slug)}}">{{$item->title}}</a>
                                                 </h2>
                                                 {{-- <div class="product-ratting">

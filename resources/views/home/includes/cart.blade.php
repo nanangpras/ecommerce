@@ -51,7 +51,7 @@
             </div>
             <div class="btn-wrapper">
                 <a href="{{route('cart.index')}}" class="theme-btn-2 btn btn-effect-2">Keranjang</a>
-                <a href="{{route('checkout.index')}}" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                <a href="{{route('checkout.index')}}" class="theme-btn-7 btn btn-effect-2">Checkout</a>
             </div>
             {{-- <p>Free Shipping on All Orders Over $100!</p> --}}
         </div>

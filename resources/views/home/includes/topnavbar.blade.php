@@ -114,7 +114,7 @@
                                     @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="text-hover-webiin">Keluar</a>
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();" class=" text-danger">Keluar</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                             @csrf
                                         </form>
@@ -158,9 +158,9 @@
                         <nav>
                             <div class="ltn__main-menu">
                                 <ul>
-                                    <li><a href="{{ route('home') }}" class="text-hover-webiin">Home</a></li>
-                                    <li><a href="{{ route('shop.index') }}" class="text-hover-webiin">Template</a></li>
-                                    <li><a href="{{ route('home.about') }}" class="text-hover-webiin">Cara Order</a></li>
+                                    <li><a href="{{ route('home') }}" class="text-hover-webiin {{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
+                                    <li><a href="{{ route('shop.index') }}" class="text-hover-webiin {{ request()->routeIs('shop.index') ? 'active' : '' }} {{ request()->routeIs('shop.category') ? 'active' : '' }}">Template</a></li>
+                                    <li><a href="{{ route('home.about') }}" class="text-hover-webiin {{ request()->routeIs('home.about') ? 'active' : '' }}">Cara Order</a></li>
                                     {{-- <li class="menu-icon"><a href="{{ route('home') }}">Service</a></li>
                                     <li><a href="{{ route('home') }}">Portofolio</a></li>
                                     <li><a href="contact.html">Contact</a></li> --}}
