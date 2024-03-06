@@ -4,6 +4,12 @@
     margin: auto;
 }
 
+//title-product
+.product-title-bold {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
 //style
 .no-style {
     background: none !important;
@@ -54,6 +60,10 @@
         #5fa7d0 48%,
         #669bda 100%
     ) !important;
+    border-radius: 10px !important;
+    &:after {
+        border-radius: 10px !important;
+    }
 }
 .theme-btn-7 {
     background: rgb(239, 131, 51);
@@ -61,7 +71,11 @@
         90deg,
         rgba(239, 131, 51, 1) 59%,
         rgba(255, 201, 44, 1) 100%
-    );
+    ) !important;
+    border-radius: 10px !important;
+    &:after {
+        border-radius: 10px !important;
+    }
 }
 
 .bg-webiin-2 {
@@ -70,7 +84,7 @@
         90deg,
         rgba(239, 131, 51, 1) 59%,
         rgba(255, 201, 44, 1) 100%
-    );
+    ) !important;
 }
 .text-webiin {
     background-image: linear-gradient(
@@ -128,6 +142,19 @@
 }
 
 //slick slider
+
+.slick-slider-smooth,
+.slick-slider-smooth1,
+.slick-slider-smooth2 {
+    button {
+        display: none !important;
+    }
+    a {
+        &.slick-arrow {
+            display: none !important;
+        }
+    }
+}
 .slick-arrow {
     border-color: none;
     &:hover {
@@ -200,6 +227,21 @@ a {
 // custom topnavbar
 header {
     .ltn__header-middle-area {
+        .header-menu {
+            nav {
+                ul {
+                    li {
+                        a {
+                            &.active {
+                                @extend .text-webiin;
+                                border-bottom: 1px solid;
+                                padding-bottom: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .ltn__header-options {
             .mini-cart-icon {
                 a {
@@ -254,17 +296,39 @@ header {
 //homepage
 
 //carousel
-.ltn__slider-area {
-    width: 85%;
-    margin: auto;
-
-    .slick-list {
-        border-radius: 10px;
+.carousel {
+    .carousel-inner,
+    .carousel-item,
+    img {
+        border-radius: 10px !important;
     }
 
-    .ltn__slide-item {
-        width: 1224px;
-        height: 400px !important;
+    @media (min-width: 575px) {
+        &:hover {
+            .btn-carousel {
+                display: block !important;
+                button {
+                    opacity: 1;
+                    i {
+                        &:hover {
+                            color: #ffffff !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .btn-carousel {
+        button {
+            i {
+                font-size: 15px;
+                background: #ffffff;
+                padding: 10px 11px;
+                border-radius: 50%;
+                color: #0c1e33;
+            }
+        }
     }
 }
 //keuntungan
@@ -530,6 +594,39 @@ header {
                     margin-top: 10px;
                 }
             }
+        }
+    }
+}
+
+//accordion
+.accordion {
+    .collapse {
+        visibility: visible !important;
+    }
+}
+// footer
+footer {
+    width: 100%;
+    height: 370px;
+
+    .background {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scaleY(3) scaleX(2.25);
+            transform-origin: bottom;
+            box-sizing: border-box;
+            display: block;
+            pointer-events: none;
         }
     }
 }

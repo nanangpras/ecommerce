@@ -106,7 +106,7 @@
                                                     style="height: 100px; width:100px;  object-fit:cover; border-radius:15px; border-radius:15px; border-color:rgb(58, 58, 58); border:1px solid;"></a>
                                         </td>
                                         <td class="cart-product-info text-start">
-                                            <h4><a href="javascript:void(0);">{{$item['title']}}</a></h4>
+                                            <h4 class="product-title-bold"><a href="javascript:void(0);">{{$item['title']}}</a></h4>
                                         </td>
                                         <td class="cart-product-price ms-auto">@currency($item['price'])</td>
                                         <td class="cart-product-quantity">
@@ -160,7 +160,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="btn-wrapper text-right text-end">
+                        <div class="btn-wrapper text-end">
                             {{-- <a href="{{ route('checkout.index') }}" id="btn_next_cart" class="theme-btn-6 btn btn-effect-6">Lanjutkan</a> --}}
                             <a href="#exampleModal" data-bs-toggle="modal" data-bs-target="#exampleModal"  class="theme-btn-6 btn btn-effect-2 bg-webiin-2">Lanjutkan</a>
                         </div>
@@ -178,10 +178,10 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close text-bold" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-close"></i></button>
         </div>
         <div class="modal-body">
-        <h3>Apakah Anda ingin melanjutkan pembayaran?</h3>
+        <h3 class="product-title-bold">Apakah Anda yakin ingin melanjutkan pembayaran?</h3>
         </div>
         <div class="modal-footer border-0">
           <button type="button" class="btn theme-btn-1 btn-effect-2 bg-webiin-danger hover-webiin-danger" data-bs-dismiss="modal">Tutup</button>

@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-8 order-lg-2 mb-100">
                 <div class="ltn__shop-options"  style="border-radius: 15px">
-                        <div class="showing-product-number text-right text-end">
+                        <div class="showing-product-number text-right">
                             <span>Showing {{$product->currentPage()}} of {{$product->total()}} results</span>
                         </div>
                     <ul>
@@ -31,7 +31,7 @@
                             </div> --}}
                         </li>
                         {{-- <li>
-                            <div class="showing-product-number text-right text-end">
+                            <div class="showing-product-number text-right">
                                 <span>Showing {{$product->currentPage()}} of {{$product->total()}} results</span>
                             </div>
                         </li> --}}
@@ -72,7 +72,7 @@
                                                     <div>
                                                         <div class="d-block justify-content-sm-between justify-content-center">
                                                             <div class="px-2">
-                                                                <h2 class="product-title text-start" 
+                                                                <h2 class="product-title product-title-bold text-start" 
                                                                 style="display: block;
                                                                 white-space: nowrap;
                                                                 overflow: hidden;
@@ -120,7 +120,7 @@
                                                     <div>
                                                         <div class="d-block justify-content-sm-between justify-content-center">
                                                             <div class="px-2">
-                                                                <h2 class="product-title text-start" style="display: block;
+                                                                <h2 class="product-title product-title-bold text-start" style="display: block;
                                                                 white-space: nowrap;
                                                                 overflow: hidden;
                                                                 text-overflow: ellipsis; "><a
@@ -170,7 +170,7 @@
                                         </div>
                                         <div class="d-flex align-items-center my-auto">
                                             <div class="product-info px-3 pt-2">
-                                                <h2 class="product-title"><a
+                                                <h2 class="product-title product-title-bold"><a
                                                         href="{route('product.detail',$item->slug)}}">{{$subproduct->title}}</a>
                                                 </h2>
                                                 <div class="product-ratting">

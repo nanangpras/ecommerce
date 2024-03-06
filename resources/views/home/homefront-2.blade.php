@@ -8,7 +8,7 @@
         @foreach ($banner as $item)
 
             <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3 bg-image" data-bg="{{$item->banner_image}}">
-                <div class="ltn__slide-item-inner text-right text-end">
+                <div class="ltn__slide-item-inner text-end">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 align-self-center">

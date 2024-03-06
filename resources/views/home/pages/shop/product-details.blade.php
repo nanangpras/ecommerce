@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="modal-product-info shop-details-info pl-0">
-                                <h3 style="white-space: normal; word-break: break-all;">{{$detail->title}}</h3>
+                                <h3 style="white-space: normal; word-break: break-all;" class="product-title-bold">{{$detail->title}}</h3>
                                 <div class="product-price">
                                     <span>@currency($detail->price)</span>
                                     <br>
@@ -87,20 +87,18 @@
 
                         </div>
                         <div class="col-md-3">
-                            <div class="modal-product-info shop-details-info pl-0"
-                                style="border: 2px solid; border-radius:10px;border-color:rgb(209, 209, 209)">
+                            <div class="modal-product-info shop-details-info mt-5 mt-md-0"
+                                style="border: 2px solid; border-radius:10px; border-color:rgb(209, 209, 209)">
                                 <div class="modal-product-meta ltn__product-details-menu-1 pt-4">
-                                    <ul>
-                                        <li>
-                                            <strong>Kategori :</strong>
+                                        <div class="d-flex">
+                                            <strong class="me-2">Kategori :</strong>
                                             <span>
                                                 {{$detail->category->name}}
                                             </span>
-                                        </li>
-                                    </ul>
+                                        </div>
                                 </div>
                                 <div class="ltn__product-details-menu-2">
-                                    <form action="{{route('add.to.cart')}}" id="form-add-cart" method="POST">
+                                    <form action="{{route('add.to.cart')}}" id="form-add-cart" method="POST" >
                                         <ul>
                                             <li>
                                                 <div class="cart-plus-minus">
@@ -146,7 +144,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="liton_tab_details_1_1">
                             <div class="ltn__shop-details-tab-content-inner">
-                                <h4 class="title-2" style="white-space: normal; word-break: break-all;">{{$detail->title}}</h4>
+                                <h4 class="title-2 product-title-bold" style="white-space: normal; word-break: break-all;">{{$detail->title}}</h4>
                                 {{-- <p>{{$detail->description}}</p> --}}
                                 <p>{!!$detail->description!!}</p>
                             </div>
@@ -197,7 +195,7 @@
                         </div>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-title" style="display: block;
+                        <h2 class="product-title product-title-bold" style="display: block;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;"
