@@ -18,6 +18,16 @@
                 <li><a href="{{route('home')}}">Home</a></li>
                 <li><a href="{{route('shop.index')}}">Template</a></li>
                 <li><a href="{{route('home.about')}}">Cara Order</a></li>
+                <li>
+                    <a href="{{route('cart.index')}}" title="Shoping Cart">
+                        <div class="flex">
+                            <p class="pe-1">Keranjang</p>
+                            <span class="font-bold ">
+                                <sup class="text-webiin">{{ $count_cart ?? '0' }} order</sup>
+                            </span>
+                        </div>
+                    </a>
+                </li>
                 {{-- <li><a href="{{route('home')}}">News</a></li>
                 <li><a href="{{route('home')}}">Contact</a></li> --}}
             </ul>
@@ -31,14 +41,11 @@
                 @auth
                     <li>
                         <a href="{{route('member.dashboard')}}" title="My Account">
-                            {{-- <span class="utilize-btn-icon">
-                                <i class="far fa-user"></i>
-                            </span> --}}
-                            My Account
+                           Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log Out</a>
+                        <a class="text-danger" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log Out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                             @csrf
                         </form>
@@ -52,16 +59,8 @@
                         </span>
                         Wishlist
                     </a>
-                </li>
-                <li>
-                    <a href="{{route('cart.index')}}" title="Shoping Cart">
-                        <span class="utilize-btn-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <sup>5</sup>
-                        </span>
-                        Shoping Cart
-                    </a>
                 </li> --}}
+                
             </ul>
         </div>
         {{-- <div class="ltn__social-media-2">

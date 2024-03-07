@@ -11,6 +11,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @include('home.includes.style')
+    @stack('after-style')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

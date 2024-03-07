@@ -1,4 +1,4 @@
-<div class="col-lg-4  mb-100">
+<div class="col-lg-4  mb-100 d-none d-lg-block">
     <aside class="sidebar ltn__shop-sidebar">
         <!-- Category Widget -->
         <div class="widget ltn__menu-widget" style="border-radius: 15px">
