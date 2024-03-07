@@ -1683,7 +1683,7 @@
     }
     /* sticky */
     .sticky-active {
-        position: inherit;
+        position: fixed;
     }
     .ltn__header-2 {
         .ltn__header-middle-area > .container > .row .header-feature-column {

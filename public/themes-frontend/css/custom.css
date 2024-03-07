@@ -37,6 +37,15 @@
   background: linear-gradient(90deg, #4797b0 0, #4da9bd 48%, #4dbd92 100%) !important;
 }
 
+.color-webiin {
+  color: linear-gradient(90deg, #1488c9 0, #5fa7d0 48%, #669bda 100%) !important;
+}
+
+.color-hover-webiin:hover,
+.color-hover-webiin .active {
+  color: linear-gradient(90deg, #4797b0 0, #4da9bd 48%, #4dbd92 100%) !important;
+}
+
 .theme-btn-2 {
   background: linear-gradient(90deg, #1488c9 0, #5fa7d0 48%, #669bda 100%) !important;
   border-radius: 10px !important;
@@ -388,4 +397,35 @@ footer .background svg {
   box-sizing: border-box;
   display: block;
   pointer-events: none;
+}
+
+.svg-icon-product {
+  transition: fill 0.3s ease; /* Smooth transition effect */
+}
+.svg-icon-product:hover {
+  fill: url(#hoverGradient);
+}
+.svg-icon-product #hoverGradient {
+  stop-color: #4797b0;
+  stop-color: #4da9bd;
+  stop-color: #4dbd92;
+}
+
+#ltn__utilize-mobile-menu-filters.ltn__utilize-open {
+  padding: 20px !important;
+  height: auto;
+  position: sticky !important;
+  top: 150px;
+  left: 0 !important;
+  transform: translateX(-35px);
+}
+@media (max-width: 333px) {
+  #ltn__utilize-mobile-menu-filters.ltn__utilize-open {
+    transform: translateX(0) !important;
+  }
+}
+@media (min-width: 992px) {
+  #ltn__utilize-mobile-menu-filters.ltn__utilize-open {
+    transform: translateX(0) !important;
+  }
 }/*# sourceMappingURL=custom.css.map */

@@ -133,7 +133,7 @@
                         <div>
                             <h6 class="text-lg font-medium text-light">Pembayaran</h6>
                             <ul class="mt-4 list-inside space-y-4">
-                               <img src="http://localhost:8000/themes-frontend/img/payment.png" alt="Payment">
+                               <img src="{{url("/themes-frontend/img/payment.png")}}" alt="Payment">
                             </ul>
                         </div>
                     </div>
